@@ -3,5 +3,13 @@ module.exports = {
   rules: {
     'color-no-hex': true,
     'at-rule-no-unknown': [true, { ignoreAtRules: ['tailwind'] }]
-  }
+  },
+  overrides: [
+    {
+      files: ["**/tokens.css"],
+      rules: {
+        "color-no-hex": null
+      }
+    }
+  ]
 };

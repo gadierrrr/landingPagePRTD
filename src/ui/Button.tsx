@@ -18,5 +18,5 @@ const sizeClasses: Record<string,string> = {
 };
 
 export const Button: React.FC<ButtonProps> = ({ variant='primary', size='md', className='', ...rest }) => (
-  <button className={`rounded-full font-bold shadow-md disabled:opacity-60 focus:outline-none focus-visible:shadow-focus transition ${variantClasses[variant]} ${sizeClasses[size]} ${className}`} {...rest} />
+  <button className={`rounded-full font-bold shadow-md transition focus:outline-none focus-visible:shadow-focus disabled:opacity-60 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`} {...rest} />
 );

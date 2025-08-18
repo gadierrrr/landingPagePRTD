@@ -49,7 +49,7 @@ This is a Next.js 14 marketing site using Pages Router with TypeScript and Tailw
 **Design system:**
 - Design tokens are centralized in `src/styles/tokens.css` as CSS custom properties
 - Component library in `src/ui/` with primitives (Button, Heading, Section)
-- Brand colors: navy (#0B2B54), sand (#FFF7EA), blue (#0050A4), red (#ED1C24)
+- Brand colors: navy, sand, blue, red (see src/styles/tokens.css)
 - SiteLayout component provides consistent page wrapper with brand styling
 
 **Styling constraints:**
