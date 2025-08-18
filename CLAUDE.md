@@ -64,7 +64,14 @@ This is a Next.js 14 marketing site using Pages Router with TypeScript and Tailw
 
 **Health monitoring:**
 - `/api/health` endpoint returns `{ status: "ok" }`
+- `/healthz` endpoint available via Nginx for load balancer checks
 - Useful for deployment health checks
+
+**Production deployment:**
+- Domain: puertoricotraveldeals.com
+- App server runs on port 4000 (systemd service)
+- Nginx reverse proxy with SSL/HTTPS support ready
+- Deployment configs in `deploy/` directory
 
 **Page structure:**
 All pages should use SiteLayout wrapper and follow the component hierarchy: SiteLayout > Section > Heading + content.

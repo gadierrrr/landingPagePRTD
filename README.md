@@ -39,7 +39,7 @@ NODE_ENV=production npm start
 5. `sudo systemctl daemon-reload && sudo systemctl enable --now prtd`.
 6. Place Nginx file (see `deploy/nginx-prtd.conf.example`) in `/etc/nginx/sites-available/prtd.conf` and symlink to sites-enabled.
 7. Test `nginx -t` and reload.
-8. (Optional) Acquire certs: `sudo certbot --nginx -d example.com -d www.example.com` then uncomment HTTPS redirect.
+8. (Optional) Acquire certs: `sudo certbot --nginx -d puertoricotraveldeals.com -d www.puertoricotraveldeals.com` then uncomment HTTPS redirect.
 
 ## Health Check
 
