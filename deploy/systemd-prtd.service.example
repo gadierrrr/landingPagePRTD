@@ -1,0 +1,17 @@
+[Unit]
+Description=PRTD Next.js Service
+After=network.target
+
+[Service]
+Type=simple
+User=deploy
+WorkingDirectory=/var/www/prtd
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/var/log/prtd/app.log
+StandardError=append:/var/log/prtd/error.log
+
+[Install]
+WantedBy=multi-user.target
