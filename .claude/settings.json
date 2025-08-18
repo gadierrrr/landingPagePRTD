@@ -1,0 +1,41 @@
+{
+  "rules": [
+    {
+      "pattern": "Read(./.env)",
+      "action": "deny",
+      "message": "Environment files are protected from reading"
+    },
+    {
+      "pattern": "Read(./.env.*)",
+      "action": "deny",
+      "message": "Environment files are protected from reading"
+    },
+    {
+      "pattern": "Read(./secrets/**)",
+      "action": "deny",
+      "message": "Secrets directory is protected from reading"
+    },
+    {
+      "pattern": "Bash(*)",
+      "action": "ask",
+      "message": "Requires approval before executing any bash command"
+    },
+    {
+      "pattern": "Bash(git *)",
+      "action": "allow",
+      "message": "Git commands are allowed with confirmation"
+    },
+    {
+      "pattern": "Bash(npm run *)",
+      "action": "allow",
+      "message": "NPM run commands are allowed with confirmation"
+    },
+    {
+      "pattern": "Write(*)",
+      "action": "ask",
+      "message": "File writes require confirmation for safety"
+    }
+  ],
+  "ask_before_run": true,
+  "default_action": "allow"
+}
