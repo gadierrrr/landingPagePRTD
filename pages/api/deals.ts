@@ -1,0 +1,79 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { dealSchema } from '../../src/lib/forms';
+import { checkRateLimit, getClientIp } from '../../src/lib/rateLimit';
+import { readDeals, addDeal, updateDeal, deleteDeal } from '../../src/lib/dealsStore';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const ip = getClientIp(req);
+  const rateCheck = checkRateLimit(ip);
+  
+  if (!rateCheck.allowed) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+  }
+
+  try {
+    switch (req.method) {
+      case 'GET':
+        const deals = await readDeals();
+        return res.status(200).json(deals);
+
+      case 'POST':
+        const createValidation = dealSchema.omit({ id: true }).safeParse(req.body);
+        
+        if (!createValidation.success) {
+          return res.status(422).json({
+            error: 'Validation failed',
+            details: createValidation.error.flatten().fieldErrors
+          });
+        }
+        
+        const newDeal = await addDeal(createValidation.data);
+        return res.status(201).json(newDeal);
+
+      case 'PUT':
+        const { id, ...updateData } = req.body;
+        
+        if (!id || typeof id !== 'string') {
+          return res.status(400).json({ error: 'Deal ID is required' });
+        }
+        
+        const updateValidation = dealSchema.omit({ id: true }).partial().safeParse(updateData);
+        
+        if (!updateValidation.success) {
+          return res.status(422).json({
+            error: 'Validation failed',
+            details: updateValidation.error.flatten().fieldErrors
+          });
+        }
+        
+        const updatedDeal = await updateDeal(id, updateValidation.data);
+        
+        if (!updatedDeal) {
+          return res.status(404).json({ error: 'Deal not found' });
+        }
+        
+        return res.status(200).json(updatedDeal);
+
+      case 'DELETE':
+        const deleteId = req.body.id || req.query.id;
+        
+        if (!deleteId || typeof deleteId !== 'string') {
+          return res.status(400).json({ error: 'Deal ID is required' });
+        }
+        
+        const deleted = await deleteDeal(deleteId);
+        
+        if (!deleted) {
+          return res.status(404).json({ error: 'Deal not found' });
+        }
+        
+        return res.status(200).json({ success: true });
+
+      default:
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
+  } catch (error) {
+    console.error('Deals API error:', error instanceof Error ? error.message : 'Unknown error');
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}

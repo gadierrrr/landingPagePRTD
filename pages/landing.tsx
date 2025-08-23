@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { LandingHeader } from "@/ui/landing/LandingHeader";
 import { LandingHero } from "@/ui/landing/LandingHero";
 
@@ -12,8 +13,8 @@ export default function PRTDPRFlagLanding() {
       {/* Top Announcement Ribbon */}
   <div className="w-full bg-brand-red text-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 text-sm font-semibold tracking-wide sm:px-6">
-          <span className="uppercase">Launch week is coming to Puerto Rico 🇵🇷</span>
-          <a href="#stories" className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 ring-1 ring-white/30 hover:bg-white/25">Ver stories ➜</a>
+          <span className="uppercase">Follow us on Instagram</span>
+          <a href="https://www.instagram.com/puertoricotraveldeals" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 ring-1 ring-white/30 hover:bg-white/25">Follow ➜</a>
         </div>
       </div>
 
@@ -28,10 +29,10 @@ export default function PRTDPRFlagLanding() {
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
           <div className="bg-brand-blue/10 ring-brand-blue/20 rounded-3xl p-6 ring-1 sm:p-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <h2 className="text-3xl font-black text-brand-navy sm:text-4xl">NEW DEALS COMING</h2>
-              <a href="#waitlist" className="hover:bg-brand-navy/90 inline-flex items-center gap-3 rounded-full bg-brand-navy px-5 py-3 font-bold text-white shadow">
-                Explore early access <span>➜</span>
-              </a>
+              <h2 className="text-3xl font-black text-brand-navy sm:text-4xl">SEE AVAILABLE DEALS</h2>
+              <Link href="/deals" className="hover:bg-brand-navy/90 inline-flex items-center gap-3 rounded-full bg-brand-navy px-5 py-3 font-bold text-white shadow">
+                See Deals <span>➜</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -41,10 +42,10 @@ export default function PRTDPRFlagLanding() {
       <section className="">
         <div className="mx-auto grid max-w-6xl gap-0 px-4 sm:px-6 md:grid-cols-2">
           <div className="rounded-3xl bg-brand-red p-10 text-white md:rounded-l-3xl md:rounded-r-none">
-            <h3 className="text-4xl font-black leading-tight">CONNECT WITH DEALS IN PUERTO RICO</h3>
+            <h3 className="text-4xl font-black leading-tight">BE PART OF OUR NEXT PHASE.</h3>
           </div>
           <div className="rounded-3xl bg-brand-navy p-10 text-white md:rounded-l-none md:rounded-r-3xl">
-            <p className="text-xl leading-relaxed">PRTD connects travelers with the best local offers while supporting Puerto Rico businesses. We believe travel savings and local impact can go together.</p>
+            <p className="text-xl leading-relaxed">Our goal is to help local businesses grow by offering exclusive deals to the millions of travelers who visit Puerto Rico each year. Discover how below.</p>
           </div>
         </div>
       </section>
@@ -63,7 +64,7 @@ export default function PRTDPRFlagLanding() {
                 <li>• Transparent prices (taxes & fees up front)</li>
                 <li>• Trusted partners and flexible vouchers</li>
               </ul>
-              <a href="#waitlist" className="hover:bg-brand-navy/90 mt-6 inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-3 font-bold text-white shadow">Join the Waitlist ➜</a>
+              <a href="https://puertoricotraveldeals.com/join" className="hover:bg-brand-navy/90 mt-6 inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-3 font-bold text-white shadow">Join the Waitlist ➜</a>
             </div>
             {/* Businesses */}
             <div className="bg-brand-red/5 ring-brand-red/20 rounded-3xl p-6 ring-1 sm:p-8">
@@ -74,7 +75,7 @@ export default function PRTDPRFlagLanding() {
                 <li>• Vendor dashboard to track redemptions</li>
                 <li>• Predictable payouts</li>
               </ul>
-              <a href="#partners" className="hover:bg-brand-red/90 mt-6 inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 font-bold text-white shadow">Become a Partner ➜</a>
+              <Link href="/partner" className="hover:bg-brand-red/90 mt-6 inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 font-bold text-white shadow">Become a Partner ➜</Link>
             </div>
           </div>
         </div>

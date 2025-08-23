@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export const LandingHeader: React.FC = () => (
   <header className="bg-white shadow-sm">
@@ -8,13 +9,13 @@ export const LandingHeader: React.FC = () => (
         <span className="text-xl font-extrabold tracking-tight text-brand-navy">PRTD</span>
       </div>
       <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
-        <a className="hover:text-brand-blue" href="#deals">Deals</a>
+        <Link className="hover:text-brand-blue" href="/deals">Deals</Link>
         <a className="hover:text-brand-blue" href="#how">How it works</a>
         <a className="hover:text-brand-blue" href="#value">What we do</a>
-        <a className="hover:text-brand-blue" href="#partners">Partners</a>
+        <Link className="hover:text-brand-blue" href="/partner">Partners</Link>
         <a className="hover:text-brand-blue" href="#faq">FAQ</a>
       </nav>
-      <a href="#waitlist" className="hover:bg-brand-red/90 rounded-full bg-brand-red px-4 py-2 font-bold text-white shadow">Join the Waitlist</a>
+      <Link href="/deals" className="hover:bg-brand-red/90 rounded-full bg-brand-red px-4 py-2 font-bold text-white shadow">See Deals</Link>
     </div>
   </header>
 );
