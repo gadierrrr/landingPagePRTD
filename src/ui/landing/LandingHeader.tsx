@@ -4,10 +4,10 @@ import Link from 'next/link';
 export const LandingHeader: React.FC = () => (
   <header className="bg-white shadow-sm">
     <div className="mx-auto flex max-w-6xl items-center justify-between p-4 sm:px-6">
-      <div className="flex items-center gap-3">
+      <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
         <div className="grid size-9 place-items-center rounded-lg bg-brand-blue text-lg text-white">★</div>
         <span className="text-xl font-extrabold tracking-tight text-brand-navy">PRTD</span>
-      </div>
+      </Link>
       <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
         <Link className="hover:text-brand-blue" href="/deals">Deals</Link>
         <a className="hover:text-brand-blue" href="#how">How it works</a>
