@@ -74,6 +74,7 @@ NODE_ENV=production npm start
 - `POST /api/deals` - Create new deal (with validation)
 - `PUT /api/deals` - Update existing deal by ID
 - `DELETE /api/deals` - Remove deal by ID
+- `POST /api/upload-image` - Image upload for dealsmanager (JPEG/PNG/WebP, 5MB max, same-origin only)
 
 ### Deals Management System
 - **Storage**: JSON file at `data/deals.json` with atomic writes
@@ -120,7 +121,9 @@ npm run scaffold:page -- --name "PageName" --route "/route" --title "Page Title"
 - **SEO Optimized**: Individual meta tags, social sharing, structured data per deal
 
 #### Content Management
-- **Images**: Place in `/public/images/`, reference as `/images/filename.ext`
+- **Image Upload**: Built-in uploader in dealsmanager for JPG/PNG/WebP files (max 5MB)
+- **Storage**: Uploaded files saved to `/public/images/uploads/YYYY/MM/` with safe filenames  
+- **Manual Paths**: Direct path entry still supported - place in `/public/images/`, reference as `/images/filename.ext`
 - **Gallery Support**: Multiple images per deal for detail pages
 - **Partner Links**: External URLs with automatic UTM parameter injection
 - **Expiry Handling**: Visual indicators for expired deals, disabled CTAs
@@ -169,6 +172,17 @@ data/
 
 ## Changelog
 
+**2025-08-24** - **📁 Image Upload System: Secure File Management for Dealsmanager**
+  - **Admin Image Upload**: Built-in file picker in dealsmanager with drag-and-drop support
+  - **Security First**: Same-origin validation, CSRF protection, file type verification, filename sanitization
+  - **Smart Storage**: Organized uploads in `/public/images/uploads/YYYY/MM/` with timestamped filenames
+  - **Format Support**: JPEG, PNG, WebP images up to 5MB with client/server validation
+  - **Backward Compatible**: Existing manual path entry unchanged, both methods work seamlessly
+  - **Live Preview**: 16:9 thumbnail preview with Next.js Image optimization
+  - **Error Handling**: User-friendly validation messages for file type, size, and upload errors
+  - **Testing**: 12 unit tests for upload helpers plus E2E Playwright tests for full workflow
+  - **API Security**: Formidable-based `/api/upload-image` endpoint with comprehensive security checks
+
 **2025-08-24** - **🚀 MVP Enhancement: Enhanced User Experience & Content Management**
   - **Landing Page Refresh**: Updated hero copy to "Puerto Rico travel deals, updated daily" with new proof row and affiliate disclosure
   - **Advanced Deals Filtering**: Added category chips and sort options (Newest/Ending Soon) with responsive toolbar
@@ -203,6 +217,7 @@ data/
 - **Validation**: Zod schemas for form and API validation
 - **Testing**: Jest + React Testing Library (unit), Playwright (visual/e2e)
 - **Storage**: JSON file-based persistence with atomic writes (no external database)
+- **File Upload**: Formidable for multipart form handling with security validation
 - **Static Generation**: ISR (Incremental Static Regeneration) for deal detail pages
 - **SEO**: Meta tags, Open Graph, Twitter Cards, JSON-LD structured data
 - **Performance**: Image optimization, static generation, efficient routing
@@ -307,6 +322,17 @@ curl -I http://localhost:4000/deal/id/550e8400-e29b-41d4-a716-446655440001
 - **Image Optimization**: Next.js Image component with lazy loading
 - **Static Generation**: Pre-rendered pages for optimal performance
 - **Smart Caching**: Efficient data loading and client-side state management
+
+### 📁 Image Upload System
+- **Admin Upload**: Built-in file picker in dealsmanager deal form
+- **Supported Formats**: JPEG, PNG, WebP images (max 5MB per file)
+- **Secure Storage**: Files saved to `/public/images/uploads/YYYY/MM/` with sanitized filenames
+- **Filename Safety**: Automatic sanitization removes unsafe characters, adds timestamps
+- **Security Features**: Same-origin validation, CSRF headers, file type verification
+- **Backward Compatible**: Existing manual path entry still works alongside uploader
+- **Live Preview**: 16:9 aspect ratio thumbnail preview after upload
+- **Error Handling**: Client and server-side validation with user-friendly messages
+- **API Endpoint**: `POST /api/upload-image` with formidable multipart parsing
 
 ## Documentation
 

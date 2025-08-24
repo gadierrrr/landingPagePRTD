@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Deal } from '../../lib/forms';
 import { Button } from '../Button';
+import Image from 'next/image';
 
 interface DealFormProps {
   deal?: Deal;
@@ -16,6 +17,11 @@ const CATEGORIES = [
 ] as const;
 
 export const DealForm: React.FC<DealFormProps> = ({ deal, onSubmit, onCancel }) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadStatus, setUploadStatus] = useState<'ready' | 'uploading' | 'success' | 'error'>('ready');
+  const [uploadError, setUploadError] = useState<string>('');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  
   const [formData, setFormData] = useState({
     title: deal?.title || '',
     description: deal?.description || '',
@@ -55,6 +61,78 @@ export const DealForm: React.FC<DealFormProps> = ({ deal, onSubmit, onCancel }) 
 
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) {
+      setSelectedFile(null);
+      return;
+    }
+
+    // Client-side validation
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    const maxSize = 5 * 1024 * 1024; // 5MB
+
+    if (!allowedTypes.includes(file.type)) {
+      setUploadError('Invalid file type. Only JPEG, PNG, and WebP images are allowed.');
+      setUploadStatus('error');
+      setSelectedFile(null);
+      return;
+    }
+
+    if (file.size > maxSize) {
+      setUploadError('File too large. Maximum size is 5MB.');
+      setUploadStatus('error');
+      setSelectedFile(null);
+      return;
+    }
+
+    setSelectedFile(file);
+    setUploadStatus('ready');
+    setUploadError('');
+  };
+
+  const handleUpload = async () => {
+    if (!selectedFile) return;
+
+    setUploadStatus('uploading');
+    setUploadError('');
+
+    try {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      const response = await fetch('/api/upload-image', {
+        method: 'POST',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Upload failed');
+      }
+
+      if (result.ok && result.path) {
+        // Update the image field with the uploaded path
+        handleChange('image', result.path);
+        setUploadStatus('success');
+        setSelectedFile(null);
+        // Reset file input
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      } else {
+        throw new Error('Invalid response from server');
+      }
+    } catch (error) {
+      setUploadStatus('error');
+      setUploadError(error instanceof Error ? error.message : 'Upload failed');
+    }
   };
 
   return (
@@ -139,6 +217,64 @@ export const DealForm: React.FC<DealFormProps> = ({ deal, onSubmit, onCancel }) 
             required
             className="border-brand-navy/20 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-blue"
           />
+          
+          {/* Image upload UI */}
+          <div className="border-brand-navy/10 bg-brand-sand/20 mt-3 rounded-lg border p-3">
+            <label htmlFor="file-upload" className="mb-2 block text-sm font-bold text-brand-navy">
+              Or upload image
+            </label>
+            <div className="flex items-center gap-3">
+              <input
+                ref={fileInputRef}
+                type="file"
+                id="file-upload"
+                accept=".jpg,.jpeg,.png,.webp"
+                onChange={handleFileSelect}
+                className="text-brand-navy/70 hover:file:bg-brand-blue/90 text-sm file:mr-3 file:rounded-md file:border-0 file:bg-brand-blue file:px-3 file:py-1 file:text-sm file:font-medium file:text-white"
+              />
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleUpload}
+                disabled={!selectedFile || uploadStatus === 'uploading'}
+                className="shrink-0"
+              >
+                {uploadStatus === 'uploading' ? 'Uploading…' : 'Upload'}
+              </Button>
+            </div>
+            
+            {/* Status messages */}
+            <div className="mt-2 min-h-[1.25rem]">
+              {uploadStatus === 'ready' && selectedFile && (
+                <p className="text-brand-navy/60 text-xs">Ready to upload {selectedFile.name}</p>
+              )}
+              {uploadStatus === 'uploading' && (
+                <p className="text-xs text-brand-blue">Uploading…</p>
+              )}
+              {uploadStatus === 'success' && (
+                <p className="text-xs text-green-600">Upload successful</p>
+              )}
+              {uploadStatus === 'error' && uploadError && (
+                <p className="text-xs text-brand-red">{uploadError}</p>
+              )}
+            </div>
+            
+            {/* Preview */}
+            {formData.image && formData.image !== '/images/' && (
+              <div className="mt-3">
+                <p className="text-brand-navy/60 mb-2 text-xs">Preview:</p>
+                <div className="relative aspect-video w-32 overflow-hidden rounded-lg">
+                  <Image
+                    src={formData.image}
+                    alt="Deal image preview"
+                    fill
+                    className="object-cover"
+                    sizes="128px"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">

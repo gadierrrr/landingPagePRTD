@@ -1,91 +1,26 @@
 [
   {
-    "id": "550e8400-e29b-41d4-a716-446655440001",
-    "slug": "beach-resort-weekend",
-    "title": "Beach Resort Weekend",
-    "description": "Escape to paradise with our exclusive weekend package. Includes oceanfront room, breakfast, and spa credit.",
-    "amountLabel": "30% off",
-    "location": "San Juan",
-    "image": "/images/mock-deal-1.png",
+    "title": "TRYP by Wyndham Isla Verde",
+    "description": "$215 for a 2-Day and 1-Night Stay on WEEKDAYS in AUGUST",
+    "amountLabel": "78% OFF",
+    "location": "Isla Verde",
+    "image": "/images/",
     "category": "hotel",
-    "expiry": "2024-12-31T23:59:59.000Z",
-    "partner": "Paradise Beach Resort",
-    "externalUrl": "https://example.com/book-beach-resort",
-    "gallery": [
-      "/images/mock-deal-1.png"
-    ],
-    "fullDescription": "Escape to paradise with our exclusive weekend package. Includes oceanfront room, breakfast, and spa credit. Perfect for couples looking for a romantic getaway or families wanting to create lasting memories by the beach.",
-    "highlights": [
-      "Oceanfront room with stunning views",
-      "Complimentary breakfast for two",
-      "$50 spa credit included",
-      "Free WiFi and parking"
-    ],
-    "terms": "Valid for stays through December 31, 2024. Subject to availability. Cannot be combined with other offers.",
-    "expiresAt": "2024-12-31T23:59:59.000Z",
-    "price": 210,
-    "originalPrice": 300,
+    "expiry": "2025-08-27T03:59:00.000Z",
+    "partner": "Gustazos",
+    "externalUrl": "https://www.gustazos.com/deals/Hotels_tryp19",
+    "fullDescription": "$215 for a 2-Day and 1-Night Stay on WEEKDAYS in AUGUST for Up to 2 Adults and 2 Children in a Run of the House Room + 1 Daily Breakfast for 2 Adults at Emigrante GastroBar + Parking Special Rate for 1 Vehicle",
+    "highlights": [],
+    "terms": "See Gustazos.com for details.",
+    "expiresAt": "2025-08-28T03:59:00.000Z",
+    "price": 215,
+    "originalPrice": 958,
     "currency": "USD",
-    "updatedAt": "2025-08-24T18:49:12.868Z"
-  },
-  {
-    "id": "550e8400-e29b-41d4-a716-446655440002",
-    "slug": "rainforest-adventure-tour",
-    "title": "Rainforest Adventure Tour",
-    "description": "Explore the lush El Yunque rainforest with guided hiking, waterfall swimming, and local lunch included.",
-    "amountLabel": "$25 off",
-    "location": "El Yunque",
-    "image": "/images/mock-deal-2.png",
-    "category": "tour",
-    "expiry": "2024-06-30T23:59:59.000Z",
-    "partner": "Adventure PR",
-    "externalUrl": "https://example.com/book-rainforest-tour",
+    "id": "486e6185-3d1d-411f-9449-2ecb7ab4f0d9",
+    "slug": "tryp-by-wyndham-isla-verde",
+    "updatedAt": "2025-08-24T20:27:56.969Z",
     "gallery": [
-      "/images/mock-deal-2.png"
-    ],
-    "fullDescription": "Explore the lush El Yunque rainforest with guided hiking, waterfall swimming, and local lunch included. This full-day adventure takes you deep into Puerto Rico's tropical paradise where you'll discover hidden waterfalls, exotic wildlife, and breathtaking views.",
-    "highlights": [
-      "Professional bilingual guide",
-      "Waterfall swimming opportunity",
-      "Traditional Puerto Rican lunch",
-      "Transportation included",
-      "Small group experience (max 12 people)"
-    ],
-    "terms": "Weather dependent. Minimum age 8 years. Comfortable hiking shoes required. Valid through June 30, 2024.",
-    "expiresAt": "2024-06-30T23:59:59.000Z",
-    "price": 75,
-    "originalPrice": 100,
-    "currency": "USD",
-    "updatedAt": "2025-08-24T18:49:12.868Z"
-  },
-  {
-    "id": "550e8400-e29b-41d4-a716-446655440003",
-    "slug": "authentic-mofongo-experience",
-    "title": "Authentic Mofongo Experience",
-    "description": "Taste Puerto Rico's most beloved dish prepared by master chefs using traditional family recipes.",
-    "amountLabel": "15% off",
-    "location": "Old San Juan",
-    "image": "/images/mock-deal-3.png",
-    "category": "restaurant",
-    "expiry": "",
-    "partner": "Casa Mofongo",
-    "externalUrl": "https://example.com/reserve-mofongo",
-    "gallery": [
-      "/images/mock-deal-3.png"
-    ],
-    "fullDescription": "Taste Puerto Rico's most beloved dish prepared by master chefs using traditional family recipes. Experience the authentic flavors of the island in the heart of historic Old San Juan. Our mofongo is made fresh daily with the finest ingredients and served with your choice of protein.",
-    "highlights": [
-      "Traditional family recipes",
-      "Fresh ingredients daily",
-      "Choice of chicken, shrimp, or vegetarian",
-      "Historic Old San Juan location",
-      "Authentic Puerto Rican atmosphere"
-    ],
-    "terms": "Available for dinner service only. Reservations recommended. Cannot be combined with other promotions.",
-    "expiresAt": "",
-    "price": 22,
-    "originalPrice": 26,
-    "currency": "USD",
-    "updatedAt": "2025-08-24T18:49:12.868Z"
+      "/images/"
+    ]
   }
 ]
