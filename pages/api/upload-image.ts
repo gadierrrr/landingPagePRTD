@@ -118,6 +118,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Move file to final location with safe name
     await fs.promises.rename(uploadedFile.filepath, finalPath);
 
+    // Set proper file permissions (readable by web server)
+    await fs.promises.chmod(finalPath, 0o644);
+
     // Return public path
     const publicPath = `/images/uploads/${year}/${month}/${safeFilename}`;
     

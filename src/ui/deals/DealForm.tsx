@@ -252,7 +252,7 @@ export const DealForm: React.FC<DealFormProps> = ({ deal, onSubmit, onCancel }) 
                 <p className="text-xs text-brand-blue">Uploading…</p>
               )}
               {uploadStatus === 'success' && (
-                <p className="text-xs text-green-600">Upload successful</p>
+                <p className="text-xs text-green-600">Upload successful - Image will be visible after saving the deal</p>
               )}
               {uploadStatus === 'error' && uploadError && (
                 <p className="text-xs text-brand-red">{uploadError}</p>
