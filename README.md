@@ -169,6 +169,17 @@ data/
 
 ## Changelog
 
+**2025-08-24** - **🚀 MVP Enhancement: Enhanced User Experience & Content Management**
+  - **Landing Page Refresh**: Updated hero copy to "Puerto Rico travel deals, updated daily" with new proof row and affiliate disclosure
+  - **Advanced Deals Filtering**: Added category chips and sort options (Newest/Ending Soon) with responsive toolbar
+  - **Enhanced Deal Cards**: 16:9 aspect ratio images, source badges, expiry indicators, and improved meta display
+  - **Rich Deal Detail Pages**: Structured sections ("Why we like it", "What to know", "How to redeem") with native sharing
+  - **Smart UTM Tracking**: Runtime UTM parameter injection for accurate partner attribution
+  - **Source Attribution**: Automatic source name derivation from external URLs (Groupon, Viator, etc.)
+  - **SEO Improvements**: Enhanced page titles, descriptions, sitemap.xml generation, and expired page noindex
+  - **Data Migration**: Added `updatedAt`, `sourceName`, and `howTo[]` fields with backward compatibility
+  - **Comprehensive Testing**: 19 unit tests for utilities plus Playwright visual/e2e tests
+
 **2025-08-23** - **🎉 Major Feature: Clickable Deals with Detail Pages**
   - Implemented Groupon-style individual deal pages at `/deal/[slug]` with ISR
   - Made all deal cards clickable with proper Link navigation
@@ -221,7 +232,7 @@ sudo systemctl restart prtd  # Restart service
 
 **Deployment Status**: ✅ Live on https://puertoricotraveldeals.com with HTTPS/SSL
 
-**Recent Deployment**: 2025-08-23 - Clickable deals with Groupon-style detail pages
+**Recent Deployment**: 2025-08-24 - MVP Enhancement with advanced filtering, sharing, and UX improvements
 
 ## Troubleshooting
 
@@ -256,30 +267,46 @@ curl -I http://localhost:4000/deal/id/550e8400-e29b-41d4-a716-446655440001
 
 ### 🎯 Deal Detail Pages
 - **Hero Sections**: Large images, titles, pricing, and prominent CTAs
-- **Rich Content**: Full descriptions, highlight bullets, terms & conditions
-- **External Links**: "Get This Deal" buttons linking to partner booking sites
-- **Social Sharing**: Open Graph and Twitter Card meta tags for rich sharing
+- **Rich Content**: Structured sections for highlights, terms, and redemption steps
+- **External Links**: "Get This Deal" buttons with runtime UTM parameter injection
+- **Native Sharing**: Web Share API with graceful fallbacks (WhatsApp, Facebook, Copy Link)
+- **Source Attribution**: Automatic display of deal sources (Groupon, Viator, etc.)
 - **SEO Optimized**: Individual page titles, descriptions, structured data
 - **Mobile Responsive**: Touch-friendly design optimized for all screen sizes
 
-### 🔗 Smart Navigation
+### 🔍 Advanced Filtering & Search
+- **Category Filters**: Dynamic chips for restaurant, hotel, tour, activity categories
+- **Smart Sorting**: Newest (by updatedAt) and Ending Soon (by expiry) with stable ordering
+- **Real-time Updates**: Instant filtering and sorting without page reloads
+- **Responsive Design**: Mobile-friendly toolbar with optimized layouts
+
+### 🎨 Enhanced Visual Design
+- **16:9 Aspect Ratio Cards**: Consistent image sizing across all deal cards
+- **Source Badges**: Dynamic "From: Groupon" style overlays on deal images
+- **Expiry Indicators**: Clear visual cues for expired deals with disabled CTAs
+- **Loading States**: Skeleton animations for better perceived performance
+- **Improved Typography**: Better title truncation and meta information display
+
+### 🔗 Smart Navigation & SEO
 - **Clickable Cards**: All deal cards link to their detail pages
 - **SEO-Friendly URLs**: Clean `/deal/beach-resort-weekend` style URLs
 - **Legacy Support**: Old ID-based URLs automatically redirect (301)
-- **Breadcrumbs**: Clear navigation hierarchy on detail pages
+- **Sitemap Generation**: Dynamic XML sitemap including all deals and pages
+- **Expired Page Handling**: Automatic noindex for expired deals
 
-### 🛠️ Enhanced Admin
-- **Extended Forms**: All detail page fields in the admin interface
+### 🛠️ Enhanced Admin & Data Management
+- **Extended Schema**: New fields for sourceName, updatedAt, and howTo instructions
+- **Automatic Timestamps**: updatedAt field maintained on all deal modifications
 - **Real-time Updates**: ISR ensures changes appear immediately
-- **Image Management**: Support for hero images and galleries
+- **Data Migration**: Non-destructive migration system for schema updates
 - **Partner Integration**: External URL fields with UTM tracking
-- **Expiry Management**: Visual expired deal handling
 
 ### ⚡ Performance & SEO
 - **ISR (Incremental Static Regeneration)**: Fast loading with live updates
-- **JSON-LD Structured Data**: Rich search engine understanding
+- **JSON-LD Structured Data**: Rich search engine understanding (only when price data available)
 - **Image Optimization**: Next.js Image component with lazy loading
 - **Static Generation**: Pre-rendered pages for optimal performance
+- **Smart Caching**: Efficient data loading and client-side state management
 
 ## Documentation
 

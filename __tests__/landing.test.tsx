@@ -4,7 +4,7 @@ import Landing from '../pages/landing';
 describe('Landing page', () => {
   it('renders hero heading', () => {
     render(<Landing />);
-    expect(screen.getByText('THE TIME TO SAVE IS NOW!')).toBeInTheDocument();
+    expect(screen.getByText('Puerto Rico travel deals, updated daily.')).toBeInTheDocument();
   });
 
   it('toggles waitlist join state', () => {

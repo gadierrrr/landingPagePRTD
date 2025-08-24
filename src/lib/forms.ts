@@ -59,7 +59,13 @@ export const dealSchema = z.object({
   }),
   price: z.number().positive().optional(),
   originalPrice: z.number().positive().optional(),
-  currency: z.enum(['USD', 'EUR', 'GBP']).optional().default('USD')
+  currency: z.enum(['USD', 'EUR', 'GBP']).optional().default('USD'),
+  // Additional fields for enhanced functionality
+  sourceName: z.string().optional(),
+  updatedAt: z.string().optional().refine((val) => !val || !isNaN(Date.parse(val)), {
+    message: 'Updated at must be a valid ISO date string'
+  }),
+  howTo: z.array(z.string()).optional()
 });
 
 export type WaitlistData = z.infer<typeof waitlistSchema>;

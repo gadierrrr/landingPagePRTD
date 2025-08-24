@@ -9,6 +9,7 @@ global.fetch = jest.fn(() =>
     json: () => Promise.resolve([
       {
         id: "test-1",
+        slug: "beach-resort-weekend",
         title: "Beach Resort Weekend",
         description: "Escape to paradise",
         amountLabel: "30% off",
@@ -16,10 +17,12 @@ global.fetch = jest.fn(() =>
         image: "/images/mock-deal-1.png",
         category: "hotel",
         expiry: "",
-        partner: "Paradise Resort"
+        partner: "Paradise Resort",
+        updatedAt: new Date().toISOString()
       },
       {
         id: "test-2",
+        slug: "rainforest-adventure",
         title: "Rainforest Adventure",
         description: "Explore the rainforest",
         amountLabel: "$25 off",
@@ -27,7 +30,8 @@ global.fetch = jest.fn(() =>
         image: "/images/mock-deal-2.png",
         category: "tour",
         expiry: "",
-        partner: "Adventure Tours"
+        partner: "Adventure Tours",
+        updatedAt: new Date().toISOString()
       }
     ])
   })

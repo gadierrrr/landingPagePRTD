@@ -34,6 +34,7 @@ export async function addDeal(deal: Omit<Deal, 'id' | 'slug'>): Promise<Deal> {
     ...deal,
     id: crypto.randomUUID(),
     slug: generateSlug(deal.title, existingSlugs),
+    updatedAt: new Date().toISOString(),
     // Set defaults for new optional fields
     gallery: deal.gallery || [deal.image],
     fullDescription: deal.fullDescription || deal.description,
@@ -58,7 +59,9 @@ export async function updateDeal(id: string, updates: Partial<Omit<Deal, 'id' | 
   const { slug: _unused, ...safeUpdates } = updates as Partial<Deal>;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _unused; // Acknowledge the unused variable
-  deals[index] = { ...deals[index], ...safeUpdates };
+  
+  // Always update the updatedAt timestamp on edits
+  deals[index] = { ...deals[index], ...safeUpdates, updatedAt: new Date().toISOString() };
   await writeDeals(deals);
   return deals[index];
 }
@@ -90,6 +93,7 @@ export async function migrateDealsForSlugs(): Promise<void> {
   const deals = await readDeals();
   const existingSlugs: string[] = [];
   let hasChanges = false;
+  const migrationTimestamp = new Date().toISOString();
   
   for (const deal of deals) {
     // Generate slug if missing
@@ -99,6 +103,12 @@ export async function migrateDealsForSlugs(): Promise<void> {
       hasChanges = true;
     } else {
       existingSlugs.push(deal.slug);
+    }
+    
+    // Set updatedAt for existing deals (idempotent - only if missing)
+    if (!deal.updatedAt) {
+      deal.updatedAt = migrationTimestamp;
+      hasChanges = true;
     }
     
     // Set defaults for new optional fields if missing

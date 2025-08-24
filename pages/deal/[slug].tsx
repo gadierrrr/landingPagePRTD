@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import Head from 'next/head';
 import { Deal } from '../../src/lib/forms';
 import { readDeals } from '../../src/lib/dealsStore';
 import { SiteLayout } from '../../src/ui/layout/SiteLayout';
 import { SEO } from '../../src/ui/SEO';
+import { isExpired, displaySourceName, appendUtm, formatEndDate, formatRelativeTime } from '../../src/lib/dealUtils';
 
 interface DealPageProps {
   deal: Deal;
@@ -13,18 +15,61 @@ interface DealPageProps {
 }
 
 export default function DealPage({ deal, relatedDeals }: DealPageProps) {
-  const isExpired = deal.expiresAt ? new Date(deal.expiresAt) < new Date() : false;
+  const [copied, setCopied] = useState(false);
+  
+  const expired = isExpired(deal.expiresAt || deal.expiry);
   const hasDiscount = deal.originalPrice && deal.price;
   const discountPercent = hasDiscount ? Math.round(((deal.originalPrice! - deal.price!) / deal.originalPrice!) * 100) : 0;
+  const sourceName = displaySourceName(deal.externalUrl, deal.sourceName);
 
   const handleExternalClick = () => {
     if (deal.externalUrl) {
-      const urlWithUTM = new URL(deal.externalUrl);
-      urlWithUTM.searchParams.set('utm_source', 'PRTD');
-      urlWithUTM.searchParams.set('utm_medium', 'referral');
-      urlWithUTM.searchParams.set('utm_campaign', 'deal_page');
-      window.open(urlWithUTM.toString(), '_blank', 'noopener,noreferrer');
+      const urlWithUTM = appendUtm(deal.externalUrl);
+      window.open(urlWithUTM, '_blank', 'noopener noreferrer');
     }
+  };
+
+  const handleShare = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    const shareData = {
+      title: deal.title,
+      text: deal.description,
+      url
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        // Fallback to copy link
+        handleCopyLink();
+      }
+    } else {
+      // Fallback to copy link
+      handleCopyLink();
+    }
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // Fallback for older browsers
+      console.error('Failed to copy link');
+    }
+  };
+
+  const handleWhatsAppShare = () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    const text = encodeURIComponent(`Check out this deal: ${deal.title} - ${url}`);
+    window.open(`https://wa.me/?text=${text}`, '_blank', 'noopener noreferrer');
+  };
+
+  const handleFacebookShare = () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener noreferrer');
   };
 
   return (
@@ -35,6 +80,11 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
         image={deal.image}
         type="product"
       />
+      {expired && (
+        <Head>
+          <meta name="robots" content="noindex" />
+        </Head>
+      )}
       
       <SiteLayout>
         {/* Breadcrumb */}
@@ -65,12 +115,12 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
                     priority
                   />
                 </div>
-                {isExpired && (
+                {expired && (
                   <div className="absolute right-4 top-4 rounded-full bg-red-500 px-3 py-1 text-sm font-bold text-white">
                     Expired
                   </div>
                 )}
-                {!isExpired && hasDiscount && (
+                {!expired && hasDiscount && (
                   <div className="absolute right-4 top-4 rounded-full bg-brand-red px-3 py-1 text-sm font-bold text-white">
                     {discountPercent}% OFF
                   </div>
@@ -112,7 +162,7 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
                 )}
 
                 {/* CTA Button */}
-                {!isExpired && deal.externalUrl && (
+                {!expired && deal.externalUrl && (
                   <button
                     onClick={handleExternalClick}
                     className="hover:bg-brand-blue/90 focus:ring-brand-blue/40 w-full rounded-xl bg-brand-blue px-8 py-4 text-lg font-bold text-white shadow-lg focus:outline-none focus:ring-4"
@@ -121,19 +171,53 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
                   </button>
                 )}
 
-                {isExpired && (
+                {expired && (
                   <div className="bg-brand-navy/20 text-brand-navy/60 w-full rounded-xl px-8 py-4 text-center text-lg font-bold">
                     This deal has expired
                   </div>
                 )}
 
-                {/* Partner Info */}
-                {deal.partner && (
+                {/* Source Info */}
+                {sourceName && (
                   <div className="border-brand-navy/10 bg-brand-sand/50 rounded-xl border p-4">
-                    <h3 className="font-bold text-brand-navy">Partner</h3>
-                    <p className="text-brand-navy/80">{deal.partner}</p>
+                    <h3 className="font-bold text-brand-navy">Source</h3>
+                    <p className="text-brand-navy/80">{sourceName}</p>
                   </div>
                 )}
+
+                {/* Share & Actions */}
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={handleShare}
+                    className="hover:bg-brand-sand/80 flex items-center gap-2 rounded-lg bg-brand-sand px-4 py-2 text-sm font-semibold text-brand-navy"
+                  >
+                    Share
+                  </button>
+                  <button
+                    onClick={handleCopyLink}
+                    className="hover:bg-brand-sand/80 flex items-center gap-2 rounded-lg bg-brand-sand px-4 py-2 text-sm font-semibold text-brand-navy"
+                  >
+                    {copied ? 'Copied!' : 'Copy Link'}
+                  </button>
+                  <button
+                    onClick={handleWhatsAppShare}
+                    className="flex items-center gap-2 rounded-lg bg-green-500 px-4 py-2 text-sm font-semibold text-white hover:bg-green-600"
+                  >
+                    WhatsApp
+                  </button>
+                  <button
+                    onClick={handleFacebookShare}
+                    className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                  >
+                    Facebook
+                  </button>
+                  <a
+                    href="mailto:report@puertoricotraveldeals.com?subject=Report Deal Issue"
+                    className="text-brand-navy/50 ml-auto text-xs hover:text-brand-navy"
+                  >
+                    Report Issue
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -143,21 +227,14 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
         <section className="bg-brand-sand/30">
           <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
             <div className="grid gap-12 lg:grid-cols-3">
-              {/* Description */}
-              <div className="lg:col-span-2">
-                <h2 className="mb-6 text-2xl font-black text-brand-navy">About This Deal</h2>
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-brand-navy/80 leading-relaxed">
-                    {deal.fullDescription || deal.description}
-                  </p>
-                </div>
-
-                {/* Highlights */}
+              {/* Main Content */}
+              <div className="space-y-8 lg:col-span-2">
+                {/* Why we like it */}
                 {deal.highlights && deal.highlights.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="mb-4 text-xl font-black text-brand-navy">What&apos;s Included</h3>
-                    <ul className="space-y-2">
-                      {deal.highlights.map((highlight, index) => (
+                  <div>
+                    <h2 className="mb-4 text-2xl font-black text-brand-navy">Why we like it</h2>
+                    <ul className="space-y-3">
+                      {deal.highlights.slice(0, 5).map((highlight, index) => (
                         <li key={index} className="text-brand-navy/80 flex items-start gap-3">
                           <span className="mt-1 text-brand-blue">✓</span>
                           {highlight}
@@ -166,33 +243,74 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
                     </ul>
                   </div>
                 )}
+
+                {/* What to know */}
+                {deal.terms && (
+                  <div>
+                    <h2 className="mb-4 text-2xl font-black text-brand-navy">What to know</h2>
+                    <div className="border-brand-navy/10 rounded-xl border bg-white p-6">
+                      <p className="text-brand-navy/80 leading-relaxed">
+                        {deal.terms}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* How to redeem */}
+                {deal.howTo && deal.howTo.length > 0 && (
+                  <div>
+                    <h2 className="mb-4 text-2xl font-black text-brand-navy">How to redeem</h2>
+                    <div className="border-brand-navy/10 rounded-xl border bg-white p-6">
+                      <ol className="space-y-2">
+                        {deal.howTo.map((step, index) => (
+                          <li key={index} className="text-brand-navy/80 flex gap-3">
+                            <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-blue text-sm font-bold text-white">
+                              {index + 1}
+                            </span>
+                            {step}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+                )}
+
+                {/* Full Description */}
+                {deal.fullDescription && deal.fullDescription !== deal.description && (
+                  <div>
+                    <h2 className="mb-4 text-2xl font-black text-brand-navy">More details</h2>
+                    <div className="prose prose-lg max-w-none">
+                      <p className="text-brand-navy/80 leading-relaxed">
+                        {deal.fullDescription}
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Sidebar */}
               <div className="space-y-6">
-                {/* Expiry Info */}
-                {deal.expiresAt && (
-                  <div className="border-brand-navy/10 rounded-xl border bg-white p-4">
-                    <h3 className="mb-2 font-bold text-brand-navy">Deal Expires</h3>
-                    <p className={`text-sm ${isExpired ? 'font-bold text-red-600' : 'text-brand-navy/70'}`}>
-                      {new Date(deal.expiresAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </p>
+                {/* Meta Information */}
+                <div className="border-brand-navy/10 rounded-xl border bg-white p-4">
+                  <h3 className="mb-3 font-bold text-brand-navy">Deal Info</h3>
+                  <div className="space-y-2 text-sm">
+                    {deal.updatedAt && (
+                      <div className="text-brand-navy/70">
+                        Updated {formatRelativeTime(deal.updatedAt)}
+                      </div>
+                    )}
+                    {(deal.expiresAt || deal.expiry) && (
+                      <div className={expired ? 'font-bold text-red-600' : 'text-brand-navy/70'}>
+                        {expired ? 'Expired' : `Ends ${formatEndDate(deal.expiresAt || deal.expiry!)}`}
+                      </div>
+                    )}
+                    {deal.partner && (
+                      <div className="text-brand-navy/70">
+                        Partner: {deal.partner}
+                      </div>
+                    )}
                   </div>
-                )}
-
-                {/* Terms */}
-                {deal.terms && (
-                  <div className="border-brand-navy/10 rounded-xl border bg-white p-4">
-                    <h3 className="mb-2 font-bold text-brand-navy">Terms & Conditions</h3>
-                    <p className="text-brand-navy/70 text-sm leading-relaxed">
-                      {deal.terms}
-                    </p>
-                  </div>
-                )}
+                </div>
               </div>
             </div>
           </div>
@@ -238,30 +356,32 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
           </section>
         )}
 
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              name: deal.title,
-              description: deal.fullDescription || deal.description,
-              image: deal.image,
-              category: deal.category,
-              ...(deal.externalUrl && {
-                offers: {
-                  "@type": "Offer",
-                  url: deal.externalUrl,
-                  ...(deal.price && { price: deal.price }),
-                  ...(deal.currency && { priceCurrency: deal.currency }),
-                  ...(deal.expiresAt && { priceValidUntil: deal.expiresAt }),
-                  availability: isExpired ? "https://schema.org/Discontinued" : "https://schema.org/InStock"
-                }
+        {/* JSON-LD Structured Data - only when price info exists */}
+        {(deal.price || deal.originalPrice) && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: deal.title,
+                description: deal.fullDescription || deal.description,
+                image: deal.image,
+                category: deal.category,
+                ...(deal.externalUrl && {
+                  offers: {
+                    "@type": "Offer",
+                    url: deal.externalUrl,
+                    ...(deal.price && { price: deal.price }),
+                    ...(deal.currency && { priceCurrency: deal.currency }),
+                    ...(deal.expiresAt && { priceValidUntil: deal.expiresAt }),
+                    availability: expired ? "https://schema.org/Discontinued" : "https://schema.org/InStock"
+                  }
+                })
               })
-            })
-          }}
-        />
+            }}
+          />
+        )}
       </SiteLayout>
     </>
   );

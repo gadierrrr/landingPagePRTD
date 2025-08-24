@@ -11,7 +11,15 @@ export const Footer: React.FC = () => (
         </div>
         <p className="text-brand-navy/80 mt-3">Committed to the travelers—and businesses—of Puerto Rico.</p>
         <div className="text-brand-navy/70 mt-4 flex gap-3">
-          {['FB','IG','IN','YT'].map(x => (
+          <a 
+            href="https://www.instagram.com/puertoricotraveldeals" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="ring-brand-navy/20 hover:bg-brand-navy/10 grid size-9 place-items-center rounded-full ring-1"
+          >
+            IG
+          </a>
+          {['FB','IN','YT'].map(x => (
             <span key={x} className="ring-brand-navy/20 grid size-9 place-items-center rounded-full ring-1">{x}</span>
           ))}
         </div>
@@ -26,13 +34,18 @@ export const Footer: React.FC = () => (
       </div>
       <div className="text-brand-navy/80 text-sm">
         <ul className="space-y-2">
-          <li><a href="#deals" className="hover:text-brand-blue">Deals</a></li>
+          <li><Link href="/deals" className="hover:text-brand-blue">Deals</Link></li>
           <li><a href="#value" className="hover:text-brand-blue">What we do</a></li>
           <li><Link href="/partner" className="hover:text-brand-blue">Become a partner</Link></li>
-          <li><a href="#faq" className="hover:text-brand-blue">FAQ</a></li>
+          <li><a href="mailto:deals@puertoricotraveldeals.com" className="hover:text-brand-blue">Submit a Deal</a></li>
         </ul>
       </div>
     </div>
-    <div className="border-brand-navy/10 text-brand-navy/70 border-t py-4 text-center text-sm">© {new Date().getFullYear()} PRTD. All rights reserved. • Privacy • Terms</div>
+    <div className="border-brand-navy/10 text-brand-navy/70 border-t p-4 text-center text-sm sm:px-6">
+      <p className="mb-2">
+        <strong>Affiliate Disclosure:</strong> We may earn commissions from bookings made through our partner links. This helps us provide free access to curated deals.
+      </p>
+      <p>© {new Date().getFullYear()} PRTD. All rights reserved. • <a href="mailto:legal@puertoricotraveldeals.com" className="hover:text-brand-blue">Privacy</a> • <a href="mailto:legal@puertoricotraveldeals.com" className="hover:text-brand-blue">Terms</a></p>
+    </div>
   </footer>
 );
