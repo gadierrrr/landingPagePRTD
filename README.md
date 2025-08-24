@@ -333,6 +333,7 @@ curl -I http://localhost:4000/deal/id/550e8400-e29b-41d4-a716-446655440001
 - **Live Preview**: 16:9 aspect ratio thumbnail preview after upload
 - **Error Handling**: Client and server-side validation with user-friendly messages
 - **API Endpoint**: `POST /api/upload-image` with formidable multipart parsing
+- **Note**: Images are immediately accessible after upload and deal save in production
 
 ## Documentation
 
