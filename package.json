@@ -13,6 +13,7 @@
     "scaffold:page": "npx ts-node scripts/scaffold-page.ts"
   },
   "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "formidable": "^3.5.4",
     "next": "14.2.31",
     "react": "18.3.1",

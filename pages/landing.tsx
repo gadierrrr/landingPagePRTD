@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { LandingHeader } from "@/ui/landing/LandingHeader";
 import { LandingHero } from "@/ui/landing/LandingHero";
@@ -7,7 +7,70 @@ import { Footer } from "@/ui/Footer";
 // Puerto Rico Flag palette - see src/styles/tokens.css for hex values
 // Whites and tints for contrast; large type + bold CTAs inspired by provided screenshots.
 
+// Feature flag to hide sections during prelaunch
+const PRELAUNCH = true;
+
 export default function PRTDPRFlagLanding() {
+  const [midFormStatus, setMidFormStatus] = useState<string>("");
+  const [midFormLoading, setMidFormLoading] = useState(false);
+
+  const handleMidFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setMidFormLoading(true);
+    setMidFormStatus("");
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const honeypot = formData.get("company") as string;
+
+    // Check honeypot
+    if (honeypot) {
+      setMidFormLoading(false);
+      return;
+    }
+
+    // Client-side email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      setMidFormStatus("Please enter a valid email address.");
+      setMidFormLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        body: JSON.stringify({
+          fullName: "Subscriber",
+          email,
+          interest: "waitlist",
+          consent: true
+        })
+      });
+
+      if (response.ok) {
+        setMidFormStatus("Thanks—check your inbox!");
+        (e.target as HTMLFormElement).reset();
+        // Analytics
+        if (typeof window !== "undefined" && (window as { dataLayer?: unknown[] }).dataLayer) {
+          ((window as unknown) as { dataLayer: unknown[] }).dataLayer.push({
+            event: "email_signup",
+            location: "landing_band"
+          });
+        }
+      } else {
+        setMidFormStatus("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setMidFormStatus("Network error. Please check your connection and try again.");
+    } finally {
+      setMidFormLoading(false);
+    }
+  };
 
   return (
   <div className="min-h-screen w-full bg-brand-sand text-brand-navy">
@@ -59,19 +122,53 @@ export default function PRTDPRFlagLanding() {
         </div>
       </section>
 
-      {/* Split Banner: Connect + Mission (inspired by screenshots) */}
+      {/* Split Banner: Email Capture CTA */}
       <section className="">
         <div className="mx-auto grid max-w-6xl gap-0 px-4 sm:px-6 md:grid-cols-2">
           <div className="rounded-3xl bg-brand-red p-10 text-white md:rounded-l-3xl md:rounded-r-none">
-            <h3 className="text-4xl font-black leading-tight">BE PART OF OUR NEXT PHASE.</h3>
+            <h3 className="text-4xl font-black leading-tight">Get Puerto Rico travel deals in your inbox.</h3>
           </div>
           <div className="rounded-3xl bg-brand-navy p-10 text-white md:rounded-l-none md:rounded-r-3xl">
-            <p className="text-xl leading-relaxed">Our goal is to help local businesses grow by offering exclusive deals to the millions of travelers who visit Puerto Rico each year. Discover how below.</p>
+            <form onSubmit={handleMidFormSubmit} className="flex flex-col gap-4">
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email address"
+                  required
+                  disabled={midFormLoading}
+                  className="flex-1 rounded-xl border border-slate-300 px-4 py-3 text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  aria-label="Email address"
+                />
+                <button
+                  type="submit"
+                  disabled={midFormLoading}
+                  className="hover:bg-brand-blue/90 rounded-xl bg-brand-blue px-5 py-3 font-bold text-white shadow disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {midFormLoading ? "..." : "Sign up"}
+                </button>
+              </div>
+              {/* Honeypot field */}
+              <input
+                type="text"
+                name="company"
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
+              {midFormStatus && (
+                <div aria-live="polite" className="text-sm">
+                  {midFormStatus}
+                </div>
+              )}
+            </form>
           </div>
         </div>
       </section>
 
       {/* What we can do for you */}
+      {!PRELAUNCH && (
       <section id="value" className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <h3 className="text-center text-3xl font-black sm:text-4xl">WHAT WE CAN DO FOR YOU</h3>
@@ -101,12 +198,14 @@ export default function PRTDPRFlagLanding() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Anchor placeholders to preserve CTA functionality */}
       <div id="waitlist" className="sr-only" aria-hidden="true" />
       <div id="partners" className="sr-only" aria-hidden="true" />
 
       {/* Partners Logos */}
+      {!PRELAUNCH && (
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <h3 className="text-center text-3xl font-black sm:text-4xl">OUR PARTNERS</h3>
@@ -136,6 +235,7 @@ export default function PRTDPRFlagLanding() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Footer */}
       <Footer />

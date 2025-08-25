@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { waitlistSchema } from '../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../src/lib/rateLimit';
+import { addEmailToWaitlist } from '../../src/lib/mailchimp';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -24,14 +25,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     }
     
-    const { website } = validation.data;
+    const { website, email, fullName } = validation.data;
     
     // Honeypot check
     if (website) {
       return res.status(204).end();
     }
     
-    res.status(200).json({ ok: true, message: "Received" });
+    // Add email to MailChimp waitlist
+    await addEmailToWaitlist(email, fullName);
+    
+    res.status(200).json({ ok: true, message: "Successfully added to waitlist" });
   } catch (error) {
     console.error('Waitlist error:', error instanceof Error ? error.message : 'Unknown error');
     

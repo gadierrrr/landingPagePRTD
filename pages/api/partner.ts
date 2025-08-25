@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { partnerSchema } from '../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../src/lib/rateLimit';
+import { addPartnerEmail } from '../../src/lib/mailchimp';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -29,6 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Map frontend field names to backend expected names
     const email = (data.businessEmail ?? data.email)?.toLowerCase().trim();
     const website = data.website;
+    const company = data.businessName ?? data.company;
     
     if (!email) {
       return res.status(422).json({ error: 'Email is required' });
@@ -39,7 +41,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(204).end();
     }
     
-    res.status(200).json({ ok: true, message: "Received" });
+    // Add email to MailChimp as partner
+    await addPartnerEmail(email, company);
+    
+    res.status(200).json({ ok: true, message: "Successfully added as partner" });
   } catch (error) {
     console.error('Partner error:', error instanceof Error ? error.message : 'Unknown error');
     

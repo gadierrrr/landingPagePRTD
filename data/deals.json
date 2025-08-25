@@ -28,9 +28,9 @@
   {
     "title": "Skydive Puerto Rico",
     "description": "$179 for a Parachute Jump for 1 Person; or $319 for Parachute Jump for 2 People; Both Options Include: 20% Discount from the Original Price for 1 Additional Person on the Same Day",
-    "amountLabel": "45 Off",
+    "amountLabel": "45% OFF",
     "location": "Arecibo",
-    "image": "/images/mock-deal-2.png",
+    "image": "/images/uploads/2025/08/skydive-arecibo-deal-1756119086467.jpg",
     "category": "activity",
     "expiry": "2025-08-31T03:59:00.000Z",
     "partner": "Gustazos.com",
@@ -45,9 +45,36 @@
     "currency": "USD",
     "id": "940197f4-d9e6-44c5-ac91-f41bf296d9f3",
     "slug": "skydive-puerto-rico",
-    "updatedAt": "2025-08-25T10:31:21.564Z",
+    "updatedAt": "2025-08-25T10:51:40.235Z",
     "gallery": [
       "/images/mock-deal-2.png"
+    ],
+    "terms": ""
+  },
+  {
+    "title": "Sunset View Hotel by West Paradise",
+    "description": "$279 for a 3-Day and 2-Night Stay on WEEKENDS from AUGUST through OCTOBER in a REGULAR Room for 2 Adults",
+    "amountLabel": "56-64% OFF",
+    "location": "Cabo Rojo",
+    "image": "/images/uploads/2025/08/sunse-view-hotel-cabo-rojo-1756121009731.jpg",
+    "category": "hotel",
+    "expiry": "2025-08-30T03:59:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Hotels_sunsetview23",
+    "fullDescription": "Sunset View Hotel by West Paradise is conveniently located next to the best beaches in Cabo Rojo, where you’ll enjoy a festive setting all day.",
+    "highlights": [
+      "Multiple offer available. ",
+      "Located in the downtown area of the town.",
+      "Walking distance to an incredible beach."
+    ],
+    "price": 279,
+    "originalPrice": 633.1,
+    "currency": "USD",
+    "id": "5195d706-d0ae-4c2c-96b3-f325fcab4a3f",
+    "slug": "sunset-view-hotel-by-west-paradise",
+    "updatedAt": "2025-08-25T11:25:00.687Z",
+    "gallery": [
+      "/images/uploads/2025/08/sunse-view-hotel-cabo-rojo-1756121009731.jpg"
     ],
     "terms": ""
   }

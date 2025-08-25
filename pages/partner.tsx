@@ -94,7 +94,7 @@ export default function Partners() {
           </div>
           <div>
             <p className="font-semibold text-brand-navy">What commission do you charge?</p>
-            <p className="mt-2">We only earn when you do—commission is applied only on successful redemptions, no upfront fees.</p>
+            <p className="mt-2">While we work through our Beta phase, we charge no direct commission. Reach out to us for more details.</p>
           </div>
         </div>
       </Section>
