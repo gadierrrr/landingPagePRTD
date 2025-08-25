@@ -96,7 +96,12 @@ NODE_ENV=production npm start
 
 ## Environment Variables
 
-Copy `.env.example` to `.env.local`. None required yet.
+Copy `.env.example` to `.env.local` and configure:
+
+### Required for MailChimp Integration
+- `MAILCHIMP_API_KEY` - Your MailChimp API key
+- `MAILCHIMP_SERVER_PREFIX` - Your MailChimp server prefix (e.g., 'us13')
+- `MAILCHIMP_AUDIENCE_ID` - Your MailChimp audience/list ID
 
 ## Development Workflows
 
@@ -170,7 +175,46 @@ data/
 └── deals.json         # Extended deal storage (JSON)
 ```
 
+## Feature Flags
+
+### Prelaunch Mode
+- **Location**: `pages/landing.tsx` - `PRELAUNCH` constant  
+- **Purpose**: Hide sections during prelaunch phase for focused email collection
+- **Hidden when enabled**: Travelers card, Businesses card, Our Partners section
+- **Toggle**: Change `const PRELAUNCH = true;` to `false` to restore all sections
+
+## Email Capture System
+
+### Landing Page Email Forms
+- **Mid-page CTA**: "Get Puerto Rico travel deals in your inbox" with inline email form
+- **Footer form**: Newsletter signup integrated with MailChimp
+- **Both forms submit to**: `POST /api/waitlist` with MailChimp integration
+- **Features**: Client-side validation, honeypot protection, ARIA accessibility, loading states
+- **Analytics**: Optional dataLayer events for successful submissions
+
+### Form Security & UX
+- **Spam protection**: Hidden honeypot fields (`company` field)
+- **Rate limiting**: Inherited from existing `/api/waitlist` endpoint  
+- **Accessibility**: ARIA labels, live regions for status messages
+- **Responsive design**: Mobile-optimized with existing design tokens
+
 ## Changelog
+
+**2025-08-25** - **📋 Partners Page Simplification: Google Form Integration**
+  - **Feature flag system**: `PARTNERS_SIMPLIFIED` mode to streamline partner application process
+  - **Google Form embed**: Replaced custom partner form with responsive Google Form at `/partner#apply`
+  - **Simplified UX**: Hidden hero, why-partner, and how-it-works sections (reversible via feature flag)
+  - **Enhanced accessibility**: Proper iframe title, fallback link for form access issues
+  - **Design consistency**: Used existing brand tokens (sand/white) with mobile-optimized spacing
+  - **Deep linking**: Added `#apply` anchor for direct form navigation
+
+**2025-08-25** - **🎯 Prelaunch Mode: Email Collection Focus**
+  - **Feature flag system**: `PRELAUNCH` mode to hide/show sections reversibly
+  - **Email capture forms**: Mid-page banner and footer both integrated with MailChimp
+  - **Enhanced UX**: Client-side validation, honeypot protection, loading states
+  - **Accessibility**: ARIA live regions, proper labeling, keyboard navigation
+  - **Analytics ready**: Optional dataLayer integration for form submissions
+  - **Security**: Maintained existing rate limiting and form validation
 
 **2025-08-24** - **📁 Image Upload System: Secure File Management for Dealsmanager**
   - **Admin Image Upload**: Built-in file picker in dealsmanager with drag-and-drop support
@@ -207,6 +251,8 @@ data/
   - Comprehensive test coverage for slug generation and detail page rendering
 
 **2025-08-21** - Added deals management system with public/admin split. Public deals display at `/deals`, admin interface at `/dealsmanager`. JSON-based storage with full CRUD operations.
+
+**2025-08-24** - MailChimp integration restored. Form submissions to `/api/waitlist` and `/api/partner` now automatically add emails to MailChimp audience with appropriate tags ('waitlist' and 'partner').
 
 **2025-08-20** - Mailchimp integration removed. Form submissions to `/api/waitlist` and `/api/partner` now return success responses without external API calls.
 
