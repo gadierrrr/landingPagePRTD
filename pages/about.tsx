@@ -157,11 +157,10 @@ export default function About() {
       <Section>
         <div className="rounded-2xl bg-brand-blue p-8 text-center text-white sm:p-12">
           <Heading level={2} className="text-white">
-            Ready to Explore Like a Local?
+            Ready to Explore?
           </Heading>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            Stop planning like a tourist and start exploring like family. 
-            Check out our handpicked deals and discover your new favorite Puerto Rican experience.
+            Check out our handpicked deals and discover your new favorite experience.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link href="/deals">
