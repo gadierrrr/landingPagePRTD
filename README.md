@@ -75,6 +75,7 @@ NODE_ENV=production npm start
 - `PUT /api/deals` - Update existing deal by ID
 - `DELETE /api/deals` - Remove deal by ID
 - `POST /api/upload-image` - Image upload for dealsmanager (JPEG/PNG/WebP, 5MB max, same-origin only)
+- `GET /api/serve-upload/[...path]` - Secure file serving for uploaded images with proper headers and caching
 
 ### Deals Management System
 - **Storage**: JSON file at `data/deals.json` with atomic writes

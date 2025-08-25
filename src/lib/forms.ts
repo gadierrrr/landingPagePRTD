@@ -40,7 +40,9 @@ export const dealSchema = z.object({
   description: z.string().max(180, 'Description must be 180 characters or less'),
   amountLabel: z.string().min(1, 'Amount label is required').max(20, 'Amount label must be 20 characters or less'),
   location: z.string().min(1, 'Location is required').max(60, 'Location must be 60 characters or less'),
-  image: z.string().startsWith('/images/', 'Image must start with /images/'),
+  image: z.string().refine((val) => val.startsWith('/images/') || val.startsWith('/api/serve-upload/'), {
+    message: 'Image must start with /images/ or /api/serve-upload/'
+  }),
   category: z.enum(['restaurant', 'activity', 'hotel', 'tour'], {
     errorMap: () => ({ message: 'Category must be restaurant, activity, hotel, or tour' })
   }),
@@ -50,7 +52,9 @@ export const dealSchema = z.object({
   partner: z.string().max(80, 'Partner must be 80 characters or less').optional(),
   // New fields for detail pages
   externalUrl: z.string().url('External URL must be a valid URL').optional(),
-  gallery: z.array(z.string().startsWith('/images/', 'Gallery images must start with /images/')).optional(),
+  gallery: z.array(z.string().refine((val) => val.startsWith('/images/') || val.startsWith('/api/serve-upload/'), {
+    message: 'Gallery images must start with /images/ or /api/serve-upload/'
+  })).optional(),
   fullDescription: z.string().optional(),
   highlights: z.array(z.string()).optional(),
   terms: z.string().optional(),

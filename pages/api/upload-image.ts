@@ -126,8 +126,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Set proper file permissions (readable by web server)
     await fs.promises.chmod(finalPath, 0o644);
 
-    // Return public path
-    const publicPath = `/images/uploads/${year}/${month}/${safeFilename}`;
+    // Return path that uses our custom serve-upload endpoint
+    const publicPath = `/api/serve-upload/${year}/${month}/${safeFilename}`;
     
     res.status(200).json({ ok: true, path: publicPath });
   } catch (error) {

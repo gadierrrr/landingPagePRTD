@@ -107,7 +107,7 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
               {/* Deal Image */}
               <div className="relative">
                 <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-brand-sand">
-                  {deal.image.startsWith('/images/uploads/') ? (
+                  {deal.image.startsWith('/images/uploads/') || deal.image.startsWith('/api/serve-upload/') ? (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       src={deal.image}
