@@ -10,10 +10,7 @@ export const LandingHeader: React.FC = () => (
       </Link>
       <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
         <Link className="hover:text-brand-blue" href="/deals">Deals</Link>
-        <a className="hover:text-brand-blue" href="#how">How it works</a>
-        <a className="hover:text-brand-blue" href="#value">What we do</a>
-        <Link className="hover:text-brand-blue" href="/partner">Partners</Link>
-        <a className="hover:text-brand-blue" href="#faq">FAQ</a>
+        <Link className="hover:text-brand-blue" href="/partner">Submit a Deal</Link>
       </nav>
       <Link href="/deals" className="hover:bg-brand-red/90 rounded-full bg-brand-red px-4 py-2 font-bold text-white shadow">See Deals</Link>
     </div>

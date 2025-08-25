@@ -1,7 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
-export const Footer: React.FC = () => (
+export const Footer: React.FC = () => {
+  const [footerFormStatus, setFooterFormStatus] = useState<string>("");
+  const [footerFormLoading, setFooterFormLoading] = useState(false);
+
+  const handleFooterFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFooterFormLoading(true);
+    setFooterFormStatus("");
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const honeypot = formData.get("company") as string;
+
+    // Check honeypot
+    if (honeypot) {
+      setFooterFormLoading(false);
+      return;
+    }
+
+    // Client-side email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      setFooterFormStatus("Please enter a valid email address.");
+      setFooterFormLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        body: JSON.stringify({
+          fullName: "Subscriber",
+          email,
+          interest: "waitlist",
+          consent: true
+        })
+      });
+
+      if (response.ok) {
+        setFooterFormStatus("Thanks—check your inbox!");
+        (e.target as HTMLFormElement).reset();
+        // Analytics
+        if (typeof window !== "undefined" && (window as { dataLayer?: unknown[] }).dataLayer) {
+          ((window as unknown) as { dataLayer: unknown[] }).dataLayer.push({
+            event: "email_signup",
+            location: "footer"
+          });
+        }
+      } else {
+        setFooterFormStatus("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setFooterFormStatus("Network error. Please check your connection and try again.");
+    } finally {
+      setFooterFormLoading(false);
+    }
+  };
+
+  return (
   <footer className="border-brand-navy/10 border-t bg-white">
     <div className="mx-auto grid max-w-6xl items-start gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
       <div>
@@ -27,17 +89,45 @@ export const Footer: React.FC = () => (
       <div>
         <h4 className="text-lg font-black">STAY IN THE KNOW!</h4>
         <p className="text-brand-navy/70 text-sm">Subscribe to our newsletter.</p>
-        <form className="mt-3 flex gap-2">
-          <input type="email" placeholder="Email Address" className="flex-1 rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-blue" />
-          <button className="hover:bg-brand-blue/90 rounded-xl bg-brand-blue px-5 py-3 font-bold text-white shadow">Sign up</button>
+        <form className="mt-3" onSubmit={handleFooterFormSubmit}>
+          <div className="flex gap-2">
+            <input 
+              type="email" 
+              name="email"
+              placeholder="Email Address" 
+              required
+              disabled={footerFormLoading}
+              className="flex-1 rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+              aria-label="Email address"
+            />
+            <button 
+              type="submit"
+              disabled={footerFormLoading}
+              className="hover:bg-brand-blue/90 rounded-xl bg-brand-blue px-5 py-3 font-bold text-white shadow disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {footerFormLoading ? "..." : "Sign up"}
+            </button>
+          </div>
+          {/* Honeypot field */}
+          <input
+            type="text"
+            name="company"
+            style={{ display: 'none' }}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
+          {footerFormStatus && (
+            <div aria-live="polite" className="text-brand-navy/70 mt-2 text-sm">
+              {footerFormStatus}
+            </div>
+          )}
         </form>
       </div>
       <div className="text-brand-navy/80 text-sm">
         <ul className="space-y-2">
           <li><Link href="/deals" className="hover:text-brand-blue">Deals</Link></li>
-          <li><a href="#value" className="hover:text-brand-blue">What we do</a></li>
-          <li><Link href="/partner" className="hover:text-brand-blue">Become a partner</Link></li>
-          <li><a href="mailto:deals@puertoricotraveldeals.com" className="hover:text-brand-blue">Submit a Deal</a></li>
+          <li><Link href="/partner" className="hover:text-brand-blue">Submit a Deal</Link></li>
         </ul>
       </div>
     </div>
@@ -48,4 +138,5 @@ export const Footer: React.FC = () => (
       <p>© {new Date().getFullYear()} PRTD. All rights reserved. • <a href="mailto:legal@puertoricotraveldeals.com" className="hover:text-brand-blue">Privacy</a> • <a href="mailto:legal@puertoricotraveldeals.com" className="hover:text-brand-blue">Terms</a></p>
     </div>
   </footer>
-);
+  );
+};
