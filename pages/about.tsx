@@ -139,15 +139,10 @@ export default function About() {
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
             Check out our handpicked deals and discover your new favorite experience.
           </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-8 flex justify-center">
             <Link href="/deals">
-              <Button className="hover:bg-brand-red/90 bg-brand-red text-white">
+              <Button className="hover:bg-brand-red/90 bg-brand-red px-8 py-4 text-lg text-white">
                 Browse Current Deals
-              </Button>
-            </Link>
-            <Link href="/join">
-              <Button className="bg-white text-brand-blue hover:bg-white/90">
-                Join Our Community
               </Button>
             </Link>
           </div>
