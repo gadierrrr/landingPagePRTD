@@ -37,16 +37,7 @@ export default function About() {
             <Heading level={2}>Our Story</Heading>
             <div className="mt-6 space-y-4 text-lg">
               <p>
-                Picture this: You&rsquo;re planning a trip to Puerto Rico, scrolling through endless 
-                generic travel sites that all recommend the same crowded beaches and overpriced 
-                restaurants. Sound familiar?
-              </p>
-              <p className="font-semibold text-brand-navy">
-                We&rsquo;ve been there, and we knew there had to be a better way.
-              </p>
-              <p>
-                That&rsquo;s why we created Puerto Rico Travel Deals&mdash;not just another booking site, 
-                but your local friends sharing the authentic experiences that make our island special.
+                Our goal is simple: great value for travelers, real demand for local businesses. We only partner with spots we&rsquo;d send our own friends to&mdash;no spam, no filler. And while we use modern tools to make buying and redeeming effortless, we keep the human side front and center: honest details, quick help, and respect for the people who make Puerto Rico special.
               </p>
             </div>
           </div>
@@ -99,19 +90,7 @@ export default function About() {
         </div>
       </Section>
 
-      {/* Our Mission */}
-      <Section>
-        <div className="mx-auto max-w-3xl text-center">
-          <Heading level={2}>Our Mission</Heading>
-          <div className="mt-6 rounded-2xl bg-brand-red p-8 text-white">
-            <p className="text-xl leading-relaxed">
-              &ldquo;Our goal is simple: great value for travelers, real demand for local businesses. We only partner with spots we&rsquo;d send our own friends to&mdash;no spam, no filler. And while we use modern tools to make buying and redeeming effortless, we keep the human side front and center: honest details, quick help, and respect for the people who make Puerto Rico special.&rdquo;
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Fun Facts */}
+{/* Fun Facts */}
       <Section className="bg-brand-sand">
         <Heading level={2} className="text-center">
           Fun Facts About Us
