@@ -15,7 +15,7 @@ export default function About() {
       />
       
       {/* Hero Section */}
-      <Section className="bg-brand-blue text-white">
+      <Section tone="brand">
         <div className="text-center">
           <div className="mb-4 text-lg font-semibold text-brand-sand">
             PuertoRicoTravelDeals.com
