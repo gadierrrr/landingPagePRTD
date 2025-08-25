@@ -25,7 +25,12 @@ export function sanitizeFilename(filename: string): string {
   
   // Fallback to "img" if name becomes empty
   const finalName = safeName || 'img';
-  const finalExt = ext || '.jpg'; // Fallback extension
+  
+  // Normalize extensions - convert .jpeg to .jpg
+  let finalExt = ext || '.jpg';
+  if (finalExt === '.jpeg') {
+    finalExt = '.jpg';
+  }
   
   return finalName + finalExt;
 }

@@ -34,9 +34,16 @@ describe('Upload Image API Helpers', () => {
       expect(sanitizeFilename('@#$.png')).toBe('img.png');
     });
 
-    it('should preserve extensions', () => {
-      expect(sanitizeFilename('test.JPEG')).toBe('testJPEG.jpeg');
+    it('should normalize .jpeg to .jpg', () => {
+      expect(sanitizeFilename('test.jpeg')).toBe('test.jpg');
+      expect(sanitizeFilename('test.JPEG')).toBe('testJPEG.jpg');
+      expect(sanitizeFilename('park-royal-hotel.jpeg')).toBe('park-royal-hotel.jpg');
+    });
+
+    it('should preserve other extensions', () => {
+      expect(sanitizeFilename('test.png')).toBe('test.png');
       expect(sanitizeFilename('test.PNG')).toBe('testPNG.png');
+      expect(sanitizeFilename('test.webp')).toBe('test.webp');
     });
   });
 
