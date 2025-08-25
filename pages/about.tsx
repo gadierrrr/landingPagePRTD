@@ -105,9 +105,7 @@ export default function About() {
           <Heading level={2}>Our Mission</Heading>
           <div className="mt-6 rounded-2xl bg-brand-red p-8 text-white">
             <p className="text-xl leading-relaxed">
-              &ldquo;To help travelers discover the <strong>real Puerto Rico</strong>&mdash;where every meal 
-              tells a story, every adventure creates memories, and every dollar spent supports 
-              the communities that make our island extraordinary.&rdquo;
+              &ldquo;To help travelers discover the Puerto Rico and support the communities that make our island extraordinary.&rdquo;
             </p>
           </div>
         </div>
