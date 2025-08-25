@@ -36,7 +36,7 @@ export const LandingHero: React.FC = () => (
                   <img 
                     src={`/images/mock-deal-${i}.png`}
                     alt={`Puerto Rico travel deal ${i}`}
-                    className="size-full rounded-lg object-contain"
+                    className="size-full object-contain"
                   />
                 </div>
               ))}
