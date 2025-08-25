@@ -31,12 +31,12 @@ export const LandingHero: React.FC = () => (
           <div className="overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/20">
             <div className="grid grid-cols-2 gap-2 p-2">
               {[1,2,3,4].map(i => (
-                <div key={i} className="aspect-video overflow-hidden rounded-lg">
+                <div key={i} className="aspect-video overflow-hidden rounded-lg bg-white/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
                     src={`/images/mock-deal-${i}.png`}
                     alt={`Puerto Rico travel deal ${i}`}
-                    className="size-full object-cover"
+                    className="size-full object-contain"
                   />
                 </div>
               ))}
