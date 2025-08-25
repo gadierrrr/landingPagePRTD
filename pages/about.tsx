@@ -17,7 +17,7 @@ export default function About() {
       {/* Hero Section */}
       <Section className="bg-brand-blue text-white">
         <div className="text-center">
-          <div className="mb-4 text-lg font-semibold text-white/80">
+          <div className="mb-4 text-lg font-semibold text-brand-sand">
             PuertoRicoTravelDeals.com
           </div>
           <Heading level={1} className="text-white">
