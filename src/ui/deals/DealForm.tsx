@@ -27,7 +27,7 @@ export const DealForm: React.FC<DealFormProps> = ({ deal, onSubmit, onCancel }) 
     description: deal?.description || '',
     amountLabel: deal?.amountLabel || '',
     location: deal?.location || '',
-    image: deal?.image || '/images/',
+    image: deal?.image || '',
     category: deal?.category || 'restaurant' as const,
     expiry: deal?.expiry || '',
     partner: deal?.partner || '',

@@ -4,13 +4,13 @@
     "description": "ANY DAY OF THE WEEK from SEPTEMBER through NOVEMBER in a Studio Room with King Bed for 2 People; or $359 in a Fully Equipped VILLA for Up to 4 People.",
     "amountLabel": "50% OFF",
     "location": "Humacao",
-    "image": "/images/mock-deal-1.png",
+    "image": "/images/uploads/2025/08/park-royalclub-hotel-1756117020467.jpeg",
     "category": "hotel",
     "expiry": "2025-09-04T03:59:00.000Z",
     "partner": "Gustazos.com",
     "externalUrl": "https://www.gustazos.com/deals/Hotels_parkroyalclubcala72",
     "highlights": [
-      "Great Location.",
+      "Multiple package options available for deals.",
       "Driving distance to some of the best beaches in the east side of Puerto Rico."
     ],
     "price": 298,
@@ -18,11 +18,37 @@
     "currency": "USD",
     "id": "dea3761f-6ba1-4797-92bc-09163ec44ac9",
     "slug": "hotel-park-royal-club-cala",
-    "updatedAt": "2025-08-25T10:14:13.642Z",
+    "updatedAt": "2025-08-25T10:27:47.941Z",
     "gallery": [
       "/images/mock-deal-1.png"
     ],
     "fullDescription": "ANY DAY OF THE WEEK from SEPTEMBER through NOVEMBER in a Studio Room with King Bed for 2 People; or $359 in a Fully Equipped VILLA for Up to 4 People.",
+    "terms": ""
+  },
+  {
+    "title": "Skydive Puerto Rico",
+    "description": "$179 for a Parachute Jump for 1 Person; or $319 for Parachute Jump for 2 People; Both Options Include: 20% Discount from the Original Price for 1 Additional Person on the Same Day",
+    "amountLabel": "45 Off",
+    "location": "Arecibo",
+    "image": "/images/mock-deal-2.png",
+    "category": "activity",
+    "expiry": "2025-08-31T03:59:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Adventures_skydivepuertorico33",
+    "fullDescription": "Skydive PR wants you to see Puerto Rico from the best available viewpoint! Parachuting and taking in your island will be a Gustazo™!\n\n- The instructors have many years of experience, thousands of jumps, and are certified by the USPA (United States Parachute Association).\n- Services are available for people who want to jump only once and for people who want to make it their hobby. \n- The tandem jump is the fastest, safest, and most convenient way to experience skydiving. \n- About 1 minute into free fall, the instructor will open the parachute and you’ll glide with the parachute for approximately 7-10 minutes.\n- The instructor will take care of everything so you can enjoy the experience to the fullest.\n\nFor more information, visit: https://puertoricoskydive.com/",
+    "highlights": [
+      "You get to fly over Puerto Rico."
+    ],
+    "expiresAt": "2025-09-01T03:59:00.000Z",
+    "price": 179,
+    "originalPrice": 350,
+    "currency": "USD",
+    "id": "940197f4-d9e6-44c5-ac91-f41bf296d9f3",
+    "slug": "skydive-puerto-rico",
+    "updatedAt": "2025-08-25T10:31:21.564Z",
+    "gallery": [
+      "/images/mock-deal-2.png"
+    ],
     "terms": ""
   }
 ]
