@@ -107,13 +107,22 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
               {/* Deal Image */}
               <div className="relative">
                 <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-brand-sand">
-                  <Image
-                    src={deal.image}
-                    alt={deal.title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
+                  {deal.image.startsWith('/images/uploads/') ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={deal.image}
+                      alt={deal.title}
+                      className="size-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={deal.image}
+                      alt={deal.title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  )}
                 </div>
                 {expired && (
                   <div className="absolute right-4 top-4 rounded-full bg-red-500 px-3 py-1 text-sm font-bold text-white">

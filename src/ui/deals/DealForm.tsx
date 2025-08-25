@@ -264,13 +264,22 @@ export const DealForm: React.FC<DealFormProps> = ({ deal, onSubmit, onCancel }) 
               <div className="mt-3">
                 <p className="text-brand-navy/60 mb-2 text-xs">Preview:</p>
                 <div className="relative aspect-video w-32 overflow-hidden rounded-lg">
-                  <Image
-                    src={formData.image}
-                    alt="Deal image preview"
-                    fill
-                    className="object-cover"
-                    sizes="128px"
-                  />
+                  {formData.image.startsWith('/images/uploads/') ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={formData.image}
+                      alt="Deal image preview"
+                      className="size-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={formData.image}
+                      alt="Deal image preview"
+                      fill
+                      className="object-cover"
+                      sizes="128px"
+                    />
+                  )}
                 </div>
               </div>
             )}
