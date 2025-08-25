@@ -1,26 +1,28 @@
 [
   {
-    "title": "TRYP by Wyndham Isla Verde",
-    "description": "$215 for a 2-Day and 1-Night Stay on WEEKDAYS in AUGUST",
-    "amountLabel": "78% OFF",
-    "location": "Isla Verde",
-    "image": "/images/uploads/2025/08/tryp-deal-hotel-1756068997065.jpg",
+    "title": "Hotel Park Royal Club Cala ",
+    "description": "ANY DAY OF THE WEEK from SEPTEMBER through NOVEMBER in a Studio Room with King Bed for 2 People; or $359 in a Fully Equipped VILLA for Up to 4 People.",
+    "amountLabel": "50% OFF",
+    "location": "Humacao",
+    "image": "/images/mock-deal-1.png",
     "category": "hotel",
-    "expiry": "2025-08-27T03:59:00.000Z",
-    "partner": "Gustazos",
-    "externalUrl": "https://www.gustazos.com/deals/Hotels_tryp19",
-    "fullDescription": "$215 for a 2-Day and 1-Night Stay on WEEKDAYS in AUGUST for Up to 2 Adults and 2 Children in a Run of the House Room + 1 Daily Breakfast for 2 Adults at Emigrante GastroBar + Parking Special Rate for 1 Vehicle",
-    "highlights": [],
-    "terms": "See Gustazos.com for details.",
-    "expiresAt": "2025-08-28T03:59:00.000Z",
-    "price": 215,
-    "originalPrice": 958,
+    "expiry": "2025-09-04T03:59:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Hotels_parkroyalclubcala72",
+    "highlights": [
+      "Great Location.",
+      "Driving distance to some of the best beaches in the east side of Puerto Rico."
+    ],
+    "price": 298,
+    "originalPrice": 600,
     "currency": "USD",
-    "id": "486e6185-3d1d-411f-9449-2ecb7ab4f0d9",
-    "slug": "tryp-by-wyndham-isla-verde",
-    "updatedAt": "2025-08-24T20:56:45.863Z",
+    "id": "dea3761f-6ba1-4797-92bc-09163ec44ac9",
+    "slug": "hotel-park-royal-club-cala",
+    "updatedAt": "2025-08-25T10:14:13.642Z",
     "gallery": [
-      "/images/"
-    ]
+      "/images/mock-deal-1.png"
+    ],
+    "fullDescription": "ANY DAY OF THE WEEK from SEPTEMBER through NOVEMBER in a Studio Room with King Bed for 2 People; or $359 in a Fully Equipped VILLA for Up to 4 People.",
+    "terms": ""
   }
 ]
