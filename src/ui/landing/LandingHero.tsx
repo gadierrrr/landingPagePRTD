@@ -12,8 +12,19 @@ export const LandingHero: React.FC = () => (
             <h1 className="mt-2 text-4xl font-black leading-tight sm:text-5xl">Puerto Rico travel deals, updated daily.</h1>
             <p className="mt-3 text-lg text-white/90">Island‑wide discounts on hotels, dining, and experiences—curated by locals.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              {["Hotels","Food","Experiences","Flights"].map(x => (
-                <span key={x} className="inline-flex items-center rounded-full bg-white/15 px-4 py-2 ring-1 ring-white/30">{x}</span>
+              {[
+                { label: "Hotels", category: "hotel" },
+                { label: "Activities", category: "activity" },
+                { label: "Food", category: "restaurant" },
+                { label: "Tours", category: "tour" }
+              ].map(({ label, category }) => (
+                <Link 
+                  key={label} 
+                  href={`/deals?category=${category}`}
+                  className="inline-flex items-center rounded-full bg-white/15 px-4 py-2 ring-1 ring-white/30 transition-colors hover:bg-white/25 hover:ring-white/40"
+                >
+                  {label}
+                </Link>
               ))}
             </div>
             <div className="mt-6 flex flex-wrap gap-3">

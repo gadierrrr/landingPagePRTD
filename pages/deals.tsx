@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/router';
 import { SiteLayout } from '../src/ui/layout/SiteLayout';
 import { Section } from '../src/ui/Section';
 import { Heading } from '../src/ui/Heading';
@@ -12,6 +13,7 @@ type SortOption = 'newest' | 'ending-soon';
 const DEALS_CONTRAST = true;
 
 export default function Deals() {
+  const router = useRouter();
   const [deals, setDeals] = useState<Deal[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
@@ -21,6 +23,16 @@ export default function Deals() {
   useEffect(() => {
     fetchDeals();
   }, []);
+
+  // Handle URL parameters for category filtering
+  useEffect(() => {
+    if (router.isReady && router.query.category) {
+      const urlCategory = router.query.category as string;
+      if (['hotel', 'restaurant', 'activity', 'tour'].includes(urlCategory)) {
+        setSelectedCategory(urlCategory);
+      }
+    }
+  }, [router.isReady, router.query.category]);
 
   const fetchDeals = async () => {
     try {
