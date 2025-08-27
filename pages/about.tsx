@@ -34,7 +34,7 @@ export default function About() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <Heading level={2}>Our Story</Heading>
+            <Heading level={2}>Our Goal</Heading>
             <div className="mt-6 space-y-4 text-lg">
               <p>
                 Our goal is simple: great value for travelers, real demand for local businesses. We only partner with spots we&rsquo;d send our own friends to&mdash;no spam, no filler. And while we use modern tools to make buying and redeeming effortless, we keep the human side front and center: honest details, quick help, and respect for the people who make Puerto Rico special.
@@ -48,43 +48,32 @@ export default function About() {
                 100% Puerto Rican Owned
               </h3>
               <p className="text-brand-navy/80 mt-2">
-                We live here, we love here, and we know where the real magic happens.
+                Bringing you authentic experiences from the heart of the Caribbean.
               </p>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* What Makes Us Different */}
-      <Section className="bg-brand-sand">
-        <Heading level={2} className="text-center">
-          What Makes Us Different
-        </Heading>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-4 text-3xl">🏖️</div>
-            <h3 className="mb-3 text-lg font-bold text-brand-navy">Local Insider Knowledge</h3>
-            <p className="text-brand-navy/80">
-              We don&rsquo;t just Google &ldquo;best restaurants in San Juan&rdquo;&mdash;we know the owner&rsquo;s 
-              grandmother&rsquo;s secret mofongo recipe.
+      {/* Who runs PRTD */}
+      <Section className="bg-white">
+        <div className="mx-auto max-w-3xl text-center">
+          <Heading level={2}>Who runs PuertoRicoTravelDeals.com?</Heading>
+          <div className="mt-6 space-y-4 text-lg">
+            <p>
+              My name is Gadiel Rivera, founder of PRTD (Puerto Rico Travel Deals). I grew up in Puerto Rico, cooked in restaurants around San Juan, and ran my own kitchen in Ponce before moving into Customer Success and Sales.
             </p>
-          </div>
-          
-          <div className="rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-4 text-3xl">🤝</div>
-            <h3 className="mb-3 text-lg font-bold text-brand-navy">Real Relationships</h3>
-            <p className="text-brand-navy/80">
-              Every deal comes from authentic partnerships with local businesses we trust 
-              and visit ourselves.
-            </p>
-          </div>
-          
-          <div className="rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-4 text-3xl">💝</div>
-            <h3 className="mb-3 text-lg font-bold text-brand-navy">Genuine Value</h3>
-            <p className="text-brand-navy/80">
-              No inflated prices or fake discounts. Just honest deals on experiences 
-              worth your vacation time.
+            <p>
+              This project is my way of giving back to Puerto Rico - follow my journey on{' '}
+              <a 
+                href="https://www.instagram.com/gadielamilec/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-brand-blue/80 text-brand-blue underline"
+              >
+                Instagram
+              </a>
+              .
             </p>
           </div>
         </div>

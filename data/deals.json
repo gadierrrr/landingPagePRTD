@@ -182,5 +182,50 @@
     "gallery": [
       "/api/serve-upload/2025/08/galleryinn-osj-1756166538791.jpg"
     ]
+  },
+  {
+    "title": "Kayak Adventure and Caonillas River tour ",
+    "description": "This tour includes a hike around Caonilla Lake and River.",
+    "amountLabel": "50% OFF",
+    "location": "Utuado",
+    "image": "/api/serve-upload/2025/08/kayak-adventures-utuado-1756281636283.jpg",
+    "category": "activity",
+    "expiry": "2025-09-13T03:59:00.000Z",
+    "partner": "Gustazos.com",
+    "fullDescription": "This tour includes a hike around Caonilla Lake and River. Participants will discover a magic atmosphere surrounded by nature in Utuado. In addition, everyone will be able to fish. The Kayak Adventures PR’ staff may take photos during the trip, if you wish. ",
+    "highlights": [],
+    "terms": "You must call 72 hours in advance to reserve by calling (787) 454-3722 from Monday through Saturday from 8:00 a.m. to 5:00 p.m.\n\nRedemption schedule: Monday through Sunday from 9:00 a.m. to 3:00 p.m.",
+    "price": 39.99,
+    "originalPrice": 80,
+    "currency": "USD",
+    "id": "25198e85-a0ea-44e2-b166-83fb33fd2e1f",
+    "slug": "kayak-adventure-and-caonillas-river-tour",
+    "updatedAt": "2025-08-27T08:00:51.808Z",
+    "gallery": [
+      "/api/serve-upload/2025/08/kayak-adventures-utuado-1756281636283.jpg"
+    ]
+  },
+  {
+    "title": "Hotel Stay at 4.5-Star The Royal Sonesta San Juan Resort ",
+    "description": "The Royal Sonesta San Juan is a luxurious 4.5-star oceanfront resort in Puerto Rico with stunning views of Isla Verde beach.",
+    "amountLabel": "54% OFF",
+    "location": "Isla Verde",
+    "image": "/api/serve-upload/2025/08/Royal-Hotel-Isla-Verde-1756282880349.webp",
+    "category": "hotel",
+    "expiry": "",
+    "partner": "Groupon.com",
+    "externalUrl": "https://www.groupon.com/deals/ga-bk-royal-sonesta-san-juan-pr?redemptionLocationId=00016807-6050-b4f3-b550-017b7eb46624",
+    "fullDescription": "This deal includes:\n\n- Stay for two in a city-view deluxe king room, city-view deluxe double-queen room, ocean-view king room, or ocean-view two-double room\n- Daily breakfast buffet for two\n- Complimentary basic wireless internet\n- Complimentary coffee/tea service replenished daily\n- Use of 24-hour fitness center\n- Chaise and towel service at the pool and beach",
+    "highlights": [],
+    "price": 527,
+    "originalPrice": 240,
+    "currency": "USD",
+    "id": "ca541701-5f34-4b0d-9b1f-bab91aac82ff",
+    "slug": "hotel-stay-at-45-star-the-royal-sonesta-san-juan-resort",
+    "updatedAt": "2025-08-27T08:24:35.162Z",
+    "gallery": [
+      "/api/serve-upload/2025/08/Royal-Hotel-Isla-Verde-1756282880349.webp"
+    ],
+    "terms": ""
   }
 ]
