@@ -8,6 +8,7 @@ import { readDeals } from '../../src/lib/dealsStore';
 import { SiteLayout } from '../../src/ui/layout/SiteLayout';
 import { SEO } from '../../src/ui/SEO';
 import { isExpired, displaySourceName, appendUtm, formatEndDate, formatRelativeTime } from '../../src/lib/dealUtils';
+import { generateDealStructuredData, generateDealMeta } from '../../src/lib/seo';
 
 interface DealPageProps {
   deal: Deal;
@@ -21,6 +22,11 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
   const hasDiscount = deal.originalPrice && deal.price;
   const discountPercent = hasDiscount ? Math.round(((deal.originalPrice! - deal.price!) / deal.originalPrice!) * 100) : 0;
   const sourceName = displaySourceName(deal.externalUrl, deal.sourceName);
+  
+  // Generate structured data and meta
+  const dealUrl = typeof window !== 'undefined' ? window.location.href : `https://puertoricotraveldeals.com/deal/${deal.slug}`;
+  const structuredData = generateDealStructuredData(deal, dealUrl);
+  const dealMeta = generateDealMeta(deal);
 
   const handleExternalClick = () => {
     if (deal.externalUrl) {
@@ -75,10 +81,12 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
   return (
     <>
       <SEO 
-        title={`${deal.title} – Puerto Rico Travel Deals`}
-        description={deal.fullDescription?.substring(0, 160) || deal.description}
-        image={deal.image}
+        title={dealMeta.title}
+        description={dealMeta.description}
+        image={dealMeta.image}
         type="product"
+        canonical={dealMeta.canonical}
+        keywords={dealMeta.keywords}
       />
       {expired && (
         <Head>
@@ -365,32 +373,13 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
           </section>
         )}
 
-        {/* JSON-LD Structured Data - only when price info exists */}
-        {(deal.price || deal.originalPrice) && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Product",
-                name: deal.title,
-                description: deal.fullDescription || deal.description,
-                image: deal.image,
-                category: deal.category,
-                ...(deal.externalUrl && {
-                  offers: {
-                    "@type": "Offer",
-                    url: deal.externalUrl,
-                    ...(deal.price && { price: deal.price }),
-                    ...(deal.currency && { priceCurrency: deal.currency }),
-                    ...(deal.expiresAt && { priceValidUntil: deal.expiresAt }),
-                    availability: expired ? "https://schema.org/Discontinued" : "https://schema.org/InStock"
-                  }
-                })
-              })
-            }}
-          />
-        )}
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData)
+          }}
+        />
       </SiteLayout>
     </>
   );

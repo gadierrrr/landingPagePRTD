@@ -1,6 +1,7 @@
 import '../src/styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import Script from 'next/script';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -28,18 +29,21 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF509Z3W9G"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-EF509Z3W9G');
-            `,
-          }}
-        />
       </Head>
+      
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-EF509Z3W9G" strategy="afterInteractive" />
+      <Script
+        id="ga4"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EF509Z3W9G');
+          `,
+        }}
+      />
       
       <Component {...pageProps} />
     </>

@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Disallow admin pages
+Disallow: /dealsmanager
+
+# Disallow API endpoints from indexing
+Disallow: /api/
+
+# Allow main content and deal pages
+Allow: /deal/
+Allow: /deals
+Allow: /landing
+Allow: /join
+Allow: /partner
+Allow: /about
+
+# Allow category and location pages
+Allow: /puerto-rico-*-deals
+Allow: /locations/
+
+# Allow guide content
+Allow: /guides/
+
+# Sitemap location
+Sitemap: https://puertoricotraveldeals.com/sitemap.xml
+
+# Crawl delay for respectful crawling (500ms)
+Crawl-delay: 0.5

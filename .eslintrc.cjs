@@ -8,6 +8,7 @@ module.exports = {
       'error',
       { selector: "Literal[value=/^#[0-9a-fA-F]{3,8}$/]", message: 'Use a design token or Tailwind theme color instead of raw hex.' }
     ],
-    'tailwindcss/no-custom-classname': 'off'
+    'tailwindcss/no-custom-classname': 'off',
+    'react/no-unescaped-entities': ['error', { forbid: ['>', '}'] }]
   }
 };

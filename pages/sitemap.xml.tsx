@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next';
 import { readDeals } from '../src/lib/dealsStore';
+import { isExpired } from '../src/lib/dealUtils';
 
 export default function Sitemap() {
   // This component doesn't render anything - it's just for sitemap generation
@@ -11,25 +12,59 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const baseUrl = 'https://puertoricotraveldeals.com';
   
   const staticPages = [
-    '',
-    '/landing',
-    '/deals',
-    '/join',
-    '/partner',
-    '/styleguide'
+    { url: '', priority: '1.0', changefreq: 'daily' },
+    { url: '/landing', priority: '1.0', changefreq: 'daily' },
+    { url: '/deals', priority: '1.0', changefreq: 'hourly' },
+    { url: '/join', priority: '0.8', changefreq: 'monthly' },
+    { url: '/partner', priority: '0.8', changefreq: 'monthly' },
+    { url: '/about', priority: '0.6', changefreq: 'monthly' },
+    { url: '/styleguide', priority: '0.3', changefreq: 'yearly' }
   ];
+
+  // Category pages
+  const categories = ['hotel', 'restaurant', 'activity', 'tour'];
+  const categoryPages = categories.map(category => ({
+    url: `/puerto-rico-${category}-deals`,
+    priority: '0.9',
+    changefreq: 'daily'
+  }));
+
+  // Location pages  
+  const locations = [
+    'san-juan', 'culebra', 'old-san-juan', 'condado', 'isla-verde',
+    'ponce', 'rincon', 'fajardo', 'vieques', 'aguadilla'
+  ];
+  const locationPages = locations.map(location => ({
+    url: `/locations/${location}`,
+    priority: '0.8', 
+    changefreq: 'weekly'
+  }));
+
+  // Guide pages
+  const guidePages = [
+    { url: '/guides/best-time-visit-puerto-rico-deals', priority: '0.7', changefreq: 'monthly' },
+    { url: '/guides/puerto-rico-travel-deals-vs-booking-direct', priority: '0.7', changefreq: 'monthly' },
+    { url: '/guides/authentic-puerto-rico-experiences', priority: '0.7', changefreq: 'monthly' }
+  ];
+
+  const allStaticPages = [...staticPages, ...categoryPages, ...locationPages, ...guidePages];
+
+  // Filter active deals (non-expired) for sitemap
+  const activeDeals = deals.filter(deal => 
+    deal.slug && !isExpired(deal.expiresAt || deal.expiry)
+  );
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${staticPages.map(page => `
+  ${allStaticPages.map(page => `
     <url>
-      <loc>${baseUrl}${page}</loc>
+      <loc>${baseUrl}${page.url}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>${page === '' || page === '/deals' ? '1.0' : '0.8'}</priority>
+      <changefreq>${page.changefreq}</changefreq>
+      <priority>${page.priority}</priority>
     </url>
   `).join('')}
-  ${deals.filter(deal => deal.slug).map(deal => `
+  ${activeDeals.map(deal => `
     <url>
       <loc>${baseUrl}/deal/${deal.slug}</loc>
       <lastmod>${deal.updatedAt || new Date().toISOString()}</lastmod>

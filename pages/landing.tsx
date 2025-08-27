@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import { LandingHeader } from "@/ui/landing/LandingHeader";
 import { LandingHero } from "@/ui/landing/LandingHero";
 import { Footer } from "@/ui/Footer";
+import { generateOrganizationSchema } from "@/lib/seo";
 
 // Puerto Rico Flag palette - see src/styles/tokens.css for hex values
 // Whites and tints for contrast; large type + bold CTAs inspired by provided screenshots.
@@ -13,6 +15,9 @@ const PRELAUNCH = true;
 export default function PRTDPRFlagLanding() {
   const [midFormStatus, setMidFormStatus] = useState<string>("");
   const [midFormLoading, setMidFormLoading] = useState(false);
+  
+  // Generate organization structured data
+  const organizationSchema = generateOrganizationSchema();
 
   const handleMidFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,7 +78,18 @@ export default function PRTDPRFlagLanding() {
   };
 
   return (
-  <div className="min-h-screen w-full bg-brand-sand text-brand-navy">
+    <>
+      {/* Organization Structured Data */}
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema)
+          }}
+        />
+      </Head>
+      
+      <div className="min-h-screen w-full bg-brand-sand text-brand-navy">
       {/* Top Announcement Ribbon */}
   <div className="w-full bg-brand-red text-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 text-sm font-semibold tracking-wide sm:px-6">
@@ -239,6 +255,7 @@ export default function PRTDPRFlagLanding() {
 
       {/* Footer */}
       <Footer />
-    </div>
+      </div>
+    </>
   );
 }

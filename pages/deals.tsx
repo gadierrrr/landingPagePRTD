@@ -6,6 +6,7 @@ import { Heading } from '../src/ui/Heading';
 import { SEO } from '../src/ui/SEO';
 import { Deal } from '../src/lib/forms';
 import { PublicDealsGrid } from '../src/ui/deals/PublicDealsGrid';
+import { generateCategoryMeta } from '../src/lib/seo';
 
 type SortOption = 'newest' | 'ending-soon';
 
@@ -54,6 +55,18 @@ export default function Deals() {
     return Array.from(new Set(dealCategories));
   }, [deals]);
 
+  // Generate dynamic meta based on selected category
+  const currentMeta = useMemo(() => {
+    if (selectedCategory === 'all') {
+      return {
+        title: "Puerto Rico Travel Deals - Hotels, Dining & Activities",
+        description: "Discover the best travel deals in Puerto Rico. Island-wide discounts on hotels, dining, and experiences—curated by locals and updated daily.",
+        keywords: ["Puerto Rico deals", "travel deals", "hotels", "dining", "activities", "Caribbean vacation"]
+      };
+    }
+    return generateCategoryMeta(selectedCategory);
+  }, [selectedCategory]);
+
   // Filter and sort deals
   const filteredAndSortedDeals = useMemo(() => {
     let filtered = deals;
@@ -93,8 +106,10 @@ export default function Deals() {
     return (
       <SiteLayout>
         <SEO 
-          title="Puerto Rico Travel Deals - Hotels, Dining & Activities"
-          description="Discover the best travel deals in Puerto Rico. Island-wide discounts on hotels, dining, and experiences—curated by locals and updated daily."
+          title={currentMeta.title}
+          description={currentMeta.description}
+          keywords={currentMeta.keywords}
+          canonical="https://puertoricotraveldeals.com/deals"
         />
         <section className="bg-brand-navy text-white">
           <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -190,8 +205,10 @@ export default function Deals() {
   return (
     <SiteLayout>
       <SEO 
-        title="Puerto Rico Travel Deals - Hotels, Dining & Activities"
-        description="Discover the best travel deals in Puerto Rico. Island-wide discounts on hotels, dining, and experiences—curated by locals and updated daily."
+        title={currentMeta.title}
+        description={currentMeta.description}
+        keywords={currentMeta.keywords}
+        canonical="https://puertoricotraveldeals.com/deals"
       />
       <Section>
         <Heading level={1}>Deals</Heading>
