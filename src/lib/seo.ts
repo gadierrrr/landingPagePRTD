@@ -1,4 +1,4 @@
-import { Deal } from './forms';
+import { Deal, Event } from './forms';
 
 // Structured Data Schemas
 
@@ -179,7 +179,131 @@ export function generateCategoryMeta(category: string, location?: string): Categ
   return baseMeta;
 }
 
+// Event Structured Data Schemas
+export interface EventSchema {
+  "@context": "https://schema.org";
+  "@type": "Event";
+  name: string;
+  startDate: string;
+  endDate?: string;
+  eventStatus: string;
+  location: {
+    "@type": "Place";
+    name: string;
+    address?: string;
+  };
+  organizer?: {
+    "@type": "Organization";
+    name: string;
+  };
+  image?: string;
+  url?: string;
+  offers?: {
+    "@type": "Offer";
+    price?: number;
+    priceCurrency?: string;
+    availability: string;
+  };
+}
+
+export interface EventSeriesSchema {
+  "@context": "https://schema.org";
+  "@type": "EventSeries";
+  name: string;
+  startDate: string;
+  endDate: string;
+  location: {
+    "@type": "Place";
+    name: string;
+  };
+  organizer: {
+    "@type": "Organization";
+    name: string;
+  };
+  subEvent: EventSchema[];
+}
+
+export function generateEventStructuredData(event: Event, eventUrl?: string): EventSchema {
+  const schema: EventSchema = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.title,
+    startDate: event.startDateTime,
+    eventStatus: event.status === 'canceled' ? 'https://schema.org/EventCancelled' :
+                event.status === 'postponed' ? 'https://schema.org/EventPostponed' :
+                event.status === 'sold_out' ? 'https://schema.org/EventMovedOnline' :
+                'https://schema.org/EventScheduled',
+    location: {
+      "@type": "Place",
+      name: event.venueName || event.city,
+      address: event.address
+    }
+  };
+
+  if (event.endDateTime) {
+    schema.endDate = event.endDateTime;
+  }
+
+  if (event.source) {
+    schema.organizer = {
+      "@type": "Organization",
+      name: event.source
+    };
+  }
+
+  if (event.heroImage?.url) {
+    schema.image = event.heroImage.url.startsWith('/') ? 
+      `https://puertoricotraveldeals.com${event.heroImage.url}` : 
+      event.heroImage.url;
+  }
+
+  if (eventUrl) {
+    schema.url = eventUrl;
+  }
+
+  // Prefer canonical URL if available
+  if (event.canonicalUrl) {
+    schema.url = event.canonicalUrl;
+  }
+
+  // Add offers if pricing is available
+  if (event.priceFrom && !event.free) {
+    schema.offers = {
+      "@type": "Offer",
+      price: event.priceFrom,
+      priceCurrency: "USD",
+      availability: event.status === 'sold_out' ? 
+        "https://schema.org/SoldOut" : 
+        "https://schema.org/InStock"
+    };
+  }
+
+  return schema;
+}
+
+export function generateEventSeriesStructuredData(events: Event[], weekStart: string): EventSeriesSchema {
+  const weekEnd = new Date(weekStart);
+  weekEnd.setDate(weekEnd.getDate() + 6); // Sunday of the same week
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "EventSeries",
+    name: `Puerto Rico Weekly Events - Week of ${new Date(weekStart).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`,
+    startDate: weekStart,
+    endDate: weekEnd.toISOString().split('T')[0],
+    location: {
+      "@type": "Place",
+      name: "Puerto Rico"
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "Puerto Rico Travel Deals"
+    },
+    subEvent: events.map(event => generateEventStructuredData(event))
+  };
+}
+
 // Utility function to generate JSON-LD script tag
-export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema): string {
+export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema | EventSchema | EventSeriesSchema): string {
   return `<script type="application/ld+json">${JSON.stringify(data, null, 2)}</script>`;
 }

@@ -1,6 +1,7 @@
 /**
  * Slug generation utility with collision handling
  */
+import crypto from 'crypto';
 
 export function generateSlug(title: string, existingSlugs: string[] = []): string {
   // Convert title to URL-safe slug
@@ -52,4 +53,40 @@ export function sanitizeSlug(input: string): string {
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
     .substring(0, 100); // Limit length
+}
+
+export function generateEventSlug(
+  title: string, 
+  venueName: string | undefined, 
+  startDateTime: string, 
+  existingSlugs: string[] = []
+): string {
+  // Create deterministic base from title + venue + date
+  const dateStr = new Date(startDateTime).toISOString().split('T')[0]; // YYYY-MM-DD
+  const venue = venueName ? `-${venueName}` : '';
+  const baseText = `${title}${venue}-${dateStr}`;
+  
+  let baseSlug = baseText
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '') // Remove special chars except spaces and hyphens
+    .replace(/[\s_]+/g, '-') // Replace spaces and underscores with hyphens
+    .replace(/-+/g, '-') // Collapse multiple hyphens
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  
+  // Ensure slug is not empty
+  if (!baseSlug) {
+    baseSlug = `event-${dateStr}`;
+  }
+  
+  // Check for collisions and add short hash if needed
+  let slug = baseSlug;
+  
+  if (existingSlugs.includes(slug)) {
+    // Generate short hash from the full content for deterministic collision resolution
+    const hash = crypto.createHash('md5').update(baseText).digest('hex').substring(0, 6);
+    slug = `${baseSlug}-${hash}`;
+  }
+  
+  return slug;
 }

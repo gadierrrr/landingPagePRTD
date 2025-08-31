@@ -9,7 +9,7 @@ html { font-family: var(--font-sans); }
 /* Blog Post Typography */
 .prose-post {
   max-width: none;
-  color: rgb(11 43 84 / 0.9); /* brand-navy/90 */
+  color: rgb(11 43 84 / 90%); /* brand-navy/90 */
 }
 
 .prose-post h2 {
@@ -89,5 +89,5 @@ html { font-family: var(--font-sans); }
   padding-left: 1rem;
   margin: 1.5rem 0;
   font-style: italic;
-  color: rgb(11 43 84 / 0.8);
+  color: rgb(11 43 84 / 80%);
 }
