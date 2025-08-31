@@ -69,7 +69,8 @@ export const dealSchema = z.object({
   updatedAt: z.string().optional().refine((val) => !val || !isNaN(Date.parse(val)), {
     message: 'Updated at must be a valid ISO date string'
   }),
-  howTo: z.array(z.string()).optional()
+  howTo: z.array(z.string()).optional(),
+  objectPosition: z.string().optional()
 });
 
 // Events schemas

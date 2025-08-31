@@ -24,12 +24,13 @@ export const PublicDealCard: React.FC<PublicDealCardProps> = ({ deal }) => {
     <Link href={`/deal/${deal.slug}`} className="group block">
       <div className="ring-brand-navy/10 hover:ring-brand-blue/20 relative cursor-pointer overflow-hidden rounded-xl bg-white ring-1 transition-all duration-200 hover:shadow-md" aria-label={`View details for ${deal.title}`}>
         {/* 16:9 Aspect Ratio Image */}
-        <div className="relative aspect-[16/9] overflow-hidden bg-brand-sand">
+        <div className="to-brand-navy/20 relative aspect-[16/9] overflow-hidden bg-[#0A2A29] bg-gradient-to-br from-[#0A2A29]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
             src={deal.image} 
             alt={deal.title}
-            className="size-full object-cover"
+            className="size-full object-contain"
+            style={deal.objectPosition ? { objectPosition: deal.objectPosition } : { objectPosition: '50% 40%' }}
           />
           
           {/* Expired Badge */}
