@@ -37,7 +37,7 @@ export default function About() {
             <Heading level={2}>Our Goal</Heading>
             <div className="mt-6 space-y-4 text-lg">
               <p>
-                Our goal is simple: great value for travelers, real demand for local businesses. We only partner with spots we&rsquo;d send our own friends to&mdash;no spam, no filler. And while we use modern tools to make buying and redeeming effortless, we keep the human side front and center: honest details, quick help, and respect for the people who make Puerto Rico special.
+                Our goal is simple: great value for travelers, more demand for local businesses — no spam, no filler.
               </p>
             </div>
           </div>
