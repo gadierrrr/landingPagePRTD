@@ -75,6 +75,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const filename = await writePostFile(postData);
         clearBlogCache();
         
+        // Trigger ISR revalidation for blog index and detail page
+        try {
+          await res.revalidate('/blog');
+          const postSlug = postData.slug || filename.replace('.md', '').split('-').slice(3).join('-');
+          await res.revalidate(`/blog/${postSlug}`);
+          console.log(`Revalidated /blog and /blog/${postSlug}`);
+        } catch (err) {
+          console.warn('Revalidation failed:', err instanceof Error ? err.message : 'Unknown error');
+        }
+        
         return res.status(201).json({ filename, success: true });
 
       case 'PUT':
@@ -99,6 +109,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const existingFilename = existingPost.meta.filePath.split('/').pop();
         const updatedFilename = await writePostFile(updateData, existingFilename);
         clearBlogCache();
+        
+        // Trigger ISR revalidation for blog index and detail page
+        try {
+          await res.revalidate('/blog');
+          const postSlug = updateData.slug || updatedFilename.replace('.md', '').split('-').slice(3).join('-');
+          await res.revalidate(`/blog/${postSlug}`);
+          console.log(`Revalidated /blog and /blog/${postSlug}`);
+        } catch (err) {
+          console.warn('Revalidation failed:', err instanceof Error ? err.message : 'Unknown error');
+        }
         
         return res.status(200).json({ filename: updatedFilename, success: true });
 
