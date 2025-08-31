@@ -2,10 +2,8 @@ import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { SiteLayout } from '../../src/ui/layout/SiteLayout';
-import { Section } from '../../src/ui/Section';
+import { BlogPostLayout } from '../../src/ui/blog/BlogPostLayout';
 import { Heading } from '../../src/ui/Heading';
-import { SEO } from '../../src/ui/SEO';
 import { PostMeta, BlogPost, getAllPostsMeta, getPostBySlug } from '../../src/lib/blog';
 
 interface BlogPostPageProps {
@@ -54,15 +52,7 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
   };
 
   return (
-    <SiteLayout>
-      <SEO 
-        title={`${meta.title} — PRTD Blog`}
-        description={meta.excerpt}
-        keywords={meta.tags || []}
-        canonical={`https://puertoricotraveldeals.com/blog/${meta.slug}`}
-        type="website"
-      />
-      
+    <>
       <Head>
         <script 
           type="application/ld+json"
@@ -70,53 +60,9 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
         />
       </Head>
 
-      <Section>
-        {/* Breadcrumb Navigation */}
-        <nav className="text-brand-navy/70 mb-8 text-sm">
-          <Link href="/blog" className="transition-colors hover:text-brand-blue">
-            ← Back to Blog
-          </Link>
-        </nav>
-
-        {/* Article Header */}
-        <header className="mb-8">
-          <div className="text-brand-navy/70 mb-4 flex items-center gap-4 text-sm">
-            <time dateTime={meta.publishDate}>
-              {formatDate(meta.publishDate)}
-            </time>
-            <span>•</span>
-            <span>By {meta.author}</span>
-          </div>
-          
-          <Heading level={1} className="mb-6">
-            {meta.title}
-          </Heading>
-          
-          <p className="text-brand-navy/80 mb-6 text-lg leading-relaxed">
-            {meta.excerpt}
-          </p>
-          
-          {meta.tags && meta.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {meta.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-brand-sand px-3 py-1 text-sm font-medium text-brand-navy"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </header>
-
+      <BlogPostLayout meta={meta} structuredData={articleStructuredData}>
         {/* Article Content */}
-        <article className="prose prose-lg max-w-none">
-          <div 
-            className="prose-headings:text-brand-navy prose-p:text-brand-navy/90 prose-strong:text-brand-navy prose-a:text-brand-blue hover:prose-a:text-brand-navy prose-li:text-brand-navy/90"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        </article>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
@@ -164,8 +110,8 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
             </div>
           </div>
         )}
-      </Section>
-    </SiteLayout>
+      </BlogPostLayout>
+    </>
   );
 }
 

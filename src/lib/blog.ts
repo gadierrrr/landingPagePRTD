@@ -14,6 +14,8 @@ export interface PostMeta {
   author: string;
   excerpt: string;
   tags?: string[];
+  heroImageUrl?: string;
+  imageUrls?: string[];
   filePath: string; // internal use
 }
 
@@ -87,6 +89,8 @@ export async function getAllPostsMeta(): Promise<PostMeta[]> {
         author: frontmatter.author,
         excerpt: frontmatter.excerpt,
         tags: frontmatter.tags || [],
+        heroImageUrl: frontmatter.heroImageUrl || null,
+        imageUrls: frontmatter.imageUrls || null,
         filePath
       };
 
@@ -140,6 +144,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
         author: frontmatter.author,
         excerpt: frontmatter.excerpt,
         tags: frontmatter.tags || [],
+        heroImageUrl: frontmatter.heroImageUrl || null,
+        imageUrls: frontmatter.imageUrls || null,
         filePath: post.filePath
       },
       html

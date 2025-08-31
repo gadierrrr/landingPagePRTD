@@ -14,6 +14,7 @@ Full-featured travel deals platform with Groupon-style detail pages, built with 
 - **Admin Interface**: https://puertoricotraveldeals.com/dealsmanager
 - **Style Guide**: https://puertoricotraveldeals.com/styleguide
 - **Health Check**: https://puertoricotraveldeals.com/healthz
+- **Blog**: https://puertoricotraveldeals.com/blog
 
 ## Quick Start
 
@@ -63,6 +64,8 @@ NODE_ENV=production npm start
 - `/deals` - **Public deals grid** (clickable cards linking to detail pages)
 - `/deal/[slug]` - **Individual deal detail pages** (Groupon-style with hero images, highlights, external CTAs)
 - `/deal/id/[id]` - **Legacy ID redirects** (301 redirects to slug-based URLs)
+- `/blog` - **Blog listing page** (travel tips and insights with SSG)
+- `/blog/[slug]` - **Individual blog posts** (markdown-based content with Article schema)
 - `/dealsmanager` - **Admin interface** for managing deals (full CRUD with extended fields)
 - `/styleguide` - Design system reference
 
@@ -74,6 +77,7 @@ NODE_ENV=production npm start
 - `POST /api/deals` - Create new deal (with validation)
 - `PUT /api/deals` - Update existing deal by ID
 - `DELETE /api/deals` - Remove deal by ID
+- `GET /api/blog` - Retrieve all blog posts metadata as JSON array (with caching headers)
 - `POST /api/upload-image` - Image upload for dealsmanager (JPEG/PNG/WebP, 5MB max, same-origin only)
 - `GET /api/serve-upload/[...path]` - Secure file serving for uploaded images with proper headers and caching
 
@@ -95,6 +99,21 @@ NODE_ENV=production npm start
 
 **Automatic Features**: Slug generation with collision handling, expired deal detection, discount percentage calculation, UTM parameter injection
 
+### Blog Management System
+- **Storage**: Markdown files in `content/blog/` directory with frontmatter
+- **Static Generation**: SSG (Static Site Generation) with ISR for optimal performance
+- **Content Format**: Markdown with YAML frontmatter containing metadata
+- **Processing**: gray-matter for frontmatter parsing, remark for Markdown-to-HTML conversion
+- **SEO Optimized**: Individual meta tags, Article structured data, canonical URLs
+- **Security**: HTML sanitization disabled (Markdown-only, no dangerous HTML allowed)
+- **Caching**: In-memory memoization for performance, cache clearing in development
+
+### Blog Post Structure
+**Required Frontmatter**: `title`, `slug`, `publishDate` (ISO date), `author`, `excerpt`
+**Optional Frontmatter**: `tags` (array of strings)
+**Content**: Standard Markdown with automatic HTML conversion (no raw HTML allowed)
+**Automatic Features**: Slug derivation from frontmatter or filename, date-based sorting, tag display
+
 ## Environment Variables
 
 Copy `.env.example` to `.env.local` and configure:
@@ -110,6 +129,50 @@ Copy `.env.example` to `.env.local` and configure:
 Use the scaffolding system to maintain consistency:
 ```bash
 npm run scaffold:page -- --name "PageName" --route "/route" --title "Page Title"
+```
+
+### Managing Blog Content
+
+#### Creating Blog Posts
+Create new markdown files in `content/blog/` with required frontmatter:
+```markdown
+---
+title: "Your Post Title"
+slug: "your-post-slug" 
+publishDate: "2025-08-29T12:00:00Z"
+author: "Author Name"
+excerpt: "Brief description for listing page and SEO"
+tags: ["travel-tips", "puerto-rico"]
+---
+
+Your markdown content here...
+
+## Headings work
+- Lists work
+- **Bold text** works
+- Links work: [example](https://example.com)
+
+No raw HTML is allowed for security.
+```
+
+#### Blog Features
+- **Auto-routing**: Files automatically become pages at `/blog/slug`
+- **SSG Performance**: Static generation with ISR (3600s revalidation)
+- **SEO Optimized**: Article structured data, meta tags, canonical URLs
+- **Date Formatting**: Automatic date formatting (e.g., "Aug 29, 2025")
+- **Tag Display**: Visual tag chips on listing and detail pages
+- **Related Posts**: Automatic related posts section on detail pages
+- **Responsive**: Mobile-optimized design matching site design system
+
+#### Development Workflow
+```bash
+# Add new blog post
+touch content/blog/2025-08-29-post-title.md
+# Edit with frontmatter + content
+# Build to generate static pages
+npm run build
+# Restart production service
+sudo systemctl restart prtd
 ```
 
 ### Managing Deals
@@ -148,9 +211,13 @@ npm test                # Unit tests
 ```
 pages/                    # Next.js pages (routing)
 ├── api/                 # API endpoints (/api/*)
+│   └── blog.ts         # Blog posts API endpoint
+├── blog/               # Blog routes
+│   └── [slug].tsx      # Individual blog post pages (SSG enabled)
 ├── deal/
 │   ├── [slug].tsx      # Individual deal detail pages (ISR enabled)
 │   └── id/[id].tsx     # Legacy ID-to-slug redirects
+├── blog.tsx            # Blog listing page (SSG enabled)
 ├── landing.tsx          # Main marketing page
 ├── deals.tsx            # Public deals grid (clickable cards)
 ├── dealsmanager.tsx     # Admin deals management
@@ -159,6 +226,7 @@ pages/                    # Next.js pages (routing)
 
 src/
 ├── lib/                # Utilities & schemas
+│   ├── blog.ts        # Blog post utilities (getAllPostsMeta, getPostBySlug)
 │   ├── forms.ts       # Extended Zod validation schemas
 │   ├── dealsStore.ts  # JSON operations with slug utilities
 │   └── slugGenerator.ts # Slug creation with collision handling
@@ -171,6 +239,10 @@ src/
     │   └── DealsGrid.tsx     # Responsive grid layouts
     ├── layout/        # Layout components
     └── SEO.tsx        # SEO meta tags component
+
+content/
+└── blog/              # Blog posts (Markdown files with frontmatter)
+    └── *.md           # Individual blog post files
 
 data/
 └── deals.json         # Extended deal storage (JSON)
@@ -200,6 +272,18 @@ data/
 - **Responsive design**: Mobile-optimized with existing design tokens
 
 ## Changelog
+
+**2025-08-29** - **📝 File-Based Markdown Blog System: Content Management & SEO**
+  - **Blog Infrastructure**: Complete SSG-powered blog at `/blog` with individual post pages at `/blog/[slug]`
+  - **Markdown Processing**: gray-matter for frontmatter parsing, remark for secure Markdown-to-HTML conversion
+  - **Content Structure**: Frontmatter-based metadata (title, slug, publishDate, author, excerpt, tags) with automatic slug derivation
+  - **Performance Optimized**: SSG with ISR (3600s revalidation), in-memory caching with development cache clearing
+  - **SEO Excellence**: Article structured data, canonical URLs, meta tags, social sharing optimization
+  - **Security First**: HTML sanitization disabled (Markdown-only), no dangerous HTML allowed for XSS protection  
+  - **API Endpoint**: `/api/blog` provides JSON metadata with rate limiting and caching headers
+  - **Design Integration**: Matches existing design system with responsive layouts and brand tokens
+  - **Content Directory**: `content/blog/*.md` structure for easy content management and version control
+  - **Production Ready**: Automatic route generation, systemd service restart workflow, zero-downtime deployments
 
 **2025-08-25** - **📋 Partners Page Simplification: Google Form Integration**
   - **Feature flag system**: `PARTNERS_SIMPLIFIED` mode to streamline partner application process
@@ -264,10 +348,11 @@ data/
 - **Validation**: Zod schemas for form and API validation
 - **Testing**: Jest + React Testing Library (unit), Playwright (visual/e2e)
 - **Storage**: JSON file-based persistence with atomic writes (no external database)
+- **Content Management**: Markdown files with frontmatter (gray-matter + remark processing)
 - **File Upload**: Formidable for multipart form handling with security validation
-- **Static Generation**: ISR (Incremental Static Regeneration) for deal detail pages
-- **SEO**: Meta tags, Open Graph, Twitter Cards, JSON-LD structured data
-- **Performance**: Image optimization, static generation, efficient routing
+- **Static Generation**: ISR for deals, SSG for blog posts (3600s revalidation)
+- **SEO**: Meta tags, Open Graph, Twitter Cards, JSON-LD structured data (deals + articles)
+- **Performance**: Image optimization, static generation, efficient routing, in-memory caching
 - **Deployment**: Systemd service + Nginx reverse proxy with HTTPS
 
 ## Design System
@@ -323,6 +408,13 @@ curl http://localhost:4000/deal/beach-resort-weekend
 
 # Test legacy ID redirect
 curl -I http://localhost:4000/deal/id/550e8400-e29b-41d4-a716-446655440001
+
+# Test blog routes
+curl http://localhost:4000/blog
+curl http://localhost:4000/blog/welcome-to-prtd-blog
+
+# Check blog API
+curl http://localhost:4000/api/blog
 ```
 
 ## Key Features

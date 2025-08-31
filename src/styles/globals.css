@@ -5,3 +5,89 @@
 @tailwind utilities;
 
 html { font-family: var(--font-sans); }
+
+/* Blog Post Typography */
+.prose-post {
+  max-width: none;
+  color: rgb(11 43 84 / 0.9); /* brand-navy/90 */
+}
+
+.prose-post h2 {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 800; /* font-black */
+  color: rgb(11 43 84); /* brand-navy */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.prose-post h3 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  color: rgb(11 43 84); /* brand-navy */
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-post p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.prose-post ul, .prose-post ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose-post li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.prose-post strong {
+  color: rgb(11 43 84); /* brand-navy */
+  font-weight: 700;
+}
+
+.prose-post a {
+  color: rgb(0 80 164); /* brand-blue */
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.prose-post a:hover {
+  color: rgb(11 43 84); /* brand-navy */
+}
+
+/* Event block styling for weekly guides */
+.prose-post a[href*="ticket"], 
+.prose-post a[href*="details"],
+.prose-post a[href*="register"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: rgb(0 80 164); /* brand-blue */
+  color: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.prose-post a[href*="ticket"]:hover, 
+.prose-post a[href*="details"]:hover,
+.prose-post a[href*="register"]:hover {
+  background-color: rgb(11 43 84); /* brand-navy */
+}
+
+.prose-post blockquote {
+  border-left: 4px solid rgb(0 80 164); /* brand-blue */
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: rgb(11 43 84 / 0.8);
+}
