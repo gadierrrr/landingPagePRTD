@@ -253,7 +253,7 @@ export function generateEventStructuredData(event: Event, eventUrl?: string): Ev
 
   if (event.heroImage?.url) {
     schema.image = event.heroImage.url.startsWith('/') ? 
-      `https://puertoricotraveldeals.com${event.heroImage.url}` : 
+      `${process.env.NODE_ENV === 'production' ? 'https://puertoricotraveldeals.com' : ''}${event.heroImage.url}` : 
       event.heroImage.url;
   }
 

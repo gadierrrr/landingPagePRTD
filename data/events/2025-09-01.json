@@ -28,7 +28,7 @@
       "lastVerifiedAt": "2025-08-31T12:00:00Z"
     },
     {
-      "id": "sample-food-event-001", 
+      "id": "sample-food-event-001",
       "slug": "food-truck-festival-bayamon-2025-09-03",
       "title": "Food Truck Festival",
       "descriptionShort": "Over 20 local food trucks featuring Puerto Rican specialties, fusion cuisine, and international flavors. Family-friendly event.",
@@ -44,7 +44,7 @@
         "details": "https://example.com/food-festival"
       },
       "heroImage": {
-        "url": "/images/mock-deal-2.png", 
+        "url": "/images/mock-deal-2.png",
         "alt": "Colorful food trucks lined up at festival with families enjoying meals"
       },
       "status": "scheduled",
@@ -55,13 +55,13 @@
     {
       "title": "Ganaderas de Hatillo vs. Criollas de Caguas (BSNF)",
       "descriptionShort": "Women's pro basketball returns to Caguas—home opener at 'La Roger'.",
-      "startDateTime": "2025-09-02T03:00:00.000Z",
+      "startDateTime": "2025-09-03T00:00:00.000Z",
       "timezone": "America/Puerto_Rico",
       "city": "Caguas",
       "venueName": "Coliseo Roger Mendoza",
       "genre": "sports",
       "free": false,
-      "priceFrom": 25,
+      "priceFrom": 3,
       "links": {
         "details": "https://www.ticketera.com/events/detail/criollas-de-caguas-temporada-2025",
         "tickets": "https://www.ticketera.com/events/detail/criollas-de-caguas-temporada-2025"
@@ -70,7 +70,12 @@
       "source": "Ticketera (event page)",
       "id": "1bcba74f-32ed-4919-abbe-2dc7c871bf93",
       "slug": "ganaderas-de-hatillo-vs-criollas-de-caguas-bsnf-coliseo-roger-mendoza-2025-09-02",
-      "lastVerifiedAt": "2025-09-01T00:07:01.439Z"
+      "lastVerifiedAt": "2025-09-01T15:33:15.967Z",
+      "address": "Coliseo Roger Mendoza, Avenida 00727 Caguas",
+      "heroImage": {
+        "url": "/images/uploads/events/2025/09/de75f002695f.jpg",
+        "alt": "Criollas VS Ganaderas"
+      }
     },
     {
       "title": "Monarcas de Juana Díaz vs. Criollas de Caguas (BSNF)",

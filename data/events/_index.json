@@ -14,18 +14,18 @@
       "cities": [
         "San Juan",
         "Bayamón",
+        "Caguas",
         "Ponce",
-        "Mayagüez",
-        "Caguas"
+        "Mayagüez"
       ],
       "genres": [
         "music",
         "food",
+        "sports",
         "culture",
-        "art",
-        "sports"
+        "art"
       ],
-      "lastUpdated": "2025-09-01T11:16:30.000Z",
+      "lastUpdated": "2025-09-01T15:33:15.968Z",
       "prev": "2025-08-25",
       "next": "2025-09-08"
     },
