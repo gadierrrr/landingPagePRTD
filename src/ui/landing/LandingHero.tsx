@@ -42,7 +42,7 @@ export const LandingHero: React.FC = () => (
           <div className="overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/20">
             <div className="grid grid-cols-2 gap-2 p-2">
               {[1,2,3,4].map(i => (
-                <div key={i} className="aspect-video overflow-hidden rounded-lg bg-[#0A2A29] bg-gradient-to-br from-[#0A2A29] to-brand-navy/20">
+                <div key={i} className="to-brand-navy/20 aspect-video overflow-hidden rounded-lg bg-[#0A2A29] bg-gradient-to-br from-[#0A2A29]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
                     src={`/images/mock-deal-${i}.png`}

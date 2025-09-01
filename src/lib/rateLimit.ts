@@ -4,7 +4,7 @@ interface RateLimit {
 }
 
 const rateLimits = new Map<string, RateLimit>();
-const RATE_LIMIT_REQUESTS = 10;
+const RATE_LIMIT_REQUESTS = 50; // Increased for admin operations
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
 
 export function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {

@@ -1,3 +1,22 @@
 {
-  "weeks": []
+  "weeks": [
+    {
+      "startDate": "2025-08-25",
+      "eventCount": 14,
+      "cities": [
+        "San Juan",
+        "Bayamón",
+        "Ponce",
+        "Mayagüez",
+        "Caguas"
+      ],
+      "genres": [
+        "music",
+        "culture",
+        "art",
+        "sports"
+      ],
+      "lastUpdated": "2025-09-01T00:14:09.078Z"
+    }
+  ]
 }
