@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "stylelint": "stylelint \"**/*.{css,scss}\"",
     "test:ui": "playwright test",
-    "scaffold:page": "npx ts-node scripts/scaffold-page.ts"
+    "scaffold:page": "npx ts-node scripts/scaffold-page.ts",
+    "events:validate": "node scripts/validate-events-index.js"
   },
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.80",

@@ -2,6 +2,14 @@
   "weeks": [
     {
       "startDate": "2025-08-25",
+      "eventCount": 0,
+      "cities": [],
+      "genres": [],
+      "lastUpdated": "2025-09-01T11:16:30.000Z",
+      "next": "2025-09-01"
+    },
+    {
+      "startDate": "2025-09-01",
       "eventCount": 14,
       "cities": [
         "San Juan",
@@ -12,11 +20,28 @@
       ],
       "genres": [
         "music",
+        "food",
         "culture",
         "art",
         "sports"
       ],
-      "lastUpdated": "2025-09-01T00:14:09.078Z"
+      "lastUpdated": "2025-09-01T11:16:30.000Z",
+      "prev": "2025-08-25",
+      "next": "2025-09-08"
+    },
+    {
+      "startDate": "2025-09-08",
+      "eventCount": 2,
+      "cities": [
+        "Mayagüez",
+        "San Juan"
+      ],
+      "genres": [
+        "culture",
+        "music"
+      ],
+      "lastUpdated": "2025-09-01T11:16:30.000Z",
+      "prev": "2025-09-01"
     }
   ]
 }

@@ -17,6 +17,9 @@ function getWeekStartDate(date: Date): string {
   return monday.toISOString().split('T')[0]; // YYYY-MM-DD
 }
 
+// Export for testing
+export { getWeekStartDate };
+
 function getWeekFilePath(weekStart: string): string {
   return join(EVENTS_DIR, `${weekStart}.json`);
 }

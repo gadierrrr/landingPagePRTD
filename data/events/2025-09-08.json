@@ -1,0 +1,45 @@
+{
+  "weekStartDate": "2025-09-08",
+  "events": [
+    {
+      "title": "¡Ay Qué Cruz! de Josué Comedy (Dom 5:00 pm)",
+      "descriptionShort": "Second Mayagüez show of the new Josué Comedy production.",
+      "startDateTime": "2025-09-08T00:00:00.000Z",
+      "timezone": "America/Puerto_Rico",
+      "city": "Mayagüez",
+      "venueName": "Teatro Yagüez",
+      "address": "2-98 C. Eduardo Riera, Mayagüz, PR 00682",
+      "genre": "culture",
+      "free": false,
+      "priceFrom": 25,
+      "links": {
+        "details": "https://pietix.com/ay-que-cruz",
+        "tickets": "https://pietix.com/ay-que-cruz"
+      },
+      "status": "scheduled",
+      "source": "PieTix listing",
+      "id": "16c4d98c-016b-4eaf-8b91-3c3873f45bb2",
+      "slug": "ay-qu-cruz-de-josu-comedy-dom-500-pm-teatro-yagez-2025-09-08",
+      "lastVerifiedAt": "2025-08-31T23:57:42.372Z"
+    },
+    {
+      "title": "Bad Bunny — No Me Quiero Ir de Aquí (Sun)",
+      "descriptionShort": "Closing the weekend at El Choli; 3rd consecutive show in San Juan.",
+      "startDateTime": "2025-09-08T02:00:00.000Z",
+      "timezone": "America/Puerto_Rico",
+      "city": "San Juan",
+      "venueName": "Coliseo de Puerto Rico José Miguel Agrelot",
+      "genre": "music",
+      "free": false,
+      "priceFrom": 25,
+      "links": {
+        "details": "https://nomequieroirdeaqui.com/"
+      },
+      "status": "scheduled",
+      "source": "Bandsintown listing",
+      "id": "028e0294-dc4b-44fa-8edc-7c304e24536e",
+      "slug": "bad-bunny-no-me-quiero-ir-de-aqu-sun-coliseo-de-puerto-rico-jos-miguel-agrelot-2025-09-08",
+      "lastVerifiedAt": "2025-08-31T23:11:19.403Z"
+    }
+  ]
+}
