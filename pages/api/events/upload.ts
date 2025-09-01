@@ -3,6 +3,7 @@ import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+import { verifyAdminCookie } from '../../../src/lib/admin/auth';
 
 export const config = {
   api: {
@@ -78,6 +79,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Check admin authentication
+  const adminCookie = req.cookies.admin_auth;
+  if (!verifyAdminCookie(adminCookie || '')) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
 
   // Check CSRF-style header
   if (req.headers['x-requested-with'] !== 'XMLHttpRequest') {

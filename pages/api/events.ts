@@ -8,6 +8,7 @@ import {
   deleteEvent, 
   getCurrentWeekStart
 } from '../../src/lib/eventsStore';
+import { verifyAdminCookie } from '../../src/lib/admin/auth';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
@@ -34,6 +35,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
 
       case 'POST':
+        const adminCookie = req.cookies.admin_auth;
+        if (!verifyAdminCookie(adminCookie || '')) {
+          return res.status(401).json({ error: 'Unauthorized' });
+        }
+        
         const { weekStart, event: eventData } = req.body;
         
         if (!weekStart || typeof weekStart !== 'string') {
@@ -57,6 +63,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(201).json(newEvent);
 
       case 'PUT':
+        const updateAdminCookie = req.cookies.admin_auth;
+        if (!verifyAdminCookie(updateAdminCookie || '')) {
+          return res.status(401).json({ error: 'Unauthorized' });
+        }
+        
         const { weekStart: updateWeekStart, event: updateEventData } = req.body;
         const { id, ...updateData } = updateEventData;
         
@@ -89,6 +100,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(200).json(updatedEvent);
 
       case 'DELETE':
+        const deleteAdminCookie = req.cookies.admin_auth;
+        if (!verifyAdminCookie(deleteAdminCookie || '')) {
+          return res.status(401).json({ error: 'Unauthorized' });
+        }
+        
         const { weekStart: deleteWeekStart, id: deleteId } = req.body;
         
         if (!deleteWeekStart || typeof deleteWeekStart !== 'string') {

@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { dealSchema } from '../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../src/lib/rateLimit';
 import { readDeals, addDeal, updateDeal, deleteDeal } from '../../src/lib/dealsStore';
+import { verifyAdminCookie } from '../../src/lib/admin/auth';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
@@ -18,6 +19,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(200).json(deals);
 
       case 'POST':
+        const adminCookie = req.cookies.admin_auth;
+        if (!verifyAdminCookie(adminCookie || '')) {
+          return res.status(401).json({ error: 'Unauthorized' });
+        }
+        
         const createValidation = dealSchema.omit({ id: true }).safeParse(req.body);
         
         if (!createValidation.success) {
@@ -31,6 +37,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(201).json(newDeal);
 
       case 'PUT':
+        const updateAdminCookie = req.cookies.admin_auth;
+        if (!verifyAdminCookie(updateAdminCookie || '')) {
+          return res.status(401).json({ error: 'Unauthorized' });
+        }
+        
         const { id, ...updateData } = req.body;
         
         if (!id || typeof id !== 'string') {
@@ -55,6 +66,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(200).json(updatedDeal);
 
       case 'DELETE':
+        const deleteAdminCookie = req.cookies.admin_auth;
+        if (!verifyAdminCookie(deleteAdminCookie || '')) {
+          return res.status(401).json({ error: 'Unauthorized' });
+        }
+        
         const deleteId = req.body.id || req.query.id;
         
         if (!deleteId || typeof deleteId !== 'string') {
