@@ -61,7 +61,9 @@ export const EventsManager: React.FC = () => {
   const fetchWeeklyEvents = async (week: string) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/events?week=${week}`);
+      const response = await fetch(`/api/events?week=${week}`, {
+        credentials: 'include'
+      });
       if (!response.ok) throw new Error('Failed to fetch events');
       const data = await response.json();
       setWeeklyEvents(data);
@@ -82,6 +84,7 @@ export const EventsManager: React.FC = () => {
         const response = await fetch('/api/events', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
           body: JSON.stringify({ 
             weekStart,
             event: { id: editingEvent.id, ...eventData }
@@ -102,6 +105,7 @@ export const EventsManager: React.FC = () => {
         const response = await fetch('/api/events', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
           body: JSON.stringify({ weekStart, event: eventData })
         });
         
@@ -134,6 +138,7 @@ export const EventsManager: React.FC = () => {
       const response = await fetch('/api/events', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ weekStart: selectedWeek, id })
       });
       

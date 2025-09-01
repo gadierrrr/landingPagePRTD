@@ -5,6 +5,8 @@ import { Heading } from '../src/ui/Heading';
 import { Button } from '../src/ui/Button';
 import { SEO } from '../src/ui/SEO';
 import { DealsManager } from '../src/ui/deals/DealsManager';
+import { verifyAdminCookie } from '../src/lib/admin/auth';
+import type { GetServerSideProps } from 'next';
 
 export default function Deals() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -109,3 +111,20 @@ export default function Deals() {
     </SiteLayout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const adminCookie = context.req.cookies.admin_auth;
+  
+  if (!verifyAdminCookie(adminCookie || '')) {
+    return {
+      redirect: {
+        destination: '/blogmanager',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

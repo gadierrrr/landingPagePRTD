@@ -17,7 +17,9 @@ export const DealsManager: React.FC = () => {
 
   const fetchDeals = async () => {
     try {
-      const response = await fetch('/api/deals');
+      const response = await fetch('/api/deals', {
+        credentials: 'include'
+      });
       if (!response.ok) throw new Error('Failed to fetch deals');
       const data = await response.json();
       setDeals(data);
@@ -38,6 +40,7 @@ export const DealsManager: React.FC = () => {
         const response = await fetch('/api/deals', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
           body: JSON.stringify({ id: editingDeal.id, ...dealData })
         });
         
@@ -52,6 +55,7 @@ export const DealsManager: React.FC = () => {
         const response = await fetch('/api/deals', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
           body: JSON.stringify(dealData)
         });
         
@@ -83,6 +87,7 @@ export const DealsManager: React.FC = () => {
       const response = await fetch('/api/deals', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ id })
       });
       
