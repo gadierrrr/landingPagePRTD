@@ -17,9 +17,16 @@ interface PublicEventCardProps {
 }
 
 export const PublicEventCard: React.FC<PublicEventCardProps> = ({ event, weekStart, isSponsored = false }) => {
-  const expired = isEventExpired(event);
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  // Use static values during SSR, dynamic values after mount
+  const expired = mounted ? isEventExpired(event) : false;
   const canceled = isEventCanceled(event);
-  const statusBadge = getEventStatusBadge(event);
+  const statusBadge = mounted ? getEventStatusBadge(event) : { text: '', className: '' };
   const genreColor = getGenreBadgeColor(event.genre);
   const mapUrl = generateMapUrl(event.venueName, event.address, event.city);
   
@@ -90,7 +97,7 @@ export const PublicEventCard: React.FC<PublicEventCardProps> = ({ event, weekSta
         {/* Event Details */}
         <div className="space-y-1 text-sm">
           <div className="text-brand-navy/80 font-medium">
-            {formatEventDate(event.startDateTime, event.endDateTime)}
+            {mounted ? formatEventDate(event.startDateTime, event.endDateTime) : 'Loading...'}
           </div>
           <div className="text-brand-navy/60">
             {event.venueName ? `${event.venueName}, ${event.city}` : event.city}
