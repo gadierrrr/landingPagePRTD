@@ -15,6 +15,9 @@ Full-featured travel deals platform with Groupon-style detail pages, built with 
 - **Style Guide**: https://puertoricotraveldeals.com/styleguide
 - **Health Check**: https://puertoricotraveldeals.com/healthz
 - **Blog**: https://puertoricotraveldeals.com/blog
+- **Travel Guides**: https://puertoricotraveldeals.com/guides
+- **Travel Pass**: https://puertoricotraveldeals.com/travel-pass
+- **Events**: https://puertoricotraveldeals.com/events
 
 ## Quick Start
 
@@ -66,7 +69,14 @@ NODE_ENV=production npm start
 - `/deal/id/[id]` - **Legacy ID redirects** (301 redirects to slug-based URLs)
 - `/blog` - **Blog listing page** (travel tips and insights with SSG)
 - `/blog/[slug]` - **Individual blog posts** (markdown-based content with Article schema)
+- `/guides` - **Travel guides listing page** (curated travel guides with SSG)
+- `/guides/[slug]` - **Individual travel guide pages** (detailed travel recommendations)
+- `/travel-pass` - **Travel Pass feature page** (membership benefits and pricing)
+- `/events` - **Events listing page** (weekly events with calendar navigation)
+- `/events/week/[startDate]` - **Weekly events pages** (specific week event listings)
 - `/dealsmanager` - **Admin interface** for managing deals (full CRUD with extended fields)
+- `/eventsmanager` - **Admin interface** for managing events
+- `/blogmanager` - **Admin interface** for managing blog posts
 - `/styleguide` - Design system reference
 
 ### API Endpoints
@@ -78,8 +88,17 @@ NODE_ENV=production npm start
 - `PUT /api/deals` - Update existing deal by ID
 - `DELETE /api/deals` - Remove deal by ID
 - `GET /api/blog` - Retrieve all blog posts metadata as JSON array (with caching headers)
+- `GET /api/events` - Retrieve events data with weekly filtering support
+- `POST /api/events` - Create new event (admin interface)
+- `PUT /api/events` - Update existing event by ID
+- `DELETE /api/events` - Remove event by ID
+- `POST /api/events/upload` - Event image upload endpoint
+- `DELETE /api/events/delete-image` - Remove event images
+- `GET /api/embed/events` - Embeddable events widget endpoint
 - `POST /api/upload-image` - Image upload for dealsmanager (JPEG/PNG/WebP, 5MB max, same-origin only)
 - `GET /api/serve-upload/[...path]` - Secure file serving for uploaded images with proper headers and caching
+- `POST /api/admin/auth` - Admin authentication endpoint
+- `GET /api/admin/blog` - Admin blog management endpoint
 
 ### Deals Management System
 - **Storage**: JSON file at `data/deals.json` with atomic writes
@@ -211,22 +230,39 @@ npm test                # Unit tests
 ```
 pages/                    # Next.js pages (routing)
 ├── api/                 # API endpoints (/api/*)
-│   └── blog.ts         # Blog posts API endpoint
+│   ├── admin/          # Admin-specific endpoints
+│   ├── events/         # Event management endpoints
+│   ├── blog.ts         # Blog posts API endpoint
+│   ├── events.ts       # Events API endpoint
+│   └── embed/events.ts # Embeddable events widget
 ├── blog/               # Blog routes
 │   └── [slug].tsx      # Individual blog post pages (SSG enabled)
 ├── deal/
 │   ├── [slug].tsx      # Individual deal detail pages (ISR enabled)
 │   └── id/[id].tsx     # Legacy ID-to-slug redirects
+├── events/             # Events routes
+│   └── week/[startDate].tsx # Weekly events pages (ISR enabled)
+├── guides/             # Travel guides routes
+│   └── [slug].tsx      # Individual guide pages (ISR enabled)
 ├── blog.tsx            # Blog listing page (SSG enabled)
-├── landing.tsx          # Main marketing page
-├── deals.tsx            # Public deals grid (clickable cards)
-├── dealsmanager.tsx     # Admin deals management
+├── guides.tsx          # Travel guides listing page (ISR enabled)
+├── events.tsx          # Events listing page (ISR enabled)
+├── travel-pass.tsx     # Travel Pass feature page
+├── landing.tsx         # Main marketing page
+├── deals.tsx           # Public deals grid (clickable cards)
+├── dealsmanager.tsx    # Admin deals management
+├── eventsmanager.tsx   # Admin events management
+├── blogmanager.tsx     # Admin blog management
 ├── join.tsx            # Waitlist signup form
 └── partner.tsx         # Partner application form
 
 src/
 ├── lib/                # Utilities & schemas
 │   ├── blog.ts        # Blog post utilities (getAllPostsMeta, getPostBySlug)
+│   ├── guides.ts      # Travel guides utilities and data management
+│   ├── homepageDeals.ts # Homepage-specific deals integration
+│   ├── eventUtils.ts  # Event data processing utilities
+│   ├── eventsStore.ts # Events JSON operations
 │   ├── forms.ts       # Extended Zod validation schemas
 │   ├── dealsStore.ts  # JSON operations with slug utilities
 │   └── slugGenerator.ts # Slug creation with collision handling
@@ -237,15 +273,27 @@ src/
     │   ├── DealForm.tsx      # Extended admin form
     │   ├── PublicDealCard.tsx # Clickable public cards
     │   └── DealsGrid.tsx     # Responsive grid layouts
+    ├── events/        # Event-specific components
+    │   ├── EventCard.tsx     # Event display card
+    │   ├── EventForm.tsx     # Admin event form
+    │   └── EventsGrid.tsx    # Events grid layout
+    ├── guides/        # Travel guides components
+    │   ├── PublicGuideCard.tsx # Guide preview cards
+    │   └── PublicGuidesGrid.tsx # Guides grid layout
     ├── layout/        # Layout components
     └── SEO.tsx        # SEO meta tags component
 
 content/
-└── blog/              # Blog posts (Markdown files with frontmatter)
-    └── *.md           # Individual blog post files
+├── blog/              # Blog posts (Markdown files with frontmatter)
+│   └── *.md           # Individual blog post files
+└── guides/            # Travel guides (Markdown files with frontmatter)
+    └── *.md           # Individual guide files
 
 data/
-└── deals.json         # Extended deal storage (JSON)
+├── deals.json         # Extended deal storage (JSON)
+└── events/            # Events data directory
+    ├── _index.json    # Events index and metadata
+    └── *.json         # Weekly event data files
 ```
 
 ## Feature Flags
@@ -272,6 +320,16 @@ data/
 - **Responsive design**: Mobile-optimized with existing design tokens
 
 ## Changelog
+
+**2025-09-17** - **🎯 Content Expansion & Meta Image Update**
+  - **og:image Update**: Changed social sharing image to `/api/serve-upload/2025/09/ogImage1-1758115388863.webp`
+  - **Travel Guides System**: Complete travel guides with markdown content, public listing, and individual guide pages at `/guides/[slug]`
+  - **Travel Pass Feature**: New membership page at `/travel-pass` with pricing and benefits information
+  - **Events Management**: Enhanced events system with weekly calendar navigation, admin management, and embeddable widget
+  - **Homepage Integration**: Added curated deals and homepage-specific content management
+  - **API Expansion**: New endpoints for events, admin authentication, and blog management
+  - **Test Coverage**: Additional API endpoint testing and enhanced test coverage
+  - **Content Management**: Updated event data with current listings and proper index management
 
 **2025-08-29** - **📝 File-Based Markdown Blog System: Content Management & SEO**
   - **Blog Infrastructure**: Complete SSG-powered blog at `/blog` with individual post pages at `/blog/[slug]`
