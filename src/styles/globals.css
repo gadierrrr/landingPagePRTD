@@ -6,6 +6,29 @@
 
 html { font-family: var(--font-sans); }
 
+/* Carousel Styles */
+.carousel-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+}
+
+/* Smooth transitions for hover effects */
+.group:hover .group-hover\\:translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+.group:hover .group-hover\\:scale-105 {
+  transform: scale(1.05);
+}
+
 /* Blog Post Typography */
 .prose-post {
   max-width: none;
