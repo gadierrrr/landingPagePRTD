@@ -11,6 +11,7 @@ export const LandingHeader: React.FC = () => (
       <div className="ml-auto flex items-center gap-6">
         <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
           <Link className="hover:text-brand-blue" href="/deals">Deals</Link>
+          <Link className="hover:text-brand-blue" href="/travel-pass">Travel Pass</Link>
           <Link className="hover:text-brand-blue" href="/about">About Us</Link>
           <Link className="hover:text-brand-blue" href="/partner">Submit a Deal</Link>
         </nav>

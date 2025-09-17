@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     }
     
-    const { website, email, fullName } = validation.data;
+    const { website, email, fullName, interest } = validation.data;
     
     // Honeypot check
     if (website) {
@@ -33,16 +33,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     
     // Add email to MailChimp waitlist
-    await addEmailToWaitlist(email, fullName);
+    await addEmailToWaitlist(email, fullName, interest);
     
     res.status(200).json({ ok: true, message: "Successfully added to waitlist" });
   } catch (error) {
     console.error('Waitlist error:', error instanceof Error ? error.message : 'Unknown error');
     
-    if (error instanceof Error && error.message === 'INVALID_EMAIL') {
-      return res.status(422).json({ error: 'invalid_email' });
+    if (error instanceof Error) {
+      if (error.message === 'INVALID_EMAIL' || error.message.includes('looks fake or invalid')) {
+        return res.status(422).json({ error: 'Please enter a valid email address' });
+      }
+      if (error.message === 'Member Exists') {
+        return res.status(200).json({ ok: true, message: "You're already subscribed!" });
+      }
     }
     
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(503).json({ error: 'Please try again later' });
   }
 }

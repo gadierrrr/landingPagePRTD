@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
         body: JSON.stringify({
           fullName: "Subscriber",
           email,
-          interest: "waitlist",
+          interest: "home_footer",
           consent: true
         })
       });

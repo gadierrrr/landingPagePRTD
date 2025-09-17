@@ -10,22 +10,19 @@
     },
     {
       "startDate": "2025-09-01",
-      "eventCount": 14,
+      "eventCount": 7,
       "cities": [
         "San Juan",
         "Bayamón",
-        "Caguas",
         "Ponce",
         "Mayagüez"
       ],
       "genres": [
-        "music",
-        "food",
-        "sports",
         "culture",
-        "art"
+        "art",
+        "music"
       ],
-      "lastUpdated": "2025-09-01T15:33:15.968Z",
+      "lastUpdated": "2025-09-04T14:05:50.127Z",
       "prev": "2025-08-25",
       "next": "2025-09-08"
     },

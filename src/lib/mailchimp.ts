@@ -60,13 +60,18 @@ export async function subscribeToMailchimp(options: SubscribeOptions): Promise<v
       
       // Email already exists - this is fine
       if (title === 'Member Exists') {
-        return;
+        throw new Error('Member Exists');
       }
       
       // Email was previously deleted and can't be re-imported - treat as success
       if (title === 'Forgotten Email Not Subscribed') {
         console.warn('Email was previously deleted from MailChimp:', options.email);
         return;
+      }
+      
+      // Invalid email format
+      if (title === 'Invalid Resource' && mailchimpError.response?.body?.detail?.includes('looks fake or invalid')) {
+        throw new Error('looks fake or invalid');
       }
     }
     
@@ -75,15 +80,16 @@ export async function subscribeToMailchimp(options: SubscribeOptions): Promise<v
   }
 }
 
-export async function addEmailToWaitlist(email: string, fullName?: string): Promise<void> {
+export async function addEmailToWaitlist(email: string, fullName?: string, interest?: string): Promise<void> {
   const [firstName, ...lastNameParts] = (fullName || '').split(' ');
   const lastName = lastNameParts.join(' ');
+  const tag = interest === 'home_footer' ? 'home_footer' : 'waitlist';
 
   await subscribeToMailchimp({
     email,
     firstName: firstName || undefined,
     lastName: lastName || undefined,
-    tags: ['waitlist']
+    tags: [tag]
   });
 }
 

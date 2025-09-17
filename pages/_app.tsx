@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:url" content="https://puertoricotraveldeals.com/" />
         <meta property="og:title" content="Puerto Rico Travel Deals - Discover Amazing Vacation Offers" />
         <meta property="og:description" content="Find the best travel deals to Puerto Rico. Curated daily offers on flights, hotels, tours, and vacation packages. Start planning your perfect Caribbean getaway today!" />
-        <meta property="og:image" content="https://puertoricotraveldeals.com/og-image.jpg" />
+        <meta property="og:image" content="https://puertoricotraveldeals.com/api/serve-upload/2025/09/ogImage1-1758115388863.webp" />
         <meta property="og:site_name" content="Puerto Rico Travel Deals" />
 
         {/* Twitter */}
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="twitter:url" content="https://puertoricotraveldeals.com/" />
         <meta property="twitter:title" content="Puerto Rico Travel Deals - Discover Amazing Vacation Offers" />
         <meta property="twitter:description" content="Find the best travel deals to Puerto Rico. Curated daily offers on flights, hotels, tours, and vacation packages. Start planning your perfect Caribbean getaway today!" />
-        <meta property="twitter:image" content="https://puertoricotraveldeals.com/og-image.jpg" />
+        <meta property="twitter:image" content="https://puertoricotraveldeals.com/api/serve-upload/2025/09/ogImage1-1758115388863.webp" />
 
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />

@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { GetStaticProps } from "next";
 import { LandingHeader } from "@/ui/landing/LandingHeader";
 import { LandingHero } from "@/ui/landing/LandingHero";
 import { Footer } from "@/ui/Footer";
+import { PublicDealCard } from "@/ui/deals/PublicDealCard";
 import { generateOrganizationSchema } from "@/lib/seo";
+import { Deal } from "@/lib/forms";
+import { readDeals } from "@/lib/dealsStore";
+import { selectHomepageDeals } from "@/lib/homepageDeals";
 
 // Puerto Rico Flag palette - see src/styles/tokens.css for hex values
 // Whites and tints for contrast; large type + bold CTAs inspired by provided screenshots.
@@ -12,12 +17,49 @@ import { generateOrganizationSchema } from "@/lib/seo";
 // Feature flag to hide sections during prelaunch
 const PRELAUNCH = true;
 
-export default function PRTDPRFlagLanding() {
+interface LandingProps {
+  featuredDeals: Deal[];
+}
+
+export default function PRTDPRFlagLanding({ featuredDeals = [] }: LandingProps) {
   const [midFormStatus, setMidFormStatus] = useState<string>("");
   const [midFormLoading, setMidFormLoading] = useState(false);
   
   // Generate organization structured data
   const organizationSchema = generateOrganizationSchema();
+
+  // Track deals section view
+  React.useEffect(() => {
+    if (!featuredDeals || featuredDeals.length === 0) return;
+    if (typeof window === 'undefined' || !window.IntersectionObserver) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            // Fire analytics event only once
+            if (typeof window !== "undefined" && (window as { dataLayer?: unknown[] }).dataLayer) {
+              ((window as unknown) as { dataLayer: unknown[] }).dataLayer.push({
+                event: "home_deals_section_view",
+                cards_shown: featuredDeals.length,
+                categories_shown: Array.from(new Set(featuredDeals.map(d => d.category))).join(','),
+                section_version: "v1-mixed-grid"
+              });
+            }
+            observer.disconnect(); // Only fire once
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const dealsSection = document.getElementById('deals');
+    if (dealsSection) {
+      observer.observe(dealsSection);
+    }
+
+    return () => observer.disconnect();
+  }, [featuredDeals]);
 
   const handleMidFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,9 +69,17 @@ export default function PRTDPRFlagLanding() {
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
     const honeypot = formData.get("company") as string;
+    const consent = formData.get("consent") as string;
 
     // Check honeypot
     if (honeypot) {
+      setMidFormLoading(false);
+      return;
+    }
+
+    // Check consent
+    if (!consent) {
+      setMidFormStatus("Please agree to receive emails to continue.");
       setMidFormLoading(false);
       return;
     }
@@ -124,22 +174,87 @@ export default function PRTDPRFlagLanding() {
         </div>
       </section>
 
-      {/* NEW DEALS CTA */}
-  <section id="deals" className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-          <div className="bg-brand-blue/10 ring-brand-blue/20 rounded-3xl p-6 ring-1 sm:p-8">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <h2 className="text-3xl font-black text-brand-navy sm:text-4xl">SEE AVAILABLE DEALS</h2>
-              <Link href="/deals" className="hover:bg-brand-navy/90 inline-flex items-center gap-3 rounded-full bg-brand-navy px-5 py-3 font-bold text-white shadow">
-                See Deals <span>➜</span>
-              </Link>
-            </div>
+      {/* Latest Deals Section */}
+      <section id="deals" className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+          <div className="text-center">
+            <h2 className="text-3xl font-black text-brand-navy sm:text-4xl">Latest Deals</h2>
+            <p className="text-brand-navy/70 mt-4">Discover the best travel deals across Puerto Rico</p>
           </div>
+          
+          {featuredDeals && featuredDeals.length > 0 && (
+            <div className="mt-10">
+              {/* Deals Grid */}
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {featuredDeals.map((deal, index) => (
+                  <div 
+                    key={deal.id}
+                    onClick={() => {
+                      if (typeof window !== "undefined" && (window as { dataLayer?: unknown[] }).dataLayer) {
+                        ((window as unknown) as { dataLayer: unknown[] }).dataLayer.push({
+                          event: "home_deal_click",
+                          slug: deal.slug,
+                          category: deal.category,
+                          position: index + 1,
+                          section_version: "v1-mixed-grid"
+                        });
+                      }
+                    }}
+                  >
+                    <PublicDealCard 
+                      deal={{
+                        ...deal,
+                        externalUrl: deal.externalUrl ? `${deal.externalUrl}${deal.externalUrl.includes('?') ? '&' : '?'}src=home_deals` : undefined
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              {/* See More CTA */}
+              <div className="mt-10 text-center">
+                <Link 
+                  href="/deals" 
+                  className="hover:bg-brand-navy/90 inline-flex items-center gap-3 rounded-full bg-brand-navy px-8 py-4 font-bold text-white shadow-lg transition-colors"
+                  onClick={() => {
+                    if (typeof window !== "undefined" && (window as { dataLayer?: unknown[] }).dataLayer) {
+                      ((window as unknown) as { dataLayer: unknown[] }).dataLayer.push({
+                        event: "home_deals_see_more_click",
+                        section_version: "v1-mixed-grid"
+                      });
+                    }
+                  }}
+                >
+                  See More Deals <span>➜</span>
+                </Link>
+                
+                {/* Deep Links */}
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm">
+                  <Link href="/deals?category=hotel" className="text-brand-blue hover:text-brand-navy hover:underline">More Hotels</Link>
+                  <span className="text-brand-navy/30">·</span>
+                  <Link href="/deals?category=activity" className="text-brand-blue hover:text-brand-navy hover:underline">More Activities</Link>
+                  <span className="text-brand-navy/30">·</span>
+                  <Link href="/deals?category=restaurant" className="text-brand-blue hover:text-brand-navy hover:underline">More Restaurants</Link>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {(!featuredDeals || featuredDeals.length === 0) && (
+            <div className="bg-brand-blue/10 ring-brand-blue/20 mt-8 rounded-3xl p-6 ring-1 sm:p-8">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <h3 className="text-2xl font-black text-brand-navy">New deals coming soon!</h3>
+                <Link href="/deals" className="hover:bg-brand-navy/90 inline-flex items-center gap-3 rounded-full bg-brand-navy px-5 py-3 font-bold text-white shadow">
+                  Check Back Soon <span>➜</span>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Split Banner: Email Capture CTA */}
-      <section className="">
+      <section id="newsletter" className="">
         <div className="mx-auto grid max-w-6xl gap-0 px-4 sm:px-6 md:grid-cols-2">
           <div className="rounded-3xl bg-brand-red p-10 text-white md:rounded-l-3xl md:rounded-r-none">
             <h3 className="text-4xl font-black leading-tight">Get Puerto Rico travel deals in your inbox.</h3>
@@ -163,6 +278,20 @@ export default function PRTDPRFlagLanding() {
                 >
                   {midFormLoading ? "..." : "Sign up"}
                 </button>
+              </div>
+              {/* Consent checkbox */}
+              <div className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  name="consent"
+                  id="consent-split"
+                  required
+                  disabled={midFormLoading}
+                  className="mt-1 size-4 rounded border-slate-300 text-brand-blue focus:ring-2 focus:ring-brand-blue"
+                />
+                <label htmlFor="consent-split" className="text-sm text-white/90">
+                  I agree to receive emails per the <a href="mailto:legal@puertoricotraveldeals.com" className="underline hover:text-white">Privacy Policy</a>.
+                </label>
               </div>
               {/* Honeypot field */}
               <input
@@ -259,3 +388,25 @@ export default function PRTDPRFlagLanding() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const allDeals = await readDeals();
+    const featuredDeals = selectHomepageDeals(allDeals, 6);
+    
+    return {
+      props: {
+        featuredDeals
+      },
+      revalidate: 3600 // Revalidate every hour
+    };
+  } catch (error) {
+    console.error('Error loading deals for homepage:', error);
+    return {
+      props: {
+        featuredDeals: []
+      },
+      revalidate: 300 // Retry in 5 minutes if there's an error
+    };
+  }
+};

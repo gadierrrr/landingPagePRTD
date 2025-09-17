@@ -29,7 +29,7 @@ export const PublicDealCard: React.FC<PublicDealCardProps> = ({ deal }) => {
           <img 
             src={deal.image} 
             alt={deal.title}
-            className="size-full object-contain"
+            className="size-full object-cover object-center"
             style={deal.objectPosition ? { objectPosition: deal.objectPosition } : { objectPosition: '50% 40%' }}
           />
           

@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { readDeals } from '../src/lib/dealsStore';
 import { isExpired } from '../src/lib/dealUtils';
+import { getAllGuidesMeta } from '../src/lib/guides';
 
 export default function Sitemap() {
   // This component doesn't render anything - it's just for sitemap generation
@@ -8,13 +9,17 @@ export default function Sitemap() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const deals = await readDeals();
+  const [deals, guides] = await Promise.all([
+    readDeals(),
+    getAllGuidesMeta()
+  ]);
   const baseUrl = 'https://puertoricotraveldeals.com';
   
   const staticPages = [
     { url: '', priority: '1.0', changefreq: 'daily' },
     { url: '/landing', priority: '1.0', changefreq: 'daily' },
     { url: '/deals', priority: '1.0', changefreq: 'hourly' },
+    { url: '/guides', priority: '0.9', changefreq: 'daily' },
     { url: '/join', priority: '0.8', changefreq: 'monthly' },
     { url: '/partner', priority: '0.8', changefreq: 'monthly' },
     { url: '/about', priority: '0.6', changefreq: 'monthly' },
@@ -40,14 +45,22 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     changefreq: 'weekly'
   }));
 
-  // Guide pages
-  const guidePages = [
+  // Static guide pages (existing React pages)
+  const staticGuidePages = [
     { url: '/guides/best-time-visit-puerto-rico-deals', priority: '0.7', changefreq: 'monthly' },
     { url: '/guides/puerto-rico-travel-deals-vs-booking-direct', priority: '0.7', changefreq: 'monthly' },
     { url: '/guides/authentic-puerto-rico-experiences', priority: '0.7', changefreq: 'monthly' }
   ];
 
-  const allStaticPages = [...staticPages, ...categoryPages, ...locationPages, ...guidePages];
+  // Dynamic guide pages (markdown-based)
+  const dynamicGuidePages = guides.map(guide => ({
+    url: `/guides/${guide.slug}`,
+    priority: '0.8',
+    changefreq: 'weekly',
+    lastmod: guide.publishDate
+  }));
+
+  const allStaticPages = [...staticPages, ...categoryPages, ...locationPages, ...staticGuidePages];
 
   // Filter active deals (non-expired) for sitemap
   const activeDeals = deals.filter(deal => 
@@ -62,6 +75,14 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       <lastmod>${new Date().toISOString()}</lastmod>
       <changefreq>${page.changefreq}</changefreq>
       <priority>${page.priority}</priority>
+    </url>
+  `).join('')}
+  ${dynamicGuidePages.map(guide => `
+    <url>
+      <loc>${baseUrl}${guide.url}</loc>
+      <lastmod>${guide.lastmod}</lastmod>
+      <changefreq>${guide.changefreq}</changefreq>
+      <priority>${guide.priority}</priority>
     </url>
   `).join('')}
   ${activeDeals.map(deal => `

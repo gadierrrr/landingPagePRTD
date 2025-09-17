@@ -1,84 +1,5 @@
 [
   {
-    "title": "Hotel Park Royal Club Cala ",
-    "description": "ANY DAY OF THE WEEK from SEPTEMBER through NOVEMBER in a Studio Room with King Bed for 2 People; or $359 in a Fully Equipped VILLA for Up to 4 People.",
-    "amountLabel": "50% OFF",
-    "location": "Humacao",
-    "image": "/images/uploads/2025/08/park-royalclub-hotel-1756117020467.jpeg",
-    "category": "hotel",
-    "expiry": "2025-09-04T03:59:00.000Z",
-    "partner": "Gustazos.com",
-    "externalUrl": "https://www.gustazos.com/deals/Hotels_parkroyalclubcala72",
-    "highlights": [
-      "Multiple package options available for deals.",
-      "Driving distance to some of the best beaches in the east side of Puerto Rico."
-    ],
-    "price": 298,
-    "originalPrice": 600,
-    "currency": "USD",
-    "id": "dea3761f-6ba1-4797-92bc-09163ec44ac9",
-    "slug": "hotel-park-royal-club-cala",
-    "updatedAt": "2025-08-25T10:27:47.941Z",
-    "gallery": [
-      "/images/mock-deal-1.png"
-    ],
-    "fullDescription": "ANY DAY OF THE WEEK from SEPTEMBER through NOVEMBER in a Studio Room with King Bed for 2 People; or $359 in a Fully Equipped VILLA for Up to 4 People.",
-    "terms": ""
-  },
-  {
-    "title": "Skydive Puerto Rico",
-    "description": "$179 for a Parachute Jump for 1 Person; or $319 for Parachute Jump for 2 People; Both Options Include: 20% Discount from the Original Price for 1 Additional Person on the Same Day",
-    "amountLabel": "45% OFF",
-    "location": "Arecibo",
-    "image": "/images/uploads/2025/08/skydive-arecibo-deal-1756119086467.jpg",
-    "category": "activity",
-    "expiry": "2025-08-31T03:59:00.000Z",
-    "partner": "Gustazos.com",
-    "externalUrl": "https://www.gustazos.com/deals/Adventures_skydivepuertorico33",
-    "fullDescription": "Skydive PR wants you to see Puerto Rico from the best available viewpoint! Parachuting and taking in your island will be a Gustazo™!\n\n- The instructors have many years of experience, thousands of jumps, and are certified by the USPA (United States Parachute Association).\n- Services are available for people who want to jump only once and for people who want to make it their hobby. \n- The tandem jump is the fastest, safest, and most convenient way to experience skydiving. \n- About 1 minute into free fall, the instructor will open the parachute and you’ll glide with the parachute for approximately 7-10 minutes.\n- The instructor will take care of everything so you can enjoy the experience to the fullest.\n\nFor more information, visit: https://puertoricoskydive.com/",
-    "highlights": [
-      "You get to fly over Puerto Rico."
-    ],
-    "expiresAt": "2025-09-01T03:59:00.000Z",
-    "price": 179,
-    "originalPrice": 350,
-    "currency": "USD",
-    "id": "940197f4-d9e6-44c5-ac91-f41bf296d9f3",
-    "slug": "skydive-puerto-rico",
-    "updatedAt": "2025-08-25T10:51:40.235Z",
-    "gallery": [
-      "/images/mock-deal-2.png"
-    ],
-    "terms": ""
-  },
-  {
-    "title": "Sunset View Hotel by West Paradise",
-    "description": "$279 for a 3-Day and 2-Night Stay on WEEKENDS from AUGUST through OCTOBER in a REGULAR Room for 2 Adults",
-    "amountLabel": "56-64% OFF",
-    "location": "Cabo Rojo",
-    "image": "/images/uploads/2025/08/sunse-view-hotel-cabo-rojo-1756121009731.jpg",
-    "category": "hotel",
-    "expiry": "2025-08-30T03:59:00.000Z",
-    "partner": "Gustazos.com",
-    "externalUrl": "https://www.gustazos.com/deals/Hotels_sunsetview23",
-    "fullDescription": "Sunset View Hotel by West Paradise is conveniently located next to the best beaches in Cabo Rojo, where you’ll enjoy a festive setting all day.",
-    "highlights": [
-      "Multiple offer available. ",
-      "Located in the downtown area of the town.",
-      "Walking distance to an incredible beach."
-    ],
-    "price": 279,
-    "originalPrice": 633.1,
-    "currency": "USD",
-    "id": "5195d706-d0ae-4c2c-96b3-f325fcab4a3f",
-    "slug": "sunset-view-hotel-by-west-paradise",
-    "updatedAt": "2025-08-25T11:25:00.687Z",
-    "gallery": [
-      "/images/uploads/2025/08/sunse-view-hotel-cabo-rojo-1756121009731.jpg"
-    ],
-    "terms": ""
-  },
-  {
     "title": "Club Seabourne - 5th Night Free",
     "description": "Book 5 days / 4 nights and receive the 5th night FREE. This offer is for double occupancy in Deluxe Villa, daily a la carte breakfast, and use of kayaks.",
     "amountLabel": "35% OFF",
@@ -131,32 +52,6 @@
     ]
   },
   {
-    "title": "San Juan Marriott Resort - $250  Resort Credit",
-    "description": "Discover this oceanfront hotel on Condado Beach offering an unbeatable location just steps from white sands and crystal-clear waters of the Caribbean. $250 Resort credit per room.",
-    "amountLabel": "COMBINED SAVINGS",
-    "location": "Condado",
-    "image": "/api/serve-upload/2025/08/PuertoRicoMarriottResortStellarisCasino_L01-1756165345448.jpg",
-    "category": "hotel",
-    "expiry": "2025-09-03T03:59:00.000Z",
-    "partner": "Cotsco.com",
-    "externalUrl": "https://www.costcotravel.com/Vacation-Packages/Offers/CARSJUSANJUANMARRIOTT20250801SP",
-    "fullDescription": "This deal includes: \n\n-$250 hotel credit \n\n- $30 Casino coupon (once per stay)\n\n- Ground transportation to and from hotel\n\n- Accommodations at San Juan Marriott Resort & Stellaris Casino\n\n- Daily resort fee\n\n- Hotel taxes and resort fee",
-    "highlights": [
-      "- Located in Condado with direct access to the beach",
-      "- Walkable location",
-      "- Short distance to La Placita, Santurce, and Old San Juan"
-    ],
-    "price": 1500,
-    "currency": "USD",
-    "id": "1ef41433-683a-4d59-ba44-ca04dcceb710",
-    "slug": "san-juan-marriott-resort-stellaris-casino-250-resort-credit",
-    "updatedAt": "2025-08-25T23:43:07.036Z",
-    "gallery": [
-      "/api/serve-upload/2025/08/PuertoRicoMarriottResortStellarisCasino_L01-1756165345448.jpg"
-    ],
-    "terms": ""
-  },
-  {
     "title": "Gallery Inn Hotel - 50% off your 3rd night",
     "description": " Book 2 consecutive nights and get 50% off your 3rd night.",
     "amountLabel": "50% OFF",
@@ -184,29 +79,6 @@
     ]
   },
   {
-    "title": "Kayak Adventure and Caonillas River tour ",
-    "description": "This tour includes a hike around Caonilla Lake and River.",
-    "amountLabel": "50% OFF",
-    "location": "Utuado",
-    "image": "/api/serve-upload/2025/08/kayak-adventures-utuado-1756281636283.jpg",
-    "category": "activity",
-    "expiry": "2025-09-13T03:59:00.000Z",
-    "partner": "Gustazos.com",
-    "fullDescription": "This tour includes a hike around Caonilla Lake and River. Participants will discover a magic atmosphere surrounded by nature in Utuado. In addition, everyone will be able to fish. The Kayak Adventures PR’ staff may take photos during the trip, if you wish. ",
-    "highlights": [],
-    "terms": "You must call 72 hours in advance to reserve by calling (787) 454-3722 from Monday through Saturday from 8:00 a.m. to 5:00 p.m.\n\nRedemption schedule: Monday through Sunday from 9:00 a.m. to 3:00 p.m.",
-    "price": 39.99,
-    "originalPrice": 80,
-    "currency": "USD",
-    "id": "25198e85-a0ea-44e2-b166-83fb33fd2e1f",
-    "slug": "kayak-adventure-and-caonillas-river-tour",
-    "updatedAt": "2025-08-27T09:06:39.485Z",
-    "gallery": [
-      "/api/serve-upload/2025/08/kayak-adventures-utuado-1756281636283.jpg"
-    ],
-    "externalUrl": "https://www.gustazos.com/deals/Adventures_kayakadventures13"
-  },
-  {
     "title": "Hotel Stay at 4.5-Star The Royal Sonesta San Juan Resort ",
     "description": "The Royal Sonesta San Juan is a luxurious 4.5-star oceanfront resort in Puerto Rico with stunning views of Isla Verde beach.",
     "amountLabel": "54% OFF",
@@ -226,6 +98,209 @@
     "updatedAt": "2025-08-27T08:24:35.162Z",
     "gallery": [
       "/api/serve-upload/2025/08/Royal-Hotel-Isla-Verde-1756282880349.webp"
+    ],
+    "terms": ""
+  },
+  {
+    "title": "Meat Market Restaurant - Pay $50 for a $100 Gift Card",
+    "description": "$49 for $100 - Meat Market is a steakhouse located inside the Fairmont Hotel in San Juan. ",
+    "amountLabel": "50% OFF",
+    "location": "San Juan ",
+    "image": "/api/serve-upload/2025/09/meatMarketSJ-1757079811287.webp",
+    "category": "restaurant",
+    "expiry": "2025-09-20T00:41:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Restaurants_meatmarket3",
+    "fullDescription": "Meat Market offers a variety of Prime cuts, appetizers, and an outstanding Wine Spectator–award-winning premium wine list, all with an artistic and contemporary twist.",
+    "highlights": [],
+    "price": 50,
+    "originalPrice": 100,
+    "currency": "USD",
+    "id": "fb99d0a4-834f-4675-8779-8be595fa2cde",
+    "slug": "meat-market-restaurant-pay-50-for-a-100-gift-card",
+    "updatedAt": "2025-09-05T13:43:34.059Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/meatMarketSJ-1757079811287.webp"
+    ],
+    "terms": ""
+  },
+  {
+    "title": "Free Coktail + Tote Bag + 20% Off Motorbike Rental - Hilton Hotels ",
+    "description": "Two nights minimum stay. Offer includes: \n- Rum welcome cocktail to kick off your tropical stay\n- Welcome tote bag with goodies\n- 20% off motorbike",
+    "amountLabel": "SEE DETAILS",
+    "location": "Puerto Rico",
+    "image": "/api/serve-upload/2025/09/hiltonPackage-1757083589614.jpg",
+    "category": "hotel",
+    "expiry": "2025-11-01T14:46:00.000Z",
+    "partner": "Hilton.com",
+    "externalUrl": "https://www.caribehilton.com/offers/un-verano-en/",
+    "highlights": [],
+    "currency": "USD",
+    "id": "4f59a5ea-31be-4b49-8796-16bac69cca14",
+    "slug": "free-coktail-tote-bag-20-off-motorbike-rental-hilton-hotels",
+    "updatedAt": "2025-09-05T14:47:40.301Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/hiltonPackage-1757083589614.jpg"
+    ],
+    "fullDescription": "Two nights minimum stay. Offer includes: \n- Rum welcome cocktail to kick off your tropical stay\n- Welcome tote bag with goodies\n- 20% off motorbike",
+    "terms": ""
+  },
+  {
+    "title": "Early Bird Special - Copamarina Hotel",
+    "description": "Save up to 40% off regular rate rooms by booking 60 days in advance. \n\nSee details on deal's page. ",
+    "amountLabel": "UP TO 40% OFF",
+    "location": "Guanica",
+    "image": "/api/serve-upload/2025/09/copamarina-beach-resort-1757084653623.jpg",
+    "category": "hotel",
+    "expiry": "",
+    "partner": "CopaMarina.com",
+    "externalUrl": "https://www.copamarina.com/specials/early-bird-special#:~:text=Save%2040,rate",
+    "highlights": [],
+    "price": 177,
+    "originalPrice": 299,
+    "currency": "USD",
+    "id": "c76bed83-b245-4109-b0e7-2b29c5f29295",
+    "slug": "early-bird-special-copa-marina-hotel",
+    "updatedAt": "2025-09-13T19:24:55.986Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/copamarina-beach-resort-1757084653623.jpg"
+    ],
+    "fullDescription": "Save up to 40% off regular rate rooms by booking 60 days in advance. \n\nSee details on deal's page. ",
+    "terms": ""
+  },
+  {
+    "title": "TRYP Hotel by Wyndham ",
+    "description": "2-Day and 1-Night Stay in SEPTEMBER + Parking Special Rate for 1 Vehicle + 20% Discount on Lunch or Dinner  + $5 Discount on the Buffet",
+    "amountLabel": "73% OFF",
+    "location": "Isla Verde ",
+    "image": "/api/serve-upload/2025/09/trypHotelDeals-1757619761075.jpg",
+    "category": "hotel",
+    "expiry": "2025-09-26T19:03:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Hotels_tryp20",
+    "fullDescription": "$215 for a 2-Day and 1-Night Stay on ANY DAY OF THE WEEK in SEPTEMBER for Up to 2 Adults and 2 Children in a Run of the House Room + Parking Special Rate for 1 Vehicle + 20% Discount on Lunch or Dinner at Emigrante GastroBar + $5 Discount on the Buffet.\n\nSee deal's page for full details.",
+    "highlights": [],
+    "price": 214.99,
+    "originalPrice": 958,
+    "currency": "USD",
+    "id": "db867b4f-9843-469d-bc0b-0fc1a9395d30",
+    "slug": "tryp-hotel-by-wyndham",
+    "updatedAt": "2025-09-11T19:42:45.245Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/trypHotelDeals-1757619761075.jpg"
+    ],
+    "terms": ""
+  },
+  {
+    "title": "La Concha Resort - San Juan",
+    "description": "- Up to 20% rate discount\n- $25 Daily Credit at Aroma Café\n- Two (2) Signature Cocktail Vouchers, per stay",
+    "amountLabel": "20%",
+    "location": "San Juan",
+    "image": "/api/serve-upload/2025/09/LaConchaOffersBG-1758068284593.jpg",
+    "category": "hotel",
+    "expiry": "2025-10-20T04:18:00.000Z",
+    "partner": "LaConchaResort.com",
+    "externalUrl": "https://www.laconcharesort.com/offers#:~:text=Craving%20a%20Fall%20Escape",
+    "highlights": [],
+    "terms": "Valid for bookings until October 20, 2025, for stays between September 1st, 2025 until December 20, 2025. Rate displayed upon booking already reflects discount. Minimum stay of two (2) consecutive nights required. Shortening the stay will result in rate change to that arrival dates. ",
+    "currency": "USD",
+    "id": "a9f65298-9ccc-4a44-b951-7882f3988860",
+    "slug": "la-concha-resort-san-juan",
+    "updatedAt": "2025-09-17T00:19:56.001Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/LaConchaOffersBG-1758068284593.jpg"
+    ],
+    "fullDescription": "- Up to 20% rate discount\n- $25 Daily Credit at Aroma Café\n- Two (2) Signature Cocktail Vouchers, per stay"
+  },
+  {
+    "title": "Spa Package Caribe Hilton - San Juan ",
+    "description": "Package includes two 55‑minute spa treatments (choice of Swedish, Deep‑Tissue, Lymphatic massage, deep‑pore cleansing facial or body exfoliation) plus 25 % off additional services",
+    "amountLabel": "25%",
+    "location": "San Juan ",
+    "image": "/api/serve-upload/2025/09/Pool-Area-Detail-Chairs-Umbrellas-2024-LR-Side-Block-1260x710-1jpg-1758068656058.webp",
+    "category": "hotel",
+    "expiry": "",
+    "partner": "CaribeHilton.com",
+    "externalUrl": "https://www.caribehilton.com/offers/#:~:text=Rejuvenate%20Spa%20Package",
+    "fullDescription": "The ultimate spa-cation awaits at the positively paradise Caribe Hilton with two (2) spa treatments at Zen Spa Océano included in your stay.\n\nEnjoy two (2) 55-minute spa treatments of your choice and buff away dull looking skin or escape from your stresses with the signature Zenssage®, including aromatherapy calming effects for your mind, body and soul.\n\nChoose from:\n\n- Swedish, Deep Tissue or Lymphatic Massage\n- Deep-Pore Cleansing Facial\n- Body Exfoliation\n\nFeel the need for more pampering?  Enjoy 25% off additional services such as, a massage, facial, body scrub or nail services, at Zen Spa Océano when reserving this package.",
+    "highlights": [],
+    "expiresAt": "2025-11-01T00:23:00.000Z",
+    "currency": "USD",
+    "id": "0f9d8ff2-80cb-4c98-ad6c-266051a1939a",
+    "slug": "spa-package-caribe-hilton-san-juan",
+    "updatedAt": "2025-09-17T00:54:20.154Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/Pool-Area-Detail-Chairs-Umbrellas-2024-LR-Side-Block-1260x710-1jpg-1758068656058.webp"
+    ],
+    "terms": ""
+  },
+  {
+    "title": "Brunch for Two – Blessed Mornings - Fajardo",
+    "description": "$18 instead of $37 for two brunch dishes (choice of French‑toast sandwich, red‑velvet waffles, pancake tacos or Romanos omelette) and two 8 oz lattes/cappuccinos",
+    "amountLabel": "51% OFF",
+    "location": "Fajardo",
+    "image": "/api/serve-upload/2025/09/BlessedBrunchDeal-1758069067906.png",
+    "category": "restaurant",
+    "expiry": "2025-10-01T00:31:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Restaurants_blessedmornings1#:~:text=%2418%20for%202%20Brunch%20Dishes,8oz",
+    "highlights": [],
+    "expiresAt": "2025-10-01T00:31:00.000Z",
+    "price": 18,
+    "originalPrice": 37,
+    "currency": "USD",
+    "id": "6fd79bed-09cc-45e1-ab58-05d2a5867a18",
+    "slug": "brunch-for-two-blessed-mornings-fajardo",
+    "updatedAt": "2025-09-17T00:31:59.599Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/BlessedBrunchDeal-1758069067906.png"
+    ],
+    "fullDescription": "$18 instead of $37 for two brunch dishes (choice of French‑toast sandwich, red‑velvet waffles, pancake tacos or Romanos omelette) and two 8 oz lattes/cappuccinos",
+    "terms": ""
+  },
+  {
+    "title": "Enterprise Rent‑A‑Car – Up to 15 % off base rate",
+    "description": "Save 10 % on economy–full‑size vehicles and 15 % on other car classes when renting for three days or more",
+    "amountLabel": "15% Off",
+    "location": "Multiple",
+    "image": "/api/serve-upload/2025/09/EnterpriseDeal-1758069338399.webp",
+    "category": "activity",
+    "expiry": "2025-12-16T01:35:00.000Z",
+    "partner": "Enterprise.com",
+    "externalUrl": "https://www.enterprise.com/en/car-rental/deals/up-to-15off.html#:~:text=4.%20Save%20up%20to%2015,off%20your%20rental",
+    "fullDescription": "Offer applies to rentals picked up between Aug 18 2025 and Dec 15 2025 and returned by Dec 28 2025; 3‑day minimum and 27‑day maximum; discount applies to base rate only (time & mileage) and excludes taxes, fees and optional services. Not valid on exotic or cargo vehicles.",
+    "highlights": [],
+    "expiresAt": "2025-12-16T01:34:00.000Z",
+    "currency": "USD",
+    "id": "672f62eb-b292-4be9-ad53-0411f661115b",
+    "slug": "enterprise-rentacar-up-to-15-off-base-rate",
+    "updatedAt": "2025-09-17T00:48:46.755Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/EnterpriseDeal-1758069338399.webp"
+    ],
+    "terms": ""
+  },
+  {
+    "title": "Xolo Taco Mexican Food - Condado",
+    "description": "10 Tacos with Your Choice + Side of Guacamole and Chips + 2 Classic Margaritas, or drinks.",
+    "amountLabel": "45% OFF",
+    "location": "San Juan",
+    "image": "/api/serve-upload/2025/09/XoloTacoCondado-1758070430897.jpg",
+    "category": "restaurant",
+    "expiry": "2025-09-29T00:53:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Restaurants_xolotaco3",
+    "fullDescription": "$36 for “La Taquiza”, Including: 10 Tacos with Your Choice of: Pastor, Carnitas, Chicken Tinga, or Grounded Beef (You May Divide Your Order with 2 Taco Options) + Side of Guacamole and Chips + 2 Classic Margaritas, Sodas, or Water",
+    "highlights": [],
+    "expiresAt": "2025-09-28T00:53:00.000Z",
+    "price": 36,
+    "originalPrice": 65,
+    "currency": "USD",
+    "id": "c99caad3-3797-4dc8-a7e0-4ac46a479d49",
+    "slug": "xolo-taco-mexican-food-condado",
+    "updatedAt": "2025-09-17T00:54:10.849Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/XoloTacoCondado-1758070430897.jpg"
     ],
     "terms": ""
   }
