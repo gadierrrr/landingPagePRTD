@@ -40,15 +40,21 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={title} />
       {description && <meta property="og:description" content={description} />}
       {finalImage && <meta property="og:image" content={finalImage} />}
+      {finalImage && <meta property="og:image:width" content="1200" />}
+      {finalImage && <meta property="og:image:height" content="630" />}
+      {finalImage && <meta property="og:image:type" content="image/webp" />}
+      {finalImage && <meta property="og:image:alt" content={title} />}
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       <meta property="og:site_name" content="Puerto Rico Travel Deals" />
       
       {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content={title} />
-      {description && <meta property="twitter:description" content={description} />}
-      {finalImage && <meta property="twitter:image" content={finalImage} />}
-      {finalImage && <meta property="twitter:image:alt" content={title} />}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@puertoricotraveldeals" />
+      <meta name="twitter:creator" content="@puertoricotraveldeals" />
+      <meta name="twitter:title" content={title} />
+      {description && <meta name="twitter:description" content={description} />}
+      {finalImage && <meta name="twitter:image" content={finalImage} />}
+      {finalImage && <meta name="twitter:image:alt" content={title} />}
     </Head>
   );
 };

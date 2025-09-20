@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { Deal } from '../../lib/forms';
 import { isExpired, displaySourceName, formatRelativeTime, formatEndDate } from '../../lib/dealUtils';
+import { trackDealClick, trackDealView } from '../../lib/analytics';
 
 interface PublicDealCardProps {
   deal: Deal;
+  position?: number;
+  listName?: string;
+  trackImpression?: boolean;
 }
 
-export const PublicDealCard: React.FC<PublicDealCardProps> = ({ deal }) => {
+export const PublicDealCard: React.FC<PublicDealCardProps> = ({ 
+  deal, 
+  position,
+  listName = 'deals_grid',
+  trackImpression = true 
+}) => {
   const expired = isExpired(deal.expiresAt || deal.expiry);
   const sourceName = displaySourceName(deal.externalUrl, deal.sourceName);
+
+  // Track impression when component mounts
+  useEffect(() => {
+    if (trackImpression) {
+      trackDealView(deal, 'deal_card_impression', position);
+    }
+  }, [deal, trackImpression, position]);
+
+  const handleDealClick = () => {
+    trackDealClick(deal, position, listName, 'deal_card_click');
+  };
   
   if (!deal.slug) {
     // Fallback for deals without slugs (shouldn't happen after migration)
@@ -21,7 +41,11 @@ export const PublicDealCard: React.FC<PublicDealCardProps> = ({ deal }) => {
   }
   
   return (
-    <Link href={`/deal/${deal.slug}`} className="group block">
+    <Link 
+      href={`/deal/${deal.slug}`} 
+      className="group block"
+      onClick={handleDealClick}
+    >
       <div className="ring-brand-navy/10 hover:ring-brand-blue/20 relative cursor-pointer overflow-hidden rounded-xl bg-white ring-1 transition-all duration-200 hover:shadow-md" aria-label={`View details for ${deal.title}`}>
         {/* 16:9 Aspect Ratio Image */}
         <div className="to-brand-navy/20 relative aspect-[16/9] overflow-hidden rounded-xl bg-[#0A2A29] bg-gradient-to-br from-[#0A2A29]">

@@ -1,0 +1,49 @@
+{
+  "name": "PRTD Section Performance Analysis",
+  "description": "Analyze how users engage with different content sections",
+  "type": "EXPLORATION",
+  "config": {
+    "dimensions": [
+      {
+        "name": "customEvent:slug"
+      },
+      {
+        "name": "customEvent:category"
+      },
+      {
+        "name": "customEvent:cta_id"
+      }
+    ],
+    "metrics": [
+      {
+        "name": "eventCount"
+      },
+      {
+        "name": "totalUsers"
+      },
+      {
+        "name": "averageSessionDuration"
+      }
+    ],
+    "filters": [
+      {
+        "fieldName": "eventName",
+        "operation": "EXACT",
+        "value": "section_engagement"
+      }
+    ],
+    "dateRange": {
+      "startDate": "30daysAgo",
+      "endDate": "today"
+    },
+    "layout": {
+      "rows": [
+        "customEvent:slug"
+      ],
+      "values": [
+        "eventCount",
+        "totalUsers"
+      ]
+    }
+  }
+}

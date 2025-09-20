@@ -1,0 +1,52 @@
+{
+  "name": "PRTD Engagement Quality Dashboard",
+  "description": "View engagement scores and quality metrics",
+  "type": "EXPLORATION",
+  "config": {
+    "dimensions": [
+      {
+        "name": "customEvent:slug"
+      },
+      {
+        "name": "customEvent:category"
+      },
+      {
+        "name": "customEvent:vendor_id"
+      }
+    ],
+    "metrics": [
+      {
+        "name": "eventCount"
+      },
+      {
+        "name": "totalUsers"
+      },
+      {
+        "name": "engagementRate"
+      }
+    ],
+    "filters": [
+      {
+        "fieldName": "eventName",
+        "operation": "EXACT",
+        "value": "engagement_quality_score"
+      }
+    ],
+    "dateRange": {
+      "startDate": "30daysAgo",
+      "endDate": "today"
+    },
+    "layout": {
+      "rows": [
+        "customEvent:slug"
+      ],
+      "columns": [
+        "customEvent:category"
+      ],
+      "values": [
+        "eventCount",
+        "totalUsers"
+      ]
+    }
+  }
+}

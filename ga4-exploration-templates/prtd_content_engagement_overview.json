@@ -1,0 +1,58 @@
+{
+  "name": "PRTD Content Engagement Overview",
+  "description": "Comprehensive view of all content interactions across the site",
+  "type": "EXPLORATION",
+  "config": {
+    "dimensions": [
+      {
+        "name": "eventName"
+      },
+      {
+        "name": "customEvent:slug"
+      },
+      {
+        "name": "customEvent:interaction_type"
+      },
+      {
+        "name": "customEvent:content_piece"
+      },
+      {
+        "name": "customEvent:category"
+      }
+    ],
+    "metrics": [
+      {
+        "name": "eventCount"
+      },
+      {
+        "name": "totalUsers"
+      },
+      {
+        "name": "averageSessionDuration"
+      }
+    ],
+    "filters": [
+      {
+        "fieldName": "eventName",
+        "operation": "EXACT",
+        "value": "content_engagement"
+      }
+    ],
+    "dateRange": {
+      "startDate": "30daysAgo",
+      "endDate": "today"
+    },
+    "layout": {
+      "rows": [
+        "eventName",
+        "customEvent:interaction_type"
+      ],
+      "columns": [
+        "customEvent:content_piece"
+      ],
+      "values": [
+        "eventCount"
+      ]
+    }
+  }
+}

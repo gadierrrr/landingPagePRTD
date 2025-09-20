@@ -1,0 +1,47 @@
+{
+  "title": "PRTD Content Engagement Analytics",
+  "description": "Comprehensive dashboard for content engagement tracking",
+  "data_source": {
+    "type": "GOOGLE_ANALYTICS_4",
+    "property_id": "502239171",
+    "credentials": "oauth"
+  },
+  "charts": [
+    {
+      "title": "Engagement Quality Distribution",
+      "type": "PIE_CHART",
+      "dimension": "customEvent:engagement_quality",
+      "metric": "eventCount",
+      "filter": "eventName == 'engagement_quality_score'"
+    },
+    {
+      "title": "Top Performing Deals",
+      "type": "BAR_CHART",
+      "dimension": "customEvent:slug",
+      "metric": "eventCount",
+      "filter": "eventName == 'content_engagement'",
+      "limit": 10
+    },
+    {
+      "title": "Content Interaction Types",
+      "type": "TABLE",
+      "dimensions": [
+        "customEvent:interaction_type",
+        "customEvent:content_piece"
+      ],
+      "metrics": [
+        "eventCount",
+        "totalUsers"
+      ],
+      "filter": "eventName == 'content_engagement'"
+    },
+    {
+      "title": "Image Engagement by Deal",
+      "type": "LINE_CHART",
+      "dimension": "date",
+      "metric": "eventCount",
+      "secondary_dimension": "customEvent:slug",
+      "filter": "eventName CONTAINS 'image'"
+    }
+  ]
+}

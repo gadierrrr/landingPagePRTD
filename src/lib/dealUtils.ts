@@ -52,6 +52,7 @@ export function displaySourceName(externalUrl?: string, sourceName?: string): st
 
 /**
  * Append UTM parameters to external URL for tracking
+ * @deprecated Use generateEnhancedUtm from analytics.ts for better tracking
  */
 export function appendUtm(url: string): string {
   try {
@@ -63,6 +64,25 @@ export function appendUtm(url: string): string {
   } catch {
     // If URL parsing fails, return original URL
     return url;
+  }
+}
+
+/**
+ * Enhanced UTM parameter appending with custom tracking
+ */
+export function appendEnhancedUtm(url: string, utmParams: string): string {
+  try {
+    const urlObj = new URL(url);
+    const params = new URLSearchParams(utmParams);
+    
+    params.forEach((value, key) => {
+      urlObj.searchParams.set(key, value);
+    });
+    
+    return urlObj.toString();
+  } catch {
+    // If URL parsing fails, return original URL with basic tracking
+    return url + (url.includes('?') ? '&' : '?') + utmParams;
   }
 }
 

@@ -1,0 +1,7 @@
+# Analytics validation dependencies
+google-analytics-data>=0.18.0
+google-auth>=2.10.0
+google-auth-oauthlib>=1.0.0
+google-auth-httplib2>=0.1.0
+google-cloud-analytics-data>=0.18.0
+analytics-mcp>=1.0.0

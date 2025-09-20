@@ -3,8 +3,18 @@ import { SEO } from '../src/ui/SEO';
 import { LandingHeader } from '../src/ui/landing/LandingHeader';
 import { Footer } from '../src/ui/Footer';
 import Image from 'next/image';
+import { useScrollTracking } from '../src/hooks/useScrollTracking';
+import { useTimeTracking } from '../src/hooks/useTimeTracking';
+import { trackTravelPassView } from '../src/lib/analytics';
 
 export default function TravelPass() {
+  // Analytics tracking
+  useScrollTracking('travel_pass_page');
+  useTimeTracking('travel_pass_page');
+  
+  React.useEffect(() => {
+    trackTravelPassView();
+  }, []);
   return (
     <>
       <SEO 

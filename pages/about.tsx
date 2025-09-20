@@ -5,8 +5,18 @@ import { Heading } from '../src/ui/Heading';
 import { Button } from '../src/ui/Button';
 import { SEO } from '../src/ui/SEO';
 import Link from 'next/link';
+import { useScrollTracking } from '../src/hooks/useScrollTracking';
+import { useTimeTracking } from '../src/hooks/useTimeTracking';
+import { trackAboutPageView } from '../src/lib/analytics';
 
 export default function About() {
+  // Analytics tracking
+  useScrollTracking('about_page');
+  useTimeTracking('about_page');
+  
+  React.useEffect(() => {
+    trackAboutPageView();
+  }, []);
   return (
     <SiteLayout>
       <SEO 

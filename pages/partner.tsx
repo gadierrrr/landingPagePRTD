@@ -1,14 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SiteLayout } from '../src/ui/layout/SiteLayout';
 import { Section } from '../src/ui/Section';
 import { Heading } from '../src/ui/Heading';
 import { Button } from '../src/ui/Button';
 import { SEO } from '../src/ui/SEO';
+import { trackPartnerFormSubmission, trackExternalLink } from '../src/lib/analytics';
 
 // Feature flag to simplify partners page for Google Form integration
 const PARTNERS_SIMPLIFIED = true as const;
 
 export default function Partners() {
+  useEffect(() => {
+    // Track partner page view as potential lead
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: 'Partner Application',
+        page_location: window.location.href,
+        content_group1: 'Partner'
+      });
+    }
+  }, []);
+
+  const handleFormInteraction = () => {
+    trackPartnerFormSubmission({ interaction_type: 'form_start' });
+  };
+
+  const handleExternalFormClick = () => {
+    trackExternalLink(
+      'https://docs.google.com/forms/d/e/1FAIpQLSc4hPDQbp-K3IPsmpNsUVG14LdzixrmXsAsN2E5VtmMyQV3Sg/viewform',
+      'partner_form',
+      'Open form in new tab'
+    );
+  };
+
   return (
     <SiteLayout>
       <SEO 
@@ -63,6 +87,8 @@ export default function Partners() {
                 title="Partner Application Form"
                 className="w-full"
                 loading="lazy"
+                onClick={handleFormInteraction}
+                onFocus={handleFormInteraction}
               >
                 Loading…
               </iframe>
@@ -72,6 +98,7 @@ export default function Partners() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-brand-navy/70 text-sm underline hover:text-brand-blue"
+                  onClick={handleExternalFormClick}
                 >
                   Having trouble? Open the form in a new tab.
                 </a>

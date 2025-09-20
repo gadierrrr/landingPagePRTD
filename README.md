@@ -97,6 +97,7 @@ NODE_ENV=production npm start
 - `GET /api/embed/events` - Embeddable events widget endpoint
 - `POST /api/upload-image` - Image upload for dealsmanager (JPEG/PNG/WebP, 5MB max, same-origin only)
 - `GET /api/serve-upload/[...path]` - Secure file serving for uploaded images with proper headers and caching
+- `POST /api/track-click` - Server-side click tracking backup for analytics
 - `POST /api/admin/auth` - Admin authentication endpoint
 - `GET /api/admin/blog` - Admin blog management endpoint
 
@@ -141,6 +142,12 @@ Copy `.env.example` to `.env.local` and configure:
 - `MAILCHIMP_API_KEY` - Your MailChimp API key
 - `MAILCHIMP_SERVER_PREFIX` - Your MailChimp server prefix (e.g., 'us13')
 - `MAILCHIMP_AUDIENCE_ID` - Your MailChimp audience/list ID
+
+### Analytics Integration (Production)
+- **GA4 Service Account**: `/home/deploy/prtd-ga4-credentials.json` (service account for Admin/Data APIs)
+- **Analytics Environment**: `/etc/prtd-analytics.env` (centralized environment variables)
+- **Property ID**: 502239171 (GA4 numeric property ID)
+- **Custom Dimensions**: 12 dimensions automatically configured via Admin API
 
 ## Development Workflows
 
@@ -258,6 +265,10 @@ pages/                    # Next.js pages (routing)
 
 src/
 ├── lib/                # Utilities & schemas
+│   ├── admin/         # Admin utilities
+│   │   ├── auth.ts    # Admin authentication
+│   │   └── fs.ts      # File system utilities
+│   ├── analytics.ts   # GA4 analytics with content engagement tracking
 │   ├── blog.ts        # Blog post utilities (getAllPostsMeta, getPostBySlug)
 │   ├── guides.ts      # Travel guides utilities and data management
 │   ├── homepageDeals.ts # Homepage-specific deals integration
@@ -265,7 +276,17 @@ src/
 │   ├── eventsStore.ts # Events JSON operations
 │   ├── forms.ts       # Extended Zod validation schemas
 │   ├── dealsStore.ts  # JSON operations with slug utilities
+│   ├── dealUtils.ts   # Deal processing and formatting utilities
+│   ├── seo.ts         # SEO utilities and structured data
+│   ├── rateLimit.ts   # API rate limiting utilities
+│   ├── mailchimp.ts   # MailChimp integration
+│   ├── featureFlags.ts # Feature flag management
+│   ├── homepageQueries.ts # Homepage data queries
+│   ├── names.ts       # Name generation utilities
 │   └── slugGenerator.ts # Slug creation with collision handling
+├── hooks/             # React hooks
+│   ├── useScrollTracking.ts # Scroll depth tracking
+│   └── useTimeTracking.ts   # Time-based engagement tracking
 ├── styles/            # Global styles & design tokens
 └── ui/                # React components
     ├── deals/         # Deal-specific components
@@ -294,6 +315,29 @@ data/
 └── events/            # Events data directory
     ├── _index.json    # Events index and metadata
     └── *.json         # Weekly event data files
+
+scripts/               # Analytics & monitoring scripts
+├── validate-analytics.py     # Comprehensive GA4 validation
+├── realtime-monitor.py       # Real-time analytics monitoring
+├── health-check.py           # System health with scoring
+├── setup-ga4-dimensions.py   # Automated custom dimensions setup
+├── show-basic-tracking.py    # Current tracking data viewer
+├── create-ga4-explorations.py # GA4 explorations creator
+├── guided-exploration-setup.py # Interactive exploration setup
+└── verify-exploration-setup.py # Setup verification
+
+ga4-exploration-templates/    # GA4 exploration configurations
+├── MANUAL_SETUP_GUIDE.md     # Step-by-step setup guide
+├── looker_studio_dashboard.json # Looker Studio template
+├── prtd_content_engagement_overview.json
+├── prtd_image_engagement_analysis.json
+├── prtd_engagement_quality_dashboard.json
+└── prtd_section_performance_analysis.json
+
+docs/                 # Analytics documentation
+├── analytics-tracking-audit.md # Tracking audit and recommendations
+├── analytics.md      # GA4 implementation guide
+└── ga4-custom-dimensions-setup.md # Custom dimensions guide
 ```
 
 ## Feature Flags
@@ -319,7 +363,90 @@ data/
 - **Accessibility**: ARIA labels, live regions for status messages
 - **Responsive design**: Mobile-optimized with existing design tokens
 
+## 🔍 Analytics Monitoring & Alerting
+
+### Automated Health Monitoring
+- **Health Scoring**: 0-100 overall system health with component-level scoring
+- **Automated Alerts**: Critical issues flagged with actionable recommendations
+- **Real-time Validation**: Live GA4 data validation with conversion tracking
+- **Partner Attribution**: Vendor performance monitoring with quality metrics
+
+### Monitoring Components
+1. **Core Tracking Health** (100 points): Page views, deal views, conversions
+2. **Conversion Funnel Analysis** (100 points): Click rates, conversion rates, quality scores
+3. **Real-time Activity** (100 points): Active user monitoring, event validation
+4. **Partner Attribution** (100 points): Vendor tracking, revenue attribution accuracy
+
+### Systemd Integration
+- **Automated Scheduling**: Health checks every 30 minutes via systemd timers
+- **Centralized Logging**: JSON health reports with timestamp tracking
+- **Service Integration**: Analytics monitoring as production system service
+- **Error Alerting**: Automatic alerts for critical issues and degraded performance
+
+## 📊 Analytics & Content Engagement Tracking
+
+### Comprehensive GA4 Analytics System
+- **Deep Content Engagement**: Track user interactions with images, text selection, link hovers, and section engagement
+- **Quality Scoring**: 0-100 engagement scoring algorithm based on time, interactions, scroll depth, and content consumption
+- **Custom Dimensions**: 12 GA4 custom dimensions for detailed attribution and segmentation
+- **Real-time Monitoring**: Live analytics validation with health scoring and automated alerts
+- **Partner Attribution**: Detailed vendor tracking with conversion and quality metrics
+
+### Analytics Tools & Scripts
+```bash
+# Check current analytics data and engagement tracking
+prtd-engagement
+
+# Validate analytics health and performance
+prtd-validate
+
+# Monitor real-time analytics with alerts
+prtd-monitor
+
+# Check overall system health with scoring
+prtd-health
+
+# Set up GA4 custom explorations (interactive guide)
+prtd-setup-explorations
+```
+
+### Content Engagement Features
+- **Image Interaction Tracking**: Hover time, click events, view duration with quality metrics
+- **Text Engagement Analytics**: Selection tracking, reading patterns, comprehension indicators
+- **Section Performance**: Time spent per content section, interaction density, completion rates
+- **Link & CTA Analysis**: Hover patterns, click-through rates, conversion quality
+- **Heatmap Data**: Click coordinates and element targeting for UX optimization
+- **Session Summaries**: Comprehensive engagement analytics with quality scoring
+
+### GA4 Custom Explorations
+Four pre-configured explorations for content engagement analytics:
+1. **Content Engagement Overview** - All content interactions across the site
+2. **Image Engagement Analysis** - Image interaction patterns and view times
+3. **Engagement Quality Dashboard** - Engagement scores and quality metrics
+4. **Section Performance Analysis** - User engagement with different content sections
+
+**Setup Guide**: `/home/deploy/prtd/ga4-exploration-templates/MANUAL_SETUP_GUIDE.md`
+
+### Analytics API Integration
+- **GA4 Admin API**: Automated custom dimension creation and management
+- **GA4 Data API**: Real-time data retrieval and health monitoring
+- **Service Account**: Full admin access with automated credential management
+- **Error Tracking**: Comprehensive error monitoring with custom dimensions
+- **Performance Metrics**: Core Web Vitals and engagement performance tracking
+
 ## Changelog
+
+**2025-09-20** - **📊 Advanced Analytics & Content Engagement Tracking System**
+  - **Content Engagement Depth Tracking**: Comprehensive user interaction analytics for images, text, links, and sections
+  - **GA4 Integration**: 12 custom dimensions, automated setup, real-time monitoring with health scoring
+  - **Quality Scoring Algorithm**: 0-100 engagement scoring based on time, interactions, scroll depth, content consumption
+  - **Analytics Tools Suite**: 5 production-ready scripts for monitoring, validation, health checks, and data analysis
+  - **Custom Explorations**: 4 pre-configured GA4 explorations with guided setup for content engagement analysis
+  - **Real-time Monitoring**: Live analytics validation with conversion tracking and automated health alerts
+  - **Partner Attribution**: Enhanced vendor tracking with engagement quality metrics and conversion analysis
+  - **Heatmap Analytics**: Click coordinate tracking and interaction pattern analysis for UX optimization
+  - **Performance Tracking**: Core Web Vitals monitoring and engagement performance metrics
+  - **Production Deployment**: Systemd timers, automated monitoring, centralized logging, executive wrappers
 
 **2025-09-17** - **🎯 Content Expansion & Meta Image Update**
   - **og:image Update**: Changed social sharing image to `/api/serve-upload/2025/09/ogImage1-1758115388863.webp`
@@ -411,7 +538,9 @@ data/
 - **Static Generation**: ISR for deals, SSG for blog posts (3600s revalidation)
 - **SEO**: Meta tags, Open Graph, Twitter Cards, JSON-LD structured data (deals + articles)
 - **Performance**: Image optimization, static generation, efficient routing, in-memory caching
-- **Deployment**: Systemd service + Nginx reverse proxy with HTTPS
+- **Analytics**: GA4 integration with content engagement tracking, custom dimensions, real-time monitoring
+- **Monitoring**: Python-based analytics validation, health checks, real-time monitoring with automated alerts
+- **Deployment**: Systemd service + Nginx reverse proxy with HTTPS, automated analytics monitoring
 
 ## Design System
 
@@ -537,6 +666,10 @@ curl http://localhost:4000/api/blog
 - **System Overview**: `DEALS_SYSTEM.md` - Complete deals management documentation
 - **Development Guide**: `CLAUDE.md` - Development setup and patterns for Claude Code
 - **Form Audit**: `FORM_AUDIT.md` - Form integration and validation details
+- **Analytics Guide**: `docs/analytics-tracking-audit.md` - Complete analytics audit and tracking recommendations
+- **GA4 Setup**: `docs/ga4-custom-dimensions-setup.md` - Custom dimensions configuration guide
+- **Exploration Setup**: `ga4-exploration-templates/MANUAL_SETUP_GUIDE.md` - Step-by-step GA4 explorations setup
+- **MCP Setup**: `mcp-setup.md` - Model Context Protocol integration guide
 
 ## License
 

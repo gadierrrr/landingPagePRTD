@@ -1,0 +1,55 @@
+{
+  "name": "PRTD Image Engagement Analysis",
+  "description": "Track image interaction patterns and view times",
+  "type": "EXPLORATION",
+  "config": {
+    "dimensions": [
+      {
+        "name": "eventName"
+      },
+      {
+        "name": "customEvent:slug"
+      },
+      {
+        "name": "customEvent:vendor_id"
+      },
+      {
+        "name": "customEvent:category"
+      }
+    ],
+    "metrics": [
+      {
+        "name": "eventCount"
+      },
+      {
+        "name": "totalUsers"
+      },
+      {
+        "name": "engagementRate"
+      }
+    ],
+    "filters": [
+      {
+        "fieldName": "eventName",
+        "operation": "CONTAINS",
+        "value": "image"
+      }
+    ],
+    "dateRange": {
+      "startDate": "30daysAgo",
+      "endDate": "today"
+    },
+    "layout": {
+      "rows": [
+        "customEvent:slug"
+      ],
+      "columns": [
+        "eventName"
+      ],
+      "values": [
+        "eventCount",
+        "totalUsers"
+      ]
+    }
+  }
+}

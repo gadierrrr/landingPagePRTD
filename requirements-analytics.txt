@@ -1,0 +1,8 @@
+# PRTD Analytics Dependencies - Pinned for Production
+google-analytics-data==0.18.19
+google-analytics-admin==0.25.0
+google-auth==2.40.3
+google-auth-oauthlib==1.2.2
+google-auth-httplib2==0.2.0
+google-api-core==2.25.1
+protobuf==6.32.1

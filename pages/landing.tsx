@@ -7,6 +7,9 @@ import { Footer } from "@/ui/Footer";
 import { PublicDealCard } from "@/ui/deals/PublicDealCard";
 import { generateOrganizationSchema } from "@/lib/seo";
 import { Deal } from "@/lib/forms";
+import { useScrollTracking } from "@/hooks/useScrollTracking";
+import { useTimeTracking } from "@/hooks/useTimeTracking";
+import { trackDealImpression } from "@/lib/analytics";
 
 interface Guide {
   id: string;
@@ -77,6 +80,20 @@ export default function PRTDPRFlagLanding({
 }: LandingProps) {
   const [midFormStatus, setMidFormStatus] = useState<string>("");
   const [midFormLoading, setMidFormLoading] = useState(false);
+  
+  // Enhanced analytics tracking
+  useScrollTracking('landing_page');
+  useTimeTracking('landing_page');
+  
+  // Track deal impressions when deals load
+  useEffect(() => {
+    if (latestDeals.length > 0) {
+      trackDealImpression(latestDeals.slice(0, 8), 'homepage_latest_deals', 'landing_page');
+    }
+    if (under50Deals.length > 0) {
+      trackDealImpression(under50Deals.slice(0, 8), 'homepage_under_50', 'landing_page');
+    }
+  }, [latestDeals, under50Deals]);
   
   // Generate organization structured data
   const organizationSchema = generateOrganizationSchema();
@@ -259,8 +276,15 @@ export default function PRTDPRFlagLanding({
           />
         )}
 
+        {/* Wave Divider between Hero and Deals */}
+        {getFeatureFlag('ENHANCED_HERO') && (
+          <div className="relative -mt-px bg-white">
+            <WaveDivider />
+          </div>
+        )}
+
         {/* This Week's Steals Section */}
-        <section id="deals-section" className="bg-white py-12">
+        <section id="deals-section" className="relative -mt-px bg-white py-12">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionHeader 
               title="This Week's Steals"
@@ -315,9 +339,6 @@ export default function PRTDPRFlagLanding({
             )}
           </div>
         </section>
-        
-        {/* Wave Divider */}
-        {getFeatureFlag('WAVE_DIVIDERS') && <WaveDivider />}
 
         {/* Under $50 Carousel Section */}
         {getFeatureFlag('UNDER_50_CAROUSEL') && under50Deals.length > 0 && (

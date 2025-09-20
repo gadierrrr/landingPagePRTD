@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { CategoryPills } from './CategoryPills';
-import { WaveDivider } from './WaveDivider';
 
 interface EnhancedHeroProps {
   backgrounds: string[];
@@ -55,9 +54,7 @@ export const EnhancedHero: React.FC<EnhancedHeroProps> = ({
         <div className="mx-auto max-w-4xl text-center text-white">
           {/* Headline */}
           <h1 className="mb-8 text-5xl font-black leading-none sm:text-7xl lg:text-8xl">
-            Puerto Rico<br />
-            travel deals,<br />
-            made fun.
+            Puerto Rico Travel Deals - Curated guides and discounts.
           </h1>
 
           {/* Category Pills */}
@@ -89,10 +86,6 @@ export const EnhancedHero: React.FC<EnhancedHeroProps> = ({
         </div>
       </div>
 
-      {/* Wave Divider */}
-      <div className="absolute inset-x-0 bottom-0">
-        <WaveDivider />
-      </div>
     </section>
   );
 };

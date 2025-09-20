@@ -1,22 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { Deal } from '../../lib/forms';
 import { isExpired, displaySourceName, formatRelativeTime, formatEndDate } from '../../lib/dealUtils';
 import { DealBadge, BadgeType } from './DealBadge';
+import { trackDealClick, trackDealView } from '../../lib/analytics';
 
 interface FeaturedDealCardProps {
   deal: Deal;
   badges?: BadgeType[];
   onDealClick?: (dealId: string) => void;
+  position?: number;
+  trackImpression?: boolean;
 }
 
 export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({ 
   deal, 
   badges = [],
-  onDealClick 
+  onDealClick,
+  position,
+  trackImpression = true
 }) => {
   const expired = isExpired(deal.expiresAt || deal.expiry);
   const sourceName = displaySourceName(deal.externalUrl, deal.sourceName);
+
+  // Track impression when component mounts
+  useEffect(() => {
+    if (trackImpression) {
+      trackDealView(deal, 'featured_deal_impression');
+    }
+  }, [deal, trackImpression]);
+
+  const handleDealClick = () => {
+    trackDealClick(deal, position, 'featured_deals');
+    onDealClick?.(deal.id || '');
+  };
   
   if (!deal.slug) {
     return null;
@@ -26,7 +43,7 @@ export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({
     <Link 
       href={`/deal/${deal.slug}`} 
       className="group block"
-      onClick={() => onDealClick?.(deal.id || '')}
+      onClick={handleDealClick}
     >
       <div className="ring-brand-navy/10 hover:ring-brand-blue/20 relative overflow-hidden rounded-2xl bg-white shadow-lg ring-1 transition-all duration-200 hover:shadow-xl">
         <div className="grid gap-0 md:grid-cols-2">

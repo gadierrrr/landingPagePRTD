@@ -7,6 +7,9 @@ import { SEO } from '../src/ui/SEO';
 import { Deal } from '../src/lib/forms';
 import { PublicDealsGrid } from '../src/ui/deals/PublicDealsGrid';
 import { generateCategoryMeta } from '../src/lib/seo';
+import { useScrollTracking } from '../src/hooks/useScrollTracking';
+import { useTimeTracking } from '../src/hooks/useTimeTracking';
+import { trackCategoryView, trackFilter } from '../src/lib/analytics';
 
 type SortOption = 'newest' | 'ending-soon';
 
@@ -20,6 +23,32 @@ export default function Deals() {
   const [error, setError] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<SortOption>('newest');
+
+  // Analytics tracking hooks
+  useScrollTracking('deals_page');
+  useTimeTracking('deals_page');
+
+  // Track category changes
+  useEffect(() => {
+    if (selectedCategory !== 'all') {
+      const categoryDeals = deals.filter(deal => deal.category === selectedCategory);
+      trackCategoryView(selectedCategory, categoryDeals.length);
+    }
+  }, [selectedCategory, deals]);
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    
+    if (category !== 'all') {
+      const categoryDeals = deals.filter(deal => deal.category === category);
+      trackFilter('category', category, categoryDeals.length);
+    }
+  };
+
+  const handleSortChange = (newSortBy: SortOption) => {
+    setSortBy(newSortBy);
+    trackFilter('sort', newSortBy, filteredAndSortedDeals.length);
+  };
 
   useEffect(() => {
     fetchDeals();
@@ -124,7 +153,7 @@ export default function Deals() {
                     {/* Category Filter */}
                     <div className="flex flex-wrap gap-2">
                       <button
-                        onClick={() => setSelectedCategory('all')}
+                        onClick={() => handleCategoryChange('all')}
                         className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
                           selectedCategory === 'all'
                             ? 'bg-brand-navy text-white'
@@ -136,7 +165,7 @@ export default function Deals() {
                       {categories.map(category => (
                         <button
                           key={category}
-                          onClick={() => setSelectedCategory(category)}
+                          onClick={() => handleCategoryChange(category)}
                           className={`rounded-full px-4 py-2 text-sm font-semibold capitalize transition-colors ${
                             selectedCategory === category
                               ? 'bg-brand-navy text-white'
@@ -156,7 +185,7 @@ export default function Deals() {
                       <select
                         id="sort"
                         value={sortBy}
-                        onChange={(e) => setSortBy(e.target.value as SortOption)}
+                        onChange={(e) => handleSortChange(e.target.value as SortOption)}
                         className="border-brand-navy/20 focus:ring-brand-blue/20 rounded-lg border bg-white px-3 py-2 text-sm text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2"
                       >
                         <option value="newest">Newest</option>
@@ -220,7 +249,7 @@ export default function Deals() {
             {/* Category Filter */}
             <div className="flex flex-wrap gap-2">
               <button
-                onClick={() => setSelectedCategory('all')}
+                onClick={() => handleCategoryChange('all')}
                 className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
                   selectedCategory === 'all'
                     ? 'bg-brand-navy text-white'
@@ -232,7 +261,7 @@ export default function Deals() {
               {categories.map(category => (
                 <button
                   key={category}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => handleCategoryChange(category)}
                   className={`rounded-full px-4 py-2 text-sm font-semibold capitalize transition-colors ${
                     selectedCategory === category
                       ? 'bg-brand-navy text-white'

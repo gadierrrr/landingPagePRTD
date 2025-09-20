@@ -303,5 +303,51 @@
       "/api/serve-upload/2025/09/XoloTacoCondado-1758070430897.jpg"
     ],
     "terms": ""
+  },
+  {
+    "title": "$179 for a Parachute Jump for 1 Person; or $319 for 2 - Arecibo",
+    "description": "$179 for a Parachute Jump for 1 Person; or $319 for Parachute Jump for 2 People; Both Options Include: 20% Discount from the Original Price for 1 Additional Person on the Same Day ",
+    "amountLabel": "45% OFF",
+    "location": "Arecibo",
+    "image": "/api/serve-upload/2025/09/parachuteAreciboDEal-1758131387286.jpg",
+    "category": "activity",
+    "expiry": "2025-09-17T15:49:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Adventures_skydivepuertorico33",
+    "highlights": [],
+    "price": 179,
+    "originalPrice": 350,
+    "currency": "USD",
+    "id": "8fadf4a8-21a5-479e-abf7-73a216a48eda",
+    "slug": "179-for-a-parachute-jump-for-1-person-or-319-for-2-arecibo",
+    "updatedAt": "2025-09-17T17:50:24.362Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/parachuteAreciboDEal-1758131387286.jpg"
+    ],
+    "fullDescription": "$179 for a Parachute Jump for 1 Person; or $319 for Parachute Jump for 2 People; Both Options Include: 20% Discount from the Original Price for 1 Additional Person on the Same Day ",
+    "terms": ""
+  },
+  {
+    "title": "$60 for a 6-Hour Nature Adventure - Utuado",
+    "description": "6-Hour Adventure, Including: 4x4 Transportation at Tamana Forest + Tour to Explore Tunnels and Caves + Cave Tubing on the Longest Route in the Tanamá",
+    "amountLabel": "50% OFF",
+    "location": "Utuado",
+    "image": "/api/serve-upload/2025/09/utuadoAdventureDeal-1758131691543.jpg",
+    "category": "activity",
+    "expiry": "2025-09-27T15:55:00.000Z",
+    "partner": "Gustazos.com",
+    "externalUrl": "https://www.gustazos.com/deals/Adventures_aventureo26",
+    "fullDescription": "$60 for a 6-Hour Adventure, Including: 4x4 Transportation at Tamana Forest + Tour to Explore Tunnels and Caves + Cave Tubing on the Longest Route in the Tanamá + Photography and Video Service + Lifejacket + Protective Helmet and Flashlight + Interpreter Guide (Check Out Details in ‘The Experience’)",
+    "highlights": [],
+    "price": 60,
+    "originalPrice": 120,
+    "currency": "USD",
+    "id": "bebc043e-3ccf-4848-9f83-b5c64fe2e64b",
+    "slug": "60-for-a-6-hour-nature-adventure-utuado",
+    "updatedAt": "2025-09-17T17:55:45.306Z",
+    "gallery": [
+      "/api/serve-upload/2025/09/utuadoAdventureDeal-1758131691543.jpg"
+    ],
+    "terms": ""
   }
 ]
