@@ -18,6 +18,8 @@ Full-featured travel deals platform with Groupon-style detail pages, built with 
 - **Travel Guides**: https://puertoricotraveldeals.com/guides
 - **Travel Pass**: https://puertoricotraveldeals.com/travel-pass
 - **Events**: https://puertoricotraveldeals.com/events
+- **Beach Finder**: https://puertoricotraveldeals.com/beachfinder
+- **Beach Manager**: https://puertoricotraveldeals.com/beachesmanager
 
 ## Quick Start
 
@@ -100,6 +102,10 @@ NODE_ENV=production npm start
 - `POST /api/track-click` - Server-side click tracking backup for analytics
 - `POST /api/admin/auth` - Admin authentication endpoint
 - `GET /api/admin/blog` - Admin blog management endpoint
+- `GET /api/beaches` - Retrieve all beaches as JSON array with filtering support
+- `POST /api/beaches` - Create new beach entry (admin only, with duplicate detection)
+- `PUT /api/beaches/[id]` - Update existing beach by ID (admin only)
+- `DELETE /api/beaches/[id]` - Remove beach by ID (admin only)
 
 ### Deals Management System
 - **Storage**: JSON file at `data/deals.json` with atomic writes
@@ -260,6 +266,8 @@ pages/                    # Next.js pages (routing)
 ├── dealsmanager.tsx    # Admin deals management
 ├── eventsmanager.tsx   # Admin events management
 ├── blogmanager.tsx     # Admin blog management
+├── beachfinder.tsx     # Public beach discovery page with geolocation and filtering
+├── beachesmanager.tsx  # Admin beach management interface
 ├── join.tsx            # Waitlist signup form
 └── partner.tsx         # Partner application form
 
@@ -269,6 +277,7 @@ src/
 │   │   ├── auth.ts    # Admin authentication
 │   │   └── fs.ts      # File system utilities
 │   ├── analytics.ts   # GA4 analytics with content engagement tracking
+│   ├── beachesStore.ts # Beach data operations with atomic writes and audit logging
 │   ├── blog.ts        # Blog post utilities (getAllPostsMeta, getPostBySlug)
 │   ├── guides.ts      # Travel guides utilities and data management
 │   ├── homepageDeals.ts # Homepage-specific deals integration
@@ -288,7 +297,17 @@ src/
 │   ├── useScrollTracking.ts # Scroll depth tracking
 │   └── useTimeTracking.ts   # Time-based engagement tracking
 ├── styles/            # Global styles & design tokens
+├── constants/         # Shared constants and vocabularies  
+│   └── beachVocab.ts  # Beach taxonomy (tags, amenities, municipalities, conditions)
 └── ui/                # React components
+    ├── beaches/       # Beach-specific components
+    │   ├── BeachCard.tsx           # Admin beach card
+    │   ├── BeachForm.tsx           # Comprehensive beach form with duplicate detection
+    │   ├── BeachesGrid.tsx         # Admin beach grid layout
+    │   ├── BeachesManager.tsx      # Full admin CRUD interface
+    │   ├── BeachDetailsDrawer.tsx  # Mobile-optimized beach details drawer
+    │   ├── PublicBeachCard.tsx     # Public beach preview cards
+    │   └── PublicBeachesGrid.tsx   # Public beach grid with sorting
     ├── deals/         # Deal-specific components
     │   ├── DealCard.tsx      # Admin card component
     │   ├── DealForm.tsx      # Extended admin form
@@ -312,6 +331,7 @@ content/
 
 data/
 ├── deals.json         # Extended deal storage (JSON)
+├── beaches.json       # Beach data with geolocation and amenities (JSON)
 └── events/            # Events data directory
     ├── _index.json    # Events index and metadata
     └── *.json         # Weekly event data files
@@ -435,6 +455,20 @@ Four pre-configured explorations for content engagement analytics:
 - **Performance Metrics**: Core Web Vitals and engagement performance tracking
 
 ## Changelog
+
+**2025-09-21** - **🏖️ Beach Finder Mini-App: Comprehensive Beach Discovery System**
+  - **Public Beach Finder**: Geolocation-enabled beach discovery at `/beachfinder` with advanced filtering by municipality, tags, and distance
+  - **Admin Beach Manager**: Full CRUD interface at `/beachesmanager` with duplicate detection and comprehensive form validation
+  - **Rich Beach Database**: 78 Puerto Rico municipalities, 12 beach tags, 10 amenities, and 3-level condition scales (sargassum, surf, wind)
+  - **Geolocation Integration**: Browser-based location detection with Haversine distance calculations and fallback sorting
+  - **Advanced Duplicate Detection**: Proximity-based (≤250m) and string similarity (≥85%) algorithm with manual override options
+  - **Atomic Data Storage**: JSON file storage with file locking, audit logging, and JSONL-based change tracking
+  - **Image Management System**: Cover images and galleries with secure upload validation (JPEG/PNG/WebP, 5MB max)
+  - **Mobile-Optimized UI**: Touch-friendly design with drawer-based details view and responsive beach cards
+  - **SEO & Analytics**: Meta tags, canonical URLs, and comprehensive GA4 tracking for all user interactions
+  - **Security First**: Admin authentication, rate limiting, input validation, and comprehensive audit trails
+  - **Production Ready**: Deployment guide, seed data (5 popular beaches), health monitoring, and maintenance documentation
+  - **Type-Safe Implementation**: Full TypeScript coverage with Zod validation and comprehensive error handling
 
 **2025-09-20** - **📊 Advanced Analytics & Content Engagement Tracking System**
   - **Content Engagement Depth Tracking**: Comprehensive user interaction analytics for images, text, links, and sections
@@ -602,6 +636,15 @@ curl http://localhost:4000/blog/welcome-to-prtd-blog
 
 # Check blog API
 curl http://localhost:4000/api/blog
+
+# Test beach finder page
+curl http://localhost:4000/beachfinder
+
+# Check beaches API
+curl http://localhost:4000/api/beaches
+
+# Test beach manager access (requires auth)
+curl -I http://localhost:4000/beachesmanager
 ```
 
 ## Key Features
@@ -661,11 +704,138 @@ curl http://localhost:4000/api/blog
 - **API Endpoint**: `POST /api/upload-image` with formidable multipart parsing
 - **Note**: Images are immediately accessible after upload and deal save in production
 
+## 🏖️ Beach Finder Mini-App
+
+### Overview
+Comprehensive beach discovery system with geolocation-based filtering, admin management, and comprehensive analytics tracking.
+
+### Features
+
+#### Public Beach Finder (`/beachfinder`)
+- **Geolocation Discovery**: Browser-based location detection with fallback to alphabetical sorting
+- **Advanced Filtering**: Filter by municipality, beach features (tags), and distance radius
+- **Interactive Interface**: Beach cards with cover images, amenity badges, and condition indicators
+- **Distance Calculation**: Real-time distance calculations using Haversine formula
+- **Mobile Responsive**: Touch-friendly design with drawer-based beach details view
+- **SEO Optimized**: Meta tags, canonical URLs, and proper structured data
+- **Analytics Integration**: Comprehensive tracking of all user interactions and engagement
+
+#### Admin Beach Manager (`/beachesmanager`)
+- **Full CRUD Operations**: Create, read, update, delete beach entries with comprehensive validation
+- **Duplicate Detection**: Advanced algorithm using proximity (<250m) and string similarity (≥85%)
+- **Image Management**: Cover image uploads with gallery support (JPEG/PNG/WebP, 5MB max)
+- **Audit Logging**: JSONL-based audit trail for all administrative actions with IP tracking
+- **Admin Authentication**: Cookie-based authentication system with role-based access
+- **Form Validation**: Comprehensive Zod schema validation with real-time error feedback
+
+#### Beach Data System
+- **Atomic Storage**: JSON file storage with file locking to prevent data corruption
+- **Puerto Rico Focus**: All 78 municipalities with coordinate boundary validation
+- **Rich Taxonomy**: 12 beach tags, 10 amenities, and 3-level condition scales (sargassum, surf, wind)
+- **Geolocation Data**: Precise latitude/longitude coordinates with Puerto Rico bounds checking
+- **Alias Support**: Alternative beach names for better searchability
+- **Image Galleries**: Multiple images per beach with optimized loading
+
+### Beach Data Structure
+
+#### Core Fields
+- **Identity**: `id` (UUID), `slug` (SEO-friendly URL), `name`, `municipality`
+- **Location**: `coords` (lat/lng with PR boundary validation), `accessLabel`
+- **Classification**: `tags[]` (beach features), `amenities[]` (facilities), `aliases[]`
+- **Conditions**: `sargassum`, `surf`, `wind` (3-level scales: none/light/moderate/heavy)
+- **Media**: `coverImage` (required), `gallery[]` (up to 5 images)
+- **Metadata**: `notes`, `parentId`, `updatedAt` (automatic timestamp)
+
+#### Beach Tags (12 Available)
+`calm-waters`, `surfing`, `snorkeling`, `family-friendly`, `accessible`, `secluded`, `popular`, `scenic`, `swimming`, `diving`, `fishing`, `camping`
+
+#### Amenities (10 Available)
+`restrooms`, `showers`, `lifeguard`, `parking`, `food`, `equipment-rental`, `accessibility`, `picnic-areas`, `shade-structures`, `water-sports`
+
+#### Municipalities (78 Total)
+All Puerto Rico municipalities including main island, Vieques, and Culebra with proper Unicode support for special characters.
+
+### Technical Implementation
+
+#### Storage & Security
+- **File Storage**: Production data in `/var/prtd-data/beaches.json` with proper permissions (755 directory, 600 files)
+- **Atomic Writes**: Lock → temp file → rename pattern prevents corruption during concurrent access
+- **Audit Trail**: All admin actions logged to `beaches.log.jsonl` with timestamps, IP addresses, and change hashes
+- **Rate Limiting**: API endpoints protected with IP-based rate limiting to prevent abuse
+- **Input Validation**: Comprehensive Zod schemas with coordinate bounds, municipality validation, and file type checking
+
+#### Performance & SEO
+- **SSG with ISR**: Beach finder page uses Incremental Static Regeneration (60s revalidation)
+- **Efficient Filtering**: Client-side filtering with optimized distance calculations
+- **Image Optimization**: Next.js Image component with lazy loading and responsive sizing
+- **SEO Excellence**: Meta tags, Open Graph support, canonical URLs, and proper heading structure
+- **Analytics Tracking**: GA4 integration with custom events for geolocation, filtering, and beach interactions
+
+#### Duplicate Prevention
+- **Proximity Detection**: Haversine distance calculation flags beaches within 250 meters
+- **String Similarity**: Levenshtein distance algorithm for name/alias similarity (≥85% threshold)
+- **Manual Override**: Admin can choose to save anyway or merge with existing entries
+- **Visual Warnings**: Clear UI indicators when potential duplicates are detected
+
+### Deployment & Maintenance
+
+#### Initial Setup
+```bash
+# Create production data directory
+sudo mkdir -p /var/prtd-data
+sudo chown deploy:deploy /var/prtd-data
+sudo chmod 755 /var/prtd-data
+
+# Initialize with seed data (5 popular beaches included)
+cp data/beaches.json /var/prtd-data/beaches.json
+
+# Verify API access
+curl http://localhost:4000/api/beaches
+```
+
+#### Monitoring & Health
+- **Health Endpoint**: `/api/health` includes system-wide health check
+- **Data Integrity**: Beach data validation on every read/write operation
+- **Backup Strategy**: Regular backups of `beaches.json` and `beaches.log.jsonl` recommended
+- **Log Monitoring**: Audit trail provides comprehensive admin action tracking
+
+#### Analytics & Insights
+- **User Behavior**: Track geolocation usage, filter preferences, and beach popularity
+- **Performance Metrics**: Monitor page load times, API response times, and user engagement
+- **Content Analytics**: Understand which beaches are most popular and why
+- **Admin Actions**: Audit trail provides insights into content management patterns
+
+### Content Management Workflow
+
+#### Adding New Beaches
+1. Access `/beachesmanager` with admin credentials
+2. Click "Add New Beach" button
+3. Fill comprehensive form with required fields (name, municipality, coordinates, cover image)
+4. Add optional details (tags, amenities, conditions, gallery, notes)
+5. Use "Check for Duplicates" to validate uniqueness
+6. Save with automatic slug generation and audit logging
+
+#### Managing Existing Beaches
+1. View all beaches in admin grid with search and filter capabilities
+2. Edit entries with full form validation and duplicate checking
+3. Upload new images with automatic file management
+4. Delete entries with confirmation prompts and audit logging
+5. Monitor changes via audit trail for accountability
+
+### Future Enhancement Opportunities
+- **Map Integration**: Interactive map view with beach markers and clustering
+- **Weather API**: Real-time weather and surf condition updates
+- **User Reviews**: Rating and review system for beach quality feedback
+- **Favorites System**: User bookmark functionality for personalized beach lists
+- **Advanced Search**: Full-text search across beach names, descriptions, and aliases
+- **Batch Operations**: Bulk import/export functionality for large dataset management
+
 ## Documentation
 
 - **System Overview**: `DEALS_SYSTEM.md` - Complete deals management documentation
 - **Development Guide**: `CLAUDE.md` - Development setup and patterns for Claude Code
 - **Form Audit**: `FORM_AUDIT.md` - Form integration and validation details
+- **Beach Finder Guide**: `docs/BEACH_FINDER_DEPLOYMENT.md` - Complete Beach Finder deployment and maintenance guide
 - **Analytics Guide**: `docs/analytics-tracking-audit.md` - Complete analytics audit and tracking recommendations
 - **GA4 Setup**: `docs/ga4-custom-dimensions-setup.md` - Custom dimensions configuration guide
 - **Exploration Setup**: `ga4-exploration-templates/MANUAL_SETUP_GUIDE.md` - Step-by-step GA4 explorations setup

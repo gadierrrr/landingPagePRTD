@@ -1,0 +1,107 @@
+[
+  {
+    "id": "b1e2c3d4-5678-9abc-def0-123456789abc",
+    "slug": "flamenco-beach-culebra",
+    "name": "Flamenco Beach",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3158,
+      "lng": -65.3097
+    },
+    "tags": ["calm-waters", "family-friendly", "scenic", "swimming"],
+    "amenities": ["restrooms", "parking", "shade-structures"],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/flamenco-beach.jpg",
+    "gallery": ["/images/beaches/flamenco-beach-1.jpg", "/images/beaches/flamenco-beach-2.jpg"],
+    "aliases": ["Playa Flamenco"],
+    "accessLabel": "Main beach entrance",
+    "notes": "World-famous beach with crystal clear turquoise waters and white sand. Perfect for families and snorkeling.",
+    "updatedAt": "2025-01-21T12:00:00.000Z"
+  },
+  {
+    "id": "c2d3e4f5-6789-abcd-ef01-23456789abcd",
+    "slug": "condado-beach-san-juan",
+    "name": "Condado Beach",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4655,
+      "lng": -66.0776
+    },
+    "tags": ["popular", "surfing", "accessible", "swimming"],
+    "amenities": ["restrooms", "showers", "lifeguard", "parking", "food", "accessibility"],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/condado-beach.jpg",
+    "gallery": ["/images/beaches/condado-beach-1.jpg"],
+    "aliases": ["Playa Condado"],
+    "accessLabel": "Multiple access points along Ashford Avenue",
+    "notes": "Urban beach in the heart of San Juan with hotels, restaurants, and easy access. Good for beginner surfing.",
+    "updatedAt": "2025-01-21T12:00:00.000Z"
+  },
+  {
+    "id": "d3e4f5g6-789a-bcde-f012-3456789abcde",
+    "slug": "luquillo-beach-luquillo",
+    "name": "Luquillo Beach",
+    "municipality": "Luquillo",
+    "coords": {
+      "lat": 18.3722,
+      "lng": -65.7161
+    },
+    "tags": ["family-friendly", "popular", "swimming", "scenic"],
+    "amenities": ["restrooms", "showers", "lifeguard", "parking", "food", "picnic-areas", "shade-structures"],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/luquillo-beach.jpg",
+    "gallery": [],
+    "aliases": ["Playa Luquillo", "Balneario de Luquillo"],
+    "accessLabel": "Main balneario entrance",
+    "notes": "Famous for its kiosks serving local food, especially alcapurrias and bacalaitos. Protected by coral reef.",
+    "updatedAt": "2025-01-21T12:00:00.000Z"
+  },
+  {
+    "id": "e4f5g6h7-89ab-cdef-0123-456789abcdef",
+    "slug": "mosquito-bay-vieques",
+    "name": "Mosquito Bay",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0992,
+      "lng": -65.4739
+    },
+    "tags": ["secluded", "scenic", "family-friendly"],
+    "amenities": ["parking"],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "calm",
+    "coverImage": "/images/beaches/mosquito-bay.jpg",
+    "gallery": [],
+    "aliases": ["Bahía Mosquito", "Bioluminescent Bay"],
+    "accessLabel": "Kayak access only",
+    "notes": "World's brightest bioluminescent bay. Best experienced at night on kayak tours. Swimming restricted to protect ecosystem.",
+    "updatedAt": "2025-01-21T12:00:00.000Z"
+  },
+  {
+    "id": "f5g6h7i8-9abc-def0-1234-56789abcdef0",
+    "slug": "crash-boat-beach-aguadilla",
+    "name": "Crash Boat Beach",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4844,
+      "lng": -67.1675
+    },
+    "tags": ["surfing", "snorkeling", "popular", "scenic"],
+    "amenities": ["parking", "food", "equipment-rental"],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/crash-boat-beach.jpg",
+    "gallery": [],
+    "aliases": ["Playa Crash Boat"],
+    "accessLabel": "Main parking area",
+    "notes": "Famous for its colorful fishing boats and excellent snorkeling. Former military pier creates unique landscape.",
+    "updatedAt": "2025-01-21T12:00:00.000Z"
+  }
+]

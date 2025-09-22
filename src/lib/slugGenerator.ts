@@ -90,3 +90,42 @@ export function generateEventSlug(
   
   return slug;
 }
+
+export function generateBeachSlug(
+  name: string,
+  municipality: string,
+  coords: { lat: number; lng: number },
+  existingSlugs: string[] = []
+): string {
+  // Create short geohash-like suffix from coordinates (rounded to ~100m precision)
+  const latRounded = Math.round(coords.lat * 1000) / 1000; // 3 decimals ≈ 100m
+  const lngRounded = Math.round(coords.lng * 1000) / 1000;
+  const coordsSuffix = `${latRounded.toString().replace('.', '')}-${Math.abs(lngRounded).toString().replace('.', '')}`;
+  
+  // Create base text from name + municipality + coords
+  const baseText = `${name}-${municipality}-${coordsSuffix}`;
+  
+  let baseSlug = baseText
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '') // Remove special chars except spaces and hyphens
+    .replace(/[\s_]+/g, '-') // Replace spaces and underscores with hyphens
+    .replace(/-+/g, '-') // Collapse multiple hyphens
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  
+  // Ensure slug is not empty
+  if (!baseSlug) {
+    baseSlug = `beach-${municipality.toLowerCase()}-${coordsSuffix}`;
+  }
+  
+  // Check for collisions and add short hash if needed
+  let slug = baseSlug;
+  
+  if (existingSlugs.includes(slug)) {
+    // Generate short hash from the full content for deterministic collision resolution
+    const hash = crypto.createHash('md5').update(baseText + Date.now()).digest('hex').substring(0, 6);
+    slug = `${baseSlug}-${hash}`;
+  }
+  
+  return slug;
+}

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { TAGS, AMENITIES, CONDITION_SCALES, MUNICIPALITIES, PR_BOUNDS } from '../constants/beachVocab';
 
 export const waitlistSchema = z.object({
   fullName: z.string().min(2, 'Full name must be at least 2 characters'),
@@ -136,6 +137,40 @@ export const eventsIndexSchema = z.object({
   }))
 });
 
+// Beach schema
+export const beachSchema = z.object({
+  id: z.string().uuid().optional(), // Generated server-side for new beaches
+  slug: z.string().min(1, 'Slug is required').optional(), // Generated from name + municipality + coords
+  name: z.string().min(1, 'Beach name is required').max(80, 'Beach name must be 80 characters or less'),
+  municipality: z.enum(MUNICIPALITIES, {
+    errorMap: () => ({ message: 'Municipality must be a valid Puerto Rico municipality' })
+  }),
+  coords: z.object({
+    lat: z.number()
+      .min(PR_BOUNDS.lat.min, `Latitude must be within Puerto Rico (${PR_BOUNDS.lat.min} to ${PR_BOUNDS.lat.max})`)
+      .max(PR_BOUNDS.lat.max, `Latitude must be within Puerto Rico (${PR_BOUNDS.lat.min} to ${PR_BOUNDS.lat.max})`),
+    lng: z.number()
+      .min(PR_BOUNDS.lng.min, `Longitude must be within Puerto Rico (${PR_BOUNDS.lng.min} to ${PR_BOUNDS.lng.max})`)
+      .max(PR_BOUNDS.lng.max, `Longitude must be within Puerto Rico (${PR_BOUNDS.lng.min} to ${PR_BOUNDS.lng.max})`)
+  }),
+  tags: z.array(z.enum(TAGS)).default([]),
+  amenities: z.array(z.enum(AMENITIES)).default([]),
+  sargassum: z.enum(CONDITION_SCALES.sargassum).optional(),
+  surf: z.enum(CONDITION_SCALES.surf).optional(),
+  wind: z.enum(CONDITION_SCALES.wind).optional(),
+  coverImage: z.string().refine((val) => val.startsWith('/images/') || val.startsWith('/api/serve-upload/'), {
+    message: 'Cover image must start with /images/ or /api/serve-upload/'
+  }),
+  gallery: z.array(z.string().refine((val) => val.startsWith('/images/') || val.startsWith('/api/serve-upload/'), {
+    message: 'Gallery images must start with /images/ or /api/serve-upload/'
+  })).max(5, 'Gallery can have maximum 5 images').optional(),
+  aliases: z.array(z.string()).optional(),
+  parentId: z.string().uuid().optional(),
+  accessLabel: z.string().max(50, 'Access label must be 50 characters or less').optional(),
+  notes: z.string().max(500, 'Notes must be 500 characters or less').optional(),
+  updatedAt: z.string().datetime().optional()
+});
+
 export type WaitlistData = z.infer<typeof waitlistSchema>;
 export type PartnerData = z.infer<typeof partnerSchema>;
 export type Deal = z.infer<typeof dealSchema>;
@@ -143,3 +178,4 @@ export type Event = z.infer<typeof eventSchema>;
 export type EventImage = z.infer<typeof eventImageSchema>;
 export type WeeklyEvents = z.infer<typeof weeklyEventsSchema>;
 export type EventsIndex = z.infer<typeof eventsIndexSchema>;
+export type Beach = z.infer<typeof beachSchema>;

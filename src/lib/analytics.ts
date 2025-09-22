@@ -3,7 +3,7 @@
  * Provides comprehensive event tracking for deal interactions, conversions, and user engagement
  */
 
-import { Deal } from './forms';
+import { Deal, Beach } from './forms';
 
 // Global gtag function declaration
 declare global {
@@ -705,4 +705,91 @@ export const generateEngagementSummary = (deal: Deal, sessionData: {
   });
   
   return summary;
+};
+
+/**
+ * Beach Finder specific tracking functions
+ */
+
+// Track Beach Finder section view
+export const trackBeachFinderSectionView = (cardsShown: number) => {
+  trackEvent('beachfinder_section_view', {
+    cards_shown: cardsShown,
+    section_type: 'beach_list'
+  });
+};
+
+// Track use my location button click
+export const trackUseMyLocationClick = () => {
+  trackEvent('use_my_location_click', {
+    feature: 'beachfinder',
+    action_type: 'geolocation_request'
+  });
+};
+
+// Track geolocation denied
+export const trackGeolocationDenied = () => {
+  trackEvent('geolocation_denied', {
+    feature: 'beachfinder',
+    fallback_behavior: 'alphabetical_sort'
+  });
+};
+
+// Track beach filters change
+export const trackBeachFiltersChange = (filters: {
+  tags?: string[];
+  distance?: number;
+  sort?: string;
+}) => {
+  trackEvent('beach_filters_change', {
+    selected_tags: filters.tags?.join(',') || '',
+    distance_bucket: filters.distance ? Math.round(filters.distance / 10) * 10 : 'all', // Round to nearest 10
+    sort_method: filters.sort || 'closest',
+    filter_count: (filters.tags?.length || 0)
+  });
+};
+
+// Track beach card click
+export const trackBeachCardClick = (beach: Beach, position: number, tags: string[]) => {
+  trackEvent('beach_card_click', {
+    beach_slug: beach.slug,
+    beach_name: beach.name,
+    municipality: beach.municipality,
+    position: position,
+    tags: tags.join(','),
+    has_conditions: !!(beach.sargassum || beach.surf || beach.wind)
+  });
+};
+
+// Track directions click
+export const trackBeachDirectionsClick = (beach: Beach, distance?: number, src: string = 'beachfinder') => {
+  const distanceBucket = distance 
+    ? distance < 1000 ? 'under_1km' 
+      : distance < 5000 ? '1-5km'
+      : distance < 15000 ? '5-15km'
+      : 'over_15km'
+    : 'unknown';
+
+  trackEvent('directions_click', {
+    beach_slug: beach.slug,
+    beach_name: beach.name,
+    municipality: beach.municipality,
+    distance_bucket: distanceBucket,
+    distance_meters: distance ? Math.round(distance) : undefined,
+    src: src,
+    external_action: 'maps_navigation'
+  });
+};
+
+// Track beach details view
+export const trackBeachDetailsView = (beach: Beach) => {
+  trackEvent('beach_details_view', {
+    beach_slug: beach.slug,
+    beach_name: beach.name,
+    municipality: beach.municipality,
+    has_gallery: !!(beach.gallery && beach.gallery.length > 0),
+    has_conditions: !!(beach.sargassum || beach.surf || beach.wind),
+    tags_count: beach.tags?.length || 0,
+    amenities_count: beach.amenities?.length || 0
+  });
 };
