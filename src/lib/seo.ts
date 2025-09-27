@@ -1,4 +1,4 @@
-import { Deal, Event } from './forms';
+import { Deal, Event, Beach } from './forms';
 
 // Structured Data Schemas
 
@@ -303,7 +303,160 @@ export function generateEventSeriesStructuredData(events: Event[], weekStart: st
   };
 }
 
+// Beach SEO Functions
+
+export interface BeachMeta {
+  title: string;
+  description: string;
+  canonical: string;
+  image: string;
+  keywords: string[];
+}
+
+export function generateBeachMeta(beach: Beach): BeachMeta {
+  const title = `${beach.name} Beach - ${beach.municipality}, Puerto Rico | Beach Guide`;
+  
+  // Use first 155 chars of notes for description, with fallback
+  let description = beach.notes 
+    ? beach.notes.length > 155 
+      ? beach.notes.substring(0, 152) + '...'
+      : beach.notes
+    : `Discover ${beach.name} beach in ${beach.municipality}. ${beach.tags?.slice(0,2).map(tag => tag.replace(/_/g, ' ')).join(', ') || 'Beautiful'} beach in Puerto Rico.`;
+  
+  // Ensure it has location context
+  if (!description.includes('Puerto Rico')) {
+    description += ` Located in ${beach.municipality}, Puerto Rico.`;
+  }
+
+  const keywords = [
+    beach.name.toLowerCase(),
+    `${beach.municipality.toLowerCase()} beach`,
+    'puerto rico beaches',
+    'caribbean beaches',
+    ...(beach.tags?.slice(0, 3) || [])
+  ];
+
+  return {
+    title,
+    description,
+    canonical: `https://puertoricotraveldeals.com/beaches/${beach.slug}`,
+    image: beach.coverImage.startsWith('/') 
+      ? `https://puertoricotraveldeals.com${beach.coverImage}`
+      : beach.coverImage,
+    keywords
+  };
+}
+
+// JSON-LD structured data for beaches
+export interface PlaceSchema {
+  "@context": "https://schema.org";
+  "@type": "Place" | "Beach";
+  name: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  geo: {
+    "@type": "GeoCoordinates";
+    latitude: number;
+    longitude: number;
+  };
+  address: {
+    "@type": "PostalAddress";
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+  };
+  amenityFeature?: Array<{
+    "@type": "LocationFeatureSpecification";
+    name: string;
+    value: boolean;
+  }>;
+  additionalProperty?: Array<{
+    "@type": "PropertyValue";
+    name: string;
+    value: string;
+  }>;
+}
+
+export function generateBeachStructuredData(beach: Beach, beachUrl?: string): PlaceSchema {
+  const schema: PlaceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Beach", // More specific than Place
+    name: beach.name,
+    description: beach.notes || `${beach.name} beach in ${beach.municipality}, Puerto Rico`,
+    url: beachUrl || `https://puertoricotraveldeals.com/beaches/${beach.slug}`,
+    image: beach.coverImage.startsWith('/') 
+      ? `https://puertoricotraveldeals.com${beach.coverImage}`
+      : beach.coverImage,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: beach.coords.lat,
+      longitude: beach.coords.lng
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: beach.municipality,
+      addressRegion: "Puerto Rico",
+      addressCountry: "US"
+    }
+  };
+
+  // Add amenities as features
+  if (beach.amenities && beach.amenities.length > 0) {
+    schema.amenityFeature = beach.amenities.map(amenity => ({
+      "@type": "LocationFeatureSpecification",
+      name: amenity.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      value: true
+    }));
+  }
+
+  // Add beach characteristics as additional properties
+  const additionalProps: Array<{
+    "@type": "PropertyValue";
+    name: string;
+    value: string;
+  }> = [];
+  
+  if (beach.tags && beach.tags.length > 0) {
+    additionalProps.push({
+      "@type": "PropertyValue",
+      name: "Beach Type",
+      value: beach.tags.join(', ').replace(/_/g, ' ')
+    });
+  }
+
+  if (beach.sargassum) {
+    additionalProps.push({
+      "@type": "PropertyValue", 
+      name: "Sargassum Level",
+      value: beach.sargassum
+    });
+  }
+
+  if (beach.surf) {
+    additionalProps.push({
+      "@type": "PropertyValue",
+      name: "Surf Conditions", 
+      value: beach.surf
+    });
+  }
+
+  if (beach.accessLabel) {
+    additionalProps.push({
+      "@type": "PropertyValue",
+      name: "Access",
+      value: beach.accessLabel
+    });
+  }
+
+  if (additionalProps.length > 0) {
+    schema.additionalProperty = additionalProps;
+  }
+
+  return schema;
+}
+
 // Utility function to generate JSON-LD script tag
-export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema | EventSchema | EventSeriesSchema): string {
+export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema | EventSchema | EventSeriesSchema | PlaceSchema): string {
   return `<script type="application/ld+json">${JSON.stringify(data, null, 2)}</script>`;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 import { Beach } from '../../lib/forms';
 import { Button } from '../Button';
 import { 
@@ -227,7 +228,7 @@ export const BeachForm: React.FC<BeachFormProps> = ({
       {/* Duplicates Warning */}
       {duplicates && duplicates.length > 0 && (
         <div className="mb-6 rounded-lg border border-orange-200 bg-orange-50 p-4">
-          <h4 className="font-semibold text-orange-800 mb-2">⚠️ Possible Duplicates Found</h4>
+          <h4 className="mb-2 font-semibold text-orange-800">⚠️ Possible Duplicates Found</h4>
           <div className="space-y-2">
             {duplicates.map(dup => (
               <div key={dup.id} className="text-sm text-orange-700">
@@ -339,7 +340,7 @@ export const BeachForm: React.FC<BeachFormProps> = ({
           <label className="mb-2 block text-sm font-medium text-brand-navy">Beach Features</label>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
             {TAGS.map(tag => (
-              <label key={tag} className="flex items-center space-x-2 cursor-pointer">
+              <label key={tag} className="flex cursor-pointer items-center space-x-2">
                 <input
                   type="checkbox"
                   checked={formData.tags.includes(tag)}
@@ -357,7 +358,7 @@ export const BeachForm: React.FC<BeachFormProps> = ({
           <label className="mb-2 block text-sm font-medium text-brand-navy">Amenities</label>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
             {AMENITIES.map(amenity => (
-              <label key={amenity} className="flex items-center space-x-2 cursor-pointer">
+              <label key={amenity} className="flex cursor-pointer items-center space-x-2">
                 <input
                   type="checkbox"
                   checked={formData.amenities.includes(amenity)}
@@ -430,10 +431,12 @@ export const BeachForm: React.FC<BeachFormProps> = ({
           {formData.coverImage && (
             <div className="mb-4">
               <div className="aspect-[16/9] max-w-md overflow-hidden rounded-lg bg-brand-sand">
-                <img 
+                <Image 
                   src={formData.coverImage} 
                   alt="Cover preview"
-                  className="size-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 400px"
                 />
               </div>
             </div>

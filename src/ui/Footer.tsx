@@ -127,6 +127,8 @@ export const Footer: React.FC = () => {
       <div className="text-brand-navy/80 text-sm">
         <ul className="space-y-2">
           <li><Link href="/deals" className="hover:text-brand-blue">Deals</Link></li>
+          <li><Link href="/guides" className="hover:text-brand-blue">Guides</Link></li>
+          <li><Link href="/beachfinder" className="hover:text-brand-blue">Beach Finder</Link></li>
           <li><Link href="/about" className="hover:text-brand-blue">About Us</Link></li>
           <li><Link href="/partner" className="hover:text-brand-blue">Submit a Deal</Link></li>
         </ul>

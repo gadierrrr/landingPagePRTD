@@ -17,9 +17,10 @@
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "formidable": "^3.5.4",
     "gray-matter": "^4.0.3",
-    "next": "14.2.31",
+    "next": "^14.2.32",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "redis": "^5.8.2",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "zod": "^3.23.8"

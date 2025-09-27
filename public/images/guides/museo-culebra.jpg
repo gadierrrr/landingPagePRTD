@@ -1,0 +1,38 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="ocean" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+<stop offset="50%" style="stop-color:#69D6F7;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#4682B4;stop-opacity:1" />
+</linearGradient>
+</defs>
+<rect width="800" height="600" fill="url(#ocean)"/>
+<!-- Island -->
+<ellipse cx="400" cy="450" rx="350" ry="120" fill="#F4A460"/>
+<!-- Historic Fort/Museum -->
+<rect x="300" y="300" width="200" height="120" fill="#F5F5EB" stroke="#D5D5D5" stroke-width="2"/>
+<!-- Cylindrical Tower -->
+<rect x="450" y="250" width="80" height="170" fill="#E8E8E8" stroke="#D5D5D5" stroke-width="2"/>
+<!-- Tower Top -->
+<polygon points="445,250 490,230 535,250" fill="#D54330"/>
+<!-- Windows -->
+<rect x="320" y="320" width="25" height="30" fill="#69D6F7" stroke="#D5D5D5"/>
+<rect x="360" y="320" width="25" height="30" fill="#69D6F7" stroke="#D5D5D5"/>
+<rect x="420" y="320" width="25" height="30" fill="#69D6F7" stroke="#D5D5D5"/>
+<!-- Tower Windows -->
+<rect x="475" y="280" width="30" height="20" fill="#69D6F7" stroke="#D5D5D5"/>
+<rect x="475" y="320" width="30" height="20" fill="#69D6F7" stroke="#D5D5D5"/>
+<!-- Door -->
+<rect x="375" y="370" width="40" height="50" fill="#8B6914"/>
+<!-- Sign -->
+<rect x="320" y="360" width="120" height="40" fill="#2F554A"/>
+<text x="380" y="375" text-anchor="middle" fill="#F5F5EB" font-family="Arial, sans-serif" font-size="10" font-weight="bold">El Polvorín</text>
+<text x="380" y="390" text-anchor="middle" fill="#FF8B36" font-family="Arial, sans-serif" font-size="8">Museo Culebra</text>
+<!-- Palm Trees -->
+<rect x="250" y="350" width="12" height="100" fill="#8B4513"/>
+<circle cx="256" cy="345" r="20" fill="#90EE90"/>
+<rect x="580" y="370" width="12" height="80" fill="#8B4513"/>
+<circle cx="586" cy="365" r="18" fill="#90EE90"/>
+<!-- Waves -->
+<path d="M0,500 Q100,480 200,500 T400,500 T600,500 T800,500 L800,600 L0,600 Z" fill="#4169E1" opacity="0.7"/>
+</svg>

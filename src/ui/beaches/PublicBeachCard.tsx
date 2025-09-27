@@ -1,20 +1,61 @@
-import React from 'react';
+import React, { lazy, Suspense, useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Beach } from '../../lib/forms';
 import { TAG_LABELS, AMENITY_LABELS, CONDITION_LABELS } from '../../constants/beachVocab';
+import { useShare } from '../../hooks/useShare';
+import { ImageSkeleton } from '../loading/ImageSkeleton';
+import { 
+  trackBeachShareOpen, 
+  trackBeachSharePlatform, 
+  trackBeachShareCopy, 
+  trackBeachShareSuccess, 
+  trackBeachShareError 
+} from '../../lib/analytics';
+
+// Dynamically import the share modal to avoid bundle bloat
+const BeachShareModal = lazy(() => 
+  import('./BeachShareModal').then(module => ({ default: module.BeachShareModal }))
+);
 
 interface PublicBeachCardProps {
   beach: Beach;
   distance?: number; // in meters
+  priority?: boolean; // For image loading priority
   onDirectionsClick?: () => void;
   onDetailsClick?: () => void;
+  onShareClick?: () => void;
 }
 
 export const PublicBeachCard: React.FC<PublicBeachCardProps> = ({ 
   beach, 
   distance,
+  priority = false,
   onDirectionsClick,
-  onDetailsClick
+  onDetailsClick,
+  onShareClick
 }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const router = useRouter();
+  
+  // Initialize share hook with analytics callbacks
+  const shareHook = useShare({
+    onShareOpen: (beach, support) => {
+      trackBeachShareOpen(beach, 'card', support);
+    },
+    onShareSuccess: (beach, platform) => {
+      trackBeachShareSuccess(beach, platform);
+    },
+    onShareError: (beach, error) => {
+      trackBeachShareError(beach, error);
+    },
+    onPlatformClick: (beach, platform) => {
+      trackBeachSharePlatform(beach, platform);
+    },
+    onCopyLink: (beach) => {
+      trackBeachShareCopy(beach);
+    }
+  });
   const formatDistance = (meters: number): string => {
     if (meters < 1000) {
       return `${Math.round(meters)}m`;
@@ -60,20 +101,61 @@ export const PublicBeachCard: React.FC<PublicBeachCardProps> = ({
     e.preventDefault();
     e.stopPropagation();
     
+    // Navigate to beach detail page using Next.js router
+    if (beach.slug) {
+      router.push(`/beaches/${beach.slug}`).catch((error) => {
+        console.error('Navigation failed:', error);
+        // Fallback to window.location if router fails
+        window.location.href = `/beaches/${beach.slug}`;
+      });
+    }
+    
     if (onDetailsClick) {
       onDetailsClick();
+    }
+  };
+
+  const handleShareClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (!beach.slug) return;
+    
+    const beachUrl = `${window.location.origin}/beaches/${beach.slug}`;
+    await shareHook.shareBeach(beach, beachUrl);
+    
+    if (onShareClick) {
+      onShareClick();
     }
   };
 
   return (
     <div className="ring-brand-navy/10 hover:ring-brand-blue/20 group relative cursor-pointer overflow-hidden rounded-xl bg-white ring-1 transition-all duration-200 hover:shadow-md">
       {/* 16:9 Aspect Ratio Image */}
-      <div className="to-brand-navy/20 relative aspect-[16/9] overflow-hidden rounded-xl bg-[#0A2A29] bg-gradient-to-br from-[#0A2A29]">
-        <img 
+      <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-[#0A2A29]">
+        {!imageLoaded && (
+          <div className="absolute inset-0 z-10">
+            <ImageSkeleton className="rounded-xl" />
+          </div>
+        )}
+        <Image 
           src={beach.coverImage} 
           alt={beach.name}
-          className="size-full object-cover object-center"
-          loading="lazy"
+          fill
+          priority={priority}
+          // Disable optimization in development or if image loading fails on mobile
+          unoptimized={process.env.NODE_ENV === 'development'}
+          className={`object-cover object-center transition-opacity duration-300 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 400px"
+          onLoad={() => {
+            setImageLoaded(true);
+          }}
+          onError={(e) => {
+            console.error('Beach image failed to load:', beach.coverImage, e);
+            setImageLoaded(true); // Still show the card content
+          }}
         />
         
         {/* Distance Badge */}
@@ -108,7 +190,7 @@ export const PublicBeachCard: React.FC<PublicBeachCardProps> = ({
               </span>
             ))}
             {beach.tags.length > 3 && (
-              <span className="inline-flex rounded-full bg-brand-sand px-2 py-1 text-xs font-medium text-brand-navy/60">
+              <span className="text-brand-navy/60 inline-flex rounded-full bg-brand-sand px-2 py-1 text-xs font-medium">
                 +{beach.tags.length - 3} more
               </span>
             )}
@@ -160,18 +242,40 @@ export const PublicBeachCard: React.FC<PublicBeachCardProps> = ({
         <div className="flex gap-2 pt-2">
           <button
             onClick={handleDirectionsClick}
-            className="bg-brand-blue hover:bg-brand-navy flex-1 rounded-lg px-3 py-2 text-sm font-semibold text-white transition-colors"
+            className="flex-1 rounded-lg bg-brand-blue px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-navy"
+            aria-label={`Get directions to ${beach.name}`}
           >
             Directions
           </button>
           <button
             onClick={handleDetailsClick}
-            className="bg-brand-navy/10 hover:bg-brand-blue hover:text-white rounded-lg px-3 py-2 text-sm font-semibold text-brand-navy transition-colors"
+            className="bg-brand-navy/10 flex-1 rounded-lg px-3 py-2 text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-blue hover:text-white"
+            aria-label={`View details for ${beach.name}`}
           >
             Details
           </button>
+          <button
+            onClick={handleShareClick}
+            disabled={shareHook.isSharing}
+            className="flex-1 rounded-lg bg-brand-sand px-3 py-2 text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-navy hover:text-white disabled:opacity-50"
+            aria-label={`Share ${beach.name}`}
+          >
+            {shareHook.isSharing ? 'Sharing...' : 'Share'}
+          </button>
         </div>
       </div>
+      
+      {/* Share Modal */}
+      <Suspense fallback={null}>
+        <BeachShareModal
+          beach={shareHook.currentBeach}
+          isOpen={shareHook.isModalOpen}
+          onClose={shareHook.closeModal}
+          beachUrl={shareHook.currentBeachUrl}
+          onPlatformClick={shareHook.handlePlatformClick}
+          onCopyClick={shareHook.handleCopyClick}
+        />
+      </Suspense>
     </div>
   );
 };

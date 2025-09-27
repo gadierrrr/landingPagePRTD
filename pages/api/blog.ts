@@ -4,7 +4,7 @@ import { checkRateLimit, getClientIp } from '../../src/lib/rateLimit';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
-  const rateCheck = checkRateLimit(ip);
+  const rateCheck = await checkRateLimit(ip);
   
   if (!rateCheck.allowed) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });

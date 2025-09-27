@@ -1,12 +1,15 @@
 import React from 'react';
 import { Beach } from '../../lib/forms';
 import { PublicBeachCard } from './PublicBeachCard';
+import { BeachCardSkeleton } from '../loading/BeachCardSkeleton';
 
 interface PublicBeachesGridProps {
   beaches: Beach[];
   userLocation?: { lat: number; lng: number };
   onBeachDirectionsClick?: (beach: Beach, distance?: number) => void;
   onBeachDetailsClick?: (beach: Beach) => void;
+  isLoading?: boolean;
+  skeletonCount?: number;
 }
 
 // Calculate distance between two coordinates using Haversine formula
@@ -28,7 +31,9 @@ export const PublicBeachesGrid: React.FC<PublicBeachesGridProps> = ({
   beaches, 
   userLocation,
   onBeachDirectionsClick,
-  onBeachDetailsClick
+  onBeachDetailsClick,
+  isLoading = false,
+  skeletonCount = 9
 }) => {
   // Calculate distances and sort if user location available
   const beachesWithDistance = React.useMemo(() => {
@@ -47,12 +52,22 @@ export const PublicBeachesGrid: React.FC<PublicBeachesGridProps> = ({
       .sort((a, b) => (a.distance || 0) - (b.distance || 0));
   }, [beaches, userLocation]);
 
+  if (isLoading) {
+    return (
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {Array.from({ length: skeletonCount }, (_, index) => (
+          <BeachCardSkeleton key={`skeleton-${index}`} />
+        ))}
+      </div>
+    );
+  }
+
   if (beaches.length === 0) {
     return (
       <div className="py-12 text-center">
-        <div className="text-6xl mb-4">🏖️</div>
-        <h3 className="text-xl font-bold text-brand-navy mb-2">No beaches found</h3>
-        <p className="text-brand-navy/60 max-w-md mx-auto">
+        <div className="mb-4 text-6xl">🏖️</div>
+        <h3 className="mb-2 text-xl font-bold text-brand-navy">No beaches found</h3>
+        <p className="text-brand-navy/60 mx-auto max-w-md">
           Try adjusting your filters or expanding your search distance to find more beaches.
         </p>
       </div>
@@ -61,11 +76,12 @@ export const PublicBeachesGrid: React.FC<PublicBeachesGridProps> = ({
 
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {beachesWithDistance.map(({ beach, distance }) => (
+      {beachesWithDistance.map(({ beach, distance }, index) => (
         <PublicBeachCard
           key={beach.id}
           beach={beach}
           distance={distance}
+          priority={index < 3}
           onDirectionsClick={() => onBeachDirectionsClick?.(beach, distance)}
           onDetailsClick={() => onBeachDetailsClick?.(beach)}
         />

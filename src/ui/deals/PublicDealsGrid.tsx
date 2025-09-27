@@ -16,7 +16,7 @@ export const PublicDealsGrid: React.FC<PublicDealsGridProps> = ({ deals }) => {
           <p className="text-brand-navy/70 mt-2 text-sm">Check back soon for new travel deals</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link 
-              href="/landing"
+              href="/"
               className="hover:bg-brand-blue/90 rounded-full bg-brand-blue px-5 py-3 font-bold text-white shadow"
             >
               Back to Home

@@ -3,10 +3,11 @@ import { beachSchema } from '../../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../../src/lib/rateLimit';
 import { readBeaches, addBeach, findDuplicateCandidates } from '../../../src/lib/beachesStore';
 import { verifyAdminCookie } from '../../../src/lib/admin/auth';
+import { validateCSRF } from '../../../src/lib/csrf';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
-  const rateCheck = checkRateLimit(ip);
+  const rateCheck = await checkRateLimit(ip);
   
   if (!rateCheck.allowed) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
@@ -22,6 +23,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const adminCookie = req.cookies.admin_auth;
         if (!verifyAdminCookie(adminCookie || '')) {
           return res.status(401).json({ error: 'Unauthorized' });
+        }
+
+        // CSRF protection for POST operations
+        if (!validateCSRF(req, res)) {
+          return;
         }
         
         const createValidation = beachSchema.omit({ id: true, slug: true }).safeParse(req.body);

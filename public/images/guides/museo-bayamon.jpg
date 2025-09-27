@@ -1,0 +1,31 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="park" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#90EE90;stop-opacity:1" />
+</linearGradient>
+</defs>
+<rect width="800" height="600" fill="url(#park)"/>
+<!-- Modern Museum Building -->
+<rect x="200" y="250" width="400" height="200" fill="#F5F5EB" stroke="#D5D5D5" stroke-width="3"/>
+<!-- Modern Roof -->
+<rect x="180" y="230" width="440" height="40" fill="#2F554A"/>
+<!-- Glass Entrance -->
+<rect x="350" y="300" width="100" height="150" fill="#69D6F7" stroke="#D5D5D5" stroke-width="2"/>
+<!-- Side Windows -->
+<rect x="220" y="280" width="80" height="60" fill="#69D6F7" stroke="#D5D5D5"/>
+<rect x="500" y="280" width="80" height="60" fill="#69D6F7" stroke="#D5D5D5"/>
+<!-- Art Sculptures -->
+<circle cx="120" cy="400" r="40" fill="#FF8B36"/>
+<rect x="100" y="440" width="40" height="60" fill="#8B4513"/>
+<circle cx="680" cy="380" r="30" fill="#D54330"/>
+<rect x="665" y="410" width="30" height="90" fill="#8B4513"/>
+<!-- Sign -->
+<rect x="250" y="350" width="180" height="50" fill="#2F554A"/>
+<text x="340" y="370" text-anchor="middle" fill="#F5F5EB" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Museo de Arte</text>
+<text x="340" y="390" text-anchor="middle" fill="#F5F5EB" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Bayamón</text>
+<!-- Parque Setting -->
+<rect x="0" y="500" width="800" height="100" fill="#90EE90"/>
+<circle cx="50" cy="480" r="20" fill="#228B22"/>
+<circle cx="750" cy="460" r="25" fill="#228B22"/>
+</svg>

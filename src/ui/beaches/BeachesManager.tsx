@@ -18,9 +18,11 @@ export const BeachesManager: React.FC = () => {
     similarity: number;
     reason: string;
   }> | undefined>(undefined);
+  const [csrfToken, setCsrfToken] = useState<string>('');
 
   useEffect(() => {
     fetchBeaches();
+    fetchCSRFToken();
   }, []);
 
   const fetchBeaches = async () => {
@@ -36,6 +38,19 @@ export const BeachesManager: React.FC = () => {
       console.error('Error fetching beaches:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchCSRFToken = async () => {
+    try {
+      const response = await fetch('/api/csrf-token', {
+        credentials: 'include'
+      });
+      if (!response.ok) throw new Error('Failed to fetch CSRF token');
+      const data = await response.json();
+      setCsrfToken(data.csrfToken);
+    } catch (error) {
+      console.error('Error fetching CSRF token:', error);
     }
   };
 
@@ -56,7 +71,10 @@ export const BeachesManager: React.FC = () => {
         // Update existing beach
         const response = await fetch(`/api/beaches/${editingBeach.id}`, {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'x-csrf-token': csrfToken
+          },
           credentials: 'include',
           body: JSON.stringify(requestBody)
         });
@@ -78,7 +96,10 @@ export const BeachesManager: React.FC = () => {
         // Create new beach
         const response = await fetch('/api/beaches', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'x-csrf-token': csrfToken
+          },
           credentials: 'include',
           body: JSON.stringify(requestBody)
         });
@@ -112,7 +133,10 @@ export const BeachesManager: React.FC = () => {
       
       const response = await fetch('/api/beaches', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-csrf-token': csrfToken
+        },
         credentials: 'include',
         body: JSON.stringify({
           ...beachData,
@@ -148,6 +172,9 @@ export const BeachesManager: React.FC = () => {
       
       const response = await fetch(`/api/beaches/${id}`, {
         method: 'DELETE',
+        headers: {
+          'x-csrf-token': csrfToken
+        },
         credentials: 'include'
       });
       

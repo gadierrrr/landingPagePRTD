@@ -76,11 +76,11 @@ export const EnhancedHero: React.FC<EnhancedHeroProps> = ({
             </Link>
             
             <Link
-              href="/travel-pass"
-              onClick={() => onCtaClick?.('travel_pass')}
+              href="/beachfinder"
+              onClick={() => onCtaClick?.('beach_finder')}
               className="hover:bg-brand-blue/90 inline-flex items-center rounded-full bg-brand-blue px-10 py-4 text-lg font-bold text-white shadow-xl transition-all duration-200 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 focus:ring-offset-transparent"
             >
-              Travel Pass
+              Beach Finder
             </Link>
           </div>
         </div>

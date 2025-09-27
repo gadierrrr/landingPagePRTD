@@ -20,6 +20,10 @@ interface BlogPostLayoutProps {
   meta: BlogPostMeta;
   children: React.ReactNode;
   structuredData?: object;
+  backLink?: {
+    url: string;
+    text: string;
+  };
 }
 
 interface HeadingItem {
@@ -121,7 +125,7 @@ function InfoCallout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function BlogPostLayout({ meta, children, structuredData }: BlogPostLayoutProps) {
+export function BlogPostLayout({ meta, children, structuredData, backLink }: BlogPostLayoutProps) {
   const [headings, setHeadings] = useState<HeadingItem[]>([]);
 
   const formatDate = (dateString: string): string => {
@@ -178,8 +182,8 @@ export function BlogPostLayout({ meta, children, structuredData }: BlogPostLayou
       <Section>
         {/* Breadcrumb Navigation */}
         <nav className="text-brand-navy/70 mb-8 text-sm">
-          <Link href="/blog" className="transition-colors hover:text-brand-blue">
-            ← Back to Blog
+          <Link href={backLink?.url || "/blog"} className="transition-colors hover:text-brand-blue">
+            ← {backLink?.text || "Back to Blog"}
           </Link>
         </nav>
 

@@ -793,3 +793,54 @@ export const trackBeachDetailsView = (beach: Beach) => {
     amenities_count: beach.amenities?.length || 0
   });
 };
+
+// Beach sharing analytics
+export const trackBeachShareOpen = (beach: Beach, surface: string, support: 'webshare' | 'modal') => {
+  trackEvent('beach_share_open', {
+    beach_slug: beach.slug,
+    beach_name: beach.name,
+    municipality: beach.municipality,
+    surface: surface, // 'card' or 'detail'
+    support: support,
+    tags: beach.tags?.join(',') || 'none'
+  });
+};
+
+export const trackBeachSharePlatform = (beach: Beach, platform: string) => {
+  trackEvent('beach_share_platform_click', {
+    beach_slug: beach.slug,
+    beach_name: beach.name,
+    municipality: beach.municipality,
+    platform: platform,
+    tags: beach.tags?.join(',') || 'none'
+  });
+};
+
+export const trackBeachShareCopy = (beach: Beach) => {
+  trackEvent('beach_share_copy', {
+    beach_slug: beach.slug,
+    beach_name: beach.name,
+    municipality: beach.municipality,
+    tags: beach.tags?.join(',') || 'none'
+  });
+};
+
+export const trackBeachShareSuccess = (beach: Beach, platform?: string) => {
+  trackEvent('beach_share_success', {
+    beach_slug: beach.slug,
+    beach_name: beach.name,
+    municipality: beach.municipality,
+    platform: platform || 'unknown',
+    tags: beach.tags?.join(',') || 'none'
+  });
+};
+
+export const trackBeachShareError = (beach: Beach, errorMessage: string) => {
+  trackEvent('beach_share_error', {
+    beach_slug: beach.slug,
+    beach_name: beach.name,
+    municipality: beach.municipality,
+    error_message: errorMessage,
+    tags: beach.tags?.join(',') || 'none'
+  });
+};

@@ -1,7 +1,7 @@
 import { Deal } from './forms';
 import { readDeals } from './dealsStore';
 import { isExpired } from './dealUtils';
-import { getAllPostsMeta } from './blog';
+import { getAllGuidesMeta } from './guides';
 
 // Get a featured deal (prioritize deals with hot badge, then latest)
 export async function getFeaturedDeal(): Promise<Deal | null> {
@@ -79,7 +79,7 @@ export async function getUnder50Deals(): Promise<Deal[]> {
   }
 }
 
-// Get featured guides (reuse blog posts as guides)
+// Get featured guides
 interface Guide {
   id: string;
   title: string;
@@ -87,18 +87,22 @@ interface Guide {
   slug: string;
   tags?: string[];
   publishDate?: string;
+  duration?: string;
+  heroImageUrl?: string;
 }
 
 export async function getFeaturedGuides(limit: number = 6): Promise<Guide[]> {
   try {
-    const posts = await getAllPostsMeta();
-    return posts.slice(0, limit).map(post => ({
-      id: post.slug,
-      title: post.title,
-      excerpt: post.excerpt,
-      slug: post.slug,
-      tags: post.tags || [],
-      publishDate: post.publishDate
+    const guides = await getAllGuidesMeta();
+    return guides.slice(0, limit).map(guide => ({
+      id: guide.slug,
+      title: guide.title,
+      excerpt: guide.excerpt,
+      slug: guide.slug,
+      tags: guide.tags || [],
+      publishDate: guide.publishDate,
+      duration: guide.duration,
+      heroImageUrl: guide.heroImageUrl
     }));
   } catch (error) {
     console.error('Error fetching featured guides:', error);

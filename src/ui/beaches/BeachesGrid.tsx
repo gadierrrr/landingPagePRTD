@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Beach } from '../../lib/forms';
 import { Button } from '../Button';
 import { TAG_LABELS } from '../../constants/beachVocab';
@@ -29,8 +30,8 @@ export const BeachesGrid: React.FC<BeachesGridProps> = ({ beaches, onEdit, onDel
   if (beaches.length === 0) {
     return (
       <div className="py-12 text-center">
-        <div className="text-6xl mb-4">🏖️</div>
-        <h3 className="text-xl font-bold text-brand-navy mb-2">No beaches yet</h3>
+        <div className="mb-4 text-6xl">🏖️</div>
+        <h3 className="mb-2 text-xl font-bold text-brand-navy">No beaches yet</h3>
         <p className="text-brand-navy/60">Create your first beach to get started.</p>
       </div>
     );
@@ -55,17 +56,19 @@ export const BeachesGrid: React.FC<BeachesGridProps> = ({ beaches, onEdit, onDel
                 <div className="flex items-center space-x-3">
                   {beach.coverImage && (
                     <div className="size-12 overflow-hidden rounded-lg bg-brand-sand">
-                      <img 
+                      <Image 
                         src={beach.coverImage} 
                         alt={beach.name}
-                        className="size-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="48px"
                       />
                     </div>
                   )}
                   <div>
                     <div className="font-medium text-brand-navy">{beach.name}</div>
                     {beach.accessLabel && (
-                      <div className="text-xs text-brand-navy/60">{beach.accessLabel}</div>
+                      <div className="text-brand-navy/60 text-xs">{beach.accessLabel}</div>
                     )}
                   </div>
                 </div>
@@ -84,14 +87,14 @@ export const BeachesGrid: React.FC<BeachesGridProps> = ({ beaches, onEdit, onDel
                     </span>
                   ))}
                   {beach.tags && beach.tags.length > 3 && (
-                    <span className="text-xs text-brand-navy/60">
+                    <span className="text-brand-navy/60 text-xs">
                       +{beach.tags.length - 3} more
                     </span>
                   )}
                 </div>
               </td>
               <td className="border-brand-navy/5 border-b p-3">
-                <span className="text-sm text-brand-navy/80">
+                <span className="text-brand-navy/80 text-sm">
                   {beach.updatedAt ? formatDate(beach.updatedAt) : 'Unknown'}
                 </span>
               </td>
@@ -108,7 +111,7 @@ export const BeachesGrid: React.FC<BeachesGridProps> = ({ beaches, onEdit, onDel
                     size="sm" 
                     variant="outline"
                     onClick={() => handleDelete(beach)}
-                    className="text-red-600 hover:text-red-800 border-red-200 hover:border-red-300"
+                    className="border-red-200 text-red-600 hover:border-red-300 hover:text-red-800"
                   >
                     Delete
                   </Button>

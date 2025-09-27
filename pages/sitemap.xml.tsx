@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next';
 import { readDeals } from '../src/lib/dealsStore';
+import { readBeaches } from '../src/lib/beachesStore';
 import { isExpired } from '../src/lib/dealUtils';
 import { getAllGuidesMeta } from '../src/lib/guides';
 
@@ -9,16 +10,17 @@ export default function Sitemap() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const [deals, guides] = await Promise.all([
+  const [deals, guides, beaches] = await Promise.all([
     readDeals(),
-    getAllGuidesMeta()
+    getAllGuidesMeta(),
+    readBeaches()
   ]);
   const baseUrl = 'https://puertoricotraveldeals.com';
   
   const staticPages = [
     { url: '', priority: '1.0', changefreq: 'daily' },
-    { url: '/landing', priority: '1.0', changefreq: 'daily' },
     { url: '/deals', priority: '1.0', changefreq: 'hourly' },
+    { url: '/beachfinder', priority: '1.0', changefreq: 'daily' },
     { url: '/guides', priority: '0.9', changefreq: 'daily' },
     { url: '/join', priority: '0.8', changefreq: 'monthly' },
     { url: '/partner', priority: '0.8', changefreq: 'monthly' },
@@ -67,6 +69,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     deal.slug && !isExpired(deal.expiresAt || deal.expiry)
   );
 
+  // Filter active beaches with valid slugs for sitemap
+  const activeBeaches = beaches.filter(beach => 
+    beach.slug && beach.slug.trim() !== ''
+  );
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${allStaticPages.map(page => `
@@ -91,6 +98,14 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       <lastmod>${deal.updatedAt || new Date().toISOString()}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.9</priority>
+    </url>
+  `).join('')}
+  ${activeBeaches.map(beach => `
+    <url>
+      <loc>${baseUrl}/beaches/${beach.slug}</loc>
+      <lastmod>${beach.updatedAt || new Date().toISOString()}</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
     </url>
   `).join('')}
 </urlset>`;

@@ -38,11 +38,17 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
   const [selectedBeach, setSelectedBeach] = useState<Beach | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [displayCount, setDisplayCount] = useState(9); // Initial number of beaches to display
 
   // Track section view on mount
   useEffect(() => {
     trackBeachFinderSectionView(beaches.length);
   }, [beaches.length]);
+
+  // Reset display count when filters change
+  useEffect(() => {
+    setDisplayCount(9);
+  }, [selectedTags, selectedMunicipality, maxDistance, sortBy]);
 
   // Filter beaches based on current filters
   const filteredBeaches = React.useMemo(() => {
@@ -79,6 +85,17 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
 
     return filtered;
   }, [beaches, selectedTags, selectedMunicipality, maxDistance, userLocation, sortBy]);
+
+  // Limit displayed beaches for performance
+  const displayedBeaches = React.useMemo(() => {
+    return filteredBeaches.slice(0, displayCount);
+  }, [filteredBeaches, displayCount]);
+
+  const hasMoreBeaches = filteredBeaches.length > displayCount;
+
+  const handleLoadMore = () => {
+    setDisplayCount(prev => Math.min(prev + 6, filteredBeaches.length));
+  };
 
   // Calculate distance between two coordinates
   function calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
@@ -170,7 +187,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
   };
 
   const handleBeachCardClick = (beach: Beach) => {
-    const position = filteredBeaches.findIndex(b => b.id === beach.id) + 1;
+    const position = displayedBeaches.findIndex(b => b.id === beach.id) + 1;
     trackBeachCardClick(beach, position, selectedTags);
   };
 
@@ -214,24 +231,24 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
       {/* Hero Section */}
       <Section className="bg-gradient-to-br from-brand-blue to-brand-navy text-white">
         <div className="text-center">
-          <div className="text-6xl mb-4">🏖️</div>
-          <Heading level={1} className="text-white mb-4">
+          <div className="mb-4 text-6xl">🏖️</div>
+          <Heading level={1} className="mb-4 text-white">
             Beach Finder
           </Heading>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="mx-auto mb-8 max-w-2xl text-xl text-white/90">
             Discover the perfect beach for your next adventure. Find nearby beaches, check current conditions, and get directions.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <button
               onClick={handleUseMyLocation}
               disabled={geolocationStatus === 'requesting'}
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-brand-navy hover:bg-brand-sand transition-colors disabled:opacity-50"
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-brand-navy transition-colors hover:bg-brand-sand disabled:opacity-50"
             >
               📍 {geolocationStatus === 'requesting' ? 'Getting Location...' : 'Use My Location'}
             </button>
             
-            <div className="text-white/80 text-sm">
+            <div className="text-sm text-white/80">
               {geolocationStatus === 'granted' && '✓ Location enabled - showing nearest beaches'}
               {geolocationStatus === 'denied' && 'Location denied - showing all beaches A-Z'}
             </div>
@@ -247,7 +264,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
             <div className="flex rounded-lg bg-brand-sand p-1">
               <button
                 onClick={() => setViewMode('list')}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                   viewMode === 'list' 
                     ? 'bg-white text-brand-navy shadow-sm' 
                     : 'text-brand-navy/60 hover:text-brand-navy'
@@ -257,7 +274,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
               </button>
               <button
                 onClick={() => setViewMode('map')}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                   viewMode === 'map' 
                     ? 'bg-white text-brand-navy shadow-sm' 
                     : 'text-brand-navy/60 hover:text-brand-navy'
@@ -267,8 +284,8 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
               </button>
             </div>
 
-            <div className="text-sm text-brand-navy/60">
-              {filteredBeaches.length} beach{filteredBeaches.length !== 1 ? 'es' : ''} found
+            <div className="text-brand-navy/60 text-sm">
+              Showing {displayedBeaches.length} of {filteredBeaches.length} beach{filteredBeaches.length !== 1 ? 'es' : ''}
             </div>
           </div>
 
@@ -276,11 +293,11 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {/* Municipality Filter */}
             <div>
-              <label className="block text-sm font-medium text-brand-navy mb-2">Location</label>
+              <label className="mb-2 block text-sm font-medium text-brand-navy">Location</label>
               <select
                 value={selectedMunicipality}
                 onChange={(e) => handleMunicipalityChange(e.target.value)}
-                className="w-full rounded-lg border border-brand-navy/20 px-3 py-2 text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                className="border-brand-navy/20 focus:ring-brand-blue/20 w-full rounded-lg border px-3 py-2 text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2"
               >
                 <option value="">All municipalities</option>
                 {MUNICIPALITIES.map(municipality => (
@@ -294,7 +311,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
             {/* Distance Filter */}
             {userLocation && (
               <div>
-                <label className="block text-sm font-medium text-brand-navy mb-2">
+                <label className="mb-2 block text-sm font-medium text-brand-navy">
                   Max Distance: {maxDistance}km
                 </label>
                 <input
@@ -311,11 +328,11 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
 
             {/* Sort Filter */}
             <div>
-              <label className="block text-sm font-medium text-brand-navy mb-2">Sort by</label>
+              <label className="mb-2 block text-sm font-medium text-brand-navy">Sort by</label>
               <select
                 value={sortBy}
                 onChange={(e) => handleSortChange(e.target.value as 'distance' | 'name')}
-                className="w-full rounded-lg border border-brand-navy/20 px-3 py-2 text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                className="border-brand-navy/20 focus:ring-brand-blue/20 w-full rounded-lg border px-3 py-2 text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2"
               >
                 <option value="distance">
                   {userLocation ? 'Closest first' : 'A-Z'}
@@ -327,7 +344,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
 
           {/* Tag Filters */}
           <div>
-            <label className="block text-sm font-medium text-brand-navy mb-2">Beach Features</label>
+            <label className="mb-2 block text-sm font-medium text-brand-navy">Beach Features</label>
             <div className="flex flex-wrap gap-2">
               {TAGS.map(tag => {
                 const isSelected = selectedTags.includes(tag);
@@ -354,17 +371,31 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
       <Section>
         {viewMode === 'map' ? (
           <div className="py-12 text-center">
-            <div className="text-4xl mb-4">🗺️</div>
-            <h3 className="text-xl font-bold text-brand-navy mb-2">Map View Coming Soon</h3>
+            <div className="mb-4 text-4xl">🗺️</div>
+            <h3 className="mb-2 text-xl font-bold text-brand-navy">Map View Coming Soon</h3>
             <p className="text-brand-navy/60">We're working on an interactive map to help you visualize beach locations.</p>
           </div>
         ) : (
-          <PublicBeachesGrid
-            beaches={filteredBeaches}
-            userLocation={userLocation || undefined}
-            onBeachDirectionsClick={handleBeachDirectionsClick}
-            onBeachDetailsClick={handleBeachDetailsClick}
-          />
+          <>
+            <PublicBeachesGrid
+              beaches={displayedBeaches}
+              userLocation={userLocation || undefined}
+              onBeachDirectionsClick={handleBeachDirectionsClick}
+              onBeachDetailsClick={handleBeachDetailsClick}
+            />
+            
+            {/* Load More Button */}
+            {hasMoreBeaches && (
+              <div className="mt-8 flex justify-center">
+                <button
+                  onClick={handleLoadMore}
+                  className="rounded-lg bg-brand-blue px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-navy"
+                >
+                  Load More Beaches ({filteredBeaches.length - displayCount} remaining)
+                </button>
+              </div>
+            )}
+          </>
         )}
       </Section>
 

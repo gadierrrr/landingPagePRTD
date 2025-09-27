@@ -102,29 +102,6 @@
     "terms": ""
   },
   {
-    "title": "Meat Market Restaurant - Pay $50 for a $100 Gift Card",
-    "description": "$49 for $100 - Meat Market is a steakhouse located inside the Fairmont Hotel in San Juan. ",
-    "amountLabel": "50% OFF",
-    "location": "San Juan ",
-    "image": "/api/serve-upload/2025/09/meatMarketSJ-1757079811287.webp",
-    "category": "restaurant",
-    "expiry": "2025-09-20T00:41:00.000Z",
-    "partner": "Gustazos.com",
-    "externalUrl": "https://www.gustazos.com/deals/Restaurants_meatmarket3",
-    "fullDescription": "Meat Market offers a variety of Prime cuts, appetizers, and an outstanding Wine Spectator–award-winning premium wine list, all with an artistic and contemporary twist.",
-    "highlights": [],
-    "price": 50,
-    "originalPrice": 100,
-    "currency": "USD",
-    "id": "fb99d0a4-834f-4675-8779-8be595fa2cde",
-    "slug": "meat-market-restaurant-pay-50-for-a-100-gift-card",
-    "updatedAt": "2025-09-05T13:43:34.059Z",
-    "gallery": [
-      "/api/serve-upload/2025/09/meatMarketSJ-1757079811287.webp"
-    ],
-    "terms": ""
-  },
-  {
     "title": "Free Coktail + Tote Bag + 20% Off Motorbike Rental - Hilton Hotels ",
     "description": "Two nights minimum stay. Offer includes: \n- Rum welcome cocktail to kick off your tropical stay\n- Welcome tote bag with goodies\n- 20% off motorbike",
     "amountLabel": "SEE DETAILS",
@@ -302,29 +279,6 @@
     "gallery": [
       "/api/serve-upload/2025/09/XoloTacoCondado-1758070430897.jpg"
     ],
-    "terms": ""
-  },
-  {
-    "title": "$179 for a Parachute Jump for 1 Person; or $319 for 2 - Arecibo",
-    "description": "$179 for a Parachute Jump for 1 Person; or $319 for Parachute Jump for 2 People; Both Options Include: 20% Discount from the Original Price for 1 Additional Person on the Same Day ",
-    "amountLabel": "45% OFF",
-    "location": "Arecibo",
-    "image": "/api/serve-upload/2025/09/parachuteAreciboDEal-1758131387286.jpg",
-    "category": "activity",
-    "expiry": "2025-09-17T15:49:00.000Z",
-    "partner": "Gustazos.com",
-    "externalUrl": "https://www.gustazos.com/deals/Adventures_skydivepuertorico33",
-    "highlights": [],
-    "price": 179,
-    "originalPrice": 350,
-    "currency": "USD",
-    "id": "8fadf4a8-21a5-479e-abf7-73a216a48eda",
-    "slug": "179-for-a-parachute-jump-for-1-person-or-319-for-2-arecibo",
-    "updatedAt": "2025-09-17T17:50:24.362Z",
-    "gallery": [
-      "/api/serve-upload/2025/09/parachuteAreciboDEal-1758131387286.jpg"
-    ],
-    "fullDescription": "$179 for a Parachute Jump for 1 Person; or $319 for Parachute Jump for 2 People; Both Options Include: 20% Discount from the Original Price for 1 Additional Person on the Same Day ",
     "terms": ""
   },
   {

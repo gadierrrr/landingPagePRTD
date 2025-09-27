@@ -68,7 +68,11 @@ export default function GuidePage({ guide, relatedGuides }: GuidePageProps) {
         />
       </Head>
 
-      <BlogPostLayout meta={guideMeta} structuredData={articleStructuredData}>
+      <BlogPostLayout 
+        meta={guideMeta} 
+        structuredData={articleStructuredData}
+        backLink={{ url: "/guides", text: "Back to Guides" }}
+      >
         {/* Guide Type Badge */}
         <div className="mb-6 flex items-center gap-3">
           <span className="rounded-full bg-brand-sand px-3 py-1 text-sm font-bold text-brand-navy">

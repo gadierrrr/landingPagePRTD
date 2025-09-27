@@ -4,6 +4,6 @@ import { test, expect } from '@playwright/test';
 // Verifies the landing page loads and primary hero heading renders.
 
 test('landing smoke @smoke', async ({ page }) => {
-  await page.goto('/landing');
+  await page.goto('/');
   await expect(page.locator('h1')).toContainText('THE TIME TO SAVE IS NOW');
 });
