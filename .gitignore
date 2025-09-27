@@ -35,3 +35,21 @@ screenshots/
 
 # Misc
 *.tgz
+
+# Runtime data and analytics (should be in /var/prtd-data/)
+analytics-validation-*.json
+health-check-*.json*
+analytics-env/
+
+# Data backups (should be in /var/prtd-data/backups/)
+data/beaches-backup-*.json
+data/beaches-comprehensive*.json
+data/beaches-merged.json
+data/beaches_master_merged.json
+
+# TypeScript build info
+tsconfig.tsbuildinfo
+
+# Static HTML exports (Next.js build artifacts)
+homepage.html
+*.html
