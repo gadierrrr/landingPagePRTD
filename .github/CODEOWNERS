@@ -1,0 +1,25 @@
+# Global owners - all files require review
+* @gadierrrr
+
+# Frontend code - require frontend review
+/src/ @gadierrrr
+/pages/ @gadierrrr
+/components/ @gadierrrr
+
+# Infrastructure and deployment
+/.github/ @gadierrrr
+/deploy/ @gadierrrr
+/scripts/ @gadierrrr
+
+# Configuration files
+*.json @gadierrrr
+*.js @gadierrrr
+*.mjs @gadierrrr
+*.ts @gadierrrr
+*.tsx @gadierrrr
+next.config.mjs @gadierrrr
+package.json @gadierrrr
+package-lock.json @gadierrrr
+
+# Documentation
+*.md @gadierrrr
