@@ -6,9 +6,25 @@ import { useEffect } from 'react';
 import { initializeAnalytics } from '../src/lib/analytics';
 
 export default function App({ Component, pageProps }: AppProps) {
-  // Initialize enhanced analytics
+  // Initialize enhanced analytics on idle so it doesn't contend with LCP
   useEffect(() => {
-    initializeAnalytics();
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const init = () => initializeAnalytics();
+    const idleWindow = window as typeof window & {
+      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+
+    if (typeof idleWindow.requestIdleCallback === 'function') {
+      const idleId = idleWindow.requestIdleCallback(init, { timeout: 2000 });
+      return () => idleWindow.cancelIdleCallback?.(idleId);
+    }
+
+    const timeoutId = window.setTimeout(init, 1500);
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   return (
@@ -40,14 +56,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:image:alt" content="Puerto Rico Travel Deals - Discover Amazing Vacation Offers" />
 
         <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        {/* eslint-disable-next-line no-restricted-syntax */}
+        <meta name="theme-color" content="#0b2b54" />
       </Head>
       
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-EF509Z3W9G" strategy="afterInteractive" />
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-EF509Z3W9G" strategy="lazyOnload" />
       <Script
         id="ga4"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];

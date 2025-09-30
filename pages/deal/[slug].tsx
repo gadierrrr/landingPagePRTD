@@ -8,7 +8,7 @@ import { readDeals } from '../../src/lib/dealsStore';
 import { SiteLayout } from '../../src/ui/layout/SiteLayout';
 import { SEO } from '../../src/ui/SEO';
 import { isExpired, displaySourceName, appendUtm, appendEnhancedUtm, formatEndDate, formatRelativeTime } from '../../src/lib/dealUtils';
-import { generateDealStructuredData, generateDealMeta } from '../../src/lib/seo';
+import { generateDealStructuredData, generateDealMeta, generateBreadcrumbSchema, generateImageObjectSchema } from '../../src/lib/seo';
 import { 
   trackDealView, 
   trackExternalDealClick,
@@ -87,6 +87,21 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
   const dealUrl = typeof window !== 'undefined' ? window.location.href : `https://puertoricotraveldeals.com/deal/${deal.slug}`;
   const structuredData = generateDealStructuredData(deal, dealUrl);
   const dealMeta = generateDealMeta(deal);
+
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://puertoricotraveldeals.com' },
+    { name: 'Deals', url: 'https://puertoricotraveldeals.com/deals' },
+    { name: deal.title, url: dealUrl }
+  ]);
+
+  // Generate image schema
+  const imageSchema = generateImageObjectSchema(
+    dealMeta.image,
+    deal.title,
+    1200,
+    630
+  );
 
   const handleExternalClick = async () => {
     if (deal.externalUrl) {
@@ -602,6 +617,18 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData)
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema)
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(imageSchema)
           }}
         />
       </SiteLayout>

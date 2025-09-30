@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { CategoryPills } from './CategoryPills';
 
 interface EnhancedHeroProps {
@@ -21,36 +22,80 @@ export const EnhancedHero: React.FC<EnhancedHeroProps> = ({
   onPillClick 
 }) => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (backgrounds.length <= 1) return;
-    
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const updateMatch = (match: boolean) => setIsMobile(match);
+    const handleChange = (event: MediaQueryListEvent) => updateMatch(event.matches);
+
+    updateMatch(mediaQuery.matches);
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+
+    if (typeof mediaQuery.addListener === 'function') {
+      mediaQuery.addListener(handleChange);
+      return () => mediaQuery.removeListener(handleChange);
+    }
+
+    return undefined;
+  }, []);
+
+  const heroBackgrounds = useMemo(() => {
+    if (!backgrounds || backgrounds.length === 0) {
+      return backgrounds;
+    }
+    return isMobile ? backgrounds.slice(0, 1) : backgrounds;
+  }, [backgrounds, isMobile]);
+
+  useEffect(() => {
+    setCurrentBgIndex(0);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!heroBackgrounds || heroBackgrounds.length <= 1) {
+      return;
+    }
+
     const interval = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % backgrounds.length);
-    }, 8000); // Change every 8 seconds
+      setCurrentBgIndex((prev) => (prev + 1) % heroBackgrounds.length);
+    }, 8000);
 
     return () => clearInterval(interval);
-  }, [backgrounds.length]);
+  }, [heroBackgrounds]);
 
-  const currentBackground = backgrounds[currentBgIndex] || backgrounds[0];
+  const currentBackground = heroBackgrounds[currentBgIndex] || backgrounds[0];
 
   return (
     <section className="relative min-h-[70vh] overflow-hidden bg-brand-navy">
       {/* Background Image */}
-      <div className="absolute inset-0">
-        <div
-          className="size-full bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={currentBackground}
+          alt="Puerto Rico scenic beach and landscape background"
+          fill
+          priority
+          quality={60}
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 85vw, 1200px"
           style={{
-            backgroundImage: `url(${currentBackground})`,
+            objectFit: 'cover',
+            objectPosition: 'center',
             filter: 'brightness(0.7)'
           }}
         />
         {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/40" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/20 via-black/10 to-black/40" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-[70vh] items-center justify-center px-4 py-16 sm:px-6">
+      <div className="relative z-20 flex min-h-[70vh] items-center justify-center px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-4xl text-center text-white">
           {/* Headline */}
           <h1 className="mb-8 text-5xl font-black leading-none sm:text-7xl lg:text-8xl">
@@ -69,6 +114,7 @@ export const EnhancedHero: React.FC<EnhancedHeroProps> = ({
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
             <Link
               href="/deals"
+              prefetch={false}
               onClick={() => onCtaClick?.('browse_deals')}
               className="hover:bg-brand-red/90 inline-flex items-center rounded-full bg-brand-red px-10 py-4 text-lg font-bold text-white shadow-xl transition-all duration-200 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 focus:ring-offset-transparent"
             >
@@ -77,6 +123,7 @@ export const EnhancedHero: React.FC<EnhancedHeroProps> = ({
             
             <Link
               href="/beachfinder"
+              prefetch={false}
               onClick={() => onCtaClick?.('beach_finder')}
               className="hover:bg-brand-blue/90 inline-flex items-center rounded-full bg-brand-blue px-10 py-4 text-lg font-bold text-white shadow-xl transition-all duration-200 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 focus:ring-offset-transparent"
             >

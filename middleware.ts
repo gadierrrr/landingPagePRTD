@@ -8,8 +8,8 @@ export function middleware(request: NextRequest) {
   // Set Content Security Policy headers to allow Google Forms embedding
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://docs.google.com",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://www.googletagmanager.com https://www.google-analytics.com https://docs.google.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://basemaps.cartocdn.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data: https: http:",
     "media-src 'self' data: https:",
@@ -18,7 +18,8 @@ export function middleware(request: NextRequest) {
     "form-action 'self' https://docs.google.com",
     "frame-ancestors 'none'",
     "frame-src 'self' https://docs.google.com https://www.google.com",
-    "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://docs.google.com"
+    "worker-src 'self' blob:",
+    "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://docs.google.com https://basemaps.cartocdn.com"
   ].join('; ');
 
   response.headers.set('Content-Security-Policy', csp);

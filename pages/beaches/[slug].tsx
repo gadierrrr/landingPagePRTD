@@ -10,7 +10,7 @@ import { SEO } from '../../src/ui/SEO';
 import { Section } from '../../src/ui/Section';
 import { Heading } from '../../src/ui/Heading';
 import { TAG_LABELS, AMENITY_LABELS, CONDITION_LABELS } from '../../src/constants/beachVocab';
-import { generateBeachMeta, generateBeachStructuredData } from '../../src/lib/seo';
+import { generateBeachMeta, generateBeachStructuredData, generateBreadcrumbSchema } from '../../src/lib/seo';
 import { RelatedBeachesGrid } from '../../src/ui/beaches/RelatedBeachesGrid';
 import {
   trackBeachDetailsView,
@@ -29,11 +29,18 @@ export default function BeachPage({ beach, relatedBeaches }: BeachPageProps) {
   }, [beach]);
 
   // Generate SEO metadata and structured data
-  const beachUrl = typeof window !== 'undefined' 
-    ? window.location.href 
+  const beachUrl = typeof window !== 'undefined'
+    ? window.location.href
     : `https://puertoricotraveldeals.com/beaches/${beach.slug}`;
   const beachMeta = generateBeachMeta(beach);
   const structuredData = generateBeachStructuredData(beach, beachUrl);
+
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://puertoricotraveldeals.com' },
+    { name: 'Beaches', url: 'https://puertoricotraveldeals.com/beachfinder' },
+    { name: beach.name, url: beachUrl }
+  ]);
 
   const handleDirectionsClick = () => {
     const mapsUrl = `https://maps.apple.com/?daddr=${beach.coords.lat},${beach.coords.lng}&dirflg=d`;
@@ -80,6 +87,12 @@ export default function BeachPage({ beach, relatedBeaches }: BeachPageProps) {
             __html: JSON.stringify(structuredData, null, 2)
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema, null, 2)
+          }}
+        />
       </Head>
 
       <SiteLayout>
@@ -101,9 +114,9 @@ export default function BeachPage({ beach, relatedBeaches }: BeachPageProps) {
           <div className="mx-auto max-w-4xl">
             {/* Cover Image */}
             <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-xl">
-              <Image 
-                src={beach.coverImage} 
-                alt={beach.name}
+              <Image
+                src={beach.coverImage}
+                alt={`${beach.name} beach in ${beach.municipality}, Puerto Rico - scenic coastal view`}
                 fill
                 priority
                 className="object-cover object-center"

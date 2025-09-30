@@ -138,7 +138,7 @@ export const Footer: React.FC = () => {
       <p className="mb-2">
         <strong>Affiliate Disclosure:</strong> We may earn commissions from bookings made through our partner links. This helps us provide free access to curated deals.
       </p>
-      <p>© {new Date().getFullYear()} PRTD. All rights reserved. • <a href="mailto:legal@puertoricotraveldeals.com" className="hover:text-brand-blue">Privacy</a> • <a href="mailto:legal@puertoricotraveldeals.com" className="hover:text-brand-blue">Terms</a></p>
+      <p suppressHydrationWarning>© {new Date().getFullYear()} PRTD. All rights reserved. • <a href="mailto:legal@puertoricotraveldeals.com" className="hover:text-brand-blue">Privacy</a> • <a href="mailto:legal@puertoricotraveldeals.com" className="hover:text-brand-blue">Terms</a></p>
     </div>
   </footer>
   );

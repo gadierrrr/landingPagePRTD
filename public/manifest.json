@@ -1,0 +1,45 @@
+{
+  "name": "Puerto Rico Travel Deals",
+  "short_name": "PRTD",
+  "description": "Island-wide discounts on hotels, dining, and experiences—curated by locals",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f1e6",
+  "theme_color": "#0b2b54",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "lifestyle", "shopping"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

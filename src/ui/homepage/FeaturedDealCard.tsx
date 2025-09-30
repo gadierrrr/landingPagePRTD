@@ -4,6 +4,7 @@ import { Deal } from '../../lib/forms';
 import { isExpired, displaySourceName, formatRelativeTime, formatEndDate } from '../../lib/dealUtils';
 import { DealBadge, BadgeType } from './DealBadge';
 import { trackDealClick, trackDealView } from '../../lib/analytics';
+import { ResponsiveImage } from '../ResponsiveImage';
 
 interface FeaturedDealCardProps {
   deal: Deal;
@@ -42,6 +43,7 @@ export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({
   return (
     <Link 
       href={`/deal/${deal.slug}`} 
+      prefetch={false}
       className="group block"
       onClick={handleDealClick}
     >
@@ -49,12 +51,14 @@ export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({
         <div className="grid gap-0 md:grid-cols-2">
           {/* Image Side */}
           <div className="bg-brand-navy/5 relative aspect-[4/3] overflow-hidden md:aspect-auto">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src={deal.image} 
-              alt={deal.title}
-              className="size-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-              style={deal.objectPosition ? { objectPosition: deal.objectPosition } : { objectPosition: '50% 40%' }}
+            <ResponsiveImage
+              src={deal.image}
+              alt={`${deal.title} in ${deal.location}, Puerto Rico - ${deal.category} deal`}
+              priority
+              objectPosition={deal.objectPosition || '50% 40%'}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={75}
+              className="transition-transform duration-300 group-hover:scale-105"
             />
             
             {/* Badges */}
@@ -111,7 +115,7 @@ export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({
             </div>
             
             {/* Meta info */}
-            <div className="text-brand-navy/50 flex items-center justify-between text-sm">
+            <div className="text-brand-navy/50 flex items-center justify-between text-sm" suppressHydrationWarning>
               <div>
                 {(deal.expiresAt || deal.expiry) && (
                   <span className={expired ? 'font-bold text-brand-red' : ''}>

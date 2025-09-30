@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import maplibregl, { Map as MapLibreMap, Marker, LngLatBounds } from 'maplibre-gl';
+import type { Map as MapLibreMap, Marker, LngLatLike } from 'maplibre-gl';
 import { Beach } from '../../lib/forms';
 
 interface BeachMapViewProps {
@@ -28,6 +28,7 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
   const mapRef = useRef<MapLibreMap | null>(null);
   const markersRef = useRef<BeachMarkerRecord[]>([]);
   const userMarkerRef = useRef<Marker | null>(null);
+  const maplibreRef = useRef<typeof import('maplibre-gl') | null>(null);
 
   // Initialise the map once the component mounts on the client
   useEffect(() => {
@@ -35,30 +36,49 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
       return;
     }
 
-    const map = new maplibregl.Map({
-      container: containerRef.current,
-      style: MAP_STYLE_URL,
-      center: INITIAL_CENTER,
-      zoom: 8,
-      attributionControl: false
+    let isMounted = true;
+
+    import('maplibre-gl').then((module) => {
+      if (!isMounted || !containerRef.current) {
+        return;
+      }
+
+      const maplibre = module.default ?? module;
+      maplibreRef.current = maplibre;
+
+      const map = new maplibre.Map({
+        container: containerRef.current,
+        style: MAP_STYLE_URL,
+        center: INITIAL_CENTER,
+        zoom: 8,
+        attributionControl: false
+      });
+
+      map.addControl(new maplibre.NavigationControl({ showCompass: false }), 'top-right');
+      mapRef.current = map;
+    }).catch((error) => {
+      console.error('Failed to load MapLibre:', error);
     });
 
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
-    mapRef.current = map;
-
     return () => {
+      isMounted = false;
       markersRef.current.forEach(({ marker }) => marker.remove());
       markersRef.current = [];
       userMarkerRef.current?.remove();
       userMarkerRef.current = null;
-      map.remove();
-      mapRef.current = null;
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+      maplibreRef.current = null;
     };
   }, []);
 
   // Place markers for beaches and fit bounds whenever the dataset changes
   useEffect(() => {
-    if (!mapRef.current) {
+    const map = mapRef.current;
+    const maplibre = maplibreRef.current;
+    if (!map || !maplibre) {
       return;
     }
 
@@ -69,7 +89,7 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
       return;
     }
 
-    const bounds = new LngLatBounds();
+    const bounds = new maplibre.LngLatBounds();
 
     beaches.forEach((beach) => {
       const element = document.createElement('button');
@@ -82,9 +102,9 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
         onBeachDetailsClick?.(beach);
       });
 
-      const marker = new maplibregl.Marker({ element, anchor: 'bottom' })
-        .setLngLat([beach.coords.lng, beach.coords.lat])
-        .addTo(mapRef.current!);
+      const marker = new maplibre.Marker({ element, anchor: 'bottom' })
+        .setLngLat([beach.coords.lng, beach.coords.lat] as LngLatLike)
+        .addTo(map);
 
       markersRef.current.push({ beach, marker, element });
       bounds.extend([beach.coords.lng, beach.coords.lat]);
@@ -95,17 +115,23 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
     }
 
     if (!bounds.isEmpty()) {
-      if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
-        mapRef.current.easeTo({ center: bounds.getCenter(), zoom: Math.max(mapRef.current.getZoom(), 12), duration: 700 });
+      const northEast = bounds.getNorthEast();
+      const southWest = bounds.getSouthWest();
+      const isSinglePoint = northEast.lat === southWest.lat && northEast.lng === southWest.lng;
+
+      if (isSinglePoint) {
+        map.easeTo({ center: bounds.getCenter(), zoom: Math.max(map.getZoom(), 12), duration: 700 });
       } else {
-        mapRef.current.fitBounds(bounds, { padding: 64, maxZoom: 13, duration: 800 });
+        map.fitBounds(bounds, { padding: 64, maxZoom: 13, duration: 800 });
       }
     }
   }, [beaches, userLocation, onBeachDetailsClick]);
 
   // Highlight the active beach and gently move the camera towards it
   useEffect(() => {
-    if (!mapRef.current) {
+    const map = mapRef.current;
+    const maplibre = maplibreRef.current;
+    if (!map || !maplibre) {
       return;
     }
 
@@ -115,9 +141,9 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
     });
 
     if (selectedBeach) {
-      mapRef.current.easeTo({
+      map.easeTo({
         center: [selectedBeach.coords.lng, selectedBeach.coords.lat],
-        zoom: Math.max(mapRef.current.getZoom(), 12),
+        zoom: Math.max(map.getZoom(), 12),
         duration: 600
       });
     }
@@ -125,7 +151,9 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
 
   // Render the user's location marker when available
   useEffect(() => {
-    if (!mapRef.current) {
+    const map = mapRef.current;
+    const maplibre = maplibreRef.current;
+    if (!map || !maplibre) {
       return;
     }
 
@@ -140,9 +168,9 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
     element.className = 'prtd-map-user-marker';
     element.title = 'Your location';
 
-    userMarkerRef.current = new maplibregl.Marker({ element })
-      .setLngLat([userLocation.lng, userLocation.lat])
-      .addTo(mapRef.current);
+    userMarkerRef.current = new maplibre.Marker({ element })
+      .setLngLat([userLocation.lng, userLocation.lat] as LngLatLike)
+      .addTo(map);
   }, [userLocation]);
 
   return (

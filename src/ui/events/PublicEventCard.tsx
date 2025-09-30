@@ -1,14 +1,15 @@
 import React from 'react';
 import { Event } from '../../lib/forms';
-import { 
-  isEventExpired, 
-  isEventCanceled, 
-  formatEventDate, 
-  generateMapUrl, 
+import {
+  isEventExpired,
+  isEventCanceled,
+  formatEventDate,
+  generateMapUrl,
   appendUtmToEventUrl,
   getEventStatusBadge,
-  getGenreBadgeColor 
+  getGenreBadgeColor
 } from '../../lib/eventUtils';
+import { ResponsiveImage } from '../ResponsiveImage';
 
 interface PublicEventCardProps {
   event: Event;
@@ -17,16 +18,9 @@ interface PublicEventCardProps {
 }
 
 export const PublicEventCard: React.FC<PublicEventCardProps> = ({ event, weekStart, isSponsored = false }) => {
-  const [mounted, setMounted] = React.useState(false);
-  
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-  
-  // Use static values during SSR, dynamic values after mount
-  const expired = mounted ? isEventExpired(event) : false;
+  const expired = isEventExpired(event);
   const canceled = isEventCanceled(event);
-  const statusBadge = mounted ? getEventStatusBadge(event) : { text: '', className: '' };
+  const statusBadge = getEventStatusBadge(event);
   const genreColor = getGenreBadgeColor(event.genre);
   const mapUrl = generateMapUrl(event.venueName, event.address, event.city);
   
@@ -62,11 +56,11 @@ export const PublicEventCard: React.FC<PublicEventCardProps> = ({ event, weekSta
       {/* 16:9 Aspect Ratio Image */}
       <div className="relative aspect-[16/9] overflow-hidden bg-brand-sand">
         {event.heroImage ? (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img 
-            src={event.heroImage.url} 
+          <ResponsiveImage
+            src={event.heroImage.url}
             alt={event.heroImage.alt}
-            className="size-full object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={75}
           />
         ) : (
           <div className="text-brand-navy/30 flex size-full items-center justify-center">
@@ -96,8 +90,8 @@ export const PublicEventCard: React.FC<PublicEventCardProps> = ({ event, weekSta
         
         {/* Event Details */}
         <div className="space-y-1 text-sm">
-          <div className="text-brand-navy/80 font-medium">
-            {mounted ? formatEventDate(event.startDateTime, event.endDateTime) : 'Loading...'}
+          <div className="text-brand-navy/80 font-medium" suppressHydrationWarning>
+            {formatEventDate(event.startDateTime, event.endDateTime)}
           </div>
           <div className="text-brand-navy/60">
             {event.venueName ? `${event.venueName}, ${event.city}` : event.city}

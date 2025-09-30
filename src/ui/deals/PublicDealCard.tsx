@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Deal } from '../../lib/forms';
 import { isExpired, displaySourceName, formatRelativeTime, formatEndDate } from '../../lib/dealUtils';
 import { trackDealClick, trackDealView } from '../../lib/analytics';
+import { ResponsiveImage } from '../ResponsiveImage';
 
 interface PublicDealCardProps {
   deal: Deal;
@@ -43,27 +44,29 @@ export const PublicDealCard: React.FC<PublicDealCardProps> = ({
   return (
     <Link 
       href={`/deal/${deal.slug}`} 
+      prefetch={false}
       className="group block"
       onClick={handleDealClick}
     >
       <div className="ring-brand-navy/10 hover:ring-brand-blue/20 relative cursor-pointer overflow-hidden rounded-xl bg-white ring-1 transition-all duration-200 hover:shadow-md" aria-label={`View details for ${deal.title}`}>
         {/* 16:9 Aspect Ratio Image */}
         <div className="to-brand-navy/20 relative aspect-[16/9] overflow-hidden rounded-xl bg-[#0A2A29] bg-gradient-to-br from-[#0A2A29]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img 
-            src={deal.image} 
+          <ResponsiveImage
+            src={deal.image}
             alt={deal.title}
-            className="size-full object-cover object-center"
-            style={deal.objectPosition ? { objectPosition: deal.objectPosition } : { objectPosition: '50% 40%' }}
+            priority={position !== undefined && position < 3}
+            objectPosition={deal.objectPosition || '50% 40%'}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={75}
           />
-          
+
           {/* Expired Badge */}
           {expired && (
             <div className="absolute right-3 top-3 rounded-full bg-brand-red px-2 py-1 text-xs font-bold text-white shadow-lg">
               Expired
             </div>
           )}
-          
+
           {/* Source Badge */}
           {sourceName && (
             <div className="absolute bottom-3 left-3 rounded-full bg-black/60 px-2 py-1 text-xs font-medium text-white">
@@ -94,7 +97,7 @@ export const PublicDealCard: React.FC<PublicDealCardProps> = ({
           </div>
           
           {/* Mini Meta */}
-          <div className="text-brand-navy/50 flex items-center justify-between text-xs">
+          <div className="text-brand-navy/50 flex items-center justify-between text-xs" suppressHydrationWarning>
             <div>
               {(deal.expiresAt || deal.expiry) && (
                 <span className={expired ? 'font-bold text-brand-red' : ''}>

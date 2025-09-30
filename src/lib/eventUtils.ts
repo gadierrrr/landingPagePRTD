@@ -11,38 +11,48 @@ export function isEventCanceled(event: Event): boolean {
 }
 
 export function formatEventDate(startDateTime: string, endDateTime?: string): string {
-  const start = new Date(startDateTime);
-  const startDate = start.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric'
-  });
-  const startTime = start.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    timeZone: 'America/Puerto_Rico'
-  });
-  
-  if (endDateTime) {
-    const end = new Date(endDateTime);
-    const endTime = end.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
+  // Use try-catch to handle potential Intl issues during SSR
+  try {
+    const start = new Date(startDateTime);
+    const startDate = start.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
       timeZone: 'America/Puerto_Rico'
     });
-    
-    // Same day
-    if (start.toDateString() === end.toDateString()) {
-      return `${startDate}, ${startTime} - ${endTime}`;
-    } else {
-      const endDate = end.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric'
+    const startTime = start.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+      timeZone: 'America/Puerto_Rico'
+    });
+
+    if (endDateTime) {
+      const end = new Date(endDateTime);
+      const endTime = end.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'America/Puerto_Rico'
       });
-      return `${startDate} ${startTime} - ${endDate} ${endTime}`;
+
+      // Same day
+      if (start.toDateString() === end.toDateString()) {
+        return `${startDate}, ${startTime} - ${endTime}`;
+      } else {
+        const endDate = end.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          timeZone: 'America/Puerto_Rico'
+        });
+        return `${startDate} ${startTime} - ${endDate} ${endTime}`;
+      }
     }
+
+    return `${startDate}, ${startTime}`;
+  } catch (e) {
+    // Fallback for SSR or Intl issues
+    return startDateTime;
   }
-  
-  return `${startDate}, ${startTime}`;
 }
 
 export function formatEventTime(startDateTime: string): string {

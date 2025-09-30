@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { BlogPostLayout } from '../../src/ui/blog/BlogPostLayout';
 import { Heading } from '../../src/ui/Heading';
 import { GuideMeta, Guide, getAllGuidesMeta, getGuideBySlug } from '../../src/lib/guides';
+import { generateBreadcrumbSchema, generateFAQPageSchema } from '../../src/lib/seo';
 
 interface GuidePageProps {
   guide: Guide;
@@ -51,6 +52,42 @@ export default function GuidePage({ guide, relatedGuides }: GuidePageProps) {
     "keywords": meta.tags?.join(', ') || ''
   };
 
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://puertoricotraveldeals.com' },
+    { name: 'Guides', url: 'https://puertoricotraveldeals.com/guides' },
+    { name: meta.title, url: `https://puertoricotraveldeals.com/guides/${meta.slug}` }
+  ]);
+
+  // Parse FAQ schema from HTML content if FAQs exist
+  const parseFAQs = (htmlContent: string): Array<{question: string, answer: string}> | null => {
+    // Look for FAQ section patterns in HTML
+    const faqMatch = htmlContent.match(/<h2[^>]*>(?:FAQ|Frequently Asked Questions|Common Questions)<\/h2>([\s\S]*?)(?=<h2|$)/i);
+
+    if (!faqMatch) return null;
+
+    const faqSection = faqMatch[1];
+    const faqs: Array<{question: string, answer: string}> = [];
+
+    // Match h3 questions followed by paragraphs
+    const questionPattern = /<h3[^>]*>(.*?)<\/h3>\s*<p[^>]*>(.*?)<\/p>/gi;
+    let match;
+
+    while ((match = questionPattern.exec(faqSection)) !== null) {
+      const question = match[1].replace(/<[^>]*>/g, '').trim();
+      const answer = match[2].replace(/<[^>]*>/g, '').trim();
+
+      if (question && answer) {
+        faqs.push({ question, answer });
+      }
+    }
+
+    return faqs.length > 0 ? faqs : null;
+  };
+
+  const faqs = parseFAQs(html);
+  const faqSchema = faqs ? generateFAQPageSchema(faqs) : null;
+
   // Create modified meta for guide-specific display
   const guideMeta = {
     ...meta,
@@ -62,10 +99,20 @@ export default function GuidePage({ guide, relatedGuides }: GuidePageProps) {
   return (
     <>
       <Head>
-        <script 
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData, null, 2) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema, null, 2) }}
+        />
+        {faqSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema, null, 2) }}
+          />
+        )}
       </Head>
 
       <BlogPostLayout 

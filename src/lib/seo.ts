@@ -456,7 +456,90 @@ export function generateBeachStructuredData(beach: Beach, beachUrl?: string): Pl
   return schema;
 }
 
+// BreadcrumbList Schema
+export interface BreadcrumbSchema {
+  "@context": "https://schema.org";
+  "@type": "BreadcrumbList";
+  itemListElement: Array<{
+    "@type": "ListItem";
+    position: number;
+    name: string;
+    item: string;
+  }>;
+}
+
+export function generateBreadcrumbSchema(breadcrumbs: Array<{name: string, url: string}>): BreadcrumbSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.url
+    }))
+  };
+}
+
+// ImageObject Schema
+export interface ImageObjectSchema {
+  "@context": "https://schema.org";
+  "@type": "ImageObject";
+  url: string;
+  caption: string;
+  width?: number;
+  height?: number;
+}
+
+export function generateImageObjectSchema(url: string, caption: string, width?: number, height?: number): ImageObjectSchema {
+  const schema: ImageObjectSchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    url,
+    caption
+  };
+
+  if (width) {
+    schema.width = width;
+  }
+
+  if (height) {
+    schema.height = height;
+  }
+
+  return schema;
+}
+
+// FAQPage Schema
+export interface FAQPageSchema {
+  "@context": "https://schema.org";
+  "@type": "FAQPage";
+  mainEntity: Array<{
+    "@type": "Question";
+    name: string;
+    acceptedAnswer: {
+      "@type": "Answer";
+      text: string;
+    };
+  }>;
+}
+
+export function generateFAQPageSchema(faqs: Array<{question: string, answer: string}>): FAQPageSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(faq => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+}
+
 // Utility function to generate JSON-LD script tag
-export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema | EventSchema | EventSeriesSchema | PlaceSchema): string {
+export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema | EventSchema | EventSeriesSchema | PlaceSchema | BreadcrumbSchema | ImageObjectSchema | FAQPageSchema): string {
   return `<script type="application/ld+json">${JSON.stringify(data, null, 2)}</script>`;
 }

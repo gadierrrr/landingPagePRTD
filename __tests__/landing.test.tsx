@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Landing from '../pages/landing';
+import Landing from '../pages/index';
 
 // Mock data for testing
 const mockDeal = {

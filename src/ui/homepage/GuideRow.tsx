@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { ResponsiveImage } from '../ResponsiveImage';
 
 interface Guide {
   id: string;
@@ -48,12 +49,12 @@ export const GuideRow: React.FC<GuideRowProps> = ({
                   {/* 16:9 Aspect Ratio Image */}
                   <div className="to-brand-navy/20 relative aspect-[16/9] overflow-hidden rounded-t-xl bg-[#0A2A29] bg-gradient-to-br from-[#0A2A29]">
                     {guide.heroImageUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img 
-                        src={guide.heroImageUrl} 
-                        alt={guide.title}
-                        className="size-full object-cover object-center"
-                        style={{ objectPosition: '50% 40%' }}
+                      <ResponsiveImage
+                        src={guide.heroImageUrl}
+                        alt={`${guide.title} - Puerto Rico travel guide`}
+                        objectPosition="50% 40%"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        quality={75}
                       />
                     ) : (
                       <div className="from-brand-blue/20 to-brand-navy/20 flex size-full items-center justify-center bg-gradient-to-br">
