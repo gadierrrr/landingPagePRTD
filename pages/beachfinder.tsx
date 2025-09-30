@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { GetStaticProps } from 'next';
 import { SiteLayout } from '../src/ui/layout/SiteLayout';
 import { Section } from '../src/ui/Section';
@@ -23,6 +24,13 @@ import {
   trackBeachDirectionsClick,
   trackBeachDetailsView
 } from '../src/lib/analytics';
+
+const BeachMapView = dynamic(() => import('../src/ui/beaches/BeachMapView'), {
+  ssr: false,
+  loading: () => (
+    <div className="prtd-map-container prtd-map-fallback">Loading map…</div>
+  )
+});
 
 interface BeachFinderProps {
   beaches: Beach[];
@@ -186,8 +194,21 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
     });
   };
 
+  const handleViewModeChange = (mode: 'list' | 'map') => {
+    setViewMode(mode);
+    if (mode === 'map') {
+      trackBeachFinderSectionView(filteredBeaches.length);
+    }
+  };
+
   const handleBeachCardClick = (beach: Beach) => {
-    const position = displayedBeaches.findIndex(b => b.id === beach.id) + 1;
+    const listIndex = displayedBeaches.findIndex(b => b.id === beach.id);
+    const mapIndex = filteredBeaches.findIndex(b => b.id === beach.id);
+    const position = listIndex !== -1
+      ? listIndex + 1
+      : mapIndex !== -1
+        ? mapIndex + 1
+        : 0;
     trackBeachCardClick(beach, position, selectedTags);
   };
 
@@ -262,27 +283,27 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
           {/* View Toggle */}
           <div className="flex items-center justify-between">
             <div className="flex rounded-lg bg-brand-sand p-1">
-              <button
-                onClick={() => setViewMode('list')}
-                className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                  viewMode === 'list' 
-                    ? 'bg-white text-brand-navy shadow-sm' 
-                    : 'text-brand-navy/60 hover:text-brand-navy'
-                }`}
-              >
-                List
-              </button>
-              <button
-                onClick={() => setViewMode('map')}
-                className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                  viewMode === 'map' 
-                    ? 'bg-white text-brand-navy shadow-sm' 
-                    : 'text-brand-navy/60 hover:text-brand-navy'
-                }`}
-              >
-                Map (Coming Soon)
-              </button>
-            </div>
+            <button
+              onClick={() => handleViewModeChange('list')}
+              className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                viewMode === 'list' 
+                  ? 'bg-white text-brand-navy shadow-sm' 
+                  : 'text-brand-navy/60 hover:text-brand-navy'
+              }`}
+            >
+              List
+            </button>
+            <button
+              onClick={() => handleViewModeChange('map')}
+              className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                viewMode === 'map' 
+                  ? 'bg-white text-brand-navy shadow-sm' 
+                  : 'text-brand-navy/60 hover:text-brand-navy'
+              }`}
+            >
+              Map View
+            </button>
+          </div>
 
             <div className="text-brand-navy/60 text-sm">
               Showing {displayedBeaches.length} of {filteredBeaches.length} beach{filteredBeaches.length !== 1 ? 'es' : ''}
@@ -370,11 +391,20 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
       {/* Results Section */}
       <Section>
         {viewMode === 'map' ? (
-          <div className="py-12 text-center">
-            <div className="mb-4 text-4xl">🗺️</div>
-            <h3 className="mb-2 text-xl font-bold text-brand-navy">Map View Coming Soon</h3>
-            <p className="text-brand-navy/60">We're working on an interactive map to help you visualize beach locations.</p>
-          </div>
+          filteredBeaches.length === 0 ? (
+            <div className="py-12 text-center">
+              <div className="mb-4 text-4xl">🌊</div>
+              <h3 className="mb-2 text-xl font-bold text-brand-navy">No beaches match your filters</h3>
+              <p className="text-brand-navy/60">Try adjusting your filters or resetting them to explore more of Puerto Rico.</p>
+            </div>
+          ) : (
+            <BeachMapView
+              beaches={filteredBeaches}
+              userLocation={userLocation || undefined}
+              selectedBeach={selectedBeach}
+              onBeachDetailsClick={handleBeachDetailsClick}
+            />
+          )
         ) : (
           <>
             <PublicBeachesGrid

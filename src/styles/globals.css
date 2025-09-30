@@ -114,3 +114,105 @@ html { font-family: var(--font-sans); }
   font-style: italic;
   color: rgb(11 43 84 / 80%);
 }
+
+.prtd-map-container {
+  width: 100%;
+  min-height: 420px;
+  height: clamp(420px, 60vh, 720px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 15px 40px 0 rgb(11 43 84 / 8%);
+}
+
+.prtd-map-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 245 235);
+  color: rgb(11 43 84 / 70%);
+  font-weight: 600;
+}
+
+.prtd-map-legend {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgb(255 255 255 / 95%);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1rem;
+  box-shadow: 0 25px 50px -12px rgb(11 43 84 / 15%);
+}
+
+.prtd-map-marker,
+.prtd-map-marker-static {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-red));
+  box-shadow: 0 10px 20px rgb(11 43 84 / 20%);
+  border: 2px solid white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.prtd-map-marker::after,
+.prtd-map-marker-static::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: white;
+  transform: rotate(-45deg);
+}
+
+.prtd-map-marker:is(:hover, :focus-visible),
+.prtd-map-marker.is-active {
+  transform: rotate(45deg) scale(1.18);
+  box-shadow: 0 15px 30px rgb(11 43 84 / 30%);
+  background: linear-gradient(135deg, var(--color-brand-red), var(--color-brand-blue));
+}
+
+.prtd-map-marker,
+.prtd-map-marker-static {
+  outline: none;
+}
+
+.prtd-map-marker:focus-visible {
+  box-shadow: 0 0 0 4px rgb(0 80 164 / 30%);
+}
+
+.prtd-map-user-marker,
+.prtd-map-user-marker-static {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 3px solid white;
+  background: var(--color-brand-blue);
+  box-shadow: 0 10px 20px rgb(11 43 84 / 20%);
+}
+
+.prtd-map-user-marker::after,
+.prtd-map-user-marker-static::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: white;
+}
+
+@media (max-width: 640px) {
+  .prtd-map-legend {
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2.5rem);
+  }
+}

@@ -11,18 +11,27 @@
     "stylelint": "stylelint \"**/*.{css,scss}\"",
     "test:ui": "playwright test",
     "scaffold:page": "npx ts-node scripts/scaffold-page.ts",
-    "events:validate": "node scripts/validate-events-index.js"
+    "events:validate": "node scripts/validate-events-index.js",
+    "images:optimize": "npx ts-node --esm scripts/optimize-images.ts",
+    "images:process": "npx ts-node --esm scripts/process-uploaded-images.ts",
+    "images:watch": "npx ts-node --esm scripts/process-uploaded-images.ts --watch"
   },
   "dependencies": {
+    "@img/sharp-linux-x64": "^0.34.4",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
+    "@types/maplibre-gl": "^1.13.2",
+    "chokidar": "^3.6.0",
     "formidable": "^3.5.4",
+    "glob": "^10.3.10",
     "gray-matter": "^4.0.3",
+    "maplibre-gl": "^5.8.0",
     "next": "^14.2.32",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "redis": "^5.8.2",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
+    "sharp": "^0.34.4",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -42,11 +51,20 @@
     "eslint-plugin-tailwindcss": "3.14.0",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
+    "jimp": "^1.6.0",
     "postcss": "8.4.38",
     "stylelint": "16.3.1",
     "stylelint-config-standard": "36.0.0",
     "tailwindcss": "3.4.7",
     "ts-jest": "29.1.2",
     "typescript": "5.4.5"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 ChromeAndroid versions",
+    "last 2 Edge versions",
+    "last 2 Firefox versions",
+    "Safari >= 16.4",
+    "iOS >= 16.4"
+  ]
 }
