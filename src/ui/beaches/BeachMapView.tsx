@@ -54,6 +54,20 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
         attributionControl: false
       });
 
+      // Handle map style load errors
+      map.on('error', (e) => {
+        console.error('Map error:', e);
+        if (containerRef.current) {
+          containerRef.current.innerHTML = `
+            <div class="prtd-map-fallback" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 1rem;">
+              <div style="font-size: 2rem;">🗺️</div>
+              <div style="font-weight: 600;">Failed to load map tiles</div>
+              <div style="font-size: 0.875rem; opacity: 0.7;">Please check your internet connection</div>
+            </div>
+          `;
+        }
+      });
+
       map.addControl(new maplibre.NavigationControl({ showCompass: false }), 'top-right');
       mapRef.current = map;
     }).catch((error) => {
@@ -82,7 +96,13 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
       return;
     }
 
-    markersRef.current.forEach(({ marker }) => marker.remove());
+    // Clean up old markers and their event listeners
+    markersRef.current.forEach(({ marker, element }) => {
+      // Remove event listeners by cloning and replacing the element
+      const newElement = element.cloneNode(true) as HTMLButtonElement;
+      element.parentNode?.replaceChild(newElement, element);
+      marker.remove();
+    });
     markersRef.current = [];
 
     if (beaches.length === 0) {
@@ -90,6 +110,7 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
     }
 
     const bounds = new maplibre.LngLatBounds();
+    const clickHandlers = new Map<HTMLButtonElement, () => void>();
 
     beaches.forEach((beach) => {
       const element = document.createElement('button');
@@ -98,9 +119,11 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
       element.title = `${beach.name} – ${beach.municipality}`;
       element.setAttribute('aria-label', `${beach.name} beach marker`);
 
-      element.addEventListener('click', () => {
+      const clickHandler = () => {
         onBeachDetailsClick?.(beach);
-      });
+      };
+      element.addEventListener('click', clickHandler);
+      clickHandlers.set(element, clickHandler);
 
       const marker = new maplibre.Marker({ element, anchor: 'bottom' })
         .setLngLat([beach.coords.lng, beach.coords.lat] as LngLatLike)
@@ -125,6 +148,13 @@ export const BeachMapView: React.FC<BeachMapViewProps> = ({
         map.fitBounds(bounds, { padding: 64, maxZoom: 13, duration: 800 });
       }
     }
+
+    // Cleanup function
+    return () => {
+      clickHandlers.forEach((handler, element) => {
+        element.removeEventListener('click', handler);
+      });
+    };
   }, [beaches, userLocation, onBeachDetailsClick]);
 
   // Highlight the active beach and gently move the camera towards it

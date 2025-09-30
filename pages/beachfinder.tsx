@@ -30,7 +30,12 @@ const BeachMapView = dynamic(() => import('../src/ui/beaches/BeachMapView'), {
   loading: () => (
     <div className="prtd-map-container prtd-map-fallback">Loading map…</div>
   )
-});
+}) as React.ComponentType<{
+  beaches: Beach[];
+  userLocation?: { lat: number; lng: number };
+  selectedBeach?: Beach | null;
+  onBeachDetailsClick?: (beach: Beach) => void;
+}>;
 
 interface BeachFinderProps {
   beaches: Beach[];
@@ -47,6 +52,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
   const [selectedBeach, setSelectedBeach] = useState<Beach | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [displayCount, setDisplayCount] = useState(9); // Initial number of beaches to display
+  const [mapError, setMapError] = useState(false);
 
   // Track section view on mount
   useEffect(() => {
@@ -397,13 +403,31 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
               <h3 className="mb-2 text-xl font-bold text-brand-navy">No beaches match your filters</h3>
               <p className="text-brand-navy/60">Try adjusting your filters or resetting them to explore more of Puerto Rico.</p>
             </div>
+          ) : mapError ? (
+            <div className="py-12 text-center">
+              <div className="mb-4 text-4xl">🗺️</div>
+              <h3 className="mb-2 text-xl font-bold text-brand-navy">Failed to load map</h3>
+              <p className="text-brand-navy/60 mb-4">The map couldn't load. Please check your connection and try again.</p>
+              <button
+                onClick={() => {
+                  setMapError(false);
+                  setViewMode('list');
+                  setTimeout(() => setViewMode('map'), 100);
+                }}
+                className="rounded-lg bg-brand-blue px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-navy"
+              >
+                Retry
+              </button>
+            </div>
           ) : (
-            <BeachMapView
-              beaches={filteredBeaches}
-              userLocation={userLocation || undefined}
-              selectedBeach={selectedBeach}
-              onBeachDetailsClick={handleBeachDetailsClick}
-            />
+            <React.Suspense fallback={<div className="prtd-map-container prtd-map-fallback">Loading map…</div>}>
+              <BeachMapView
+                beaches={filteredBeaches}
+                userLocation={userLocation || undefined}
+                selectedBeach={selectedBeach}
+                onBeachDetailsClick={handleBeachDetailsClick}
+              />
+            </React.Suspense>
           )
         ) : (
           <>

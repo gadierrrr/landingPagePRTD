@@ -1,4 +1,5 @@
 @import url("./tokens.css");
+@import url("../../node_modules/maplibre-gl/dist/maplibre-gl.css");
 
 @tailwind base;
 @tailwind components;
@@ -115,6 +116,11 @@ html { font-family: var(--font-sans); }
   color: rgb(11 43 84 / 80%);
 }
 
+.prtd-map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .prtd-map-container {
   width: 100%;
   min-height: 420px;
@@ -158,6 +164,7 @@ html { font-family: var(--font-sans); }
   border: 2px solid white;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  outline: none;
 }
 
 .prtd-map-marker::after,
@@ -176,11 +183,6 @@ html { font-family: var(--font-sans); }
   transform: rotate(45deg) scale(1.18);
   box-shadow: 0 15px 30px rgb(11 43 84 / 30%);
   background: linear-gradient(135deg, var(--color-brand-red), var(--color-brand-blue));
-}
-
-.prtd-map-marker,
-.prtd-map-marker-static {
-  outline: none;
 }
 
 .prtd-map-marker:focus-visible {
