@@ -99,7 +99,7 @@ export const EnhancedHero: React.FC<EnhancedHeroProps> = ({
         <div className="mx-auto max-w-4xl text-center text-white">
           {/* Headline */}
           <h1 className="mb-8 text-5xl font-black leading-none sm:text-7xl lg:text-8xl">
-            Best Puerto Rico Travel Deals 2025 - Hotels, Tours &amp; Dining Discounts
+            Best Puerto Rico Travel Deals - Hotels, Tours &amp; Dining Discounts
           </h1>
 
           {/* Category Pills */}

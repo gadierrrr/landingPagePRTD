@@ -256,7 +256,7 @@ export default function PRTDPRFlagLanding({
     <>
       {/* SEO and Structured Data */}
       <Head>
-        <title>Best Puerto Rico Travel Deals 2025 - Hotels, Tours & Dining Discounts</title>
+        <title>Best Puerto Rico Travel Deals - Hotels, Tours & Dining Discounts</title>
         <meta name="description" content="Find the best travel deals to Puerto Rico. Curated daily offers on flights, hotels, tours, and vacation packages. Start planning your perfect Caribbean getaway today!" />
         <meta name="keywords" content="Puerto Rico travel deals, Puerto Rico vacation deals, best deals Puerto Rico 2025, Puerto Rico hotel deals, San Juan deals, Culebra deals, Vieques deals, Puerto Rico restaurant deals, Caribbean vacation packages, Puerto Rico tours, Puerto Rico discounts, cheap Puerto Rico hotels, Puerto Rico activities, travel deals Caribbean" />
         <link rel="canonical" href="https://puertoricotraveldeals.com/" />
