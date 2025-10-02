@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Deal } from '../../lib/forms';
 import { isExpired, displaySourceName, formatRelativeTime, formatEndDate } from '../../lib/dealUtils';
 import { DealBadge, BadgeType } from './DealBadge';
-import { trackDealClick, trackDealView } from '../../lib/analytics';
+import { trackDealClick } from '../../lib/analytics';
 import { ResponsiveImage } from '../ResponsiveImage';
 
 interface FeaturedDealCardProps {
@@ -11,25 +11,16 @@ interface FeaturedDealCardProps {
   badges?: BadgeType[];
   onDealClick?: (dealId: string) => void;
   position?: number;
-  trackImpression?: boolean;
 }
 
 export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({ 
   deal, 
   badges = [],
   onDealClick,
-  position,
-  trackImpression = true
+  position
 }) => {
   const expired = isExpired(deal.expiresAt || deal.expiry);
   const sourceName = displaySourceName(deal.externalUrl, deal.sourceName);
-
-  // Track impression when component mounts
-  useEffect(() => {
-    if (trackImpression) {
-      trackDealView(deal, 'featured_deal_impression');
-    }
-  }, [deal, trackImpression]);
 
   const handleDealClick = () => {
     trackDealClick(deal, position, 'featured_deals');

@@ -3,9 +3,14 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { initializeAnalytics } from '../src/lib/analytics';
 
+const GA_MEASUREMENT_ID = 'G-EF509Z3W9G';
+
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   // Initialize enhanced analytics on idle so it doesn't contend with LCP
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -26,6 +31,46 @@ export default function App({ Component, pageProps }: AppProps) {
     const timeoutId = window.setTimeout(init, 1500);
     return () => window.clearTimeout(timeoutId);
   }, []);
+
+  useEffect(() => {
+    if (!router.isReady || typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const sendPageView = (url: string) => {
+      const pagePath = url || window.location.pathname + window.location.search;
+      const pageTitle = document.title;
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('config', GA_MEASUREMENT_ID, {
+          page_path: pagePath,
+          page_title: pageTitle,
+        });
+      } else if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push([
+          'config',
+          GA_MEASUREMENT_ID,
+          {
+            page_path: pagePath,
+            page_title: pageTitle,
+          },
+        ]);
+      }
+    };
+
+    // Send initial page view for hydration navigation edge cases
+    sendPageView(window.location.pathname + window.location.search);
+
+    const handleRouteChange = (url: string) => {
+      sendPageView(url);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router]);
 
   return (
     <>
@@ -64,16 +109,16 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#0b2b54" />
       </Head>
       
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-EF509Z3W9G" strategy="lazyOnload" />
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
       <Script
         id="ga4"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-EF509Z3W9G');
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `,
         }}
       />

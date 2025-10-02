@@ -77,7 +77,7 @@ The following tracking functions now send all required custom dimensions:
 ### ✅ **Implemented Events**
 
 - **`view_item`** (Deal views) - ✅ All 12 dimensions
-- **`select_content`** (Deal clicks) - ✅ All 12 dimensions  
+- **`select_item`** (Deal clicks) - ✅ All 12 dimensions  
 - **`click_external_deal`** (Conversions) - ✅ All 12 dimensions
 - **`conversion`** (Deal redemptions) - ✅ All 12 dimensions
 - **`share`** (Deal sharing) - ✅ All 12 dimensions
@@ -120,7 +120,7 @@ Filter: Event = click_external_deal
 ```
 Dimension: CTA ID, Position, Section Version
 Metric: Conversion Rate
-Filter: Event = select_content OR click_external_deal
+Filter: Event = select_item OR click_external_deal
 ```
 
 ### Error Monitoring

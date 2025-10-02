@@ -10,7 +10,7 @@ import { PublicDealsGrid } from '../src/ui/deals/PublicDealsGrid';
 import { generateCategoryMeta, generateDealListSchema, generateFAQPageSchema } from '../src/lib/seo';
 import { useScrollTracking } from '../src/hooks/useScrollTracking';
 import { useTimeTracking } from '../src/hooks/useTimeTracking';
-import { trackCategoryView, trackFilter } from '../src/lib/analytics';
+import { trackCategoryView, trackDealImpression, trackFilter } from '../src/lib/analytics';
 
 type SortOption = 'newest' | 'ending-soon';
 
@@ -137,6 +137,22 @@ export default function Deals() {
     generateDealListSchema(filteredAndSortedDeals),
     [filteredAndSortedDeals]
   );
+
+  useEffect(() => {
+    if (filteredAndSortedDeals.length === 0) {
+      return;
+    }
+
+    const listName = selectedCategory === 'all'
+      ? 'deals_page_all_deals'
+      : `deals_page_${selectedCategory}`;
+
+    trackDealImpression(
+      filteredAndSortedDeals.slice(0, 12),
+      listName,
+      'deals_page'
+    );
+  }, [filteredAndSortedDeals, selectedCategory]);
 
   const faqSchema = generateFAQPageSchema([
     {

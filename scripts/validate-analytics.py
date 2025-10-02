@@ -42,7 +42,7 @@ class PRTDAnalyticsValidator:
         expected_events = [
             'page_view',
             'view_item',
-            'select_content', 
+            'select_item',
             'click_external_deal',
             'conversion',
             'share',
@@ -138,7 +138,7 @@ class PRTDAnalyticsValidator:
         """Validate the conversion funnel: View → Click → External Click."""
         print(f"🔄 Validating conversion funnel for last {days_back} days...")
         
-        funnel_events = ['view_item', 'select_content', 'click_external_deal']
+        funnel_events = ['view_item', 'select_item', 'click_external_deal']
         
         request = RunReportRequest(
             property=self.property_name,
@@ -220,7 +220,7 @@ class PRTDAnalyticsValidator:
     
     def _create_deal_filter(self):
         """Create filter for deal-related events."""
-        deal_events = ['view_item', 'select_content', 'click_external_deal']
+        deal_events = ['view_item', 'select_item', 'click_external_deal']
         return self._create_event_filter(deal_events)
     
     def _create_partner_filter(self):
@@ -264,7 +264,7 @@ class PRTDAnalyticsValidator:
             deal_events[event_name] = event_count
         
         # Check for deal-specific events
-        deal_specific_events = ['view_item', 'select_content', 'click_external_deal', 'conversion']
+        deal_specific_events = ['view_item', 'select_item', 'click_external_deal', 'conversion']
         deal_event_count = sum(deal_events.get(event, 0) for event in deal_specific_events)
         
         return {
@@ -321,10 +321,10 @@ class PRTDAnalyticsValidator:
         
         # Calculate funnel conversion rates
         view_item = funnel_events.get('view_item', {}).get('events', 0)
-        select_content = funnel_events.get('select_content', {}).get('events', 0)
+        select_item_events = funnel_events.get('select_item', {}).get('events', 0)
         external_click = funnel_events.get('click_external_deal', {}).get('events', 0)
-        
-        click_rate = (select_content / view_item * 100) if view_item > 0 else 0
+
+        click_rate = (select_item_events / view_item * 100) if view_item > 0 else 0
         conversion_rate = (external_click / view_item * 100) if view_item > 0 else 0
         
         return {

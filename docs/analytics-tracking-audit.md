@@ -8,7 +8,7 @@
 |-------|---------|---------------------|----------------|
 | `page_view` | Traffic & engagement | ✅ Auto (GA4) | **HIGH** - Core metrics |
 | `view_item` | Deal impression tracking | ✅ Implemented | **HIGH** - Deal performance |
-| `select_content` | Deal card clicks | ✅ Implemented | **HIGH** - User interest |
+| `select_item` | Deal card clicks | ✅ Implemented | **HIGH** - User interest |
 | `click_external_deal` | Primary conversions | ✅ Implemented | **CRITICAL** - Revenue tracking |
 | `conversion` | Deal redemptions | ✅ Implemented | **CRITICAL** - Business success |
 | `share` | Deal sharing activity | ✅ Implemented | **MEDIUM** - Viral coefficient |

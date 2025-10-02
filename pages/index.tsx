@@ -87,13 +87,16 @@ export default function PRTDPRFlagLanding({
   
   // Track deal impressions when deals load
   useEffect(() => {
+    if (featuredDeal) {
+      trackDealImpression([featuredDeal], 'homepage_featured_deal', 'landing_page');
+    }
     if (latestDeals.length > 0) {
       trackDealImpression(latestDeals.slice(0, 8), 'homepage_latest_deals', 'landing_page');
     }
     if (under50Deals.length > 0) {
       trackDealImpression(under50Deals.slice(0, 8), 'homepage_under_50', 'landing_page');
     }
-  }, [latestDeals, under50Deals]);
+  }, [featuredDeal, latestDeals, under50Deals]);
   
   // Generate organization structured data
   const organizationSchema = generateOrganizationSchema();

@@ -101,7 +101,7 @@ class PRTDHealthChecker:
             
             # Required events
             required_events = [
-                'page_view', 'view_item', 'select_content', 
+                'page_view', 'view_item', 'select_item', 
                 'click_external_deal', 'conversion'
             ]
             
@@ -157,7 +157,7 @@ class PRTDHealthChecker:
                 event_count = int(row.metric_values[0].value)
                 users = int(row.metric_values[1].value)
                 
-                if event_name in ['view_item', 'select_content', 'click_external_deal']:
+                if event_name in ['view_item', 'select_item', 'click_external_deal']:
                     funnel_data[event_name] = {
                         "events": event_count,
                         "users": users
@@ -165,10 +165,10 @@ class PRTDHealthChecker:
             
             # Calculate conversion rates
             view_item = funnel_data.get('view_item', {}).get('events', 0)
-            select_content = funnel_data.get('select_content', {}).get('events', 0)
+            select_item_events = funnel_data.get('select_item', {}).get('events', 0)
             external_click = funnel_data.get('click_external_deal', {}).get('events', 0)
             
-            click_rate = (select_content / view_item * 100) if view_item > 0 else 0
+            click_rate = (select_item_events / view_item * 100) if view_item > 0 else 0
             conversion_rate = (external_click / view_item * 100) if view_item > 0 else 0
             
             # Health evaluation

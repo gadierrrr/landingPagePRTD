@@ -260,7 +260,7 @@ def get_event_emoji(event_name):
         'section_engagement': '📄',
         'engagement_quality_score': '🏆',
         'generate_lead': '📋',
-        'select_content': '👆'
+        'select_item': '👆'
     }
     return emoji_map.get(event_name, '📊')
 

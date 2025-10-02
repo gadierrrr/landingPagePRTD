@@ -9,6 +9,7 @@ import { Deal, Beach } from './forms';
 declare global {
   interface Window {
     gtag: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
@@ -16,17 +17,26 @@ declare global {
  * Base function to send events to Google Analytics
  */
 export const trackEvent = (eventName: string, parameters?: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', eventName, {
-      ...parameters,
-      // Add timestamp for debugging
-      timestamp: Date.now()
-    });
-    
-    // Debug logging in development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('GA4 Event:', eventName, parameters);
-    }
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const eventParams = {
+    ...parameters,
+    // Add timestamp for debugging and ordering
+    timestamp: Date.now()
+  };
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, eventParams);
+  } else {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(['event', eventName, eventParams]);
+  }
+
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.log('GA4 Event:', eventName, eventParams);
   }
 };
 
@@ -58,7 +68,7 @@ export const trackDealView = (deal: Deal, context?: string, position?: number, s
 
 // Track when a deal card is clicked (internal navigation)
 export const trackDealClick = (deal: Deal, position?: number, listName?: string, ctaId?: string) => {
-  trackEvent('select_content', {
+  trackEvent('select_item', {
     content_type: 'deal',
     item_id: deal.id || deal.slug,
     item_name: deal.title,

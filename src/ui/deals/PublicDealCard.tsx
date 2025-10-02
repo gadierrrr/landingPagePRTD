@@ -1,32 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Deal } from '../../lib/forms';
 import { isExpired, displaySourceName, formatRelativeTime, formatEndDate } from '../../lib/dealUtils';
-import { trackDealClick, trackDealView } from '../../lib/analytics';
+import { trackDealClick } from '../../lib/analytics';
 import { ResponsiveImage } from '../ResponsiveImage';
 
 interface PublicDealCardProps {
   deal: Deal;
   position?: number;
   listName?: string;
-  trackImpression?: boolean;
 }
 
 export const PublicDealCard: React.FC<PublicDealCardProps> = ({ 
   deal, 
   position,
-  listName = 'deals_grid',
-  trackImpression = true 
+  listName = 'deals_grid'
 }) => {
   const expired = isExpired(deal.expiresAt || deal.expiry);
   const sourceName = displaySourceName(deal.externalUrl, deal.sourceName);
-
-  // Track impression when component mounts
-  useEffect(() => {
-    if (trackImpression) {
-      trackDealView(deal, 'deal_card_impression', position);
-    }
-  }, [deal, trackImpression, position]);
 
   const handleDealClick = () => {
     trackDealClick(deal, position, listName, 'deal_card_click');
