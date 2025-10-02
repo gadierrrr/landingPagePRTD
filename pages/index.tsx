@@ -5,7 +5,7 @@ import { GetStaticProps } from "next";
 import { LandingHeader } from "@/ui/landing/LandingHeader";
 import { Footer } from "@/ui/Footer";
 import { PublicDealCard } from "@/ui/deals/PublicDealCard";
-import { generateOrganizationSchema } from "@/lib/seo";
+import { generateOrganizationSchema, generateFAQPageSchema } from "@/lib/seo";
 import { Deal } from "@/lib/forms";
 import { useScrollTracking } from "@/hooks/useScrollTracking";
 import { useTimeTracking } from "@/hooks/useTimeTracking";
@@ -97,6 +97,30 @@ export default function PRTDPRFlagLanding({
   
   // Generate organization structured data
   const organizationSchema = generateOrganizationSchema();
+
+  // Generate FAQ schema
+  const faqSchema = generateFAQPageSchema([
+    {
+      question: "What is Puerto Rico Travel Deals (PRTD)?",
+      answer: "Puerto Rico Travel Deals is your trusted source for exclusive vacation deals across Puerto Rico. We curate daily offers from verified local businesses including hotels, restaurants, tours, and activities in San Juan, Culebra, Vieques, Rincón, and all 78 municipalities. All deals are handpicked by locals to ensure authentic experiences at the best prices."
+    },
+    {
+      question: "How do I redeem a travel deal on PRTD?",
+      answer: "Redeeming deals is simple! Browse our deals, click on any offer to view full details including booking links and promo codes. Most deals can be redeemed by visiting the partner's website directly, calling to book and mentioning the offer, or using the provided promo code at checkout. Each deal includes specific redemption instructions."
+    },
+    {
+      question: "Are the deals available to both tourists and locals?",
+      answer: "Yes! All Puerto Rico Travel Deals are available to everyone - whether you're a local resident, visiting tourist, or planning your first trip to the island. We feature deals across all categories including hotels, dining, activities, and tours that work for both visitors and island residents."
+    },
+    {
+      question: "How often are new deals added to PRTD?",
+      answer: "We add new travel deals daily! Our team works directly with Puerto Rico businesses to bring you fresh offers every day. Deals are updated regularly, and we remove expired offers to keep listings current. Sign up for our newsletter to get notifications about the hottest new deals as soon as they're posted."
+    },
+    {
+      question: "Can I find deals for specific Puerto Rico locations like Culebra or San Juan?",
+      answer: "Absolutely! Our deals cover all of Puerto Rico's major destinations including San Juan (Old San Juan, Condado, Isla Verde), Culebra, Vieques, Rincón, Ponce, Fajardo, and more. Use our category filters and location search to find deals specific to your destination. We also have a Beach Finder tool to discover the best beaches across the island."
+    }
+  ]);
 
   // Analytics tracking functions
   const trackEvent = (eventName: string, data: Record<string, unknown>) => {
@@ -232,7 +256,33 @@ export default function PRTDPRFlagLanding({
     <>
       {/* SEO and Structured Data */}
       <Head>
+        <title>Best Puerto Rico Travel Deals 2025 - Hotels, Tours & Dining Discounts</title>
+        <meta name="description" content="Find the best travel deals to Puerto Rico. Curated daily offers on flights, hotels, tours, and vacation packages. Start planning your perfect Caribbean getaway today!" />
+        <meta name="keywords" content="Puerto Rico travel deals, Puerto Rico vacation deals, best deals Puerto Rico 2025, Puerto Rico hotel deals, San Juan deals, Culebra deals, Vieques deals, Puerto Rico restaurant deals, Caribbean vacation packages, Puerto Rico tours, Puerto Rico discounts, cheap Puerto Rico hotels, Puerto Rico activities, travel deals Caribbean" />
+        <link rel="canonical" href="https://puertoricotraveldeals.com/" />
+        <link rel="alternate" hrefLang="en" href="https://puertoricotraveldeals.com/" />
+        <link rel="alternate" hrefLang="es" href="https://puertoricotraveldeals.com/es/" />
+        <link rel="alternate" hrefLang="x-default" href="https://puertoricotraveldeals.com/" />
         <link rel="preload" as="image" href={heroBackgrounds[0]} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Puerto Rico Travel Deals",
+              "url": "https://puertoricotraveldeals.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://puertoricotraveldeals.com/deals?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -251,6 +301,12 @@ export default function PRTDPRFlagLanding({
                 "position": index + 1
               }))
             })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema)
           }}
         />
       </Head>
@@ -283,8 +339,23 @@ export default function PRTDPRFlagLanding({
           </div>
         )}
 
+        {/* SEO-Rich Intro Section */}
+        <section className="relative -mt-px bg-white py-8">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <div className="prose prose-lg mx-auto text-center">
+              <p className="text-brand-navy/80 leading-relaxed">
+                Welcome to <strong>Puerto Rico Travel Deals</strong> - your premier destination for exclusive vacation packages and discounts across the island.
+                From luxury <strong>beachfront resorts in Culebra and Vieques</strong> to authentic <strong>dining experiences in Old San Juan</strong>,
+                we curate the best travel deals from verified local businesses. Whether you're planning a romantic getaway to <strong>Rincón</strong>,
+                a family vacation in <strong>Condado</strong>, or exploring hidden gems in <strong>Ponce</strong>, discover handpicked offers that help you
+                experience the real Puerto Rico without breaking the bank. Updated daily by locals who know the island best.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* This Week's Steals Section */}
-        <section id="deals-section" className="relative -mt-px bg-white py-12">
+        <section id="deals-section" className="relative bg-white py-12">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionHeader 
               title="This Week's Steals"
