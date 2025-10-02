@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { SiteLayout } from '../src/ui/layout/SiteLayout';
 import { Section } from '../src/ui/Section';
@@ -9,9 +10,9 @@ import { PublicBeachesGrid } from '../src/ui/beaches/PublicBeachesGrid';
 import { BeachDetailsDrawer } from '../src/ui/beaches/BeachDetailsDrawer';
 import { Beach } from '../src/lib/forms';
 import { readBeaches } from '../src/lib/beachesStore';
-import { 
-  TAGS, 
-  TAG_LABELS, 
+import {
+  TAGS,
+  TAG_LABELS,
   MUNICIPALITIES,
   BeachTag
 } from '../src/constants/beachVocab';
@@ -24,6 +25,7 @@ import {
   trackBeachDirectionsClick,
   trackBeachDetailsView
 } from '../src/lib/analytics';
+import { generateBeachListSchema, generateFAQPageSchema } from '../src/lib/seo';
 
 const BeachMapView = dynamic(() => import('../src/ui/beaches/BeachMapView'), {
   ssr: false,
@@ -51,7 +53,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
   const [selectedBeach, setSelectedBeach] = useState<Beach | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [displayCount, setDisplayCount] = useState(9); // Initial number of beaches to display
+  const [displayCount, setDisplayCount] = useState(6); // Initial number of beaches to display
   const [mapError, setMapError] = useState(false);
 
   // Track section view on mount
@@ -61,7 +63,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
 
   // Reset display count when filters change
   useEffect(() => {
-    setDisplayCount(9);
+    setDisplayCount(6);
   }, [selectedTags, selectedMunicipality, maxDistance, sortBy]);
 
   // Filter beaches based on current filters
@@ -247,23 +249,67 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
     }
   };
 
+  // Generate ItemList structured data for SEO
+  const beachListSchema = generateBeachListSchema(filteredBeaches);
+
+  // Generate FAQ schema for SEO
+  const faqSchema = generateFAQPageSchema([
+    {
+      question: "What are the best beaches in Puerto Rico?",
+      answer: "Puerto Rico's top beaches include Flamenco Beach in Culebra (consistently ranked among the world's best), Luquillo Beach for families, Crash Boat Beach in Aguadilla for surfing, and Isla Verde Beach in San Juan for convenience. Each municipality offers unique beach experiences from calm waters to world-class surf breaks."
+    },
+    {
+      question: "Which Puerto Rico beaches are good for snorkeling?",
+      answer: "The best snorkeling beaches include Cayo de Tierra in Culebra, Seven Seas Beach in Fajardo, Tamarindo Beach near Culebra, and the beaches around La Parguera in Lajas. These locations offer clear waters, vibrant coral reefs, and diverse marine life including tropical fish, sea turtles, and rays."
+    },
+    {
+      question: "Are Puerto Rico beaches safe for swimming?",
+      answer: "Most Puerto Rico beaches are safe for swimming, but conditions vary. Beaches on the north coast (like San Juan and Isabela) have stronger currents and larger waves, ideal for surfing. South coast beaches (Ponce, Guánica) and east coast beaches (Fajardo, Luquillo) typically have calmer waters perfect for families. Always check local conditions, look for lifeguard stations, and respect warning flags."
+    },
+    {
+      question: "Do I need a car to visit Puerto Rico beaches?",
+      answer: "While some beaches like Isla Verde in San Juan are accessible by public transport or taxi, a rental car is highly recommended for exploring Puerto Rico's beaches. Many of the island's best beaches are located in remote areas without reliable public transportation. Having a car allows you to visit multiple beaches and discover hidden gems along the coast."
+    },
+    {
+      question: "What is sargassum and how does it affect Puerto Rico beaches?",
+      answer: "Sargassum is a type of seaweed that seasonally washes up on Caribbean beaches. In Puerto Rico, east and south coast beaches are more affected, typically between April and August. Our beach finder shows real-time sargassum conditions for each beach. West coast beaches (Rincón, Aguadilla) generally have less sargassum due to prevailing currents."
+    }
+  ]);
+
   return (
-    <SiteLayout>
-      <SEO
-        title="🏖️ Beach Finder | Puerto Rico Travel Deals"
-        description="Discover the best beaches in Puerto Rico. Find nearby beaches, check conditions, and get directions to your perfect beach day."
-        canonical="/beachfinder"
-      />
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(beachListSchema, null, 2)
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema, null, 2)
+          }}
+        />
+      </Head>
+
+      <SiteLayout>
+        <SEO
+          title="🏖️ Beach Finder | Puerto Rico Travel Deals"
+          description="Discover the best beaches in Puerto Rico. Find nearby beaches, check conditions, and get directions to your perfect beach day."
+          canonical="https://puertoricotraveldeals.com/beachfinder"
+          keywords={['puerto rico beaches', 'beach finder', 'caribbean beaches', 'best beaches puerto rico', 'aguadilla beaches', 'culebra beaches', 'flamenco beach', 'surf beaches puerto rico', 'snorkeling puerto rico', 'family beaches puerto rico']}
+        />
 
       {/* Hero Section */}
       <Section className="bg-gradient-to-br from-brand-blue to-brand-navy text-white">
         <div className="text-center">
           <div className="mb-4 text-6xl">🏖️</div>
           <Heading level={1} className="mb-4 text-white">
-            Beach Finder
+            Find the Best Beaches in Puerto Rico
           </Heading>
           <p className="mx-auto mb-8 max-w-2xl text-xl text-white/90">
-            Discover the perfect beach for your next adventure. Find nearby beaches, check current conditions, and get directions.
+            Discover 230+ beaches across the island. Use geolocation to find nearby beaches, filter by surfing, snorkeling, or family-friendly amenities, and get directions to your perfect Caribbean beach day.
           </p>
           
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -394,6 +440,27 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
         </div>
       </Section>
 
+      {/* SEO Content Section */}
+      <Section className="bg-white">
+        <div className="mx-auto max-w-4xl">
+          <div className="prose prose-navy mx-auto">
+            <h2 className="text-2xl font-bold text-brand-navy">Explore Puerto Rico's Best Beaches</h2>
+            <p className="text-brand-navy/80 leading-relaxed">
+              Puerto Rico is home to some of the Caribbean's most spectacular beaches, from the world-famous{' '}
+              <strong>Flamenco Beach in Culebra</strong> to hidden gems along the northwest coast. Whether you're searching for
+              premier <strong>surfing beaches in Aguadilla and Rincón</strong>, calm <strong>snorkeling spots in Fajardo</strong>,
+              or <strong>family-friendly beaches</strong> with amenities, our beach finder helps you discover the perfect coastal
+              destination.
+            </p>
+            <p className="text-brand-navy/80 leading-relaxed">
+              Use our interactive map and filters to search by municipality, beach features, and real-time conditions including
+              sargassum levels, surf conditions, and wind. With over 230 beaches catalogued across Puerto Rico's islands, you'll
+              find everything from secluded coves to popular public beaches with parking, restrooms, and lifeguards.
+            </p>
+          </div>
+        </div>
+      </Section>
+
       {/* Results Section */}
       <Section>
         {viewMode === 'map' ? (
@@ -453,6 +520,74 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
         )}
       </Section>
 
+      {/* FAQ Section */}
+      <Section className="bg-brand-sand/30">
+        <div className="mx-auto max-w-4xl">
+          <Heading level={2} className="mb-8 text-center">
+            Frequently Asked Questions
+          </Heading>
+          <div className="space-y-6">
+            <details className="group rounded-lg bg-white p-6 shadow-sm">
+              <summary className="cursor-pointer text-lg font-semibold text-brand-navy hover:text-brand-blue">
+                What are the best beaches in Puerto Rico?
+              </summary>
+              <p className="text-brand-navy/80 mt-4 leading-relaxed">
+                Puerto Rico's top beaches include Flamenco Beach in Culebra (consistently ranked among the world's best),
+                Luquillo Beach for families, Crash Boat Beach in Aguadilla for surfing, and Isla Verde Beach in San Juan
+                for convenience. Each municipality offers unique beach experiences from calm waters to world-class surf breaks.
+              </p>
+            </details>
+
+            <details className="group rounded-lg bg-white p-6 shadow-sm">
+              <summary className="cursor-pointer text-lg font-semibold text-brand-navy hover:text-brand-blue">
+                Which Puerto Rico beaches are good for snorkeling?
+              </summary>
+              <p className="text-brand-navy/80 mt-4 leading-relaxed">
+                The best snorkeling beaches include Cayo de Tierra in Culebra, Seven Seas Beach in Fajardo, Tamarindo Beach
+                near Culebra, and the beaches around La Parguera in Lajas. These locations offer clear waters, vibrant coral
+                reefs, and diverse marine life including tropical fish, sea turtles, and rays.
+              </p>
+            </details>
+
+            <details className="group rounded-lg bg-white p-6 shadow-sm">
+              <summary className="cursor-pointer text-lg font-semibold text-brand-navy hover:text-brand-blue">
+                Are Puerto Rico beaches safe for swimming?
+              </summary>
+              <p className="text-brand-navy/80 mt-4 leading-relaxed">
+                Most Puerto Rico beaches are safe for swimming, but conditions vary. Beaches on the north coast (like San Juan
+                and Isabela) have stronger currents and larger waves, ideal for surfing. South coast beaches (Ponce, Guánica)
+                and east coast beaches (Fajardo, Luquillo) typically have calmer waters perfect for families. Always check local
+                conditions, look for lifeguard stations, and respect warning flags.
+              </p>
+            </details>
+
+            <details className="group rounded-lg bg-white p-6 shadow-sm">
+              <summary className="cursor-pointer text-lg font-semibold text-brand-navy hover:text-brand-blue">
+                Do I need a car to visit Puerto Rico beaches?
+              </summary>
+              <p className="text-brand-navy/80 mt-4 leading-relaxed">
+                While some beaches like Isla Verde in San Juan are accessible by public transport or taxi, a rental car is highly
+                recommended for exploring Puerto Rico's beaches. Many of the island's best beaches are located in remote areas
+                without reliable public transportation. Having a car allows you to visit multiple beaches and discover hidden gems
+                along the coast.
+              </p>
+            </details>
+
+            <details className="group rounded-lg bg-white p-6 shadow-sm">
+              <summary className="cursor-pointer text-lg font-semibold text-brand-navy hover:text-brand-blue">
+                What is sargassum and how does it affect Puerto Rico beaches?
+              </summary>
+              <p className="text-brand-navy/80 mt-4 leading-relaxed">
+                Sargassum is a type of seaweed that seasonally washes up on Caribbean beaches. In Puerto Rico, east and south
+                coast beaches are more affected, typically between April and August. Our beach finder shows real-time sargassum
+                conditions for each beach. West coast beaches (Rincón, Aguadilla) generally have less sargassum due to prevailing
+                currents.
+              </p>
+            </details>
+          </div>
+        </div>
+      </Section>
+
       {/* Beach Details Drawer */}
       <BeachDetailsDrawer
         beach={selectedBeach}
@@ -468,7 +603,8 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
         }
         onDirectionsClick={handleDrawerDirectionsClick}
       />
-    </SiteLayout>
+      </SiteLayout>
+    </>
   );
 }
 

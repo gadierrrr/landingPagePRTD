@@ -138,9 +138,9 @@ export const PublicBeachCard: React.FC<PublicBeachCardProps> = ({
             <ImageSkeleton className="rounded-xl" />
           </div>
         )}
-        <Image 
-          src={beach.coverImage} 
-          alt={beach.name}
+        <Image
+          src={beach.coverImage}
+          alt={`${beach.name} beach in ${beach.municipality}, Puerto Rico - ${beach.tags?.slice(0, 2).map(t => TAG_LABELS[t] || t).join(', ') || 'scenic view'}`}
           fill
           priority={priority}
           // Disable optimization in development or if image loading fails on mobile

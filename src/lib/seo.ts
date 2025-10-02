@@ -539,7 +539,60 @@ export function generateFAQPageSchema(faqs: Array<{question: string, answer: str
   };
 }
 
+// ItemList Schema
+export interface ItemListSchema {
+  "@context": "https://schema.org";
+  "@type": "ItemList";
+  name: string;
+  description?: string;
+  numberOfItems: number;
+  itemListElement: Array<{
+    "@type": "ListItem";
+    position: number;
+    item: {
+      "@type": "Beach" | "Place";
+      name: string;
+      url: string;
+      image?: string;
+      description?: string;
+      geo?: {
+        "@type": "GeoCoordinates";
+        latitude: number;
+        longitude: number;
+      };
+    };
+  }>;
+}
+
+export function generateBeachListSchema(beaches: Beach[], baseUrl: string = 'https://puertoricotraveldeals.com'): ItemListSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Best Beaches in Puerto Rico",
+    description: "Comprehensive guide to Puerto Rico's beaches including surfing spots, snorkeling locations, and family-friendly beaches",
+    numberOfItems: beaches.length,
+    itemListElement: beaches.slice(0, 20).map((beach, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Beach",
+        name: beach.name,
+        url: `${baseUrl}/beaches/${beach.slug}`,
+        image: beach.coverImage.startsWith('/')
+          ? `${baseUrl}${beach.coverImage}`
+          : beach.coverImage,
+        description: beach.notes || `${beach.name} beach in ${beach.municipality}, Puerto Rico`,
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: beach.coords.lat,
+          longitude: beach.coords.lng
+        }
+      }
+    }))
+  };
+}
+
 // Utility function to generate JSON-LD script tag
-export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema | EventSchema | EventSeriesSchema | PlaceSchema | BreadcrumbSchema | ImageObjectSchema | FAQPageSchema): string {
+export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema | EventSchema | EventSeriesSchema | PlaceSchema | BreadcrumbSchema | ImageObjectSchema | FAQPageSchema | ItemListSchema): string {
   return `<script type="application/ld+json">${JSON.stringify(data, null, 2)}</script>`;
 }
