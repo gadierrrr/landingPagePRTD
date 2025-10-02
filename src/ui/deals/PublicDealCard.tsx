@@ -53,7 +53,7 @@ export const PublicDealCard: React.FC<PublicDealCardProps> = ({
         <div className="to-brand-navy/20 relative aspect-[16/9] overflow-hidden rounded-xl bg-[#0A2A29] bg-gradient-to-br from-[#0A2A29]">
           <ResponsiveImage
             src={deal.image}
-            alt={deal.title}
+            alt={`${deal.title} - ${deal.amountLabel} ${deal.category} deal in ${deal.location}, Puerto Rico`}
             priority={position !== undefined && position < 3}
             objectPosition={deal.objectPosition || '50% 40%'}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

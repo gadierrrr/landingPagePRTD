@@ -592,6 +592,30 @@ export function generateBeachListSchema(beaches: Beach[], baseUrl: string = 'htt
   };
 }
 
+// Deal ItemList Schema
+export function generateDealListSchema(deals: Deal[], baseUrl: string = 'https://puertoricotraveldeals.com'): ItemListSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Puerto Rico Travel Deals",
+    description: "Exclusive travel deals for Puerto Rico including hotels, restaurants, activities, and tours",
+    numberOfItems: deals.length,
+    itemListElement: deals.slice(0, 20).map((deal, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Place",
+        name: deal.title,
+        url: `${baseUrl}/deal/${deal.slug}`,
+        image: deal.image.startsWith('/')
+          ? `${baseUrl}${deal.image}`
+          : deal.image,
+        description: deal.description || deal.fullDescription || `${deal.title} - ${deal.amountLabel} off in ${deal.location}, Puerto Rico`
+      }
+    }))
+  };
+}
+
 // Utility function to generate JSON-LD script tag
 export function generateStructuredDataScript(data: OfferSchema | OrganizationSchema | EventSchema | EventSeriesSchema | PlaceSchema | BreadcrumbSchema | ImageObjectSchema | FAQPageSchema | ItemListSchema): string {
   return `<script type="application/ld+json">${JSON.stringify(data, null, 2)}</script>`;
