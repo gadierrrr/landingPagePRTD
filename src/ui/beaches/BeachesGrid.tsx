@@ -55,9 +55,9 @@ export const BeachesGrid: React.FC<BeachesGridProps> = ({ beaches, onEdit, onDel
               <td className="border-brand-navy/5 border-b p-3">
                 <div className="flex items-center space-x-3">
                   {beach.coverImage && (
-                    <div className="size-12 overflow-hidden rounded-lg bg-brand-sand">
-                      <Image 
-                        src={beach.coverImage} 
+                    <div className="relative size-12 overflow-hidden rounded-lg bg-brand-sand">
+                      <Image
+                        src={beach.coverImage}
                         alt={beach.name}
                         fill
                         className="object-cover"
