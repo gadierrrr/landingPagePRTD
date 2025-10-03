@@ -11,7 +11,7 @@ Full-featured travel deals platform with Groupon-style detail pages, built with 
 - **Sample Deal**: https://puertoricotraveldeals.com/deal/beach-resort-weekend
 - **Join Waitlist**: https://puertoricotraveldeals.com/join
 - **Partner Application**: https://puertoricotraveldeals.com/partner
-- **Admin Interface**: https://puertoricotraveldeals.com/dealsmanager
+- **Admin Interface**: https://puertoricotraveldeals.com/admin (centralized dashboard)
 - **Style Guide**: https://puertoricotraveldeals.com/styleguide
 - **Health Check**: https://puertoricotraveldeals.com/healthz
 - **Blog**: https://puertoricotraveldeals.com/blog
@@ -76,9 +76,10 @@ NODE_ENV=production npm start
 - `/travel-pass` - **Travel Pass feature page** (membership benefits and pricing)
 - `/events` - **Events listing page** (weekly events with calendar navigation)
 - `/events/week/[startDate]` - **Weekly events pages** (specific week event listings)
-- `/dealsmanager` - **Admin interface** for managing deals (full CRUD with extended fields)
-- `/eventsmanager` - **Admin interface** for managing events
-- `/blogmanager` - **Admin interface** for managing blog posts
+- `/admin` - **Centralized admin dashboard** with tabs for Beaches, Deals, Events, and Blog
+- `/dealsmanager` - Legacy path, now redirects to `/admin?tab=deals`
+- `/eventsmanager` - Legacy path, now redirects to `/admin?tab=events`
+- `/blogmanager` - Legacy path, now redirects to `/admin?tab=blog`
 - `/styleguide` - Design system reference
 
 ### API Endpoints

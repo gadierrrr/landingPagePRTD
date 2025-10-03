@@ -10,9 +10,11 @@ export const DealsManager: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingDeal, setEditingDeal] = useState<Deal | undefined>(undefined);
   const [error, setError] = useState<string>('');
+  const [csrfToken, setCsrfToken] = useState<string>('');
 
   useEffect(() => {
     fetchDeals();
+    fetchCSRFToken();
   }, []);
 
   const fetchDeals = async () => {
@@ -31,6 +33,19 @@ export const DealsManager: React.FC = () => {
     }
   };
 
+  const fetchCSRFToken = async () => {
+    try {
+      const response = await fetch('/api/csrf-token', {
+        credentials: 'include'
+      });
+      if (!response.ok) throw new Error('Failed to fetch CSRF token');
+      const data = await response.json();
+      setCsrfToken(data.csrfToken);
+    } catch (error) {
+      console.error('Error fetching CSRF token:', error);
+    }
+  };
+
   const handleSubmit = async (dealData: Omit<Deal, 'id'>) => {
     try {
       setError('');
@@ -39,7 +54,7 @@ export const DealsManager: React.FC = () => {
         // Update existing deal
         const response = await fetch('/api/deals', {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'x-csrf-token': csrfToken },
           credentials: 'include',
           body: JSON.stringify({ id: editingDeal.id, ...dealData })
         });
@@ -54,7 +69,7 @@ export const DealsManager: React.FC = () => {
         // Create new deal
         const response = await fetch('/api/deals', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'x-csrf-token': csrfToken },
           credentials: 'include',
           body: JSON.stringify(dealData)
         });
@@ -86,7 +101,7 @@ export const DealsManager: React.FC = () => {
       
       const response = await fetch('/api/deals', {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-csrf-token': csrfToken },
         credentials: 'include',
         body: JSON.stringify({ id })
       });

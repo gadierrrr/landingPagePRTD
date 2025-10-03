@@ -51,12 +51,27 @@ export const EventsManager: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingEvent, setEditingEvent] = useState<Event | undefined>(undefined);
   const [error, setError] = useState<string>('');
+  const [csrfToken, setCsrfToken] = useState<string>('');
 
   const availableWeeks = getAvailableWeeks();
 
   useEffect(() => {
     fetchWeeklyEvents(selectedWeek);
   }, [selectedWeek]);
+
+  useEffect(() => {
+    void (async () => {
+      try {
+        const response = await fetch('/api/csrf-token', { credentials: 'include' });
+        if (response.ok) {
+          const data = await response.json();
+          setCsrfToken(data.csrfToken);
+        }
+      } catch (e) {
+        // ignore
+      }
+    })();
+  }, []);
 
   const fetchWeeklyEvents = async (week: string) => {
     setLoading(true);
@@ -83,7 +98,7 @@ export const EventsManager: React.FC = () => {
         // Update existing event
         const response = await fetch('/api/events', {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'x-csrf-token': csrfToken },
           credentials: 'include',
           body: JSON.stringify({ 
             weekStart,
@@ -104,7 +119,7 @@ export const EventsManager: React.FC = () => {
         // Create new event
         const response = await fetch('/api/events', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'x-csrf-token': csrfToken },
           credentials: 'include',
           body: JSON.stringify({ weekStart, event: eventData })
         });
@@ -137,7 +152,7 @@ export const EventsManager: React.FC = () => {
       
       const response = await fetch('/api/events', {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-csrf-token': csrfToken },
         credentials: 'include',
         body: JSON.stringify({ weekStart: selectedWeek, id })
       });

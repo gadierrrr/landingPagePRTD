@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
+import { verifyAdminCookie } from '../../src/lib/admin/auth';
+import { validateCSRF } from '../../src/lib/csrf';
 
 export const config = {
   api: {
@@ -66,6 +68,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Require admin authentication
+  const adminCookie = req.cookies.admin_auth;
+  if (!verifyAdminCookie(adminCookie || '')) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  // CSRF protection
+  if (!validateCSRF(req, res)) {
+    return;
   }
 
   // Check CSRF-style header

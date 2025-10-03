@@ -1,39 +1,47 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import DealsManager from '../pages/dealsmanager';
+import AdminPage from '../pages/admin';
 import { dealSchema } from '../src/lib/forms';
 
-describe('DealsManager', () => {
+// Mock next/router for AdminPage
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      query: {},
+      push: jest.fn(),
+      replace: jest.fn(),
+    };
+  },
+}));
+
+describe('AdminPage (Deals tab via central dashboard)', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  test('renders auth form when not authenticated', async () => {
+  test('shows admin login when not authenticated', async () => {
     global.fetch = jest.fn(() =>
-      Promise.resolve({
-        ok: false,
-        status: 401
-      })
+      Promise.resolve({ ok: false, status: 401 })
     ) as jest.Mock;
 
-    render(<DealsManager />);
+    render(<AdminPage />);
     await waitFor(() => {
-      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Deals Manager');
-      expect(screen.getByPlaceholderText('Admin token')).toBeInTheDocument();
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Admin Login');
     });
   });
 
-  test('renders deals manager when authenticated', async () => {
+  test('renders dashboard when authenticated', async () => {
+    // Return OK for the auth check and for stats fetch
     global.fetch = jest.fn(() =>
       Promise.resolve({
         ok: true,
-        json: () => Promise.resolve([])
+        json: () => Promise.resolve({ beaches: 0, deals: 0, events: 0, posts: 0 })
       })
     ) as jest.Mock;
 
-    render(<DealsManager />);
+    render(<AdminPage />);
     await waitFor(() => {
-      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Manage Deals');
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Dashboard');
     });
   });
 });

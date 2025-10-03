@@ -11,6 +11,7 @@ import {
 import { getWeeklyEvents, createEvent, updateEvent as updateEventDb, deleteEvent as deleteEventDb } from '../../src/lib/eventsRepo';
 import { isSqliteEnabled } from '../../src/lib/dataSource';
 import { verifyAdminCookie } from '../../src/lib/admin/auth';
+import { validateCSRF } from '../../src/lib/csrf';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
@@ -42,6 +43,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           return res.status(401).json({ error: 'Unauthorized' });
         }
 
+        if (!validateCSRF(req, res)) {
+          return;
+        }
+
         const { weekStart, event: eventData } = req.body;
 
         if (!weekStart || typeof weekStart !== 'string') {
@@ -70,6 +75,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const updateAdminCookie = req.cookies.admin_auth;
         if (!verifyAdminCookie(updateAdminCookie || '')) {
           return res.status(401).json({ error: 'Unauthorized' });
+        }
+
+        if (!validateCSRF(req, res)) {
+          return;
         }
 
         const { weekStart: updateWeekStart, event: updateEventData } = req.body;
@@ -109,6 +118,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const deleteAdminCookie = req.cookies.admin_auth;
         if (!verifyAdminCookie(deleteAdminCookie || '')) {
           return res.status(401).json({ error: 'Unauthorized' });
+        }
+
+        if (!validateCSRF(req, res)) {
+          return;
         }
 
         const { weekStart: deleteWeekStart, id: deleteId } = req.body;

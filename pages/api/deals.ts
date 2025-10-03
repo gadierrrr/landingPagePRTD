@@ -5,6 +5,7 @@ import { readDeals, addDeal as addDealJson, updateDeal as updateDealJson, delete
 import { getAllDeals, createDeal, updateDeal as updateDealDb, deleteDeal as deleteDealDb } from '../../src/lib/dealsRepo';
 import { isSqliteEnabled } from '../../src/lib/dataSource';
 import { verifyAdminCookie } from '../../src/lib/admin/auth';
+import { validateCSRF } from '../../src/lib/csrf';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
@@ -26,6 +27,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           return res.status(401).json({ error: 'Unauthorized' });
         }
 
+        // CSRF validation for state-changing requests
+        if (!validateCSRF(req, res)) {
+          return;
+        }
+
         const createValidation = dealSchema.omit({ id: true }).safeParse(req.body);
 
         if (!createValidation.success) {
@@ -44,6 +50,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const updateAdminCookie = req.cookies.admin_auth;
         if (!verifyAdminCookie(updateAdminCookie || '')) {
           return res.status(401).json({ error: 'Unauthorized' });
+        }
+
+        if (!validateCSRF(req, res)) {
+          return;
         }
 
         const { id, ...updateData } = req.body;
@@ -75,6 +85,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const deleteAdminCookie = req.cookies.admin_auth;
         if (!verifyAdminCookie(deleteAdminCookie || '')) {
           return res.status(401).json({ error: 'Unauthorized' });
+        }
+
+        if (!validateCSRF(req, res)) {
+          return;
         }
 
         const deleteId = req.body.id || req.query.id;

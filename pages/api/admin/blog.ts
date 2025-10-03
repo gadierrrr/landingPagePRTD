@@ -4,18 +4,11 @@ import { writePostFile, PostData, listImagesInFolder } from '../../../src/lib/ad
 import { getAllPostsMeta, getPostBySlug, clearBlogCache } from '../../../src/lib/blog';
 import { promises as fs } from 'fs';
 import matter from 'gray-matter';
-
-function getAuthCookie(req: NextApiRequest): string | undefined {
-  const cookies = req.headers.cookie;
-  if (!cookies) return undefined;
-  
-  const match = cookies.match(/admin_auth=([^;]+)/);
-  return match ? match[1] : undefined;
-}
+import { validateCSRF } from '../../../src/lib/csrf';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Verify authentication
-  const cookieValue = getAuthCookie(req);
+  // Verify authentication via parsed cookies
+  const cookieValue = req.cookies.admin_auth;
   if (!cookieValue || !verifyAdminCookie(cookieValue)) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -52,6 +45,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(200).json({ posts });
 
       case 'POST':
+        if (!validateCSRF(req, res)) {
+          return;
+        }
         const postData: PostData = req.body;
         
         // Validate required fields
@@ -88,6 +84,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(201).json({ filename, success: true });
 
       case 'PUT':
+        if (!validateCSRF(req, res)) {
+          return;
+        }
         const { originalSlug } = req.query;
         const updateData: PostData = req.body;
         

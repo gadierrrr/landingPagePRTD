@@ -21,6 +21,7 @@ export const DealForm: React.FC<DealFormProps> = ({ deal, onSubmit, onCancel }) 
   const [uploadStatus, setUploadStatus] = useState<'ready' | 'uploading' | 'success' | 'error'>('ready');
   const [uploadError, setUploadError] = useState<string>('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [csrfToken, setCsrfToken] = useState<string>('');
   
   const [formData, setFormData] = useState({
     title: deal?.title || '',
@@ -103,10 +104,26 @@ export const DealForm: React.FC<DealFormProps> = ({ deal, onSubmit, onCancel }) 
       const formData = new FormData();
       formData.append('file', selectedFile);
 
+      // Ensure CSRF token is available
+      let tokenToUse = csrfToken;
+      if (!tokenToUse) {
+        try {
+          const resp = await fetch('/api/csrf-token', { credentials: 'include' });
+          if (resp.ok) {
+            const data = await resp.json();
+            tokenToUse = data.csrfToken;
+            setCsrfToken(tokenToUse);
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
+
       const response = await fetch('/api/upload-image', {
         method: 'POST',
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
+          'x-csrf-token': tokenToUse,
         },
         body: formData,
       });
