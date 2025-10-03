@@ -47,6 +47,12 @@ data/beaches-comprehensive*.json
 data/beaches-merged.json
 data/beaches_master_merged.json
 
+# SQLite database temporary files (WAL mode)
+*.sqlite-shm
+*.sqlite-wal
+data/*.sqlite-shm
+data/*.sqlite-wal
+
 # TypeScript build info
 tsconfig.tsbuildinfo
 
