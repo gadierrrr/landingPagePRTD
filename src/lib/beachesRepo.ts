@@ -73,7 +73,7 @@ function generateDataHash(beach: Partial<Beach>): string {
 }
 
 function mapBeachRow(row: typeof schema.beaches.$inferSelect): Beach {
-  return {
+  const beach: Beach = {
     id: row.id,
     slug: row.slug,
     name: row.name,
@@ -85,13 +85,19 @@ function mapBeachRow(row: typeof schema.beaches.$inferSelect): Beach {
     coverImage: row.coverImage,
     accessLabel: row.accessLabel ?? undefined,
     notes: row.notes ?? undefined,
-    parentId: row.parentId ?? undefined,
     updatedAt: row.updatedAt,
     tags: [],
     amenities: [],
     gallery: [],
     aliases: []
   };
+
+  // Only add parentId if it exists (omit when null/undefined)
+  if (row.parentId) {
+    beach.parentId = row.parentId;
+  }
+
+  return beach;
 }
 
 export async function getAllBeaches(): Promise<Beach[]> {

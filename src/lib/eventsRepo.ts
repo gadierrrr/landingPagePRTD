@@ -98,15 +98,33 @@ export async function getEventsIndex(): Promise<EventsIndex> {
     return { weeks: [] };
   }
 
-  const mapped = weeks.map((week, index, array) => ({
-    startDate: week.weekStart,
-    eventCount: week.eventCount,
-    cities: JSON.parse(week.cities ?? '[]') as string[],
-    genres: JSON.parse(week.genres ?? '[]') as string[],
-    lastUpdated: week.lastUpdated,
-    prev: index > 0 ? array[index - 1].weekStart : undefined,
-    next: index < array.length - 1 ? array[index + 1].weekStart : undefined
-  }));
+  const mapped = weeks.map((week, index, array) => {
+    const item: {
+      startDate: string;
+      eventCount: number;
+      cities: string[];
+      genres: string[];
+      lastUpdated: string;
+      prev?: string;
+      next?: string;
+    } = {
+      startDate: week.weekStart,
+      eventCount: week.eventCount,
+      cities: JSON.parse(week.cities ?? '[]') as string[],
+      genres: JSON.parse(week.genres ?? '[]') as string[],
+      lastUpdated: week.lastUpdated
+    };
+
+    // Only add prev/next if they exist (omit undefined fields)
+    if (index > 0) {
+      item.prev = array[index - 1].weekStart;
+    }
+    if (index < array.length - 1) {
+      item.next = array[index + 1].weekStart;
+    }
+
+    return item;
+  });
 
   return { weeks: mapped };
 }
