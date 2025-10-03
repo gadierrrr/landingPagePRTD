@@ -9,6 +9,8 @@ import { SEO } from '../../../src/ui/SEO';
 import { PublicEventsGrid } from '../../../src/ui/events/PublicEventsGrid';
 import { WeeklyEvents } from '../../../src/lib/forms';
 import { readWeeklyEvents, readEventsIndex } from '../../../src/lib/eventsStore';
+import { getWeeklyEvents, getEventsIndex } from '../../../src/lib/eventsRepo';
+import { isSqliteEnabled } from '../../../src/lib/dataSource';
 import { generateEventSeriesStructuredData } from '../../../src/lib/seo';
 
 interface WeekPageProps {
@@ -140,7 +142,7 @@ export default function WeekPage({ weeklyEvents, weekStart, navigation }: WeekPa
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const eventsIndex = await readEventsIndex();
+    const eventsIndex = isSqliteEnabled() ? await getEventsIndex() : await readEventsIndex();
     const paths = eventsIndex.weeks.map(week => ({
       params: { startDate: week.startDate }
     }));
@@ -160,7 +162,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<WeekPageProps> = async ({ params }) => {
   const startDate = params?.startDate as string;
-  
+
   if (!startDate || !/^\d{4}-\d{2}-\d{2}$/.test(startDate)) {
     return {
       notFound: true
@@ -168,8 +170,8 @@ export const getStaticProps: GetStaticProps<WeekPageProps> = async ({ params }) 
   }
 
   try {
-    const weeklyEvents = await readWeeklyEvents(startDate);
-    const eventsIndex = await readEventsIndex();
+    const weeklyEvents = isSqliteEnabled() ? await getWeeklyEvents(startDate) : await readWeeklyEvents(startDate);
+    const eventsIndex = isSqliteEnabled() ? await getEventsIndex() : await readEventsIndex();
     
     // Find navigation
     const currentWeekIndex = eventsIndex.weeks.findIndex(w => w.startDate === startDate);

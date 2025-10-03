@@ -261,13 +261,13 @@ export default function BeachPage({ beach, relatedBeaches }: BeachPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const beaches = await readBeaches();
+  const beaches = isSqliteEnabled() ? await getAllBeaches() : await readBeaches();
   const paths = beaches
     .filter(beach => beach.slug)
     .map(beach => ({
       params: { slug: beach.slug! }
     }));
-    
+
   return {
     paths,
     fallback: 'blocking' // Enable ISR for new beaches

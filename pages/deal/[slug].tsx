@@ -639,7 +639,7 @@ export default function DealPage({ deal, relatedDeals }: DealPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const deals = await readDeals();
+  const deals = isSqliteEnabled() ? await getAllDeals() : await readDeals();
   const paths = deals
     .filter(deal => deal.slug)
     .map(deal => ({
