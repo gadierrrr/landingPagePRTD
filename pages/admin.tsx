@@ -7,9 +7,10 @@ import { BeachesSection } from '../src/ui/admin/sections/BeachesSection';
 import { DealsSection } from '../src/ui/admin/sections/DealsSection';
 import { EventsSection } from '../src/ui/admin/sections/EventsSection';
 import { BlogSection } from '../src/ui/admin/sections/BlogSection';
-import type { GetServerSideProps } from 'next';
+import type { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { verifyAdminCookie } from '../src/lib/admin/auth';
-import { generateCSRFToken, getSessionId, setCSRFCookie } from '../src/lib/csrf';
+import { generateCSRFToken } from '../src/lib/csrf';
+import crypto from 'crypto';
 
 const VALID_TABS = ['dashboard', 'beaches', 'deals', 'events', 'blog'] as const;
 type Tab = typeof VALID_TABS[number];
@@ -51,13 +52,29 @@ export default function AdminPage() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  // Server-side check: if authenticated, ensure a fresh CSRF token cookie
-  const adminCookie = (req as any).cookies?.admin_auth as string | undefined;
+export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const { req, res } = ctx;
+
+  // Minimal cookie parser for SSR
+  const rawCookie = req.headers.cookie || '';
+  const cookies: Record<string, string> = Object.fromEntries(
+    rawCookie.split(';').map((c) => {
+      const idx = c.indexOf('=');
+      const key = decodeURIComponent(c.slice(0, idx).trim());
+      const val = decodeURIComponent(c.slice(idx + 1).trim());
+      return [key, val];
+    }).filter(([k]) => k)
+  );
+
+  const adminCookie = cookies['admin_auth'];
   if (adminCookie && verifyAdminCookie(adminCookie)) {
-    const sessionId = getSessionId(req as any);
+    const sessionId = crypto.createHash('sha256').update(adminCookie).digest('hex').substring(0, 16);
     const csrfToken = generateCSRFToken(sessionId);
-    setCSRFCookie(res as any, csrfToken);
+    const isProduction = process.env.NODE_ENV === 'production';
+    res.setHeader(
+      'Set-Cookie',
+      `csrf_token=${csrfToken}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict${isProduction ? '; Secure' : ''}`
+    );
   }
 
   return { props: {} };

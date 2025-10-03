@@ -169,6 +169,17 @@ export async function getEventBySlug(slug: string): Promise<{ event: Event; week
  */
 export async function createEvent(weekStart: string, event: Omit<Event, 'id' | 'slug'>): Promise<Event> {
   return db.transaction(async (tx) => {
+    // Ensure week index exists to satisfy FK constraint
+    await tx
+      .insert(schema.eventWeeks)
+      .values({
+        weekStart,
+        eventCount: 0,
+        cities: JSON.stringify([]),
+        genres: JSON.stringify([])
+      })
+      .onConflictDoNothing();
+
     // Generate ID and slug
     const eventId = crypto.randomUUID();
     const slug = `${event.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}-${Date.now()}`;
