@@ -141,3 +141,253 @@ export async function getEventBySlug(slug: string): Promise<{ event: Event; week
     weekStart: row.weekStart
   };
 }
+
+/**
+ * Create a new event with related data
+ */
+export async function createEvent(weekStart: string, event: Omit<Event, 'id' | 'slug'>): Promise<Event> {
+  return db.transaction(async (tx) => {
+    // Generate ID and slug
+    const eventId = crypto.randomUUID();
+    const slug = `${event.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}-${Date.now()}`;
+
+    const [newEvent] = await tx
+      .insert(schema.events)
+      .values({
+        id: eventId,
+        weekStart,
+        slug,
+        title: event.title,
+        descriptionShort: event.descriptionShort,
+        startDateTime: event.startDateTime,
+        endDateTime: event.endDateTime ?? null,
+        timezone: event.timezone,
+        city: event.city,
+        venueName: event.venueName ?? null,
+        address: event.address ?? null,
+        lat: event.lat ?? null,
+        lng: event.lng ?? null,
+        genre: event.genre,
+        free: event.free,
+        priceFrom: event.priceFrom ?? null,
+        ageRestriction: event.ageRestriction ?? null,
+        detailsUrl: event.links?.details ?? null,
+        ticketsUrl: event.links?.tickets ?? null,
+        canonicalUrl: event.canonicalUrl ?? null,
+        status: event.status ?? 'scheduled',
+        source: event.source,
+        lastVerifiedAt: event.lastVerifiedAt ?? null
+      })
+      .returning();
+
+    // Insert hero image
+    if (event.heroImage) {
+      await tx.insert(schema.eventImages).values({
+        eventId: newEvent.id,
+        url: event.heroImage.url,
+        alt: event.heroImage.alt,
+        role: 'hero',
+        position: 0
+      });
+    }
+
+    // Insert gallery images
+    if (event.gallery && event.gallery.length > 0) {
+      await tx.insert(schema.eventImages).values(
+        event.gallery.map((img, index) => ({
+          eventId: newEvent.id,
+          url: img.url,
+          alt: img.alt,
+          role: 'gallery' as const,
+          position: index + 1
+        }))
+      );
+    }
+
+    // Update or create event_weeks entry
+    await updateEventWeeksIndex(tx, weekStart);
+
+    const created = await getEventById(tx, newEvent.id);
+    if (!created) throw new Error('Failed to retrieve created event');
+    return created;
+  });
+}
+
+/**
+ * Update an existing event
+ */
+export async function updateEvent(
+  weekStart: string,
+  id: string,
+  updates: Partial<Omit<Event, 'id' | 'slug'>>
+): Promise<Event | null> {
+  return db.transaction(async (tx) => {
+    const existing = await tx.query.events.findFirst({ where: eq(schema.events.id, id) });
+    if (!existing) return null;
+
+    // Update main event record
+    const updateData: Record<string, unknown> = {};
+    if (updates.title !== undefined) updateData.title = updates.title;
+    if (updates.descriptionShort !== undefined) updateData.descriptionShort = updates.descriptionShort;
+    if (updates.startDateTime !== undefined) updateData.startDateTime = updates.startDateTime;
+    if (updates.endDateTime !== undefined) updateData.endDateTime = updates.endDateTime ?? null;
+    if (updates.timezone !== undefined) updateData.timezone = updates.timezone;
+    if (updates.city !== undefined) updateData.city = updates.city;
+    if (updates.venueName !== undefined) updateData.venueName = updates.venueName ?? null;
+    if (updates.address !== undefined) updateData.address = updates.address ?? null;
+    if (updates.lat !== undefined) updateData.lat = updates.lat ?? null;
+    if (updates.lng !== undefined) updateData.lng = updates.lng ?? null;
+    if (updates.genre !== undefined) updateData.genre = updates.genre;
+    if (updates.free !== undefined) updateData.free = updates.free;
+    if (updates.priceFrom !== undefined) updateData.priceFrom = updates.priceFrom ?? null;
+    if (updates.ageRestriction !== undefined) updateData.ageRestriction = updates.ageRestriction ?? null;
+    if (updates.links?.details !== undefined) updateData.detailsUrl = updates.links.details ?? null;
+    if (updates.links?.tickets !== undefined) updateData.ticketsUrl = updates.links.tickets ?? null;
+    if (updates.canonicalUrl !== undefined) updateData.canonicalUrl = updates.canonicalUrl ?? null;
+    if (updates.status !== undefined) updateData.status = updates.status;
+    if (updates.source !== undefined) updateData.source = updates.source;
+    if (updates.lastVerifiedAt !== undefined) updateData.lastVerifiedAt = updates.lastVerifiedAt ?? null;
+
+    if (Object.keys(updateData).length > 0) {
+      await tx.update(schema.events).set(updateData).where(eq(schema.events.id, id));
+    }
+
+    // Update images if provided
+    if (updates.heroImage !== undefined || updates.gallery !== undefined) {
+      await tx.delete(schema.eventImages).where(eq(schema.eventImages.eventId, id));
+
+      const imagesToInsert: Array<typeof schema.eventImages.$inferInsert> = [];
+
+      if (updates.heroImage) {
+        imagesToInsert.push({
+          eventId: id,
+          url: updates.heroImage.url,
+          alt: updates.heroImage.alt,
+          role: 'hero',
+          position: 0
+        });
+      }
+
+      if (updates.gallery && updates.gallery.length > 0) {
+        imagesToInsert.push(
+          ...updates.gallery.map((img, index) => ({
+            eventId: id,
+            url: img.url,
+            alt: img.alt,
+            role: 'gallery' as const,
+            position: index + 1
+          }))
+        );
+      }
+
+      if (imagesToInsert.length > 0) {
+        await tx.insert(schema.eventImages).values(imagesToInsert);
+      }
+    }
+
+    // Update event_weeks index
+    await updateEventWeeksIndex(tx, weekStart);
+
+    return getEventById(tx, id);
+  });
+}
+
+/**
+ * Delete an event and related data
+ */
+export async function deleteEvent(weekStart: string, id: string): Promise<boolean> {
+  return db.transaction(async (tx) => {
+    const existing = await tx.query.events.findFirst({ where: eq(schema.events.id, id) });
+    if (!existing) return false;
+
+    // Delete related images
+    await tx.delete(schema.eventImages).where(eq(schema.eventImages.eventId, id));
+
+    // Delete sponsor placements
+    await tx.delete(schema.eventSponsors).where(eq(schema.eventSponsors.eventId, id));
+
+    // Delete main event record
+    await tx.delete(schema.events).where(eq(schema.events.id, id));
+
+    // Update event_weeks index
+    await updateEventWeeksIndex(tx, weekStart);
+
+    return true;
+  });
+}
+
+/**
+ * Helper to get event by ID within a transaction
+ */
+async function getEventById(
+  tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
+  id: string
+): Promise<Event | null> {
+  const row = await tx.query.events.findFirst({ where: eq(schema.events.id, id) });
+  if (!row) return null;
+
+  const event = mapEventRow(row);
+
+  const imageRows = await tx
+    .select()
+    .from(schema.eventImages)
+    .where(eq(schema.eventImages.eventId, id))
+    .orderBy(schema.eventImages.position);
+
+  if (imageRows.length) {
+    const hero = imageRows.find(img => img.role === 'hero');
+    if (hero) {
+      event.heroImage = { url: hero.url, alt: hero.alt };
+    }
+    const gallery = imageRows
+      .filter(img => img.role !== 'hero')
+      .map(img => ({ url: img.url, alt: img.alt }));
+    if (gallery.length) {
+      event.gallery = gallery;
+    }
+  }
+
+  return event;
+}
+
+/**
+ * Helper to update the event_weeks index for a given week
+ */
+async function updateEventWeeksIndex(
+  tx: Parameters<Parameters<typeof db.transaction>[0]>[0],
+  weekStart: string
+): Promise<void> {
+  const events = await tx
+    .select()
+    .from(schema.events)
+    .where(eq(schema.events.weekStart, weekStart));
+
+  if (events.length === 0) {
+    // No events for this week, delete the index entry
+    await tx.delete(schema.eventWeeks).where(eq(schema.eventWeeks.weekStart, weekStart));
+    return;
+  }
+
+  const cities = [...new Set(events.map(e => e.city))];
+  const genres = [...new Set(events.map(e => e.genre))];
+
+  // Upsert event_weeks entry
+  await tx
+    .insert(schema.eventWeeks)
+    .values({
+      weekStart,
+      eventCount: events.length,
+      cities: JSON.stringify(cities),
+      genres: JSON.stringify(genres),
+      lastUpdated: new Date().toISOString()
+    })
+    .onConflictDoUpdate({
+      target: schema.eventWeeks.weekStart,
+      set: {
+        eventCount: events.length,
+        cities: JSON.stringify(cities),
+        genres: JSON.stringify(genres),
+        lastUpdated: new Date().toISOString()
+      }
+    });
+}

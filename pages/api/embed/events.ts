@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { checkRateLimit, getClientIp } from '../../../src/lib/rateLimit';
 import { readWeeklyEvents, getCurrentWeekStart } from '../../../src/lib/eventsStore';
+import { getWeeklyEvents } from '../../../src/lib/eventsRepo';
+import { isSqliteEnabled } from '../../../src/lib/dataSource';
 
 // CORS headers for embed
 const ALLOWED_ORIGINS = [
@@ -41,10 +43,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const { city, genre, limit = '5', week } = req.query;
     const maxLimit = Math.min(parseInt(limit as string) || 5, 10); // Cap at 10 events
-    
+
     // Get current week or specified week
     const weekStart = (week as string) || await getCurrentWeekStart();
-    const weeklyEvents = await readWeeklyEvents(weekStart);
+    const weeklyEvents = isSqliteEnabled()
+      ? await getWeeklyEvents(weekStart)
+      : await readWeeklyEvents(weekStart);
     
     // Filter events
     let filteredEvents = weeklyEvents.events.filter(event => {

@@ -1,6 +1,9 @@
 import { GetServerSideProps } from 'next';
 import { readDeals } from '../src/lib/dealsStore';
+import { getAllDeals } from '../src/lib/dealsRepo';
 import { readBeaches } from '../src/lib/beachesStore';
+import { getAllBeaches } from '../src/lib/beachesRepo';
+import { isSqliteEnabled } from '../src/lib/dataSource';
 import { isExpired } from '../src/lib/dealUtils';
 import { getAllGuidesMeta } from '../src/lib/guides';
 
@@ -11,9 +14,9 @@ export default function Sitemap() {
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const [deals, guides, beaches] = await Promise.all([
-    readDeals(),
+    isSqliteEnabled() ? getAllDeals() : readDeals(),
     getAllGuidesMeta(),
-    readBeaches()
+    isSqliteEnabled() ? getAllBeaches() : readBeaches()
   ]);
   const baseUrl = 'https://puertoricotraveldeals.com';
   

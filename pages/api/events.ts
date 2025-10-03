@@ -3,12 +3,12 @@ import { eventSchema } from '../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../src/lib/rateLimit';
 import {
   readWeeklyEvents,
-  addEvent,
-  updateEvent,
-  deleteEvent,
+  addEvent as addEventJson,
+  updateEvent as updateEventJson,
+  deleteEvent as deleteEventJson,
   getCurrentWeekStart
 } from '../../src/lib/eventsStore';
-import { getWeeklyEvents } from '../../src/lib/eventsRepo';
+import { getWeeklyEvents, createEvent, updateEvent as updateEventDb, deleteEvent as deleteEventDb } from '../../src/lib/eventsRepo';
 import { isSqliteEnabled } from '../../src/lib/dataSource';
 import { verifyAdminCookie } from '../../src/lib/admin/auth';
 
@@ -41,27 +41,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!verifyAdminCookie(adminCookie || '')) {
           return res.status(401).json({ error: 'Unauthorized' });
         }
-        
+
         const { weekStart, event: eventData } = req.body;
-        
+
         if (!weekStart || typeof weekStart !== 'string') {
           return res.status(400).json({ error: 'Week start date is required' });
         }
-        
+
         const createValidation = eventSchema.omit({ id: true, slug: true }).safeParse(eventData);
-        
+
         if (!createValidation.success) {
           return res.status(422).json({
             error: 'Validation failed',
             details: createValidation.error.flatten().fieldErrors
           });
         }
-        
-        const newEvent = await addEvent(weekStart, createValidation.data);
-        
+
+        const newEvent = isSqliteEnabled()
+          ? await createEvent(weekStart, createValidation.data)
+          : await addEventJson(weekStart, createValidation.data);
+
         // Trigger revalidation
         await triggerRevalidation(res, weekStart, newEvent.slug);
-        
+
         return res.status(201).json(newEvent);
 
       case 'PUT':
@@ -69,36 +71,38 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!verifyAdminCookie(updateAdminCookie || '')) {
           return res.status(401).json({ error: 'Unauthorized' });
         }
-        
+
         const { weekStart: updateWeekStart, event: updateEventData } = req.body;
         const { id, ...updateData } = updateEventData;
-        
+
         if (!updateWeekStart || typeof updateWeekStart !== 'string') {
           return res.status(400).json({ error: 'Week start date is required' });
         }
-        
+
         if (!id || typeof id !== 'string') {
           return res.status(400).json({ error: 'Event ID is required' });
         }
-        
+
         const updateValidation = eventSchema.omit({ id: true, slug: true }).partial().safeParse(updateData);
-        
+
         if (!updateValidation.success) {
           return res.status(422).json({
             error: 'Validation failed',
             details: updateValidation.error.flatten().fieldErrors
           });
         }
-        
-        const updatedEvent = await updateEvent(updateWeekStart, id, updateValidation.data);
-        
+
+        const updatedEvent = isSqliteEnabled()
+          ? await updateEventDb(updateWeekStart, id, updateValidation.data)
+          : await updateEventJson(updateWeekStart, id, updateValidation.data);
+
         if (!updatedEvent) {
           return res.status(404).json({ error: 'Event not found' });
         }
-        
+
         // Trigger revalidation
         await triggerRevalidation(res, updateWeekStart, updatedEvent.slug);
-        
+
         return res.status(200).json(updatedEvent);
 
       case 'DELETE':
@@ -106,26 +110,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!verifyAdminCookie(deleteAdminCookie || '')) {
           return res.status(401).json({ error: 'Unauthorized' });
         }
-        
+
         const { weekStart: deleteWeekStart, id: deleteId } = req.body;
-        
+
         if (!deleteWeekStart || typeof deleteWeekStart !== 'string') {
           return res.status(400).json({ error: 'Week start date is required' });
         }
-        
+
         if (!deleteId || typeof deleteId !== 'string') {
           return res.status(400).json({ error: 'Event ID is required' });
         }
-        
-        const deleted = await deleteEvent(deleteWeekStart, deleteId);
-        
+
+        const deleted = isSqliteEnabled()
+          ? await deleteEventDb(deleteWeekStart, deleteId)
+          : await deleteEventJson(deleteWeekStart, deleteId);
+
         if (!deleted) {
           return res.status(404).json({ error: 'Event not found' });
         }
-        
+
         // Trigger revalidation
         await triggerRevalidation(res, deleteWeekStart);
-        
+
         return res.status(200).json({ success: true });
 
       default:

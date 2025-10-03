@@ -1,5 +1,7 @@
 import { GetServerSideProps } from 'next';
-import { getDealById } from '../../../src/lib/dealsStore';
+import { getDealById as getDealByIdJson } from '../../../src/lib/dealsStore';
+import { getDealById } from '../../../src/lib/dealsRepo';
+import { isSqliteEnabled } from '../../../src/lib/dataSource';
 
 // This page provides redirect from old ID-based URLs to new slug-based URLs
 // Access via /deal/id/[uuid] to avoid conflicts with slug routing
@@ -10,18 +12,18 @@ export default function DealIdRedirect() {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const id = params?.id as string;
-  
+
   // Check if this looks like a UUID (old ID format)
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-  
+
   if (!uuidRegex.test(id)) {
     return {
       notFound: true
     };
   }
-  
+
   try {
-    const deal = await getDealById(id);
+    const deal = isSqliteEnabled() ? await getDealById(id) : await getDealByIdJson(id);
     
     if (!deal || !deal.slug) {
       return {

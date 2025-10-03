@@ -1,12 +1,14 @@
 import { Deal } from './forms';
 import { readDeals } from './dealsStore';
+import { getAllDeals } from './dealsRepo';
+import { isSqliteEnabled } from './dataSource';
 import { isExpired } from './dealUtils';
 import { getAllGuidesMeta } from './guides';
 
 // Get a featured deal (prioritize deals with hot badge, then latest)
 export async function getFeaturedDeal(): Promise<Deal | null> {
   try {
-    const deals = await readDeals();
+    const deals = isSqliteEnabled() ? await getAllDeals() : await readDeals();
     const activeDeals = deals.filter(deal => !isExpired(deal.expiresAt || deal.expiry));
     
     if (activeDeals.length === 0) return null;
@@ -29,7 +31,7 @@ export async function getFeaturedDeal(): Promise<Deal | null> {
 // Get latest deals for the main grid
 export async function getLatestDeals(limit: number = 9): Promise<Deal[]> {
   try {
-    const deals = await readDeals();
+    const deals = isSqliteEnabled() ? await getAllDeals() : await readDeals();
     const activeDeals = deals.filter(deal => !isExpired(deal.expiresAt || deal.expiry));
     
     return activeDeals
@@ -48,7 +50,7 @@ export async function getLatestDeals(limit: number = 9): Promise<Deal[]> {
 // Get deals under $50 for the carousel
 export async function getUnder50Deals(): Promise<Deal[]> {
   try {
-    const deals = await readDeals();
+    const deals = isSqliteEnabled() ? await getAllDeals() : await readDeals();
     return deals.filter(deal => {
       if (isExpired(deal.expiresAt || deal.expiry)) return false;
       
