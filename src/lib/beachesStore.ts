@@ -4,6 +4,14 @@ import crypto from 'crypto';
 import { Beach } from './forms';
 import { generateBeachSlug } from './slugGenerator';
 
+const USE_SQLITE = (process.env.PRTD_DATA_BACKEND || '').toLowerCase() === 'sqlite';
+
+async function loadBeachesRepo() {
+  // Lazy require to avoid bundling when JSON backend is used.
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  return require('./beachesRepo');
+}
+
 // Use production data paths, fallback to development
 const DATA_DIR = process.env.NODE_ENV === 'production' ? '/var/prtd-data' : join(process.cwd(), 'data');
 const BEACHES_FILE = join(DATA_DIR, 'beaches.json');
@@ -139,6 +147,10 @@ async function appendAuditLog(entry: AuditLogEntry): Promise<void> {
 
 // Core store operations
 export async function readBeaches(): Promise<Beach[]> {
+  if (USE_SQLITE) {
+    const { getAllBeaches } = await loadBeachesRepo();
+    return getAllBeaches();
+  }
   try {
     const data = await fs.readFile(BEACHES_FILE, 'utf8');
     return JSON.parse(data);
@@ -351,11 +363,22 @@ export async function deleteBeach(
 }
 
 export async function getBeachBySlug(slug: string): Promise<Beach | null> {
+  if (USE_SQLITE) {
+    const { getBeachBySlug } = await loadBeachesRepo();
+    return getBeachBySlug(slug);
+  }
+
   const beaches = await readBeaches();
   return beaches.find(beach => beach.slug === slug) || null;
 }
 
 export async function getBeachById(id: string): Promise<Beach | null> {
+  if (USE_SQLITE) {
+    const { getAllBeaches } = await loadBeachesRepo();
+    const beaches = await getAllBeaches();
+    return beaches.find(beach => beach.id === id) || null;
+  }
+
   const beaches = await readBeaches();
   return beaches.find(beach => beach.id === id) || null;
 }

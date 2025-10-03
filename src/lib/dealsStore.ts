@@ -3,10 +3,21 @@ import { join } from 'path';
 import { Deal } from './forms';
 import { generateSlug } from './slugGenerator';
 
+const USE_SQLITE = (process.env.PRTD_DATA_BACKEND || '').toLowerCase() === 'sqlite';
+
+async function loadDealsRepo() {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  return require('./dealsRepo');
+}
+
 const DEALS_FILE = join(process.cwd(), 'data', 'deals.json');
 const DEALS_FILE_TMP = join(process.cwd(), 'data', 'deals.json.tmp');
 
 export async function readDeals(): Promise<Deal[]> {
+  if (USE_SQLITE) {
+    const { getAllDeals } = await loadDealsRepo();
+    return getAllDeals();
+  }
   try {
     const data = await fs.readFile(DEALS_FILE, 'utf8');
     return JSON.parse(data);
@@ -80,11 +91,21 @@ export async function deleteDeal(id: string): Promise<boolean> {
 }
 
 export async function getDealBySlug(slug: string): Promise<Deal | null> {
+  if (USE_SQLITE) {
+    const { getDealBySlug } = await loadDealsRepo();
+    return getDealBySlug(slug);
+  }
+
   const deals = await readDeals();
   return deals.find(deal => deal.slug === slug) || null;
 }
 
 export async function getDealById(id: string): Promise<Deal | null> {
+  if (USE_SQLITE) {
+    const { getDealById } = await loadDealsRepo();
+    return getDealById(id);
+  }
+
   const deals = await readDeals();
   return deals.find(deal => deal.id === id) || null;
 }

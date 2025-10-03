@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { beachSchema } from '../../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../../src/lib/rateLimit';
 import { readBeaches, addBeach, findDuplicateCandidates } from '../../../src/lib/beachesStore';
-import { getAllBeaches } from '../../../src/lib/beachesRepo';
+import { getAllBeaches, createBeach, findDuplicateCandidates as findDuplicatesDb } from '../../../src/lib/beachesRepo';
 import { isSqliteEnabled } from '../../../src/lib/dataSource';
 import { verifyAdminCookie } from '../../../src/lib/admin/auth';
 import { validateCSRF } from '../../../src/lib/csrf';
@@ -43,9 +43,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         
         // Check for duplicates if requested
         const { checkDuplicates, duplicateDecision } = req.body;
-        
+
         if (checkDuplicates && !duplicateDecision) {
-          const duplicates = await findDuplicateCandidates(createValidation.data);
+          const duplicates = isSqliteEnabled()
+            ? await findDuplicatesDb(createValidation.data)
+            : await findDuplicateCandidates(createValidation.data);
+
           if (duplicates.length > 0) {
             return res.status(409).json({
               error: 'Potential duplicates found',
@@ -60,12 +63,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             });
           }
         }
-        
-        const newBeach = await addBeach(createValidation.data, {
-          duplicateDecision: duplicateDecision as 'save_anyway' | 'merge' | undefined,
-          adminUser: 'admin', // TODO: Extract from auth cookie if available
-          ipAddress: ip
-        });
+
+        const newBeach = isSqliteEnabled()
+          ? await createBeach(createValidation.data, {
+              duplicateDecision: duplicateDecision as 'save_anyway' | 'merge' | undefined,
+              adminUser: 'admin',
+              ipAddress: ip
+            })
+          : await addBeach(createValidation.data, {
+              duplicateDecision: duplicateDecision as 'save_anyway' | 'merge' | undefined,
+              adminUser: 'admin',
+              ipAddress: ip
+            });
         
         return res.status(201).json(newBeach);
 

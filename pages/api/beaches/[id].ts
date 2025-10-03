@@ -2,6 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { beachSchema } from '../../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../../src/lib/rateLimit';
 import { updateBeach, deleteBeach, findDuplicateCandidates } from '../../../src/lib/beachesStore';
+import { updateBeach as updateBeachDb, deleteBeach as deleteBeachDb, findDuplicateCandidates as findDuplicatesDb } from '../../../src/lib/beachesRepo';
+import { isSqliteEnabled } from '../../../src/lib/dataSource';
 import { verifyAdminCookie } from '../../../src/lib/admin/auth';
 import { validateCSRF } from '../../../src/lib/csrf';
 
@@ -58,10 +60,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               amenities: updateValidation.data.amenities || [],
               coverImage: updateValidation.data.coverImage || ''
             };
-            const duplicates = await findDuplicateCandidates(
-              tempBeach,
-              id // Exclude current beach from duplicate check
-            );
+            const duplicates = isSqliteEnabled()
+              ? await findDuplicatesDb(tempBeach, id)
+              : await findDuplicateCandidates(tempBeach, id);
+
             if (duplicates.length > 0) {
               return res.status(409).json({
                 error: 'Potential duplicates found',
@@ -77,24 +79,35 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
           }
         }
-        
-        const updatedBeach = await updateBeach(id, updateValidation.data, {
-          duplicateDecision: duplicateDecision as 'save_anyway' | 'merge' | undefined,
-          adminUser: 'admin', // TODO: Extract from auth cookie if available
-          ipAddress: ip
-        });
-        
+
+        const updatedBeach = isSqliteEnabled()
+          ? await updateBeachDb(id, updateValidation.data, {
+              duplicateDecision: duplicateDecision as 'save_anyway' | 'merge' | undefined,
+              adminUser: 'admin',
+              ipAddress: ip
+            })
+          : await updateBeach(id, updateValidation.data, {
+              duplicateDecision: duplicateDecision as 'save_anyway' | 'merge' | undefined,
+              adminUser: 'admin',
+              ipAddress: ip
+            });
+
         if (!updatedBeach) {
           return res.status(404).json({ error: 'Beach not found' });
         }
-        
+
         return res.status(200).json(updatedBeach);
 
       case 'DELETE':
-        const deleted = await deleteBeach(id, {
-          adminUser: 'admin', // TODO: Extract from auth cookie if available
-          ipAddress: ip
-        });
+        const deleted = isSqliteEnabled()
+          ? await deleteBeachDb(id, {
+              adminUser: 'admin',
+              ipAddress: ip
+            })
+          : await deleteBeach(id, {
+              adminUser: 'admin',
+              ipAddress: ip
+            });
         
         if (!deleted) {
           return res.status(404).json({ error: 'Beach not found' });

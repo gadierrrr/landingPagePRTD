@@ -4,6 +4,13 @@ import crypto from 'crypto';
 import { Event, WeeklyEvents, EventsIndex } from './forms';
 import { generateEventSlug } from './slugGenerator';
 
+const USE_SQLITE = (process.env.PRTD_DATA_BACKEND || '').toLowerCase() === 'sqlite';
+
+async function loadEventsRepo() {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  return require('./eventsRepo');
+}
+
 const EVENTS_DIR = join(process.cwd(), 'data', 'events');
 const INDEX_FILE = join(EVENTS_DIR, '_index.json');
 const INDEX_FILE_TMP = join(EVENTS_DIR, '_index.json.tmp');
@@ -29,6 +36,11 @@ function getWeekTmpFilePath(weekStart: string): string {
 }
 
 export async function readWeeklyEvents(weekStart: string): Promise<WeeklyEvents> {
+  if (USE_SQLITE) {
+    const { getWeeklyEvents } = await loadEventsRepo();
+    return getWeeklyEvents(weekStart);
+  }
+
   const filePath = getWeekFilePath(weekStart);
   
   try {
@@ -56,6 +68,11 @@ export async function writeWeeklyEvents(weeklyEvents: WeeklyEvents): Promise<voi
 }
 
 export async function readEventsIndex(): Promise<EventsIndex> {
+  if (USE_SQLITE) {
+    const { getEventsIndex } = await loadEventsRepo();
+    return getEventsIndex();
+  }
+
   try {
     const data = await fs.readFile(INDEX_FILE, 'utf8');
     return JSON.parse(data);
@@ -138,6 +155,11 @@ export async function deleteEvent(weekStart: string, id: string): Promise<boolea
 }
 
 export async function getEventBySlug(slug: string): Promise<{ event: Event; weekStart: string } | null> {
+  if (USE_SQLITE) {
+    const { getEventBySlug } = await loadEventsRepo();
+    return getEventBySlug(slug);
+  }
+
   const index = await readEventsIndex();
   
   for (const week of index.weeks) {
