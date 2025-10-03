@@ -3,35 +3,39 @@ import { db, schema } from './db';
 import type { Event, EventsIndex, WeeklyEvents } from './forms';
 
 function mapEventRow(row: typeof schema.events.$inferSelect): Event {
-  return {
+  const event: Event = {
     id: row.id,
     slug: row.slug,
     title: row.title,
     descriptionShort: row.descriptionShort,
     startDateTime: row.startDateTime,
-    endDateTime: row.endDateTime ?? undefined,
     timezone: row.timezone,
     city: row.city as Event['city'],
-    venueName: row.venueName ?? undefined,
-    address: row.address ?? undefined,
-    lat: row.lat ?? undefined,
-    lng: row.lng ?? undefined,
     genre: row.genre as Event['genre'],
     free: Boolean(row.free),
-    priceFrom: row.priceFrom ?? undefined,
-    ageRestriction: row.ageRestriction ?? undefined,
-    links: {
-      details: row.detailsUrl ?? undefined,
-      tickets: row.ticketsUrl ?? undefined
-    },
-    canonicalUrl: row.canonicalUrl ?? undefined,
-    heroImage: undefined,
-    gallery: undefined,
     status: (row.status as Event['status']) ?? 'scheduled',
-    source: row.source,
-    lastVerifiedAt: row.lastVerifiedAt ?? undefined,
-    sponsorPlacement: undefined
+    source: row.source
   };
+
+  // Only add optional fields if they have values
+  if (row.endDateTime) event.endDateTime = row.endDateTime;
+  if (row.venueName) event.venueName = row.venueName;
+  if (row.address) event.address = row.address;
+  if (row.lat !== null && row.lat !== undefined) event.lat = row.lat;
+  if (row.lng !== null && row.lng !== undefined) event.lng = row.lng;
+  if (row.priceFrom !== null && row.priceFrom !== undefined) event.priceFrom = row.priceFrom;
+  if (row.ageRestriction) event.ageRestriction = row.ageRestriction;
+  if (row.canonicalUrl) event.canonicalUrl = row.canonicalUrl;
+  if (row.lastVerifiedAt) event.lastVerifiedAt = row.lastVerifiedAt;
+
+  // Handle links object - only add if there are actual values
+  if (row.detailsUrl || row.ticketsUrl) {
+    event.links = {};
+    if (row.detailsUrl) event.links.details = row.detailsUrl;
+    if (row.ticketsUrl) event.links.tickets = row.ticketsUrl;
+  }
+
+  return event;
 }
 
 export async function getWeeklyEvents(weekStart: string): Promise<WeeklyEvents> {

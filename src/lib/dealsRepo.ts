@@ -3,7 +3,7 @@ import { db, schema } from './db';
 import type { Deal } from './forms';
 
 function mapDealRow(row: typeof schema.deals.$inferSelect): Deal {
-  return {
+  const deal: Deal = {
     id: row.id,
     slug: row.slug,
     title: row.title,
@@ -12,21 +12,25 @@ function mapDealRow(row: typeof schema.deals.$inferSelect): Deal {
     location: row.location,
     image: row.image,
     category: row.category as Deal['category'],
-    expiry: row.expiry ?? undefined,
-    partner: row.partner ?? undefined,
-    externalUrl: row.externalUrl ?? undefined,
-    fullDescription: row.fullDescription ?? undefined,
-    terms: row.terms ?? undefined,
-    expiresAt: row.expiresAt ?? undefined,
-    price: row.price ?? undefined,
-    originalPrice: row.originalPrice ?? undefined,
     currency: (row.currency as Deal['currency']) ?? 'USD',
-    sourceName: row.sourceName ?? undefined,
-    updatedAt: row.updatedAt ?? undefined,
     gallery: [],
     highlights: [],
     howTo: []
   };
+
+  // Only add optional fields if they have values
+  if (row.expiry) deal.expiry = row.expiry;
+  if (row.partner) deal.partner = row.partner;
+  if (row.externalUrl) deal.externalUrl = row.externalUrl;
+  if (row.fullDescription) deal.fullDescription = row.fullDescription;
+  if (row.terms) deal.terms = row.terms;
+  if (row.expiresAt) deal.expiresAt = row.expiresAt;
+  if (row.price !== null && row.price !== undefined) deal.price = row.price;
+  if (row.originalPrice !== null && row.originalPrice !== undefined) deal.originalPrice = row.originalPrice;
+  if (row.sourceName) deal.sourceName = row.sourceName;
+  if (row.updatedAt) deal.updatedAt = row.updatedAt;
+
+  return deal;
 }
 
 export async function getAllDeals(): Promise<Deal[]> {
