@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { Beach } from '../../src/lib/forms';
 import { readBeaches, getBeachBySlug } from '../../src/lib/beachesStore';
+import { getAllBeaches, getBeachBySlug as getBeachBySlugDb } from '../../src/lib/beachesRepo';
+import { isSqliteEnabled } from '../../src/lib/dataSource';
 import { SiteLayout } from '../../src/ui/layout/SiteLayout';
 import { SEO } from '../../src/ui/SEO';
 import { Section } from '../../src/ui/Section';
@@ -273,8 +275,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const beach = await getBeachBySlug(params?.slug as string);
-  
+  const beach = isSqliteEnabled()
+    ? await getBeachBySlugDb(params?.slug as string)
+    : await getBeachBySlug(params?.slug as string);
+
   if (!beach) {
     return {
       notFound: true
@@ -282,7 +286,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   // Get related beaches using intelligent scoring
-  const allBeaches = await readBeaches();
+  const allBeaches = isSqliteEnabled() ? await getAllBeaches() : await readBeaches();
   
   const relatedBeaches = allBeaches
     .filter(b => b.id !== beach.id) // Exclude current beach

@@ -10,6 +10,8 @@ import { PublicBeachesGrid } from '../src/ui/beaches/PublicBeachesGrid';
 import { BeachDetailsDrawer } from '../src/ui/beaches/BeachDetailsDrawer';
 import { Beach } from '../src/lib/forms';
 import { readBeaches } from '../src/lib/beachesStore';
+import { getAllBeaches } from '../src/lib/beachesRepo';
+import { isSqliteEnabled } from '../src/lib/dataSource';
 import {
   TAGS,
   TAG_LABELS,
@@ -610,8 +612,8 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const beaches = await readBeaches();
-    
+    const beaches = isSqliteEnabled() ? await getAllBeaches() : await readBeaches();
+
     return {
       props: {
         beaches: beaches || []
@@ -620,7 +622,7 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   } catch (error) {
     console.error('Error loading beaches for static props:', error);
-    
+
     return {
       props: {
         beaches: []

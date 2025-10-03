@@ -9,6 +9,8 @@ import { SEO } from '../src/ui/SEO';
 import { PublicEventsGrid } from '../src/ui/events/PublicEventsGrid';
 import { WeeklyEvents, EventsIndex } from '../src/lib/forms';
 import { readWeeklyEvents, readEventsIndex, getCurrentWeekStart } from '../src/lib/eventsStore';
+import { getWeeklyEvents, getEventsIndex } from '../src/lib/eventsRepo';
+import { isSqliteEnabled } from '../src/lib/dataSource';
 import { generateEventSeriesStructuredData } from '../src/lib/seo';
 
 interface EventsPageProps {
@@ -141,9 +143,13 @@ export default function EventsPage({ weeklyEvents, eventsIndex, currentWeekStart
 export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
   try {
     const currentWeekStart = await getCurrentWeekStart();
-    const weeklyEvents = await readWeeklyEvents(currentWeekStart);
-    const eventsIndex = await readEventsIndex();
-    
+    const weeklyEvents = isSqliteEnabled()
+      ? await getWeeklyEvents(currentWeekStart)
+      : await readWeeklyEvents(currentWeekStart);
+    const eventsIndex = isSqliteEnabled()
+      ? await getEventsIndex()
+      : await readEventsIndex();
+
     return {
       props: {
         weeklyEvents,
@@ -154,7 +160,7 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
     };
   } catch (error) {
     console.error('Error fetching events for landing page:', error);
-    
+
     return {
       props: {
         weeklyEvents: { weekStartDate: await getCurrentWeekStart(), events: [] },

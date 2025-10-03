@@ -1,19 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { eventSchema } from '../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../src/lib/rateLimit';
-import { 
-  readWeeklyEvents, 
-  addEvent, 
-  updateEvent, 
-  deleteEvent, 
+import {
+  readWeeklyEvents,
+  addEvent,
+  updateEvent,
+  deleteEvent,
   getCurrentWeekStart
 } from '../../src/lib/eventsStore';
+import { getWeeklyEvents } from '../../src/lib/eventsRepo';
+import { isSqliteEnabled } from '../../src/lib/dataSource';
 import { verifyAdminCookie } from '../../src/lib/admin/auth';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
   const rateCheck = await checkRateLimit(ip);
-  
+
   if (!rateCheck.allowed) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
@@ -22,15 +24,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (req.method) {
       case 'GET':
         const { week } = req.query;
-        
+
         if (week && typeof week === 'string') {
           // Get specific week
-          const weeklyEvents = await readWeeklyEvents(week);
+          const weeklyEvents = isSqliteEnabled() ? await getWeeklyEvents(week) : await readWeeklyEvents(week);
           return res.status(200).json(weeklyEvents);
         } else {
           // Get current week by default
           const currentWeek = await getCurrentWeekStart();
-          const weeklyEvents = await readWeeklyEvents(currentWeek);
+          const weeklyEvents = isSqliteEnabled() ? await getWeeklyEvents(currentWeek) : await readWeeklyEvents(currentWeek);
           return res.status(200).json(weeklyEvents);
         }
 

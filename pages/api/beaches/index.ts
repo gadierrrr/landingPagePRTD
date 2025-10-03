@@ -2,13 +2,15 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { beachSchema } from '../../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../../src/lib/rateLimit';
 import { readBeaches, addBeach, findDuplicateCandidates } from '../../../src/lib/beachesStore';
+import { getAllBeaches } from '../../../src/lib/beachesRepo';
+import { isSqliteEnabled } from '../../../src/lib/dataSource';
 import { verifyAdminCookie } from '../../../src/lib/admin/auth';
 import { validateCSRF } from '../../../src/lib/csrf';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
   const rateCheck = await checkRateLimit(ip);
-  
+
   if (!rateCheck.allowed) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
@@ -16,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     switch (req.method) {
       case 'GET':
-        const beaches = await readBeaches();
+        const beaches = isSqliteEnabled() ? await getAllBeaches() : await readBeaches();
         return res.status(200).json(beaches);
 
       case 'POST':

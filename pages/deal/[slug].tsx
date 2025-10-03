@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { Deal } from '../../src/lib/forms';
 import { readDeals } from '../../src/lib/dealsStore';
+import { getAllDeals, getDealBySlug } from '../../src/lib/dealsRepo';
+import { isSqliteEnabled } from '../../src/lib/dataSource';
 import { SiteLayout } from '../../src/ui/layout/SiteLayout';
 import { SEO } from '../../src/ui/SEO';
 import { isExpired, displaySourceName, appendUtm, appendEnhancedUtm, formatEndDate, formatRelativeTime } from '../../src/lib/dealUtils';
@@ -651,8 +653,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const deals = await readDeals();
-  const deal = deals.find(d => d.slug === params?.slug);
+  const deal = isSqliteEnabled()
+    ? await getDealBySlug(params?.slug as string)
+    : (await readDeals()).find(d => d.slug === params?.slug);
 
   if (!deal) {
     return {
@@ -661,9 +664,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   // Get related deals (same category or location, excluding current deal)
-  const relatedDeals = deals
-    .filter(d => 
-      d.id !== deal.id && 
+  const allDeals = isSqliteEnabled() ? await getAllDeals() : await readDeals();
+  const relatedDeals = allDeals
+    .filter(d =>
+      d.id !== deal.id &&
       (d.category === deal.category || d.location === deal.location)
     )
     .slice(0, 3);

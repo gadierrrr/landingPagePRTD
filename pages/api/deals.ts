@@ -2,12 +2,14 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { dealSchema } from '../../src/lib/forms';
 import { checkRateLimit, getClientIp } from '../../src/lib/rateLimit';
 import { readDeals, addDeal, updateDeal, deleteDeal } from '../../src/lib/dealsStore';
+import { getAllDeals } from '../../src/lib/dealsRepo';
+import { isSqliteEnabled } from '../../src/lib/dataSource';
 import { verifyAdminCookie } from '../../src/lib/admin/auth';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const ip = getClientIp(req);
   const rateCheck = await checkRateLimit(ip);
-  
+
   if (!rateCheck.allowed) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
@@ -15,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     switch (req.method) {
       case 'GET':
-        const deals = await readDeals();
+        const deals = isSqliteEnabled() ? await getAllDeals() : await readDeals();
         return res.status(200).json(deals);
 
       case 'POST':
