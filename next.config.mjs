@@ -30,15 +30,31 @@ const nextConfig = {
   },
 
   // Webpack optimizations
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
     if (!isServer) {
       // Reduce client bundle size
       config.optimization = {
         ...config.optimization,
         usedExports: true,
         sideEffects: false,
+        minimize: true,
+        // Module concatenation for smaller bundles
+        concatenateModules: true,
+      };
+
+      // Reduce memory during bundle analysis
+      config.performance = {
+        maxAssetSize: 512000, // 500 KB warning threshold
+        maxEntrypointSize: 512000,
+        hints: 'warning',
       };
     }
+
+    // Disable source maps in production builds (saves memory)
+    if (!dev) {
+      config.devtool = false;
+    }
+
     return config;
   },
 
