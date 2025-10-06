@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { GetStaticProps } from 'next';
 import { SiteLayout } from '../src/ui/layout/SiteLayout';
 import { Section } from '../src/ui/Section';
 import { Heading } from '../src/ui/Heading';
@@ -9,9 +8,6 @@ import { SEO } from '../src/ui/SEO';
 import { PublicBeachesGrid } from '../src/ui/beaches/PublicBeachesGrid';
 import { BeachDetailsDrawer } from '../src/ui/beaches/BeachDetailsDrawer';
 import { Beach } from '../src/lib/forms';
-import { readBeaches } from '../src/lib/beachesStore';
-import { getAllBeaches } from '../src/lib/beachesRepo';
-import { isSqliteEnabled } from '../src/lib/dataSource';
 import {
   TAGS,
   TAG_LABELS,
@@ -41,11 +37,10 @@ const BeachMapView = dynamic(() => import('../src/ui/beaches/BeachMapView'), {
   onBeachDetailsClick?: (beach: Beach) => void;
 }>;
 
-interface BeachFinderProps {
-  beaches: Beach[];
-}
-
-export default function BeachFinder({ beaches }: BeachFinderProps) {
+export default function BeachFinder() {
+  const [beaches, setBeaches] = useState<Beach[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [geolocationStatus, setGeolocationStatus] = useState<'idle' | 'requesting' | 'granted' | 'denied'>('idle');
   const [selectedTags, setSelectedTags] = useState<BeachTag[]>([]);
@@ -58,9 +53,33 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
   const [displayCount, setDisplayCount] = useState(6); // Initial number of beaches to display
   const [mapError, setMapError] = useState(false);
 
-  // Track section view on mount
+  // Fetch beaches on mount
   useEffect(() => {
-    trackBeachFinderSectionView(beaches.length);
+    async function fetchBeaches() {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/beaches-light');
+        if (!response.ok) {
+          throw new Error('Failed to fetch beaches');
+        }
+        const data = await response.json();
+        setBeaches(data);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching beaches:', err);
+        setError('Failed to load beaches. Please refresh the page.');
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchBeaches();
+  }, []);
+
+  // Track section view after beaches load
+  useEffect(() => {
+    if (beaches.length > 0) {
+      trackBeachFinderSectionView(beaches.length);
+    }
   }, [beaches.length]);
 
   // Reset display count when filters change
@@ -331,7 +350,27 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
         </div>
       </Section>
 
+      {/* Loading State */}
+      {loading && (
+        <Section>
+          <div className="py-12 text-center">
+            <div className="text-brand-navy mb-4 text-xl">Loading beaches...</div>
+            <div className="text-brand-navy/60">Finding the best beaches in Puerto Rico</div>
+          </div>
+        </Section>
+      )}
+
+      {/* Error State */}
+      {error && !loading && (
+        <Section>
+          <div className="bg-brand-red/10 border-brand-red/20 text-brand-red rounded-lg border px-6 py-4 text-center">
+            <p className="font-semibold">{error}</p>
+          </div>
+        </Section>
+      )}
+
       {/* Filters Section */}
+      {!loading && !error && (
       <Section className="border-b">
         <div className="space-y-6">
           {/* View Toggle */}
@@ -441,6 +480,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
           </div>
         </div>
       </Section>
+      )}
 
       {/* SEO Content Section */}
       <Section className="bg-white">
@@ -464,6 +504,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
       </Section>
 
       {/* Results Section */}
+      {!loading && !error && (
       <Section>
         {viewMode === 'map' ? (
           filteredBeaches.length === 0 ? (
@@ -521,6 +562,7 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
           </>
         )}
       </Section>
+      )}
 
       {/* FAQ Section */}
       <Section className="bg-brand-sand/30">
@@ -609,25 +651,3 @@ export default function BeachFinder({ beaches }: BeachFinderProps) {
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const beaches = isSqliteEnabled() ? await getAllBeaches() : await readBeaches();
-
-    return {
-      props: {
-        beaches: beaches || []
-      },
-      revalidate: 300 // Revalidate every 5 minutes
-    };
-  } catch (error) {
-    console.error('Error loading beaches for static props:', error);
-
-    return {
-      props: {
-        beaches: []
-      },
-      revalidate: 60 // Retry more frequently on error
-    };
-  }
-};
