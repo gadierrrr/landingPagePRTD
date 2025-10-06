@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 import { verifyAdminCookie } from '../../src/lib/admin/auth';
 import { validateCSRF } from '../../src/lib/csrf';
 
@@ -52,16 +53,59 @@ export function isValidOrigin(origin: string | undefined, referer: string | unde
     'http://localhost:3000',
     'http://127.0.0.1:3000'
   ];
-  
+
   if (origin && allowedOrigins.some(allowed => origin.startsWith(allowed))) {
     return true;
   }
-  
+
   if (referer && allowedOrigins.some(allowed => referer.startsWith(allowed))) {
     return true;
   }
-  
+
   return false;
+}
+
+/**
+ * Compress image using ImageMagick
+ * Limits: Cover images 1920x1080, Gallery images 800x600
+ */
+export async function compressImage(
+  filePath: string,
+  imageType: 'cover' | 'gallery' = 'gallery'
+): Promise<void> {
+  const maxDimensions = imageType === 'cover' ? '1920x1080' : '800x600';
+  const quality = 85;
+  const tempPath = `${filePath}.tmp`;
+
+  try {
+    // Use ImageMagick to compress
+    execSync(
+      `convert "${filePath}" -resize "${maxDimensions}>" -quality ${quality} -strip "${tempPath}"`,
+      { stdio: 'pipe' }
+    );
+
+    // Check if compressed version is smaller
+    const originalStats = await fs.promises.stat(filePath);
+    const compressedStats = await fs.promises.stat(tempPath);
+
+    if (compressedStats.size < originalStats.size) {
+      // Replace with compressed version
+      await fs.promises.rename(tempPath, filePath);
+    } else {
+      // Keep original (already optimized)
+      await fs.promises.unlink(tempPath);
+    }
+  } catch (error) {
+    // Clean up temp file if it exists
+    try {
+      await fs.promises.unlink(tempPath);
+    } catch {
+      // Ignore cleanup errors
+    }
+
+    // Log error but don't fail upload (compression is nice-to-have)
+    console.error('Image compression failed:', error);
+  }
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -132,16 +176,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const originalName = uploadedFile.originalFilename || 'upload';
     const safeFilename = generateUniqueFilename(originalName);
     const finalPath = path.join(uploadsDir, safeFilename);
-    
+
     // Move file to final location with safe name
     await fs.promises.rename(uploadedFile.filepath, finalPath);
 
     // Set proper file permissions (readable by web server)
     await fs.promises.chmod(finalPath, 0o644);
 
+    // Auto-compress uploaded image (non-blocking, doesn't fail upload if compression fails)
+    // Determine image type from request or default to gallery
+    const imageType = req.headers['x-image-type'] === 'cover' ? 'cover' : 'gallery';
+    await compressImage(finalPath, imageType);
+
     // Return path that uses our custom serve-upload endpoint
     const publicPath = `/api/serve-upload/${year}/${month}/${safeFilename}`;
-    
+
     res.status(200).json({ ok: true, path: publicPath });
   } catch (error) {
     console.error('Upload error:', error);

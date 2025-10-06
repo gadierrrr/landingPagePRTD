@@ -361,7 +361,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     ? await getBeachBySlugDb(params?.slug as string)
     : await getBeachBySlug(params?.slug as string);
 
-  if (!beach) {
+  if (!beach || !beach.id) {
     return {
       notFound: true
     };
@@ -373,7 +373,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   let relatedBeaches: Beach[] = [];
 
   if (isSqliteEnabled()) {
-    relatedBeaches = await getRelatedBeaches(beach.id, 6);
+    relatedBeaches = await getRelatedBeaches(beach.id!, 6);
   } else {
     // Fallback for JSON store: simple municipality match
     const allBeaches = await readBeaches();
