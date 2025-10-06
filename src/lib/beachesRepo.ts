@@ -279,6 +279,102 @@ export async function getBeachBySlug(slug: string): Promise<Beach | null> {
   return beach;
 }
 
+/**
+ * Get related beaches for a given beach
+ * Simple scoring based on same municipality and shared tags
+ * Returns lightweight beach data (no full content)
+ */
+export async function getRelatedBeaches(beachId: string, limit = 6): Promise<Beach[]> {
+  // Get the current beach
+  const currentBeach = await db.query.beaches.findFirst({
+    where: eq(schema.beaches.id, beachId)
+  });
+
+  if (!currentBeach) {
+    return [];
+  }
+
+  // Get current beach tags
+  const currentTags = await db
+    .select()
+    .from(schema.beachTags)
+    .where(eq(schema.beachTags.beachId, beachId));
+
+  const currentTagValues = currentTags.map(t => t.tag);
+
+  // Get all other beaches in same municipality or with shared tags
+  const candidateBeaches = await db
+    .select()
+    .from(schema.beaches)
+    .where(eq(schema.beaches.municipality, currentBeach.municipality));
+
+  // Score and filter
+  const scored = await Promise.all(
+    candidateBeaches
+      .filter(b => b.id !== beachId)
+      .map(async (beach) => {
+        let score = 0;
+
+        // Same municipality bonus
+        score += 10;
+
+        // Shared tags bonus
+        const beachTags = await db
+          .select()
+          .from(schema.beachTags)
+          .where(eq(schema.beachTags.beachId, beach.id));
+
+        const beachTagValues = beachTags.map(t => t.tag);
+        const sharedTags = currentTagValues.filter(t => beachTagValues.includes(t));
+        score += sharedTags.length * 3;
+
+        return { beach, score };
+      })
+  );
+
+  // Sort by score and take top results
+  const topBeaches = scored
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(item => item.beach);
+
+  // Fetch tags for top beaches
+  const beachIds = topBeaches.map(b => b.id);
+  if (beachIds.length === 0) {
+    return [];
+  }
+
+  const [tagRows, amenityRows] = await Promise.all([
+    db.select().from(schema.beachTags).where(inArray(schema.beachTags.beachId, beachIds)),
+    db.select().from(schema.beachAmenities).where(inArray(schema.beachAmenities.beachId, beachIds))
+  ]);
+
+  const tagsById = new Map<string, string[]>();
+  for (const tag of tagRows) {
+    const arr = tagsById.get(tag.beachId) ?? [];
+    arr.push(tag.tag);
+    tagsById.set(tag.beachId, arr);
+  }
+
+  const amenitiesById = new Map<string, string[]>();
+  for (const amenity of amenityRows) {
+    const arr = amenitiesById.get(amenity.beachId) ?? [];
+    arr.push(amenity.amenity);
+    amenitiesById.set(amenity.beachId, arr);
+  }
+
+  return topBeaches.map(row => {
+    const beach = mapBeachRow(row);
+    beach.tags = (tagsById.get(row.id) ?? []) as Beach['tags'];
+    beach.amenities = (amenitiesById.get(row.id) ?? []) as Beach['amenities'];
+    beach.gallery = [];
+    beach.aliases = [];
+    beach.features = [];
+    beach.tips = [];
+    return beach;
+  });
+}
+
 // Write operations
 export async function findDuplicateCandidates(
   beach: Omit<Beach, 'id' | 'slug'>,

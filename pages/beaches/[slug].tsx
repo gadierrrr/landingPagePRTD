@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { Beach } from '../../src/lib/forms';
 import { readBeaches, getBeachBySlug } from '../../src/lib/beachesStore';
-import { getAllBeaches, getBeachBySlug as getBeachBySlugDb } from '../../src/lib/beachesRepo';
+import { getBeachBySlug as getBeachBySlugDb, getRelatedBeaches, getAllBeachesLight } from '../../src/lib/beachesRepo';
 import { isSqliteEnabled } from '../../src/lib/dataSource';
 import { SiteLayout } from '../../src/ui/layout/SiteLayout';
 import { SEO } from '../../src/ui/SEO';
@@ -14,6 +14,7 @@ import { Heading } from '../../src/ui/Heading';
 import { TAG_LABELS, AMENITY_LABELS, CONDITION_LABELS } from '../../src/constants/beachVocab';
 import { generateBeachMeta, generateBeachStructuredData, generateBreadcrumbSchema } from '../../src/lib/seo';
 import { RelatedBeachesGrid } from '../../src/ui/beaches/RelatedBeachesGrid';
+import { isPopularBeach } from '../../src/constants/popularBeaches';
 import {
   trackBeachDetailsView,
   trackBeachDirectionsClick
@@ -331,16 +332,27 @@ export default function BeachPage({ beach, relatedBeaches }: BeachPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const beaches = isSqliteEnabled() ? await getAllBeaches() : await readBeaches();
-  const paths = beaches
-    .filter(beach => beach.slug)
-    .map(beach => ({
-      params: { slug: beach.slug! }
-    }));
+  // Use lightweight query to reduce memory during build
+  const beaches = isSqliteEnabled() ? await getAllBeachesLight() : await readBeaches();
+
+  // Only pre-render popular beaches to reduce build time and memory
+  // Other beaches will be rendered on-demand via fallback: 'blocking'
+  const popularBeaches = beaches.filter(beach =>
+    beach.slug && isPopularBeach({
+      municipality: beach.municipality,
+      tags: beach.tags
+    })
+  );
+
+  const paths = popularBeaches.map(beach => ({
+    params: { slug: beach.slug! }
+  }));
+
+  console.log(`[Build] Pre-rendering ${paths.length} popular beaches out of ${beaches.length} total`);
 
   return {
     paths,
-    fallback: 'blocking' // Enable ISR for new beaches
+    fallback: 'blocking' // Other beaches rendered on-demand, then cached
   };
 };
 
@@ -355,52 +367,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
 
-  // Get related beaches using intelligent scoring
-  const allBeaches = isSqliteEnabled() ? await getAllBeaches() : await readBeaches();
-  
-  const relatedBeaches = allBeaches
-    .filter(b => b.id !== beach.id) // Exclude current beach
-    .map(b => {
-      let score = 0;
-      
-      // Same municipality gets highest score
-      if (b.municipality === beach.municipality) {
-        score += 10;
-      }
-      
-      // Similar tags get points
-      const commonTags = beach.tags?.filter(tag => b.tags?.includes(tag)) || [];
-      score += commonTags.length * 3;
-      
-      // Similar amenities get points  
-      const commonAmenities = beach.amenities?.filter(amenity => b.amenities?.includes(amenity)) || [];
-      score += commonAmenities.length * 2;
-      
-      // Nearby beaches get points (within ~20km)
-      const distance = calculateDistance(
-        beach.coords.lat, beach.coords.lng,
-        b.coords.lat, b.coords.lng
-      );
-      if (distance < 20000) { // 20km
-        score += Math.max(0, 5 - Math.floor(distance / 5000)); // More points for closer beaches
-      }
-      
-      return { beach: b, score };
-    })
-    .sort((a, b) => b.score - a.score) // Sort by highest score first
-    .slice(0, 8) // Get top 8 candidates
-    .map(item => item.beach); // Extract beach objects
+  // Get related beaches using optimized query
+  // For SQLite: uses getRelatedBeaches (lightweight, scored query)
+  // For JSON: fallback to simple same-municipality filter
+  let relatedBeaches: Beach[] = [];
 
-  // Helper function to calculate distance (Haversine formula)
-  function calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
-    const R = 6371000; // Earth's radius in meters
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLng = (lng2 - lng1) * Math.PI / 180;
-    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-             Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-             Math.sin(dLng/2) * Math.sin(dLng/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    return R * c;
+  if (isSqliteEnabled()) {
+    relatedBeaches = await getRelatedBeaches(beach.id, 6);
+  } else {
+    // Fallback for JSON store: simple municipality match
+    const allBeaches = await readBeaches();
+    relatedBeaches = allBeaches
+      .filter(b => b.id !== beach.id && b.municipality === beach.municipality)
+      .slice(0, 6);
   }
 
   return {
