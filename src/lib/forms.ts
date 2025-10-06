@@ -137,6 +137,18 @@ export const eventsIndexSchema = z.object({
   }))
 });
 
+// Beach feature schema (for structured features list)
+export const beachFeatureSchema = z.object({
+  title: z.string().min(1, 'Feature title is required').max(100, 'Title must be 100 characters or less'),
+  description: z.string().min(1, 'Feature description is required').max(500, 'Description must be 500 characters or less')
+});
+
+// Beach tip schema (for visitor tips/advice)
+export const beachTipSchema = z.object({
+  category: z.string().min(1, 'Tip category is required').max(50, 'Category must be 50 characters or less'),
+  tip: z.string().min(1, 'Tip content is required').max(500, 'Tip must be 500 characters or less')
+});
+
 // Beach schema
 export const beachSchema = z.object({
   id: z.string().uuid().optional(), // Generated server-side for new beaches
@@ -168,6 +180,14 @@ export const beachSchema = z.object({
   parentId: z.string().uuid().optional(),
   accessLabel: z.string().max(50, 'Access label must be 50 characters or less').optional(),
   notes: z.string().max(500, 'Notes must be 500 characters or less').optional(),
+  // Rich content fields (added 2025-10-06)
+  description: z.string().max(2000, 'Description must be 2000 characters or less').optional(),
+  parkingDetails: z.string().max(1000, 'Parking details must be 1000 characters or less').optional(),
+  safetyInfo: z.string().max(1000, 'Safety info must be 1000 characters or less').optional(),
+  localTips: z.string().max(1000, 'Local tips must be 1000 characters or less').optional(),
+  bestTime: z.string().max(500, 'Best time info must be 500 characters or less').optional(),
+  features: z.array(beachFeatureSchema).max(10, 'Maximum 10 features allowed').optional(),
+  tips: z.array(beachTipSchema).max(10, 'Maximum 10 tips allowed').optional(),
   updatedAt: z.string().datetime().optional()
 });
 
@@ -179,3 +199,5 @@ export type EventImage = z.infer<typeof eventImageSchema>;
 export type WeeklyEvents = z.infer<typeof weeklyEventsSchema>;
 export type EventsIndex = z.infer<typeof eventsIndexSchema>;
 export type Beach = z.infer<typeof beachSchema>;
+export type BeachFeature = z.infer<typeof beachFeatureSchema>;
+export type BeachTip = z.infer<typeof beachTipSchema>;

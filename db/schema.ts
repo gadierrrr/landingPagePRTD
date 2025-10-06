@@ -25,6 +25,12 @@ export const beaches = sqliteTable(
     accessLabel: text('access_label'),
     notes: text('notes'),
     parentId: text('parent_id'),
+    // Rich content fields (added 2025-10-06)
+    description: text('description'), // Extended intro (up to 2000 chars)
+    parkingDetails: text('parking_details'), // Specific parking info
+    safetyInfo: text('safety_info'), // Warnings and safety tips
+    localTips: text('local_tips'), // Local context and vendor info
+    bestTime: text('best_time'), // Best time to visit
     updatedAt: text('updated_at')
       .notNull()
       .default(sql`(strftime('%Y-%m-%dT%H:%M:%fZ','now'))`)
@@ -112,6 +118,39 @@ export const beachAuditLog = sqliteTable(
   table => ({
     beachIdx: index('beach_audit_beach_idx').on(table.beachId),
     tsIdx: index('beach_audit_timestamp_idx').on(table.timestamp)
+  })
+);
+
+export const beachFeatures = sqliteTable(
+  'beach_features',
+  {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    beachId: text('beach_id')
+      .notNull()
+      .references(() => beaches.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
+    title: text('title').notNull(),
+    description: text('description').notNull(),
+    position: integer('position').notNull().default(0)
+  },
+  table => ({
+    beachIdx: index('beach_features_beach_idx').on(table.beachId)
+  })
+);
+
+export const beachTips = sqliteTable(
+  'beach_tips',
+  {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    beachId: text('beach_id')
+      .notNull()
+      .references(() => beaches.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
+    category: text('category').notNull(),
+    tip: text('tip').notNull(),
+    position: integer('position').notNull().default(0)
+  },
+  table => ({
+    beachIdx: index('beach_tips_beach_idx').on(table.beachId),
+    categoryIdx: index('beach_tips_category_idx').on(table.category)
   })
 );
 

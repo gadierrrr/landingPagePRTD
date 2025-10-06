@@ -1,7 +1,7 @@
 import { eq, inArray } from 'drizzle-orm';
 import crypto from 'crypto';
 import { db, schema } from './db';
-import type { Beach } from './forms';
+import type { Beach, BeachFeature, BeachTip } from './forms';
 import { generateBeachSlug } from './slugGenerator';
 
 // Duplicate detection utilities
@@ -85,11 +85,19 @@ function mapBeachRow(row: typeof schema.beaches.$inferSelect): Beach {
     coverImage: row.coverImage,
     accessLabel: row.accessLabel ?? undefined,
     notes: row.notes ?? undefined,
+    // Rich content fields (added 2025-10-06)
+    description: row.description ?? undefined,
+    parkingDetails: row.parkingDetails ?? undefined,
+    safetyInfo: row.safetyInfo ?? undefined,
+    localTips: row.localTips ?? undefined,
+    bestTime: row.bestTime ?? undefined,
     updatedAt: row.updatedAt,
     tags: [],
     amenities: [],
     gallery: [],
-    aliases: []
+    aliases: [],
+    features: [],
+    tips: []
   };
 
   // Only add parentId if it exists (omit when null/undefined)
@@ -108,7 +116,7 @@ export async function getAllBeaches(): Promise<Beach[]> {
 
   const ids = beachRows.map(b => b.id);
 
-  const [tagRows, amenityRows, galleryRows, aliasRows] = await Promise.all([
+  const [tagRows, amenityRows, galleryRows, aliasRows, featureRows, tipRows] = await Promise.all([
     db.select().from(schema.beachTags).where(inArray(schema.beachTags.beachId, ids)),
     db.select().from(schema.beachAmenities).where(inArray(schema.beachAmenities.beachId, ids)),
     db
@@ -116,7 +124,17 @@ export async function getAllBeaches(): Promise<Beach[]> {
       .from(schema.beachGallery)
       .where(inArray(schema.beachGallery.beachId, ids))
       .orderBy(schema.beachGallery.beachId, schema.beachGallery.position),
-    db.select().from(schema.beachAliases).where(inArray(schema.beachAliases.beachId, ids))
+    db.select().from(schema.beachAliases).where(inArray(schema.beachAliases.beachId, ids)),
+    db
+      .select()
+      .from(schema.beachFeatures)
+      .where(inArray(schema.beachFeatures.beachId, ids))
+      .orderBy(schema.beachFeatures.beachId, schema.beachFeatures.position),
+    db
+      .select()
+      .from(schema.beachTips)
+      .where(inArray(schema.beachTips.beachId, ids))
+      .orderBy(schema.beachTips.beachId, schema.beachTips.position)
   ]);
 
   const tagsById = new Map<string, string[]>();
@@ -147,12 +165,28 @@ export async function getAllBeaches(): Promise<Beach[]> {
     aliasesById.set(alias.beachId, arr);
   }
 
+  const featuresById = new Map<string, BeachFeature[]>();
+  for (const feature of featureRows) {
+    const arr = featuresById.get(feature.beachId) ?? [];
+    arr.push({ title: feature.title, description: feature.description });
+    featuresById.set(feature.beachId, arr);
+  }
+
+  const tipsById = new Map<string, BeachTip[]>();
+  for (const tip of tipRows) {
+    const arr = tipsById.get(tip.beachId) ?? [];
+    arr.push({ category: tip.category, tip: tip.tip });
+    tipsById.set(tip.beachId, arr);
+  }
+
   return beachRows.map(row => {
     const beach = mapBeachRow(row);
     beach.tags = (tagsById.get(row.id) ?? []) as Beach['tags'];
     beach.amenities = (amenitiesById.get(row.id) ?? []) as Beach['amenities'];
     beach.gallery = galleryById.get(row.id) ?? [];
     beach.aliases = aliasesById.get(row.id) ?? [];
+    beach.features = featuresById.get(row.id) ?? [];
+    beach.tips = tipsById.get(row.id) ?? [];
     return beach;
   });
 }
@@ -165,7 +199,7 @@ export async function getBeachBySlug(slug: string): Promise<Beach | null> {
 
   const beach = mapBeachRow(row);
 
-  const [tags, amenities, gallery, aliases] = await Promise.all([
+  const [tags, amenities, gallery, aliases, features, tips] = await Promise.all([
     db.select().from(schema.beachTags).where(eq(schema.beachTags.beachId, row.id)),
     db.select().from(schema.beachAmenities).where(eq(schema.beachAmenities.beachId, row.id)),
     db
@@ -173,13 +207,25 @@ export async function getBeachBySlug(slug: string): Promise<Beach | null> {
       .from(schema.beachGallery)
       .where(eq(schema.beachGallery.beachId, row.id))
       .orderBy(schema.beachGallery.position),
-    db.select().from(schema.beachAliases).where(eq(schema.beachAliases.beachId, row.id))
+    db.select().from(schema.beachAliases).where(eq(schema.beachAliases.beachId, row.id)),
+    db
+      .select()
+      .from(schema.beachFeatures)
+      .where(eq(schema.beachFeatures.beachId, row.id))
+      .orderBy(schema.beachFeatures.position),
+    db
+      .select()
+      .from(schema.beachTips)
+      .where(eq(schema.beachTips.beachId, row.id))
+      .orderBy(schema.beachTips.position)
   ]);
 
   beach.tags = tags.map(t => t.tag) as Beach['tags'];
   beach.amenities = amenities.map(a => a.amenity) as Beach['amenities'];
   beach.gallery = gallery.map(g => g.imageUrl);
   beach.aliases = aliases.map(a => a.alias);
+  beach.features = features.map(f => ({ title: f.title, description: f.description }));
+  beach.tips = tips.map(t => ({ category: t.category, tip: t.tip }));
 
   return beach;
 }
@@ -282,6 +328,11 @@ export async function createBeach(
       accessLabel: beach.accessLabel,
       notes: beach.notes,
       parentId: beach.parentId,
+      description: beach.description,
+      parkingDetails: beach.parkingDetails,
+      safetyInfo: beach.safetyInfo,
+      localTips: beach.localTips,
+      bestTime: beach.bestTime,
       updatedAt: now
     });
 
@@ -317,6 +368,30 @@ export async function createBeach(
       );
     }
 
+    // Insert features
+    if (beach.features?.length) {
+      await tx.insert(schema.beachFeatures).values(
+        beach.features.map((feature, index) => ({
+          beachId,
+          title: feature.title,
+          description: feature.description,
+          position: index
+        }))
+      );
+    }
+
+    // Insert tips
+    if (beach.tips?.length) {
+      await tx.insert(schema.beachTips).values(
+        beach.tips.map((tip, index) => ({
+          beachId,
+          category: tip.category,
+          tip: tip.tip,
+          position: index
+        }))
+      );
+    }
+
     // Audit log
     await tx.insert(schema.beachAuditLog).values({
       timestamp: now,
@@ -336,7 +411,9 @@ export async function createBeach(
       tags: beach.tags || [],
       amenities: beach.amenities || [],
       gallery: beach.gallery || [],
-      aliases: beach.aliases || []
+      aliases: beach.aliases || [],
+      features: beach.features || [],
+      tips: beach.tips || []
     };
   });
 }
@@ -371,6 +448,11 @@ export async function updateBeach(
     if (updates.accessLabel !== undefined) updateData.accessLabel = updates.accessLabel;
     if (updates.notes !== undefined) updateData.notes = updates.notes;
     if (updates.parentId !== undefined) updateData.parentId = updates.parentId;
+    if (updates.description !== undefined) updateData.description = updates.description;
+    if (updates.parkingDetails !== undefined) updateData.parkingDetails = updates.parkingDetails;
+    if (updates.safetyInfo !== undefined) updateData.safetyInfo = updates.safetyInfo;
+    if (updates.localTips !== undefined) updateData.localTips = updates.localTips;
+    if (updates.bestTime !== undefined) updateData.bestTime = updates.bestTime;
 
     await tx.update(schema.beaches)
       .set(updateData)
@@ -420,6 +502,36 @@ export async function updateBeach(
       }
     }
 
+    // Update features if provided
+    if (updates.features !== undefined) {
+      await tx.delete(schema.beachFeatures).where(eq(schema.beachFeatures.beachId, id));
+      if (updates.features.length > 0) {
+        await tx.insert(schema.beachFeatures).values(
+          updates.features.map((feature, index) => ({
+            beachId: id,
+            title: feature.title,
+            description: feature.description,
+            position: index
+          }))
+        );
+      }
+    }
+
+    // Update tips if provided
+    if (updates.tips !== undefined) {
+      await tx.delete(schema.beachTips).where(eq(schema.beachTips.beachId, id));
+      if (updates.tips.length > 0) {
+        await tx.insert(schema.beachTips).values(
+          updates.tips.map((tip, index) => ({
+            beachId: id,
+            category: tip.category,
+            tip: tip.tip,
+            position: index
+          }))
+        );
+      }
+    }
+
     // Audit log
     const afterHash = generateDataHash({ ...mapBeachRow(beach), ...updates } as Beach);
     await tx.insert(schema.beachAuditLog).values({
@@ -440,11 +552,13 @@ export async function updateBeach(
 
     if (!updatedRow) return null;
 
-    const [tags, amenities, gallery, aliases] = await Promise.all([
+    const [tags, amenities, gallery, aliases, features, tips] = await Promise.all([
       tx.select().from(schema.beachTags).where(eq(schema.beachTags.beachId, id)),
       tx.select().from(schema.beachAmenities).where(eq(schema.beachAmenities.beachId, id)),
       tx.select().from(schema.beachGallery).where(eq(schema.beachGallery.beachId, id)).orderBy(schema.beachGallery.position),
-      tx.select().from(schema.beachAliases).where(eq(schema.beachAliases.beachId, id))
+      tx.select().from(schema.beachAliases).where(eq(schema.beachAliases.beachId, id)),
+      tx.select().from(schema.beachFeatures).where(eq(schema.beachFeatures.beachId, id)).orderBy(schema.beachFeatures.position),
+      tx.select().from(schema.beachTips).where(eq(schema.beachTips.beachId, id)).orderBy(schema.beachTips.position)
     ]);
 
     const updatedBeach = mapBeachRow(updatedRow);
@@ -452,6 +566,8 @@ export async function updateBeach(
     updatedBeach.amenities = amenities.map(a => a.amenity) as Beach['amenities'];
     updatedBeach.gallery = gallery.map(g => g.imageUrl);
     updatedBeach.aliases = aliases.map(a => a.alias);
+    updatedBeach.features = features.map(f => ({ title: f.title, description: f.description }));
+    updatedBeach.tips = tips.map(t => ({ category: t.category, tip: t.tip }));
 
     return updatedBeach;
   });

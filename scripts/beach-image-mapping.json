@@ -1,0 +1,396 @@
+{
+  "generated": "2025-10-06T12:53:10.349Z",
+  "totalMatches": 39,
+  "matches": [
+    {
+      "image": "cayo-enrique-lajas-1758729107569.jpg",
+      "imagePath": "/images/uploads/2025/09/cayo-enrique-lajas-1758729107569.jpg",
+      "beachId": "62eaf96b-f62e-4efe-909b-d2c7e8db4805",
+      "beachName": "Cayo Enrique",
+      "municipality": "Lajas",
+      "slug": "cayo-enrique-lajas-17963-67043",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 169
+    },
+    {
+      "image": "mata-la-gata-beach-1758719841527.jpg",
+      "imagePath": "/images/uploads/2025/09/mata-la-gata-beach-1758719841527.jpg",
+      "beachId": "71994220-a787-4276-9b22-23e37ffc6d04",
+      "beachName": "Mata La Gata",
+      "municipality": "Lajas",
+      "slug": "mata-la-gata-lajas-17957-67045",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 163
+    },
+    {
+      "image": "isla-ratones-cabo-rojo-1758718583529.jpg",
+      "imagePath": "/images/uploads/2025/09/isla-ratones-cabo-rojo-1758718583529.jpg",
+      "beachId": "2633c18e-8a10-4657-93cd-112c54e65e65",
+      "beachName": "Isla de Ratones (Cayo Ratones)",
+      "municipality": "Cabo Rojo",
+      "slug": "isla-de-ratones-cayo-ratones-cabo-rojo-18198-67161",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 161
+    },
+    {
+      "image": "pozo-teodoro-beach-isabela-1758711172589.jpg",
+      "imagePath": "/images/uploads/2025/09/pozo-teodoro-beach-isabela-1758711172589.jpg",
+      "beachId": "39c72622-b03d-4af7-bf17-f13cea1e277e",
+      "beachName": "Pozo Teodoro",
+      "municipality": "Isabela",
+      "slug": "pozo-teodoro-isabela-185-6707",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 161
+    },
+    {
+      "image": "pozo-teodoro-beach-isabela-1758711265881.jpg",
+      "imagePath": "/images/uploads/2025/09/pozo-teodoro-beach-isabela-1758711265881.jpg",
+      "beachId": "39c72622-b03d-4af7-bf17-f13cea1e277e",
+      "beachName": "Pozo Teodoro",
+      "municipality": "Isabela",
+      "slug": "pozo-teodoro-isabela-185-6707",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 161
+    },
+    {
+      "image": "cayo-caroles-sandbar-1758719561318.jpg",
+      "imagePath": "/images/uploads/2025/09/cayo-caroles-sandbar-1758719561318.jpg",
+      "beachId": "0a84e9a9-b8b7-4857-811f-8ab8b226da3c",
+      "beachName": "Cayo Caracoles Sandbar",
+      "municipality": "Lajas",
+      "slug": "cayo-caracoles-sandbar-lajas-17968-6704",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 156
+    },
+    {
+      "image": "gas-chambers-beach-aguadilla-1758707835694.jpg",
+      "imagePath": "/images/uploads/2025/09/gas-chambers-beach-aguadilla-1758707835694.jpg",
+      "beachId": "f86a2f8f-5a07-40a8-bdfa-523b422e1d3a",
+      "beachName": "Gas Chambers",
+      "municipality": "Aguadilla",
+      "slug": "gas-chambers-aguadilla-18467-67154",
+      "currentImage": "/images/beaches/gas-chambers-aguadilla.jpeg",
+      "score": 155
+    },
+    {
+      "image": "crash-boat-beach-aguadilla-1758710408669.jpg",
+      "imagePath": "/images/uploads/2025/09/crash-boat-beach-aguadilla-1758710408669.jpg",
+      "beachId": "18ca775f-4e0c-4f92-b913-8a73e1b3fede",
+      "beachName": "Crash Boat Beach",
+      "municipality": "Aguadilla",
+      "slug": "crash-boat-beach-aguadilla-18458-67164",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 145
+    },
+    {
+      "image": "Wilderness-sbeach-Aguadilla-1758707605761.jpg",
+      "imagePath": "/images/uploads/2025/09/Wilderness-sbeach-Aguadilla-1758707605761.jpg",
+      "beachId": "bf704968-8546-49e2-be68-ef4ed91fa54a",
+      "beachName": "Wilderness",
+      "municipality": "Aguadilla",
+      "slug": "wilderness-aguadilla-18498-67147",
+      "currentImage": "/images/beaches/wilderness-aguadilla.jpeg",
+      "score": 138
+    },
+    {
+      "image": "middles-beach-isabela-1758712111834.jpg",
+      "imagePath": "/images/uploads/2025/09/middles-beach-isabela-1758712111834.jpg",
+      "beachId": "507a9563-39f0-4bd3-9d97-f5f09dc969ec",
+      "beachName": "Middles",
+      "municipality": "Isabela",
+      "slug": "middles-isabela-18518-67098",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 135
+    },
+    {
+      "image": "montones-beach-isabela-1758710785176.jpg",
+      "imagePath": "/images/uploads/2025/09/montones-beach-isabela-1758710785176.jpg",
+      "beachId": "e1755b9e-3a09-4ee0-ac87-6932ea8d330b",
+      "beachName": "Montones Beach",
+      "municipality": "Isabela",
+      "slug": "montones-beach-isabela-18506-67081",
+      "currentImage": "/images/beaches/montones-beach-isabela.jpeg",
+      "score": 133
+    },
+    {
+      "image": "pastillo-beach-isabela-1758713726034.jpg",
+      "imagePath": "/images/uploads/2025/09/pastillo-beach-isabela-1758713726034.jpg",
+      "beachId": "3ad6231e-1213-471d-aae9-e0b44bc24bb0",
+      "beachName": "Pastillo Beach",
+      "municipality": "Isabela",
+      "slug": "pastillo-beach-isabela-18474-66949",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 133
+    },
+    {
+      "image": "pastillo-beach-isabela-1758713782449.jpg",
+      "imagePath": "/images/uploads/2025/09/pastillo-beach-isabela-1758713782449.jpg",
+      "beachId": "3ad6231e-1213-471d-aae9-e0b44bc24bb0",
+      "beachName": "Pastillo Beach",
+      "municipality": "Isabela",
+      "slug": "pastillo-beach-isabela-18474-66949",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 133
+    },
+    {
+      "image": "punta-jaguey-cabo-rojo-1759583500409.webp",
+      "imagePath": "/images/uploads/2025/10/punta-jaguey-cabo-rojo-1759583500409.webp",
+      "beachId": "2d658393-d540-4d4b-8edd-537dac790bbf",
+      "beachName": "Punta Jagüey (north Combate)",
+      "municipality": "Cabo Rojo",
+      "slug": "punta-jagey-north-combate-cabo-rojo-17981-67178",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 131
+    },
+    {
+      "image": "punta-jaguey-cabo-rojo-1759583644278.webp",
+      "imagePath": "/images/uploads/2025/10/punta-jaguey-cabo-rojo-1759583644278.webp",
+      "beachId": "2d658393-d540-4d4b-8edd-537dac790bbf",
+      "beachName": "Punta Jagüey (north Combate)",
+      "municipality": "Cabo Rojo",
+      "slug": "punta-jagey-north-combate-cabo-rojo-17981-67178",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 131
+    },
+    {
+      "image": "martinica-beach-aguadilla-1758708499384.jpg",
+      "imagePath": "/images/uploads/2025/09/martinica-beach-aguadilla-1758708499384.jpg",
+      "beachId": "21da5e24-4644-436c-8062-86d06b120468",
+      "beachName": "Martinica Beach",
+      "municipality": "Aguadilla",
+      "slug": "martinica-beach-aguadilla-18446-67154",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 130
+    },
+    {
+      "image": "combate-beach-cabo-rojo-1758718022977.webp",
+      "imagePath": "/images/uploads/2025/09/combate-beach-cabo-rojo-1758718022977.webp",
+      "beachId": "92087461-079b-4087-9b8f-61fe8a70f80c",
+      "beachName": "Combate Beach",
+      "municipality": "Cabo Rojo",
+      "slug": "combate-beach-cabo-rojo-17968-67175",
+      "currentImage": "/images/beaches/combate-beach-cabo rojo.jpeg",
+      "score": 126
+    },
+    {
+      "image": "aguada-beach-aguada-1758713941056.jpg",
+      "imagePath": "/images/uploads/2025/09/aguada-beach-aguada-1758713941056.jpg",
+      "beachId": "d62ece9c-8768-4385-8908-2eafea8494b9",
+      "beachName": "Aguada Town Beach",
+      "municipality": "Aguada",
+      "slug": "aguada-town-beach-aguada-1838-672",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 125
+    },
+    {
+      "image": "shacks-brujas-beach-isabela-1758710915722.jpg",
+      "imagePath": "/images/uploads/2025/09/shacks-brujas-beach-isabela-1758710915722.jpg",
+      "beachId": "df6beb3b-0e7a-4202-b2a8-2bde323e5d3a",
+      "beachName": "Shacks (Bajuras)",
+      "municipality": "Isabela",
+      "slug": "shacks-bajuras-isabela-18495-67058",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 125
+    },
+    {
+      "image": "surfers-beach-aguadilla-1758707673495.jpg",
+      "imagePath": "/images/uploads/2025/09/surfers-beach-aguadilla-1758707673495.jpg",
+      "beachId": "7022b2a4-c2bf-41a0-9d1b-40be4255b865",
+      "beachName": "Surfer’s Beach",
+      "municipality": "Aguadilla",
+      "slug": "surfers-beach-aguadilla-18495-67153",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 123
+    },
+    {
+      "image": "jobos-beach-isabela-1758710669953.jpg",
+      "imagePath": "/images/uploads/2025/09/jobos-beach-isabela-1758710669953.jpg",
+      "beachId": "35f5415d-c1e6-4cb9-9ec8-b4f89b5c3029",
+      "beachName": "Jobos Beach",
+      "municipality": "Isabela",
+      "slug": "jobos-beach-isabela-18513-67085",
+      "currentImage": "/images/beaches/jobos-beach-isabela.jpeg",
+      "score": 120
+    },
+    {
+      "image": "cerro-gordo-beach-aguadilla-1758730050626.jpg",
+      "imagePath": "/images/uploads/2025/09/cerro-gordo-beach-aguadilla-1758730050626.jpg",
+      "beachId": "5551c24d-3cd5-485e-a6e1-87927a61ca0e",
+      "beachName": "Cerro Gordo Shore (north aerostat)",
+      "municipality": "Aguadilla",
+      "slug": "cerro-gordo-shore-north-aerostat-aguadilla-18503-67158",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 119
+    },
+    {
+      "image": "lajas-rosada-beach-1758718876435.jpg",
+      "imagePath": "/images/uploads/2025/09/lajas-rosada-beach-1758718876435.jpg",
+      "beachId": "c9451dda-2eeb-4712-b475-9356100e6bf8",
+      "beachName": "Playita Rosada",
+      "municipality": "Lajas",
+      "slug": "playita-rosada-lajas-17972-67046",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 119
+    },
+    {
+      "image": "el-mani-beach-mayaguez-1758729726258.jpg",
+      "imagePath": "/images/uploads/2025/09/el-mani-beach-mayaguez-1758729726258.jpg",
+      "beachId": "666bb351-07cf-400d-930e-530b2898bb3a",
+      "beachName": "El Maní Beach",
+      "municipality": "Mayagüez",
+      "slug": "el-man-beach-mayagez-18226-6716",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 117
+    },
+    {
+      "image": "pena-blanca-beach-aguadilla-1758708191181.webp",
+      "imagePath": "/images/uploads/2025/09/pena-blanca-beach-aguadilla-1758708191181.webp",
+      "beachId": "f1b2f341-9e93-4f4a-a3cc-9ce8a8f5e22d",
+      "beachName": "Peña Blanca (Wishing Well)",
+      "municipality": "Aguadilla",
+      "slug": "pea-blanca-wishing-well-aguadilla-18465-67162",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 117
+    },
+    {
+      "image": "buye-beach-cabo-rojo-1758717810128.jpg",
+      "imagePath": "/images/uploads/2025/09/buye-beach-cabo-rojo-1758717810128.jpg",
+      "beachId": "62898af8-8601-489e-9dee-675b6dd76a77",
+      "beachName": "Buyé Beach",
+      "municipality": "Cabo Rojo",
+      "slug": "buy-beach-cabo-rojo-18081-67191",
+      "currentImage": "/images/beaches/buy-beach-cabo rojo.jpeg",
+      "score": 114
+    },
+    {
+      "image": "buye-beach-cabo-rojo-1758717836986.jpg",
+      "imagePath": "/images/uploads/2025/09/buye-beach-cabo-rojo-1758717836986.jpg",
+      "beachId": "62898af8-8601-489e-9dee-675b6dd76a77",
+      "beachName": "Buyé Beach",
+      "municipality": "Cabo Rojo",
+      "slug": "buy-beach-cabo-rojo-18081-67191",
+      "currentImage": "/images/beaches/buy-beach-cabo rojo.jpeg",
+      "score": 114
+    },
+    {
+      "image": "rompeola-beach-aguadilla-1758708651115.jpg",
+      "imagePath": "/images/uploads/2025/09/rompeola-beach-aguadilla-1758708651115.jpg",
+      "beachId": "0ed4e276-be44-45c8-9726-eb43d861f513",
+      "beachName": "Rompeolas / Muelle Viejo",
+      "municipality": "Aguadilla",
+      "slug": "rompeolas-muelle-viejo-aguadilla-18428-67154",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 114
+    },
+    {
+      "image": "colon-beach-aguadilla-1758710181765.jpg",
+      "imagePath": "/images/uploads/2025/09/colon-beach-aguadilla-1758710181765.jpg",
+      "beachId": "bf72212f-5771-444e-8007-4c3161441bda",
+      "beachName": "Colón Beach",
+      "municipality": "Aguadilla",
+      "slug": "coln-beach-aguadilla-18429-67154",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 111
+    },
+    {
+      "image": "boriquen-beach-aguadilla-1758708382345.jpg",
+      "imagePath": "/images/uploads/2025/09/boriquen-beach-aguadilla-1758708382345.jpg",
+      "beachId": "06e1d7dc-2490-4c5e-8b34-43486f094e5b",
+      "beachName": "Borinquen Beach",
+      "municipality": "Aguadilla",
+      "slug": "borinquen-beach-aguadilla-18489-6715",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 104
+    },
+    {
+      "image": "playa-oeste-mayaguez-1758729634067.jpg",
+      "imagePath": "/images/uploads/2025/09/playa-oeste-mayaguez-1758729634067.jpg",
+      "beachId": "4e18b90a-28a1-4417-95ae-0ffd04f7c175",
+      "beachName": "La Villa Pesquera (Mayagüez)",
+      "municipality": "Mayagüez",
+      "slug": "la-villa-pesquera-mayagez-mayagez-182-67152",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 100
+    },
+    {
+      "image": "punta-arena-beach-1758718794262.jpg",
+      "imagePath": "/images/uploads/2025/09/punta-arena-beach-1758718794262.jpg",
+      "beachId": "e7e66c37-694b-4664-91aa-99c6609a118c",
+      "beachName": "Punta Arenas (Green Beach)",
+      "municipality": "Vieques",
+      "slug": "punta-arenas-green-beach-vieques-18155-6551",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 95
+    },
+    {
+      "image": "la-parguera-beach-1758729299174.jpg",
+      "imagePath": "/images/uploads/2025/09/la-parguera-beach-1758729299174.jpg",
+      "beachId": "5469d0db-30d2-4db1-97a0-77f2cda3ee7c",
+      "beachName": "La Parguera Waterfront",
+      "municipality": "Lajas",
+      "slug": "la-parguera-waterfront-lajas-17972-67046",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 85
+    },
+    {
+      "image": "playa-sucia-cabo-rojo-1759581075193.jpg",
+      "imagePath": "/images/uploads/2025/10/playa-sucia-cabo-rojo-1759581075193.jpg",
+      "beachId": "daba38b9-411f-487b-881c-cb687112cba1",
+      "beachName": "Bahía Sucia Flats",
+      "municipality": "Cabo Rojo",
+      "slug": "baha-sucia-flats-cabo-rojo-17931-67206",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 85
+    },
+    {
+      "image": "playa-sucia-cabo-rojo-1759582048936.jpg",
+      "imagePath": "/images/uploads/2025/10/playa-sucia-cabo-rojo-1759582048936.jpg",
+      "beachId": "daba38b9-411f-487b-881c-cb687112cba1",
+      "beachName": "Bahía Sucia Flats",
+      "municipality": "Cabo Rojo",
+      "slug": "baha-sucia-flats-cabo-rojo-17931-67206",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 85
+    },
+    {
+      "image": "playa-sucia-cabo-rojo-1759582564385.jpg",
+      "imagePath": "/images/uploads/2025/10/playa-sucia-cabo-rojo-1759582564385.jpg",
+      "beachId": "daba38b9-411f-487b-881c-cb687112cba1",
+      "beachName": "Bahía Sucia Flats",
+      "municipality": "Cabo Rojo",
+      "slug": "baha-sucia-flats-cabo-rojo-17931-67206",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 85
+    },
+    {
+      "image": "playa-sucia-cabo-rojo-1759583622822.jpg",
+      "imagePath": "/images/uploads/2025/10/playa-sucia-cabo-rojo-1759583622822.jpg",
+      "beachId": "daba38b9-411f-487b-881c-cb687112cba1",
+      "beachName": "Bahía Sucia Flats",
+      "municipality": "Cabo Rojo",
+      "slug": "baha-sucia-flats-cabo-rojo-17931-67206",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 85
+    },
+    {
+      "image": "cabo-rojo-playa-playuela-1758718152322.jpg",
+      "imagePath": "/images/uploads/2025/09/cabo-rojo-playa-playuela-1758718152322.jpg",
+      "beachId": "7ee92e9a-71fa-4127-bd5c-fc961fe68ab5",
+      "beachName": "La Playuela (Playa Sucia)",
+      "municipality": "Cabo Rojo",
+      "slug": "la-playuela-playa-sucia-cabo-rojo-17937-672",
+      "currentImage": "/images/beaches/la-playuela-playa-sucia-cabo rojo.jpeg",
+      "score": 83
+    },
+    {
+      "image": "copamarina-beach-resort-1757084653623.jpg",
+      "imagePath": "/images/uploads/2025/09/copamarina-beach-resort-1757084653623.jpg",
+      "beachId": "079774c2-e100-4b3a-a74d-c5ed51a646cf",
+      "beachName": "Cueva María de la Cruz Shore",
+      "municipality": "Loíza",
+      "slug": "cueva-mara-de-la-cruz-shore-loza-18441-65902",
+      "currentImage": "/images/beaches/placeholder-beach.jpg",
+      "score": 82
+    }
+  ]
+}

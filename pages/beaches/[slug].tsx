@@ -205,12 +205,82 @@ export default function BeachPage({ beach, relatedBeaches }: BeachPageProps) {
               </div>
             )}
 
-            {/* Description/Notes */}
-            {beach.notes && (
+            {/* Description */}
+            {beach.description && (
               <div className="mb-8">
                 <h3 className="mb-3 text-lg font-semibold text-brand-navy">About This Beach</h3>
                 <p className="text-brand-navy/80 leading-relaxed">
-                  {beach.notes}
+                  {beach.description}
+                </p>
+              </div>
+            )}
+
+            {/* Features */}
+            {beach.features && beach.features.length > 0 && (
+              <div className="mb-8">
+                <h3 className="mb-3 text-lg font-semibold text-brand-navy">Beach Features</h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {beach.features.map((feature, index) => (
+                    <div key={index} className="rounded-lg bg-brand-sand/30 p-4">
+                      <h4 className="mb-2 font-semibold text-brand-navy">{feature.title}</h4>
+                      <p className="text-brand-navy/70 text-sm">{feature.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Parking & Access */}
+            {beach.parkingDetails && (
+              <div className="mb-8">
+                <h3 className="mb-3 text-lg font-semibold text-brand-navy">🚗 Parking & Access</h3>
+                <p className="text-brand-navy/80 leading-relaxed">
+                  {beach.parkingDetails}
+                </p>
+              </div>
+            )}
+
+            {/* Safety Information */}
+            {beach.safetyInfo && (
+              <div className="mb-8 rounded-lg border-2 border-orange-200 bg-orange-50 p-4">
+                <h3 className="mb-3 text-lg font-semibold text-orange-900">⚠️ Safety Information</h3>
+                <p className="text-orange-900/80 leading-relaxed">
+                  {beach.safetyInfo}
+                </p>
+              </div>
+            )}
+
+            {/* Visitor Tips */}
+            {beach.tips && beach.tips.length > 0 && (
+              <div className="mb-8">
+                <h3 className="mb-3 text-lg font-semibold text-brand-navy">💡 Visitor Tips</h3>
+                <div className="space-y-3">
+                  {beach.tips.map((tip, index) => (
+                    <div key={index} className="flex gap-3">
+                      <span className="text-brand-blue shrink-0 font-semibold">[{tip.category}]</span>
+                      <p className="text-brand-navy/80">{tip.tip}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Local Tips */}
+            {beach.localTips && (
+              <div className="mb-8">
+                <h3 className="mb-3 text-lg font-semibold text-brand-navy">🌴 Local Tips</h3>
+                <p className="text-brand-navy/80 leading-relaxed">
+                  {beach.localTips}
+                </p>
+              </div>
+            )}
+
+            {/* Best Time to Visit */}
+            {beach.bestTime && (
+              <div className="mb-8 rounded-lg bg-blue-50 p-4">
+                <h3 className="mb-3 text-lg font-semibold text-blue-900">📅 Best Time to Visit</h3>
+                <p className="text-blue-900/80 leading-relaxed">
+                  {beach.bestTime}
                 </p>
               </div>
             )}

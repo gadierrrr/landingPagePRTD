@@ -1,0 +1,6366 @@
+[
+  {
+    "id": "14122416-804d-47aa-9885-9ce3aecd8520",
+    "slug": "survival-playuela-aguadilla-18494-67141",
+    "name": "Survival / Playuela",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.494,
+      "lng": -67.1415
+    },
+    "tags": [
+      "secluded",
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/survival-playuela-aguadilla.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Playuela",
+      "Survival Beach"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Cliff-backed cove reached by trail from Surfer’s/Crash Boat area; strong rip on swells; no services. (OSM/Mapcarta; Google)",
+    "updatedAt": "2025-09-23T21:58:07.493Z"
+  },
+  {
+    "id": "bf704968-8546-49e2-be68-ef4ed91fa54a",
+    "slug": "wilderness-aguadilla-18498-67147",
+    "name": "Wilderness",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4983,
+      "lng": -67.1473
+    },
+    "tags": [
+      "surfing",
+      "snorkeling",
+      "diving",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "large",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/wilderness-aguadilla.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Wildo"
+    ],
+    "accessLabel": "road & short trail",
+    "notes": "Open coast reef break; exposed and powerful in winter; no facilities. (OSM; Google; local surf guides)",
+    "updatedAt": "2025-09-23T21:58:07.493Z"
+  },
+  {
+    "id": "7022b2a4-c2bf-41a0-9d1b-40be4255b865",
+    "slug": "surfers-beach-aguadilla-18495-67153",
+    "name": "Surfer’s Beach",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4947,
+      "lng": -67.1534
+    },
+    "tags": [
+      "surfing",
+      "snorkeling",
+      "diving",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Surfers"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Consistent reef peaks; sharp rock/urchins; advanced when sizable. (OSM; Google; surf maps)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "f86a2f8f-5a07-40a8-bdfa-523b422e1d3a",
+    "slug": "gas-chambers-aguadilla-18467-67154",
+    "name": "Gas Chambers",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4666,
+      "lng": -67.1542
+    },
+    "tags": [
+      "surfing",
+      "snorkeling",
+      "diving"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "large",
+    "wind": "light",
+    "coverImage": "/images/beaches/gas-chambers-aguadilla.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Gas Chamber"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Heavy, hollow right on big N/NW swells; for experts; shallow reef. (OSM; Google; surf guides)",
+    "updatedAt": "2025-09-23T21:58:07.493Z"
+  },
+  {
+    "id": "f1b2f341-9e93-4f4a-a3cc-9ce8a8f5e22d",
+    "slug": "pea-blanca-wishing-well-aguadilla-18465-67162",
+    "name": "Peña Blanca (Wishing Well)",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4654,
+      "lng": -67.1623
+    },
+    "tags": [
+      "snorkeling",
+      "swimming",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Wishing Well"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Small cove with clear days in summer; narrow sand; watch shorebreak. (Mapcarta/OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "06e1d7dc-2490-4c5e-8b34-43486f094e5b",
+    "slug": "borinquen-beach-aguadilla-18489-6715",
+    "name": "Borinquen Beach",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4889,
+      "lng": -67.1505
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Borinquen"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Long open stretch west of the airport; intermittent rocky areas. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "21da5e24-4644-436c-8062-86d06b120468",
+    "slug": "martinica-beach-aguadilla-18446-67154",
+    "name": "Martinica Beach",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4455,
+      "lng": -67.1545
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Martinica"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Town-side strand near Rompeolas; modest surf; casual vibe. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "0ed4e276-be44-45c8-9726-eb43d861f513",
+    "slug": "rompeolas-muelle-viejo-aguadilla-18428-67154",
+    "name": "Rompeolas / Muelle Viejo",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4279,
+      "lng": -67.154
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking",
+      "food"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "El Rompeolas"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Breakwater/harborfront area with small pocket sands; urban amenities. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "bf72212f-5771-444e-8007-4c3161441bda",
+    "slug": "coln-beach-aguadilla-18429-67154",
+    "name": "Colón Beach",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4293,
+      "lng": -67.1543
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Colón"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Compact town beach just south of Rompeolas; calm most days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "bff24c43-c392-47f0-a0d1-92fbde4c603b",
+    "slug": "crash-boat-south-almirante-beach-aguadilla-18454-67167",
+    "name": "Crash Boat South (Almirante Beach)",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4536,
+      "lng": -67.1668
+    },
+    "tags": [
+      "swimming",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking",
+      "food"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/crash-boat-south-almirante-beach-aguadilla.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Almirante"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Quieter edge of Crash Boat with easier entry on calm days. (OSM; Google)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "35f5415d-c1e6-4cb9-9ec8-b4f89b5c3029",
+    "slug": "jobos-beach-isabela-18513-67085",
+    "name": "Jobos Beach",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.5134,
+      "lng": -67.0847
+    },
+    "tags": [
+      "surfing",
+      "swimming",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/jobos-beach-isabela.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Playa Jobos"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Lively bay with surf on the outer reef; inside cove calmer on small days. (OSM; Google; DRNA)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "e1755b9e-3a09-4ee0-ac87-6932ea8d330b",
+    "slug": "montones-beach-isabela-18506-67081",
+    "name": "Montones Beach",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.5058,
+      "lng": -67.081
+    },
+    "tags": [
+      "scenic",
+      "family-friendly",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/montones-beach-isabela.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Playa Montones"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Natural rock pools form a calm lagoon when low to mid tide. (OSM; Google; local guides)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "df6beb3b-0e7a-4202-b2a8-2bde323e5d3a",
+    "slug": "shacks-bajuras-isabela-18495-67058",
+    "name": "Shacks (Bajuras)",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.495,
+      "lng": -67.0585
+    },
+    "tags": [
+      "snorkeling",
+      "diving",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Shacks Beach"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Reef channels and blue holes; strong currents possible; kites on trades. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "39c72622-b03d-4af7-bf17-f13cea1e277e",
+    "slug": "pozo-teodoro-isabela-185-6707",
+    "name": "Pozo Teodoro",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.4998,
+      "lng": -67.0699
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & short walk",
+    "notes": "Shallow protected pool area; best at low tide; no lifeguards. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "507a9563-39f0-4bd3-9d97-f5f09dc969ec",
+    "slug": "middles-isabela-18518-67098",
+    "name": "Middles",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.5175,
+      "lng": -67.0978
+    },
+    "tags": [
+      "surfing",
+      "snorkeling",
+      "diving",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "large",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Middles"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Contest-quality A-frames on larger winter swells; strong rips. (Surf maps; Google; OSM)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a1ad29c7-6e53-429e-a070-4cf07b54c449",
+    "slug": "villa-pesquera-isabela-isabela-18493-67031",
+    "name": "Villa Pesquera (Isabela)",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.4927,
+      "lng": -67.031
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/villa-pesquera-isabela-isabela.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Playa Villa Pesquera Isabela"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Fishermen’s area with pocket sands and eateries; modest surf. (OSM; Google)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "3ad6231e-1213-471d-aae9-e0b44bc24bb0",
+    "slug": "pastillo-beach-isabela-18474-66949",
+    "name": "Pastillo Beach",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.4736,
+      "lng": -66.9489
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Pastillo"
+    ],
+    "accessLabel": "road & short trail",
+    "notes": "Dramatic cliffs/caves (Golondrinas nearby); strong shorebreak and currents. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a9319ed6-d4ea-437b-bf2c-3d0f79622d23",
+    "slug": "cueva-de-las-golondrinas-cove-isabela-18475-66958",
+    "name": "Cueva de las Golondrinas Cove",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.4749,
+      "lng": -66.9578
+    },
+    "tags": [
+      "secluded",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "light",
+    "coverImage": "/images/beaches/cueva-de-las-golondrinas-cove-isabela.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Swallows’ Cave Cove"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Seasonal sea cave; check tides/swell; no services. (OSM; Google; travel blogs)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "d62ece9c-8768-4385-8908-2eafea8494b9",
+    "slug": "aguada-town-beach-aguada-1838-672",
+    "name": "Aguada Town Beach",
+    "municipality": "Aguada",
+    "coords": {
+      "lat": 18.38,
+      "lng": -67.2
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Aguada"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Casual strand lining the PR-115 waterfront; low-key vibe. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "9380c8d8-f78b-4971-b8aa-0dab8cdb0a1c",
+    "slug": "aguada-malecn-strip-aguada-18387-67196",
+    "name": "Aguada Malecón Strip",
+    "municipality": "Aguada",
+    "coords": {
+      "lat": 18.3868,
+      "lng": -67.1964
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/aguada-malecn-strip-aguada.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Malecón de Aguada"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Waterfront promenade with pocket sands and eateries. (OSM; Google)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "62898af8-8601-489e-9dee-675b6dd76a77",
+    "slug": "buy-beach-cabo-rojo-18081-67191",
+    "name": "Buyé Beach",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.0805,
+      "lng": -67.1909
+    },
+    "tags": [
+      "family-friendly",
+      "swimming",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/buy-beach-cabo rojo.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Playa Buyé"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Shaded, calm cove with turquoise water; popular on weekends. (OSM; Google; DPR tourism)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "b225eae8-1627-4a33-8f66-239338be77e0",
+    "slug": "balneario-de-boquern-cabo-rojo-18022-67171",
+    "name": "Balneario de Boquerón",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.0217,
+      "lng": -67.1713
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Boquerón Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Wide arc of sand with facilities; festive town scene nearby. (DRNA; Blue Flag; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "92087461-079b-4087-9b8f-61fe8a70f80c",
+    "slug": "combate-beach-cabo-rojo-17968-67175",
+    "name": "Combate Beach",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 17.9677,
+      "lng": -67.1753
+    },
+    "tags": [
+      "scenic",
+      "swimming",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/combate-beach-cabo rojo.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Playa El Combate"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Long golden strand south of Boquerón; shallow entry; popular. (OSM; Google; DPR)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "7ee92e9a-71fa-4127-bd5c-fc961fe68ab5",
+    "slug": "la-playuela-playa-sucia-cabo-rojo-17937-672",
+    "name": "La Playuela (Playa Sucia)",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 17.9369,
+      "lng": -67.1999
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/la-playuela-playa-sucia-cabo rojo.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Playa Sucia",
+      "Los Morrillos"
+    ],
+    "accessLabel": "road & short trail",
+    "notes": "Iconic crescent below lighthouse; exposed, no services; stunning vistas. (Mapcarta/OSM; Google)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "9da55246-75f4-438a-a7ce-84dcb8d39385",
+    "slug": "joyuda-strip-beaches-cabo-rojo-18205-6716",
+    "name": "Joyuda Strip Beaches",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.205,
+      "lng": -67.16
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Joyuda"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Series of pocket beaches along PR-102 by seafood row; narrow sands. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "2633c18e-8a10-4657-93cd-112c54e65e65",
+    "slug": "isla-de-ratones-cayo-ratones-cabo-rojo-18198-67161",
+    "name": "Isla de Ratones (Cayo Ratones)",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.1976,
+      "lng": -67.1608
+    },
+    "tags": [
+      "secluded",
+      "snorkeling",
+      "family-friendly"
+    ],
+    "amenities": [
+      "picnic-areas"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Isla de Ratones"
+    ],
+    "accessLabel": "boat access",
+    "notes": "Small islet off Joyuda; boat/water taxi only; clear water on calm days. (OSM; Google; local tours)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1b58cafe-8b64-4ea1-b256-3e23182ae962",
+    "slug": "punta-arenas-puerto-real-side-cabo-rojo-18088-67154",
+    "name": "Punta Arenas (Puerto Real side)",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.0875,
+      "lng": -67.1545
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Puerto Real Shore"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Working harbor shoreline with sandy pockets; low-key. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c9451dda-2eeb-4712-b475-9356100e6bf8",
+    "slug": "playita-rosada-lajas-17972-67046",
+    "name": "Playita Rosada",
+    "municipality": "Lajas",
+    "coords": {
+      "lat": 17.9715,
+      "lng": -67.0459
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "accessibility"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & parking",
+    "notes": "Famed sea-pool platform with pink boardwalk; tidal; check maintenance hours. (OSM; Google; municipal)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "0a84e9a9-b8b7-4857-811f-8ab8b226da3c",
+    "slug": "cayo-caracoles-sandbar-lajas-17968-6704",
+    "name": "Cayo Caracoles Sandbar",
+    "municipality": "Lajas",
+    "coords": {
+      "lat": 17.9678,
+      "lng": -67.04
+    },
+    "tags": [
+      "secluded",
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Caracoles"
+    ],
+    "accessLabel": "boat access",
+    "notes": "Clear-water sandbar in La Parguera keys; boat only; weekends lively. (OSM; Google; tours)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "71994220-a787-4276-9b22-23e37ffc6d04",
+    "slug": "mata-la-gata-lajas-17957-67045",
+    "name": "Mata La Gata",
+    "municipality": "Lajas",
+    "coords": {
+      "lat": 17.9567,
+      "lng": -67.045
+    },
+    "tags": [
+      "secluded",
+      "scenic",
+      "snorkeling"
+    ],
+    "amenities": [
+      "picnic-areas"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "boat access",
+    "notes": "Mangrove islet with swimming area and picnic shelters. (OSM; Google; tours)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "62eaf96b-f62e-4efe-909b-d2c7e8db4805",
+    "slug": "cayo-enrique-lajas-17963-67043",
+    "name": "Cayo Enrique",
+    "municipality": "Lajas",
+    "coords": {
+      "lat": 17.963,
+      "lng": -67.0435
+    },
+    "tags": [
+      "secluded",
+      "snorkeling"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "boat access",
+    "notes": "Low mangrove cay with shallow flats; currents vary with tide. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "5469d0db-30d2-4db1-97a0-77f2cda3ee7c",
+    "slug": "la-parguera-waterfront-lajas-17972-67046",
+    "name": "La Parguera Waterfront",
+    "municipality": "Lajas",
+    "coords": {
+      "lat": 17.9722,
+      "lng": -67.0458
+    },
+    "tags": [
+      "scenic",
+      "family-friendly",
+      "swimming"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Malecón de La Parguera"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Townfront swim steps and tour hub for cays/biobay; urban setting. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c32d2679-bcb5-4da7-bbb5-102e035c9816",
+    "slug": "playa-oeste-mayagez-18202-67158",
+    "name": "Playa Oeste",
+    "municipality": "Mayagüez",
+    "coords": {
+      "lat": 18.2018,
+      "lng": -67.1578
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "West Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Urban shoreline near docks; sunsets; swimming varies by conditions. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "6f74a726-292b-4c8b-92c7-2dbb993b310b",
+    "slug": "parque-del-litoral-shore-mayagez-18201-67142",
+    "name": "Parque del Litoral Shore",
+    "municipality": "Mayagüez",
+    "coords": {
+      "lat": 18.201,
+      "lng": -67.142
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Litoral Mayagüez"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Waterfront park with narrow beaches/promenade; best for strolls. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "666bb351-07cf-400d-930e-530b2898bb3a",
+    "slug": "el-man-beach-mayagez-18226-6716",
+    "name": "El Maní Beach",
+    "municipality": "Mayagüez",
+    "coords": {
+      "lat": 18.2255,
+      "lng": -67.16
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Maní"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Community shoreline north of town; modest sands; low surf typical. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "0472de58-cc60-46ec-9d03-9d4a7ca4f78d",
+    "slug": "jagdish-pea-brava-pocket-aguadilla-18472-67157",
+    "name": "Jagdish / Peña Brava Pocket",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4719,
+      "lng": -67.1572
+    },
+    "tags": [
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Peñita"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Small pocket near Gas Chambers area; rocky entries; calm on small days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "5af58fb9-553b-4762-ae7f-52f2379e03a6",
+    "slug": "ardilla-north-pocket-aguadilla-18476-67152",
+    "name": "Ardilla (north pocket)",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4755,
+      "lng": -67.1519
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Ardilla"
+    ],
+    "accessLabel": "short trail",
+    "notes": "Tiny cove between Borinquen and Peña Blanca; undeveloped. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "5551c24d-3cd5-485e-a6e1-87927a61ca0e",
+    "slug": "cerro-gordo-shore-north-aerostat-aguadilla-18503-67158",
+    "name": "Cerro Gordo Shore (north aerostat)",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.5032,
+      "lng": -67.1579
+    },
+    "tags": [
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "4×4 track & hike",
+    "notes": "Remote stretch north of airport coast; rough access track. (Mapcarta; OSM)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "171005a5-d8ff-4ad7-a63b-6abaa334ac77",
+    "slug": "la-cueva-del-indio-cove-isabela-side-isabela-18506-67025",
+    "name": "La Cueva del Indio Cove (Isabela side)",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.5059,
+      "lng": -67.0252
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short trail",
+    "notes": "Small sandy pocket near karst outcrops; watch swell; informal path. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "aedd029a-857c-49ed-b196-09ace66d5317",
+    "slug": "blue-hole-reef-access-isabela-18487-67063",
+    "name": "Blue Hole Reef Access",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.4868,
+      "lng": -67.0632
+    },
+    "tags": [
+      "diving",
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/blue-hole-reef-access-isabela.jpeg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "shore/boat entry",
+    "notes": "Offshore reef depression known to divers; boat/kayak advisable. (Divers’ refs; Google/OSM)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "ede17c5c-1a40-40b4-8d03-7e8a85793486",
+    "slug": "el-faro-los-morrillos-cove-east-cabo-rojo-1794-67198",
+    "name": "El Faro (Los Morrillos) Cove East",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 17.9398,
+      "lng": -67.1984
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Faro East Cove"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Smaller cove east of lighthouse headland; exposed to trades. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "daba38b9-411f-487b-881c-cb687112cba1",
+    "slug": "baha-sucia-flats-cabo-rojo-17931-67206",
+    "name": "Bahía Sucia Flats",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 17.9306,
+      "lng": -67.2059
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Sucia Flats"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Shallow flats and sand tongues near La Playuela; variable swim quality. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "2d658393-d540-4d4b-8edd-537dac790bbf",
+    "slug": "punta-jagey-north-combate-cabo-rojo-17981-67178",
+    "name": "Punta Jagüey (north Combate)",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 17.9808,
+      "lng": -67.1776
+    },
+    "tags": [
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & short walk",
+    "notes": "Headland north of Combate with clear shallows on calm days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "ca85931b-7892-4a1c-b7c0-f645eefe0b0d",
+    "slug": "las-salinas-shore-cabo-rojo-17982-67186",
+    "name": "Las Salinas Shore",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 17.9819,
+      "lng": -67.1859
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Salinas de Cabo Rojo"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Salt flats edge with shallow beach tongues; scenic, not a bathing hub. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "eab4f1cc-54a7-4a28-94db-db2aa757ebb2",
+    "slug": "la-parguera-bioluminescent-bay-entry-lajas-17974-67029",
+    "name": "La Parguera Bioluminescent Bay Entry",
+    "municipality": "Lajas",
+    "coords": {
+      "lat": 17.9738,
+      "lng": -67.0289
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Biobay Launch"
+    ],
+    "accessLabel": "boat access",
+    "notes": "Tour launch points to biobay; swimming often restricted; night-only. (Tour ops; Google; OSM)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "03fed9f3-9cc1-4536-9625-adf6def83201",
+    "slug": "playa-del-sec-balneario-north-sector-mayagez-18221-67161",
+    "name": "Playa del Sec / Balneario (north sector)",
+    "municipality": "Mayagüez",
+    "coords": {
+      "lat": 18.2208,
+      "lng": -67.1609
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Balneario de Mayagüez"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "City balneario area; facilities vary by season; modest surf. (OSM; Google; municipal)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b66f4b23-4cca-48c0-9203-2cfef250b4d4",
+    "slug": "poza-del-obispopeque-mayagez-pocket-mayagez-18212-67149",
+    "name": "Poza del Obispopeque (Mayagüez pocket)",
+    "municipality": "Mayagüez",
+    "coords": {
+      "lat": 18.2115,
+      "lng": -67.1489
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "roadside access",
+    "notes": "Small pocket along the urban waterfront; calmest in summer. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "4e18b90a-28a1-4417-95ae-0ffd04f7c175",
+    "slug": "la-villa-pesquera-mayagez-mayagez-182-67152",
+    "name": "La Villa Pesquera (Mayagüez)",
+    "municipality": "Mayagüez",
+    "coords": {
+      "lat": 18.1999,
+      "lng": -67.1519
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Villa Pesquera"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Fishermen’s zone with small sandy entry points; eateries nearby. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b6c9fe4e-1319-482d-be20-57c97b99ad9b",
+    "slug": "crash-boat-north-reef-outer-aguadilla-18461-67161",
+    "name": "Crash Boat North Reef (outer)",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4608,
+      "lng": -67.1611
+    },
+    "tags": [
+      "snorkeling",
+      "diving",
+      "popular"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "shore swim",
+    "notes": "Outer reef patches north of pier; best on glassy mornings. (OSM; Google; snorkel blogs)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "45c8038a-d8d5-4309-8cd2-598c298ab5a9",
+    "slug": "ishibori-jobos-east-pocket-isabela-18511-67082",
+    "name": "Ishibori (Jobos east pocket)",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.5112,
+      "lng": -67.0819
+    },
+    "tags": [
+      "scenic",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Ishi"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Small pocket just east of Jobos commercial strip; calmer on low swell. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "7fe75d1d-352d-4776-808f-eb9d09f703b0",
+    "slug": "poza-el-pastillo-inner-pool-isabela-18472-66952",
+    "name": "Poza El Pastillo (inner pool)",
+    "municipality": "Isabela",
+    "coords": {
+      "lat": 18.4723,
+      "lng": -66.9517
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short trail",
+    "notes": "Sheltered pool behind reef ledge near Pastillo; mind surge at high tide. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "af2e2a6f-3404-42fb-a794-6ce83760f290",
+    "slug": "mameyito-aguada-pocket-aguada-18393-67193",
+    "name": "Mameyito (Aguada pocket)",
+    "municipality": "Aguada",
+    "coords": {
+      "lat": 18.3925,
+      "lng": -67.1928
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Mameyito"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Small sandy pocket along PR-115 north of town center. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "83eb2483-a20c-4d92-ac93-4f3376d976d1",
+    "slug": "guaniquilla-reserve-shore-cabo-rojo-18177-67163",
+    "name": "Guaniquilla Reserve Shore",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.1772,
+      "lng": -67.163
+    },
+    "tags": [
+      "secluded",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Refugio Punta Guaniquilla Shore"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Wild shore by limestone formations; not serviced; scenic hikes. (DRNA; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "9ec2d967-8630-41fe-ba23-4f9095230b40",
+    "slug": "pitahaya-cove-cabo-rojo-17956-67183",
+    "name": "Pitahaya Cove",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 17.9559,
+      "lng": -67.183
+    },
+    "tags": [
+      "secluded",
+      "snorkeling"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Pitahaya"
+    ],
+    "accessLabel": "dirt road & short walk",
+    "notes": "Quiet cove south of Combate; clearer water on calm summer days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "7874c79e-4642-454e-8fc7-7aa8206a0fb3",
+    "slug": "boquern-north-spit-cabo-rojo-18036-67164",
+    "name": "Boquerón North Spit",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.0356,
+      "lng": -67.164
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & parking",
+    "notes": "Shallow, kid-friendly shallows near the north end of bay. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "eb91bcd4-7119-4a5f-b043-e90914f36138",
+    "slug": "boquern-south-flats-cabo-rojo-18011-67175",
+    "name": "Boquerón South Flats",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.0109,
+      "lng": -67.1748
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & short walk",
+    "notes": "Quieter south end with flats and mangrove edges; fewer services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "bc542d1b-ab24-4437-9a1c-e0475023ccf1",
+    "slug": "buy-south-point-cabo-rojo-18075-67193",
+    "name": "Buyé South Point",
+    "municipality": "Cabo Rojo",
+    "coords": {
+      "lat": 18.0749,
+      "lng": -67.1927
+    },
+    "tags": [
+      "snorkeling",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & short walk",
+    "notes": "Rockier south end with clearer pockets for snorkeling on calm days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "2a373ad5-6152-459f-8088-1e95ac0e8b09",
+    "slug": "litoral-north-pocket-mayagez-18206-67146",
+    "name": "Litoral North Pocket",
+    "municipality": "Mayagüez",
+    "coords": {
+      "lat": 18.2059,
+      "lng": -67.1459
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & parking",
+    "notes": "Small sandy wedge along the park; swim quality varies. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c84c47d9-7076-49cf-867c-0de8f482bbec",
+    "slug": "rincn-border-pocket-naguabo-nobarrero-north-end-rincn-18339-67244",
+    "name": "Rincón Border Pocket (Naguabo? no—Barrero north end)",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3388,
+      "lng": -67.2439
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Barrero North Pocket"
+    ],
+    "accessLabel": "short walk",
+    "notes": "Narrow pocket at the north end of Barrero/Los Almendros sector. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "3643d3b0-1ffd-4ec6-bbfc-427c0441c2bf",
+    "slug": "puerto-hermina-quebradillas-1848-66925",
+    "name": "Puerto Hermina",
+    "municipality": "Quebradillas",
+    "coords": {
+      "lat": 18.4803,
+      "lng": -66.9249
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Puerto Hermina"
+    ],
+    "accessLabel": "steep trail from road",
+    "notes": "Rocky cove below old stone ruin; steep path; swimming varies with swell. (Mapcarta/OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1f14493a-cfc4-406d-a409-203a848cc1f2",
+    "slug": "guajataca-beach-quebradillas-side-quebradillas-18467-66938",
+    "name": "Guajataca Beach (Quebradillas side)",
+    "municipality": "Quebradillas",
+    "coords": {
+      "lat": 18.4666,
+      "lng": -66.9383
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Guajataca"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Wide sandy arc near the famed railway tunnel; strong currents; best for strolling. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "348cc980-05ce-414a-a68b-1c5cc1b1da67",
+    "slug": "tunel-de-guajataca-pocket-quebradillas-18466-66942",
+    "name": "Tunel de Guajataca Pocket",
+    "municipality": "Quebradillas",
+    "coords": {
+      "lat": 18.466,
+      "lng": -66.9425
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Guajataca Tunnel Beach"
+    ],
+    "accessLabel": "hike via tunnel trail",
+    "notes": "Small pocket accessed via the historic tunnel path; exposed to surf; no services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "52bc0c5b-8093-4236-86c4-791b5e72f21c",
+    "slug": "ro-guajataca-mouth-east-spit-quebradillas-18471-6695",
+    "name": "Río Guajataca Mouth (east spit)",
+    "municipality": "Quebradillas",
+    "coords": {
+      "lat": 18.4708,
+      "lng": -66.9505
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Boca Río Guajataca"
+    ],
+    "accessLabel": "short trail from roadside",
+    "notes": "Sand spit at river mouth; shifting bars and currents; scenic viewpoints. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "3d16c2d9-447d-458d-a3f1-14e34d03f70f",
+    "slug": "pen-brusi-camuy-18491-66893",
+    "name": "Peñón Brusi",
+    "municipality": "Camuy",
+    "coords": {
+      "lat": 18.4906,
+      "lng": -66.8932
+    },
+    "tags": [
+      "family-friendly",
+      "scenic",
+      "swimming"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "picnic-areas"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Balneario Peñón Brusi"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Town balneario with shallow entry and facilities; calmer in summer. (DRNA; Google; OSM)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "78cc8b04-5878-40d9-a91e-33342bfce8ae",
+    "slug": "sardinera-camuy-camuy-18495-66884",
+    "name": "Sardinera (Camuy)",
+    "municipality": "Camuy",
+    "coords": {
+      "lat": 18.4947,
+      "lng": -66.8836
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Sardinera Camuy"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Neighborhood strand east of Peñón Brusi; modest surf; low-key vibe. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "8637764b-7065-4037-9f7e-7d8065b088e9",
+    "slug": "boca-de-camuy-river-mouth-camuy-18489-66903",
+    "name": "Boca de Camuy (river mouth)",
+    "municipality": "Camuy",
+    "coords": {
+      "lat": 18.489,
+      "lng": -66.9026
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Desembocadura Río Camuy"
+    ],
+    "accessLabel": "short walk from track",
+    "notes": "Sandy river mouth area; variable currents; scenic dunes. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "3ab95e23-e827-4226-b903-cf529794dded",
+    "slug": "sardinera-hatillo-hatillo-18493-66828",
+    "name": "Sardinera (Hatillo)",
+    "municipality": "Hatillo",
+    "coords": {
+      "lat": 18.4926,
+      "lng": -66.8276
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Sardinera Hatillo"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Linear town shoreline with pocket sands; exposure varies with trades. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "18319bdb-8c8f-461d-b439-95adf9b6eb1c",
+    "slug": "carrizal-shore-hatillo-18497-66843",
+    "name": "Carrizal Shore",
+    "municipality": "Hatillo",
+    "coords": {
+      "lat": 18.4972,
+      "lng": -66.8429
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Carrizal"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Working shoreline at Barrio Carrizal with sandy patches and reef ledges. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a6435bb8-dadf-42b4-84b4-f273af4f6df0",
+    "slug": "hoya-mala-pocket-hatillo-hatillo-18503-66817",
+    "name": "Hoya Mala Pocket (Hatillo)",
+    "municipality": "Hatillo",
+    "coords": {
+      "lat": 18.5028,
+      "lng": -66.8168
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short path",
+    "notes": "Small secluded pocket among limestone ledges; no services; watch swell. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "ce6367c6-253f-4178-a4d0-93107452586f",
+    "slug": "poza-del-obispo-arecibo-18477-66713",
+    "name": "Poza del Obispo",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.4772,
+      "lng": -66.7129
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "La Poza del Obispo"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Natural rock pool sheltered from surf at lower swell; popular and photogenic. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "de5a01dc-d2fc-472e-beb5-f8c340b848ab",
+    "slug": "caza-y-pesca-beach-arecibo-18472-66714",
+    "name": "Caza y Pesca Beach",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.472,
+      "lng": -66.7137
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Caza y Pesca"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Sandy stretch adjoining fishermen’s area; calmer on small days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "f43b2f2e-2c15-482c-b97b-b070950fe587",
+    "slug": "los-morrillos-arecibo-arecibo-18492-66716",
+    "name": "Los Morrillos (Arecibo)",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.4922,
+      "lng": -66.716
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Los Morrillos"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Open coast north of the lighthouse with reef shelves and sandy pockets. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b27064d9-68a5-4910-a034-9796d5b93972",
+    "slug": "la-boca-ro-grande-de-arecibo-arecibo-18473-66713",
+    "name": "La Boca (Río Grande de Arecibo)",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.4728,
+      "lng": -66.713
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Desembocadura Río Arecibo"
+    ],
+    "accessLabel": "short walk",
+    "notes": "River mouth sandbars; currents and water clarity vary; scenic. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "fb30d4f2-2a7c-46f0-b01b-e568a71db4df",
+    "slug": "islote-beach-arecibo-18485-66735",
+    "name": "Islote Beach",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.4853,
+      "lng": -66.7355
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Islote"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Neighborhood beaches along Barrio Islote; mixed sand/reef; low services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "07c6a004-6675-4da2-831f-ad376e3f3ae0",
+    "slug": "cueva-del-indio-shore-arecibo-18498-66717",
+    "name": "Cueva del Indio Shore",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.4975,
+      "lng": -66.7168
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short trail from parking",
+    "notes": "Karst sea-cave landmark with small sandy pockets; exposed ledges; caution near edges. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "9b8b1c11-f8a5-42aa-acf2-9e120740ceb2",
+    "slug": "poza-de-los-pjaros-arecibo-18495-66709",
+    "name": "Poza de los Pájaros",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.4946,
+      "lng": -66.7092
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "Shallow pool behind reef ledge; best at lower swell; no lifeguards. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "f599dda6-a3db-44df-b4fc-53975ae10c62",
+    "slug": "playa-el-muelle-arecibo-arecibo-18471-66714",
+    "name": "Playa El Muelle (Arecibo)",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.4706,
+      "lng": -66.7137
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "El Muelle"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Pier-adjacent shoreline with sandy entries; urban conveniences nearby. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1e5d3572-413f-49fb-945f-150ba15ca598",
+    "slug": "playa-las-llanas-islote-arecibo-18491-66726",
+    "name": "Playa Las Llanas (Islote)",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.4909,
+      "lng": -66.7262
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Las Llanas"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Low-key sector beach within Islote; mixed sand/rock. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "337fbaa8-6f4a-4640-9ef8-a1c71c78513d",
+    "slug": "playa-la-cueva-del-perro-pocket-arecibo-18502-66711",
+    "name": "Playa La Cueva del Perro (pocket)",
+    "municipality": "Arecibo",
+    "coords": {
+      "lat": 18.5018,
+      "lng": -66.7108
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short trail",
+    "notes": "Small sandy pocket near limestone formations; exposed; no services. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "53ed3b76-f8f6-4d39-bb65-7039b89e7bc3",
+    "slug": "las-criollas-beach-barceloneta-18467-66555",
+    "name": "Las Criollas Beach",
+    "municipality": "Barceloneta",
+    "coords": {
+      "lat": 18.4673,
+      "lng": -66.5549
+    },
+    "tags": [
+      "family-friendly",
+      "swimming"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Las Criollas"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Sheltered bay often calmer than open coast; simple facilities nearby. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "3c6f22e6-1f3a-4fa6-b8be-2247696b4e3d",
+    "slug": "las-palmitas-barceloneta-barceloneta-18471-66547",
+    "name": "Las Palmitas (Barceloneta)",
+    "municipality": "Barceloneta",
+    "coords": {
+      "lat": 18.4714,
+      "lng": -66.5471
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Las Palmitas"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Neighborhood pocket with palms; variable clarity; no lifeguards. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "eb2250fb-e35a-4a1f-a418-3a3462c7bbed",
+    "slug": "puerto-de-las-vacas-shore-barceloneta-18465-66564",
+    "name": "Puerto de las Vacas Shore",
+    "municipality": "Barceloneta",
+    "coords": {
+      "lat": 18.465,
+      "lng": -66.5638
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & parking",
+    "notes": "Working waterfront with sandy sections near the small port. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "2525903c-85b5-4d60-b0ad-05c6f8f47d4a",
+    "slug": "mar-chiquita-manat-18495-66541",
+    "name": "Mar Chiquita",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4948,
+      "lng": -66.5406
+    },
+    "tags": [
+      "scenic",
+      "swimming",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Mar Chiquita"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Famous keyhole cove; calmest on low swell; heed surge in channels. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "7c1eface-09be-486b-8f06-7ce7d0bf9a8a",
+    "slug": "los-tubos-manat-manat-18452-66486",
+    "name": "Los Tubos (Manatí)",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4519,
+      "lng": -66.4856
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Los Tubos"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Open beach known for surf and festivals; strong currents on bigger days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "eef42d80-ba16-4300-9ccc-caad8009b84c",
+    "slug": "poza-de-las-mujeres-manat-manat-18487-66521",
+    "name": "Poza de las Mujeres (Manatí)",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4869,
+      "lng": -66.5206
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "Shallow natural pool behind rock ledge; clearer at low swell; no lifeguard. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "8b116d2e-e7d1-4bf8-bcd8-56566dac37d1",
+    "slug": "playa-la-esperanza-tierras-nuevas-manat-18477-66518",
+    "name": "Playa La Esperanza (Tierras Nuevas)",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4766,
+      "lng": -66.5178
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Tierras Nuevas Beach"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Linear shoreline west of Mar Chiquita; mixed sand/reef; low services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "14e74936-3714-4169-9852-48c7587d844e",
+    "slug": "playa-los-corchos-sector-manat-18469-6651",
+    "name": "Playa Los Corchos (sector)",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4687,
+      "lng": -66.5103
+    },
+    "tags": [
+      "scenic",
+      "fishing"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Los Corchos"
+    ],
+    "accessLabel": "short path",
+    "notes": "Sector shoreline with sandy tongues and reef shelves. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "acaa3114-3479-4178-ab50-0660958aaf51",
+    "slug": "mar-chiquita-east-ledge-manat-18496-66538",
+    "name": "Mar Chiquita East Ledge",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4959,
+      "lng": -66.5377
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "Rock ledges east of the main cove with small pools; caution with surge. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "99a55a78-55d4-41f4-9e4b-7e17f8a6cafd",
+    "slug": "mar-chiquita-west-flats-manat-18493-66544",
+    "name": "Mar Chiquita West Flats",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4931,
+      "lng": -66.5436
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "Shallower sandy flats west of the main keyhole; calmer on low swell. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "91d54f76-3bf7-4fea-8dab-10a069192f96",
+    "slug": "pozita-de-los-tubos-manat-1845-66483",
+    "name": "Pozita de los Tubos",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4498,
+      "lng": -66.483
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & short walk",
+    "notes": "Small protected pool near Los Tubos sector; kid-friendly on calm days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "bb922e92-8cfa-40d3-9db5-2ce733dfcf7e",
+    "slug": "playa-parchola-sector-manat-18462-66503",
+    "name": "Playa Parchola (sector)",
+    "municipality": "Manatí",
+    "coords": {
+      "lat": 18.4621,
+      "lng": -66.5031
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Parchola"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Sector shoreline between Los Tubos and Mar Chiquita; mixed sand/rock. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "51ff41d6-603c-4f82-a706-eafade9382ae",
+    "slug": "puerto-nuevo-beach-vega-baja-18483-66404",
+    "name": "Puerto Nuevo Beach",
+    "municipality": "Vega Baja",
+    "coords": {
+      "lat": 18.4826,
+      "lng": -66.4043
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "lifeguard"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Balneario Puerto Nuevo"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Natural rock wall forms a sheltered pool; services on site; popular weekends. (DRNA; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "8c8d843b-091e-47c0-afba-7f0d814a105d",
+    "slug": "puerto-nuevo-west-pocket-vega-baja-18484-66409",
+    "name": "Puerto Nuevo West Pocket",
+    "municipality": "Vega Baja",
+    "coords": {
+      "lat": 18.4839,
+      "lng": -66.4087
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & short walk",
+    "notes": "Small sandy pocket west of main pool; calmer on low swell. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b543cf66-68f6-4605-9b45-a3471645e4f9",
+    "slug": "puerto-nuevo-east-pocket-vega-baja-18483-664",
+    "name": "Puerto Nuevo East Pocket",
+    "municipality": "Vega Baja",
+    "coords": {
+      "lat": 18.4829,
+      "lng": -66.4002
+    },
+    "tags": [
+      "scenic",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "East-side cove by reef ledges; clearer water on glassy mornings. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "965a5824-f1ea-45df-a041-ba077fd37e2d",
+    "slug": "tortuguero-oceanfront-north-of-lagoon-vega-baja-18455-66429",
+    "name": "Tortuguero Oceanfront (north of lagoon)",
+    "municipality": "Vega Baja",
+    "coords": {
+      "lat": 18.4553,
+      "lng": -66.4289
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Tortuguero (ocean side)"
+    ],
+    "accessLabel": "dirt track & walk",
+    "notes": "Dune-backed strand along Tortuguero reserve; exposed to trades; undeveloped. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a35ec344-7947-47e2-9b10-96b45d64ce28",
+    "slug": "puerto-nuevo-natural-bridge-view-vega-baja-18485-66402",
+    "name": "Puerto Nuevo Natural Bridge View",
+    "municipality": "Vega Baja",
+    "coords": {
+      "lat": 18.4849,
+      "lng": -66.4021
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Arco Natural Puerto Nuevo"
+    ],
+    "accessLabel": "short walk",
+    "notes": "Rock arch viewpoint near reef wall; dramatic surge on swell; no swimming. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1e29d70b-6acf-472d-9a0e-17e7e15207d6",
+    "slug": "punta-puerto-nuevo-vega-baja-18487-66399",
+    "name": "Punta Puerto Nuevo",
+    "municipality": "Vega Baja",
+    "coords": {
+      "lat": 18.4869,
+      "lng": -66.3992
+    },
+    "tags": [
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "Exposed point east of Puerto Nuevo with reef shelves; best on very calm days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a86ec5b6-7fa3-4c24-8b7e-6cd1d8ebd77f",
+    "slug": "cibuco-mouth-west-side-vega-baja-18469-66434",
+    "name": "Cibuco Mouth (west side)",
+    "municipality": "Vega Baja",
+    "coords": {
+      "lat": 18.4686,
+      "lng": -66.4339
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Boca Río Cibuco"
+    ],
+    "accessLabel": "short path",
+    "notes": "River mouth sandbars and flats; shifting channels; scenic dunes. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "5acd05cd-e078-4519-a158-694edc27e04e",
+    "slug": "playa-puerto-nuevo-south-lagoon-edge-vega-baja-18479-66408",
+    "name": "Playa Puerto Nuevo (south lagoon edge)",
+    "municipality": "Vega Baja",
+    "coords": {
+      "lat": 18.4791,
+      "lng": -66.4076
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "Quiet south edge bordering lagoon channels; not a main bathing area. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "beccaa9b-2b0a-4124-9d90-56ad82c9ae36",
+    "slug": "balneario-cerro-gordo-vega-alta-18482-66353",
+    "name": "Balneario Cerro Gordo",
+    "municipality": "Vega Alta",
+    "coords": {
+      "lat": 18.482,
+      "lng": -66.3535
+    },
+    "tags": [
+      "family-friendly",
+      "scenic",
+      "swimming",
+      "camping"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard",
+      "picnic-areas"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Cerro Gordo"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Popular balneario with facilities and shaded picnic; calmer on small swell. (DRNA; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "75cec479-ed23-4e6e-b3a2-932ce87e46e5",
+    "slug": "cerro-gordo-east-cove-vega-alta-18483-66347",
+    "name": "Cerro Gordo East Cove",
+    "municipality": "Vega Alta",
+    "coords": {
+      "lat": 18.4833,
+      "lng": -66.3474
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Cerro Gordo Este"
+    ],
+    "accessLabel": "short walk from lot",
+    "notes": "Small pocket east of main balneario; calmer on glassy mornings. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "328044b9-ebea-4682-906f-08239d2b17df",
+    "slug": "cerro-gordo-west-point-vega-alta-18481-66359",
+    "name": "Cerro Gordo West Point",
+    "municipality": "Vega Alta",
+    "coords": {
+      "lat": 18.4813,
+      "lng": -66.3591
+    },
+    "tags": [
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short path",
+    "notes": "Rocky point with clearer pockets on calm days; caution with surge. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "76cf2232-671f-4e46-94ca-7e4e706f42f9",
+    "slug": "playa-mameyal-vega-alta-vega-alta-18498-66365",
+    "name": "Playa Mameyal (Vega Alta)",
+    "municipality": "Vega Alta",
+    "coords": {
+      "lat": 18.4981,
+      "lng": -66.3649
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Mameyal Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Linear neighborhood shoreline; modest surf; low services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "732d715e-66ba-43a6-86c5-e764115859dc",
+    "slug": "punta-cerro-gordo-overlook-vega-alta-18488-66349",
+    "name": "Punta Cerro Gordo (Overlook)",
+    "municipality": "Vega Alta",
+    "coords": {
+      "lat": 18.4879,
+      "lng": -66.3492
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Mirador Cerro Gordo"
+    ],
+    "accessLabel": "viewpoint; informal paths",
+    "notes": "Bluff-top overlook with narrow access to reefy shore below; not serviced. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a0061a3a-8f66-4621-b7ea-144110fd7405",
+    "slug": "balneario-manuel-nolo-morales-dorado-public-beach-dorado-18466-66273",
+    "name": "Balneario Manuel “Nolo” Morales (Dorado Public Beach)",
+    "municipality": "Dorado",
+    "coords": {
+      "lat": 18.4658,
+      "lng": -66.2726
+    },
+    "tags": [
+      "family-friendly",
+      "scenic",
+      "swimming"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Dorado Public Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Broad sandy bay with services; popular on weekends; gentle inside. (DRNA; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "7c2b1f69-05ce-4c4e-9e2e-6ebe072d7ba6",
+    "slug": "sardinera-dorado-dorado-18469-66269",
+    "name": "Sardinera (Dorado)",
+    "municipality": "Dorado",
+    "coords": {
+      "lat": 18.4692,
+      "lng": -66.2686
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Sardinera Dorado"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Natural rock barrier creates calmer pool-like sections at lower swell. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "cbce3540-44d3-4638-99a6-29b2e03cdc85",
+    "slug": "kikita-beach-dorado-18468-66288",
+    "name": "Kikita Beach",
+    "municipality": "Dorado",
+    "coords": {
+      "lat": 18.4681,
+      "lng": -66.2879
+    },
+    "tags": [
+      "surfing",
+      "snorkeling",
+      "diving",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Kikita"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Reef break with consistent trades; strong rips when sizable; no lifeguard. (Surf maps; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "93e0e393-57dc-4f40-9e44-568370cb7d75",
+    "slug": "ojo-del-buey-dorado-18464-66273",
+    "name": "Ojo del Buey",
+    "municipality": "Dorado",
+    "coords": {
+      "lat": 18.4638,
+      "lng": -66.273
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Boca del Río La Plata"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Scenic rock arch near La Plata river mouth; currents; best for strolling. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "db1d1666-c01d-4580-bbfd-659934a29d0b",
+    "slug": "sardinera-west-pocket-hotel-sector-dorado-18467-66277",
+    "name": "Sardinera West Pocket (Hotel sector)",
+    "municipality": "Dorado",
+    "coords": {
+      "lat": 18.467,
+      "lng": -66.2769
+    },
+    "tags": [
+      "scenic",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short path",
+    "notes": "Sheltered pocket with reef shelves; clearer water on calm mornings. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "228a7cae-2cbf-4906-b0c0-f978b9cc3d70",
+    "slug": "dorado-east-reef-shore-dorado-18462-66264",
+    "name": "Dorado East Reef Shore",
+    "municipality": "Dorado",
+    "coords": {
+      "lat": 18.4615,
+      "lng": -66.2641
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "Reefy shoreline east of main balneario; narrow sandy tongues; undeveloped. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "59b87cfb-6140-4e3f-9d40-fd72713a2544",
+    "slug": "balneario-punta-salinas-toa-baja-18447-66259",
+    "name": "Balneario Punta Salinas",
+    "municipality": "Toa Baja",
+    "coords": {
+      "lat": 18.4471,
+      "lng": -66.2586
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Punta Salinas"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Expansive beach with facilities and views of Isleta/El Morro; calmest in summer. (Blue Flag; DRNA; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e600dadb-e182-435d-b78d-fc3afc3a66cd",
+    "slug": "playa-levittown-toa-baja-toa-baja-18452-66224",
+    "name": "Playa Levittown (Toa Baja)",
+    "municipality": "Toa Baja",
+    "coords": {
+      "lat": 18.4515,
+      "lng": -66.2242
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Levittown Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Neighborhood shoreline paralleling PR-165; modest surf; urban conveniences. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "ab69a40e-be6b-40cc-b810-7b37881861df",
+    "slug": "isla-de-cabras-toa-baja-1846-66119",
+    "name": "Isla de Cabras",
+    "municipality": "Toa Baja",
+    "coords": {
+      "lat": 18.4599,
+      "lng": -66.1189
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Parque Nacional Isla de Cabras"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Bay entrance islet with small bathing area and fort views; currents outside. (OSM; Google; DRNA)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "4f5ccaae-1a9d-447d-9678-3d454f1121cd",
+    "slug": "baha-de-toa-baja-shore-pr-165-toa-baja-18449-66241",
+    "name": "Bahía de Toa Baja Shore (PR-165)",
+    "municipality": "Toa Baja",
+    "coords": {
+      "lat": 18.4489,
+      "lng": -66.2409
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "roadside access",
+    "notes": "Linear bayfront with sandy pockets; swimming varies; popular for sunsets. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b457e362-41de-4e2a-8fe5-b6083038305d",
+    "slug": "la-puntilla-shore-catao-catao-18439-66119",
+    "name": "La Puntilla Shore (Cataño)",
+    "municipality": "Cataño",
+    "coords": {
+      "lat": 18.4391,
+      "lng": -66.119
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Malecón de Cataño"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "City bayfront with tiny sandy entries and views to Old San Juan; tour/ferry hub. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "d2ed3739-0e0c-45e6-9a08-975c6618ea35",
+    "slug": "balneario-el-escambrn-san-juan-18465-6609",
+    "name": "Balneario El Escambrón",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4653,
+      "lng": -66.0904
+    },
+    "tags": [
+      "family-friendly",
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "El Escambrón"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "City balneario with reefs creating swim/snorkel zones; Blue-Flag in seasons. (DRNA; Blue Flag; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "f48818fe-0b6f-484e-9f7a-96a58d056f47",
+    "slug": "playita-del-condado-san-juan-18458-66088",
+    "name": "Playita del Condado",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4579,
+      "lng": -66.088
+    },
+    "tags": [
+      "family-friendly",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "La Playita"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Sheltered cove inside Condado Lagoon outlet; kid-friendly on calm days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c3da070e-d135-4ed5-b6a2-86cf1582fd70",
+    "slug": "condado-beach-oceanfront-san-juan-18455-6608",
+    "name": "Condado Beach (Oceanfront)",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4551,
+      "lng": -66.0796
+    },
+    "tags": [
+      "scenic",
+      "surfing"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Condado"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Wide urban strand; stronger shorebreak/rips when swell is up; hotels/bars nearby. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "d1bb8b4d-64f4-4d4d-8fa0-ce4d129ca1fa",
+    "slug": "ocean-park-beach-san-juan-18452-6606",
+    "name": "Ocean Park Beach",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4521,
+      "lng": -66.0603
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Punta Las Marías sector (west end)"
+    ],
+    "accessLabel": "street parking & beach entries",
+    "notes": "Long sandy arc; kiting on trades; shorebreak/rips when larger. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c8a07445-43b7-4751-8608-42b17191cd4c",
+    "slug": "punta-las-maras-san-juan-1845-66055",
+    "name": "Punta Las Marías",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4497,
+      "lng": -66.0549
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "street parking & short walk",
+    "notes": "Point between Ocean Park and Isla Verde; surf/kite spot; no services. (OSM; Google; surf refs)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "fbb23f60-003a-46d0-ab92-06eb089d0bd9",
+    "slug": "playa-pea-old-san-juan-san-juan-18468-66123",
+    "name": "Playa Peña (Old San Juan)",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.468,
+      "lng": -66.1227
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Peñita",
+      "Playa Capitolio"
+    ],
+    "accessLabel": "short stairs/path",
+    "notes": "Small pocket below the Capitol and city walls; exposed; scenic, not a bathhouse area. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "5ade0a6b-534d-43b5-a7a4-b6e9cea33579",
+    "slug": "la-ocho-escambrn-east-reef-san-juan-18467-66085",
+    "name": "La Ocho (Escambrón east reef)",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4666,
+      "lng": -66.0849
+    },
+    "tags": [
+      "surfing",
+      "snorkeling",
+      "diving"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "large",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "8"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Reef peak east of Escambrón; advanced on bigger N/NE swells. (Surf maps; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "d426c8d0-6f19-4777-a4db-56a7600e6072",
+    "slug": "balneario-de-carolina-carolina-18442-65997",
+    "name": "Balneario de Carolina",
+    "municipality": "Carolina",
+    "coords": {
+      "lat": 18.4424,
+      "lng": -65.9969
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Carolina Public Beach",
+      "Isla Verde Balneario"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Blue-Flag beach with full services; wide sands; popular with families. (Blue Flag; DRNA; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1942f331-97fe-41ee-bd3a-ce2624c4aa80",
+    "slug": "isla-verde-alambique-carolina-18444-6601",
+    "name": "Isla Verde – Alambique",
+    "municipality": "Carolina",
+    "coords": {
+      "lat": 18.4438,
+      "lng": -66.0098
+    },
+    "tags": [
+      "scenic",
+      "swimming"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Alambique Beach"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Central Isla Verde sector with hotels and eateries; modest shorebreak. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e8ab8cda-8bf9-44bf-9620-b8708e98bd32",
+    "slug": "isla-verde-pine-grove-carolina-18441-66017",
+    "name": "Isla Verde – Pine Grove",
+    "municipality": "Carolina",
+    "coords": {
+      "lat": 18.4414,
+      "lng": -66.0174
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Pine Grove Beach"
+    ],
+    "accessLabel": "street parking & beach paths",
+    "notes": "Beginner-friendly sandbar near east end; surf schools operate here. (Surf schools; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b41d1399-019a-4631-88ba-8fdacb69af6b",
+    "slug": "boca-de-cangrejos-mouth-carolina-18456-65999",
+    "name": "Boca de Cangrejos Mouth",
+    "municipality": "Carolina",
+    "coords": {
+      "lat": 18.4559,
+      "lng": -65.9994
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Boca de Cangrejos"
+    ],
+    "accessLabel": "short walk",
+    "notes": "Inlet between Isla Verde and Piñones; shifting channels and strong currents. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "6fa32b13-e569-451e-a4f3-2ea784333e0f",
+    "slug": "aviones-beach-loza-18457-65991",
+    "name": "Aviones Beach",
+    "municipality": "Loíza",
+    "coords": {
+      "lat": 18.457,
+      "lng": -65.9908
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Aviones"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Consistent beach break by Piñones kiosks; stronger rips on larger swells. (Surf refs; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c0a27892-6a9a-426e-8a5c-6650e7e3a236",
+    "slug": "la-posita-piones-loza-18457-6598",
+    "name": "La Posita (Piñones)",
+    "municipality": "Loíza",
+    "coords": {
+      "lat": 18.4565,
+      "lng": -65.9797
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Pozita de Piñones"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Natural rock pool popular with families; best at low to mid tide; no lifeguard. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "02dfa4c8-4771-4551-9c6e-efb022032d5b",
+    "slug": "vacia-talega-loza-18468-65949",
+    "name": "Vacia Talega",
+    "municipality": "Loíza",
+    "coords": {
+      "lat": 18.4678,
+      "lng": -65.9489
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking",
+      "picnic-areas"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Vacía Talega"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Long scenic bay with shallow entry; popular on weekends; bring shade. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "0d60f498-6112-4acb-9051-bf6bb0f0c140",
+    "slug": "piones-boardwalk-shore-loza-18458-65972",
+    "name": "Piñones Boardwalk Shore",
+    "municipality": "Loíza",
+    "coords": {
+      "lat": 18.4578,
+      "lng": -65.9723
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Paseo Tablado de Piñones Shore"
+    ],
+    "accessLabel": "boardwalk access",
+    "notes": "Boardwalk with access to multiple sandy entries behind dunes and palms. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "2029990c-6a2f-4d15-be51-e98ad4fdcb18",
+    "slug": "la-pocita-de-piones-east-pool-loza-18463-65964",
+    "name": "La Pocita de Piñones (east pool)",
+    "municipality": "Loíza",
+    "coords": {
+      "lat": 18.4631,
+      "lng": -65.9637
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Pozita Este"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Another protected pool along the reef; shallow and kid‑friendly when calm. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "079774c2-e100-4b3a-a74d-c5ed51a646cf",
+    "slug": "cueva-mara-de-la-cruz-shore-loza-18441-65902",
+    "name": "Cueva María de la Cruz Shore",
+    "municipality": "Loíza",
+    "coords": {
+      "lat": 18.4413,
+      "lng": -65.9017
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Área Cave María de la Cruz"
+    ],
+    "accessLabel": "short walk from parking",
+    "notes": "Coastal sector near archaeological cave area; narrow beaches, scenic stops. (Mapcarta; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "0162131b-7833-4bcb-9322-642d17d57a03",
+    "slug": "pozita-de-mediana-alta-loza-18477-65928",
+    "name": "Pozita de Medianía Alta",
+    "municipality": "Loíza",
+    "coords": {
+      "lat": 18.4769,
+      "lng": -65.9282
+    },
+    "tags": [
+      "scenic",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Poza Medianía"
+    ],
+    "accessLabel": "short path",
+    "notes": "Small reef pool within Medianía Alta sector; calmer on low swell. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "f0e4c064-5426-4336-a36f-69fd47512c60",
+    "slug": "boca-de-cangrejos-east-spit-loza-side-loza-1846-65993",
+    "name": "Boca de Cangrejos East Spit (Loíza side)",
+    "municipality": "Loíza",
+    "coords": {
+      "lat": 18.4599,
+      "lng": -65.993
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "short walk",
+    "notes": "Sandy spit on the Piñones side of the inlet; currents; scenic views to Isla Verde. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "175baa52-b784-4b1b-bbe5-7b71fdea47c5",
+    "slug": "ocean-park-barbosa-segment-san-juan-18453-66066",
+    "name": "Ocean Park – Barbosa Segment",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4529,
+      "lng": -66.0657
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Parque Barbosa Front"
+    ],
+    "accessLabel": "street parking & beach path",
+    "notes": "Ocean Park stretch in front of Parque Barbosa; active locals’ area. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "0d1ed542-4e52-43d0-bf3b-cab40570fe62",
+    "slug": "isla-verde-balneario-west-sector-carolina-18445-66007",
+    "name": "Isla Verde – Balneario West Sector",
+    "municipality": "Carolina",
+    "coords": {
+      "lat": 18.4449,
+      "lng": -66.0066
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Balneario Carolina (west)"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Western sector of the Blue-Flag balneario with easy access and services. (Blue Flag; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "fe27dfb3-f9c5-452d-b6df-2976a4d5a56f",
+    "slug": "isla-verde-east-sector-near-boca-carolina-18449-65995",
+    "name": "Isla Verde – East Sector (near Boca)",
+    "municipality": "Carolina",
+    "coords": {
+      "lat": 18.4489,
+      "lng": -65.9947
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Isla Verde Este"
+    ],
+    "accessLabel": "street parking & walk",
+    "notes": "Eastern end near the inlet; scenic dunes; currents increase toward the mouth. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b2e85f7a-366b-412f-82e8-81fb18c23a49",
+    "slug": "escambrn-bateria-del-escambrn-cove-san-juan-18466-66092",
+    "name": "Escambrón – Bateria del Escambrón Cove",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4662,
+      "lng": -66.0919
+    },
+    "tags": [
+      "snorkeling",
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Fortín Escambrón Cove"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Small protected cove near old battery; good for beginners on calm days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a9d0727f-9b1e-4524-946a-0767724b3a69",
+    "slug": "condado-playita-ochoa-pocket-san-juan-18456-66083",
+    "name": "Condado – Playita Ochoa Pocket",
+    "municipality": "San Juan",
+    "coords": {
+      "lat": 18.4561,
+      "lng": -66.0835
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playita Ochoa"
+    ],
+    "accessLabel": "street parking & short walk",
+    "notes": "Tiny sandy pocket between hotels; swim quality varies with swell. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "bb250867-c5a0-43bf-922e-2ed6bf56aa7a",
+    "slug": "coco-beach-ro-grande-ro-grande-18448-65821",
+    "name": "Coco Beach (Río Grande)",
+    "municipality": "Río Grande",
+    "coords": {
+      "lat": 18.4479,
+      "lng": -65.8208
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Bahía Beach sector"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Long sandy arc by resort/golf complex; swim quality varies with swell; public access via signed paths. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "ecd4ff52-be5b-43df-af8f-c196ce78f4fa",
+    "slug": "playa-ro-mar-ro-grande-18411-6575",
+    "name": "Playa Río Mar",
+    "municipality": "Río Grande",
+    "coords": {
+      "lat": 18.4113,
+      "lng": -65.7497
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Wyndham Río Mar Beach"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Wide strand fronting resort; shorebreak picks up with trades/swells; public right-of-way paths exist. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "8247bb67-9c1c-4c7d-b1af-cccfc071e4fc",
+    "slug": "las-picas-ro-grande-18428-65771",
+    "name": "Las Picúas",
+    "municipality": "Río Grande",
+    "coords": {
+      "lat": 18.4278,
+      "lng": -65.7706
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Las Picúas"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Dune-backed shoreline east of Río Mar; fewer services; exposed to trades and shorebreak. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a29f192f-5130-4faf-845a-7087e9c683dc",
+    "slug": "mameyes-river-mouth-ro-grande-18403-65752",
+    "name": "Mameyes River Mouth",
+    "municipality": "Río Grande",
+    "coords": {
+      "lat": 18.4029,
+      "lng": -65.7522
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Boca Río Mameyes"
+    ],
+    "accessLabel": "short path",
+    "notes": "Scenic river mouth near El Yunque foothills; shifting bars and currents; not a guarded swim area. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1769058c-2428-4eb6-814d-38bc53c840c4",
+    "slug": "balneario-la-monserrate-luquillo-luquillo-18383-65723",
+    "name": "Balneario La Monserrate (Luquillo)",
+    "municipality": "Luquillo",
+    "coords": {
+      "lat": 18.3828,
+      "lng": -65.7227
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Luquillo Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Famed balneario with gentle waters, services, and food kiosks nearby. (Blue Flag; DRNA; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "93e8fe8d-b714-4901-8aed-a4a00e64a1aa",
+    "slug": "la-pared-luquillo-luquillo-18376-65716",
+    "name": "La Pared (Luquillo)",
+    "municipality": "Luquillo",
+    "coords": {
+      "lat": 18.3764,
+      "lng": -65.7157
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa La Pared"
+    ],
+    "accessLabel": "street parking & beach access",
+    "notes": "Popular surf/learn-to-surf beach; shorebreak and rips increase with swell; town amenities. (Surf schools; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "2c7c5e38-fd15-4385-93a9-6cf29a8d9d0c",
+    "slug": "playa-azul-luquillo-luquillo-18371-65713",
+    "name": "Playa Azul (Luquillo)",
+    "municipality": "Luquillo",
+    "coords": {
+      "lat": 18.3709,
+      "lng": -65.7134
+    },
+    "tags": [
+      "scenic",
+      "swimming"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Balneario Playa Azul sector"
+    ],
+    "accessLabel": "street parking & short walk",
+    "notes": "High-rise frontage with long sand; shorebreak can be punchy when trades are up. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "6b007df8-e1d5-41d9-985d-a1135e8f9312",
+    "slug": "playa-fortuna-luquillo-west-luquillo-18383-65734",
+    "name": "Playa Fortuna (Luquillo west)",
+    "municipality": "Luquillo",
+    "coords": {
+      "lat": 18.3831,
+      "lng": -65.7338
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Fortuna Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Sector near kiosks/PR‑3; calmer pockets on small days; urban conveniences close. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "7c7edff0-97ed-47e7-bb1f-f48bcc962f18",
+    "slug": "playa-san-miguel-nature-reserve-edge-luquillo-18361-65686",
+    "name": "Playa San Miguel (Nature Reserve edge)",
+    "municipality": "Luquillo",
+    "coords": {
+      "lat": 18.3608,
+      "lng": -65.6858
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "San Miguel"
+    ],
+    "accessLabel": "short path",
+    "notes": "Quieter sector east of Playa Azul; dune/mangrove edges; fewer services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a87f36e5-ecaa-4596-92f6-6a08d93eab68",
+    "slug": "seven-seas-beach-fajardo-18377-65631",
+    "name": "Seven Seas Beach",
+    "municipality": "Fajardo",
+    "coords": {
+      "lat": 18.3767,
+      "lng": -65.6306
+    },
+    "tags": [
+      "family-friendly",
+      "scenic",
+      "camping"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Balneario Seven Seas"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Protected swimming area with services; trailheads to Escondida/Colora start here. (DRNA; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "355f2ab5-9546-403a-85e4-9fdbbfbab154",
+    "slug": "playa-escondida-fajardo-fajardo-18381-65626",
+    "name": "Playa Escondida (Fajardo)",
+    "municipality": "Fajardo",
+    "coords": {
+      "lat": 18.3805,
+      "lng": -65.6257
+    },
+    "tags": [
+      "secluded",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Hidden Beach"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Secluded strand east of Seven Seas via sandy trails; no services; currents increase on swell. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b6fe17e0-7af7-453f-b3bc-4e307f1dcf76",
+    "slug": "playa-colora-fajardo-fajardo-18382-65621",
+    "name": "Playa Colora (Fajardo)",
+    "municipality": "Fajardo",
+    "coords": {
+      "lat": 18.382,
+      "lng": -65.6208
+    },
+    "tags": [
+      "secluded",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Colora"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Reddish‑hued sand pocket east of Seven Seas; stronger currents when surf is up. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "80a0d8ae-8860-44db-b6c7-78c3ae50de69",
+    "slug": "cabezas-de-san-juan-reserve-shore-fajardo-18383-65617",
+    "name": "Cabezas de San Juan Reserve Shore",
+    "municipality": "Fajardo",
+    "coords": {
+      "lat": 18.3833,
+      "lng": -65.6171
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Reserva Natural Cabezas de San Juan Shore"
+    ],
+    "accessLabel": "guided trail access",
+    "notes": "Protected reserve shores with limited/guided access; pristine habitats. (DRNA; Para la Naturaleza)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "92036e31-0527-42a7-b87a-66bb70e8c797",
+    "slug": "las-croabas-waterfront-fajardo-18372-6565",
+    "name": "Las Croabas Waterfront",
+    "municipality": "Fajardo",
+    "coords": {
+      "lat": 18.3723,
+      "lng": -65.6502
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Parque Pasivo Las Croabas"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Townfront launch for Bio Bay and cays; small bathing entries; urban amenities. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e7c87206-2f4b-49f5-9e98-687be15c882e",
+    "slug": "cayo-icacos-la-cordillera-fajardo-18382-65597",
+    "name": "Cayo Icacos (La Cordillera)",
+    "municipality": "Fajardo",
+    "coords": {
+      "lat": 18.3824,
+      "lng": -65.5969
+    },
+    "tags": [
+      "secluded",
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Isla Icacos"
+    ],
+    "accessLabel": "boat access",
+    "notes": "Uninhabited cay with white sands and clear water; boat only; no services. (OSM; Google; tour ops)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "80c95604-bf01-44e3-8f17-71267e884a39",
+    "slug": "cayo-diablo-reef-stop-fajardo-18371-65559",
+    "name": "Cayo Diablo (reef stop)",
+    "municipality": "Fajardo",
+    "coords": {
+      "lat": 18.3708,
+      "lng": -65.5588
+    },
+    "tags": [
+      "secluded",
+      "snorkeling",
+      "diving"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Diablo Reef"
+    ],
+    "accessLabel": "boat access",
+    "notes": "Reef and sand tongues popular for snorkel tours; limited sandy landing spots. (Tour ops; OSM)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b69dc8b9-769d-48d7-bb96-910902f1485a",
+    "slug": "playa-sardinera-fajardo-fajardo-18366-65653",
+    "name": "Playa Sardinera (Fajardo)",
+    "municipality": "Fajardo",
+    "coords": {
+      "lat": 18.3659,
+      "lng": -65.6526
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Sardinera Fajardo"
+    ],
+    "accessLabel": "street parking & short walk",
+    "notes": "Neighborhood beach west of Las Croabas with reef shelves and sandy pockets. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "33192fbe-bec5-4e1b-8e8e-291246120d98",
+    "slug": "playa-los-machos-ceiba-18258-65594",
+    "name": "Playa Los Machos",
+    "municipality": "Ceiba",
+    "coords": {
+      "lat": 18.2579,
+      "lng": -65.5944
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Los Machos Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Wide shallow bay near Roosevelt Roads; calmer on small swell; limited services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "298558ca-6bae-4e72-88cf-8a3b1611020a",
+    "slug": "playa-medio-mundo-ceiba-18242-65588",
+    "name": "Playa Medio Mundo",
+    "municipality": "Ceiba",
+    "coords": {
+      "lat": 18.2416,
+      "lng": -65.5878
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Medio Mundo"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Shallow, clear-water beach with offshore reef protection; popular with families. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "ce20a9a9-3bb2-4cf8-a2e8-45be3d632e30",
+    "slug": "malecn-de-naguabo-shore-naguabo-18212-65733",
+    "name": "Malecón de Naguabo Shore",
+    "municipality": "Naguabo",
+    "coords": {
+      "lat": 18.2116,
+      "lng": -65.7329
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "El Malecón de Naguabo"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Seafront promenade with small beach entries and seafood kiosks; urban vibe. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c039b91f-e4d2-4492-ba22-bc827ae185b9",
+    "slug": "playa-tropical-naguabo-naguabo-18201-65704",
+    "name": "Playa Tropical (Naguabo)",
+    "municipality": "Naguabo",
+    "coords": {
+      "lat": 18.2007,
+      "lng": -65.7038
+    },
+    "tags": [
+      "family-friendly",
+      "swimming"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Tropical Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Town beach with calmer waters; picnic areas; popular on weekends. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a6b7b6ed-1d6d-42a0-90d0-dc4b68ce686d",
+    "slug": "playa-punta-lima-naguabo-naguabo-18196-65711",
+    "name": "Playa Punta Lima (Naguabo)",
+    "municipality": "Naguabo",
+    "coords": {
+      "lat": 18.1961,
+      "lng": -65.7107
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Punta Lima"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Linear shoreline southwest of town; mixed sand/reef; low-key access. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1aa13859-08b7-4719-8fa6-438812e9b110",
+    "slug": "balneario-punta-santiago-humacao-humacao-18153-6574",
+    "name": "Balneario Punta Santiago (Humacao)",
+    "municipality": "Humacao",
+    "coords": {
+      "lat": 18.1526,
+      "lng": -65.7405
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Punta Santiago Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Calmer bay with facilities; views to Cayo Santiago; popular for families. (OSM; Google; DRNA)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c3fb80be-9677-40de-b275-08d92e15d13e",
+    "slug": "playa-palmas-del-mar-candelero-humacao-18091-65798",
+    "name": "Playa Palmas del Mar – Candelero",
+    "municipality": "Humacao",
+    "coords": {
+      "lat": 18.0909,
+      "lng": -65.7978
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Candelero Beach"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Resort-front beach with long sands; shorebreak varies with trades; public access paths exist. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "bb3f3a4d-d6f2-477e-8cc7-6e8f6ae13bb6",
+    "slug": "palmas-del-mar-harbor-cove-humacao-18092-65809",
+    "name": "Palmas del Mar – Harbor Cove",
+    "municipality": "Humacao",
+    "coords": {
+      "lat": 18.0919,
+      "lng": -65.8093
+    },
+    "tags": [
+      "family-friendly",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Harbor Cove Beach"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "More protected cove near marina breakwaters; clearer on calm days. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "99e5bf97-c1c5-4fdf-ba4b-82064f3f8254",
+    "slug": "playa-luca-yabucoa-18059-65802",
+    "name": "Playa Lucía",
+    "municipality": "Yabucoa",
+    "coords": {
+      "lat": 18.0592,
+      "lng": -65.802
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Lucía Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Sheltered bay often calmer than open Atlantic; simple amenities nearby. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c0baac8b-210e-446c-9d19-a19a6a25bca8",
+    "slug": "playa-guayans-yabucoa-yabucoa-1806-65845",
+    "name": "Playa Guayanés (Yabucoa)",
+    "municipality": "Yabucoa",
+    "coords": {
+      "lat": 18.0599,
+      "lng": -65.8448
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Guayanés Beach"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Neighborhood shoreline with sandy tongues; mixed sand/reef; low services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e76c7d01-07f9-4a0d-8911-6c5f4ba9f782",
+    "slug": "playa-punta-tuna-lighthouse-maunabo-18004-65885",
+    "name": "Playa Punta Tuna (Lighthouse)",
+    "municipality": "Maunabo",
+    "coords": {
+      "lat": 18.0039,
+      "lng": -65.8855
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Faro Punta Tuna Beach"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Dramatic beach below lighthouse; currents and shorebreak can be strong; stunning views. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "390fbbf7-cc7f-4333-b392-a06c10f8e7b5",
+    "slug": "playa-los-pinos-maunabo-maunabo-18002-65899",
+    "name": "Playa Los Pinos (Maunabo)",
+    "municipality": "Maunabo",
+    "coords": {
+      "lat": 18.002,
+      "lng": -65.8992
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Los Pinos"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Longer open-coast stretch west of the lighthouse; exposed; few services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "3ad71050-91bc-40ca-977a-cbb71cf5bbb6",
+    "slug": "playa-inches-patillas-patillas-17995-66002",
+    "name": "Playa Inches (Patillas)",
+    "municipality": "Patillas",
+    "coords": {
+      "lat": 17.9948,
+      "lng": -66.0022
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Inches Beach"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Known beachbreak that awakens on N/E trades and swells; rips increase with size. (Surf refs; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "9635f6f4-c82c-452e-b7ac-a188e5f95704",
+    "slug": "playa-guardarraya-patillas-18014-66006",
+    "name": "Playa Guardarraya",
+    "municipality": "Patillas",
+    "coords": {
+      "lat": 18.0136,
+      "lng": -66.0062
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Guardarraya"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Shallow bay with local eateries along PR‑3; calmer on smaller swell. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "fe7a23de-2642-402f-99c3-7485b1b16ef7",
+    "slug": "balneario-punta-guilarte-arroyo-17966-66045",
+    "name": "Balneario Punta Guilarte",
+    "municipality": "Arroyo",
+    "coords": {
+      "lat": 17.9656,
+      "lng": -66.0451
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers",
+      "lifeguard"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Punta Guilarte Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Shallow bay beach with facilities; popular with families and campers. (DRNA; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "f91e97ef-25c7-40af-b5c7-c9a3f4fd2c17",
+    "slug": "playa-las-mareas-arroyo-arroyo-1796-66055",
+    "name": "Playa Las Mareas (Arroyo)",
+    "municipality": "Arroyo",
+    "coords": {
+      "lat": 17.9596,
+      "lng": -66.0546
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Las Mareas"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Neighborhood shoreline west of Punta Guilarte; seagrass patches; low-key. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "5a503f00-dfa5-404f-8345-1b5d5754b1cb",
+    "slug": "playa-pozuelo-guayama-guayama-17953-66141",
+    "name": "Playa Pozuelo (Guayama)",
+    "municipality": "Guayama",
+    "coords": {
+      "lat": 17.9531,
+      "lng": -66.1413
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Pozuelo Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Calm bayfront beach with eateries; shallow entry; popular for afternoons. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "2d0ac20c-f2a7-4197-8f68-c55c930556a6",
+    "slug": "aguirre-bay-shore-guayama-17956-66197",
+    "name": "Aguirre Bay Shore",
+    "municipality": "Guayama",
+    "coords": {
+      "lat": 17.9564,
+      "lng": -66.1968
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Bahía de Jobos (Guayama edge)"
+    ],
+    "accessLabel": "short path",
+    "notes": "Mangrove-edged shore on the east side of Bahía de Jobos; scenic; not a formal swim area. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "94737a86-defc-4735-a417-aae5c17c2468",
+    "slug": "marina-de-salinas-shore-salinas-17971-66297",
+    "name": "Marina de Salinas Shore",
+    "municipality": "Salinas",
+    "coords": {
+      "lat": 17.9708,
+      "lng": -66.2972
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Paseo de Salinas"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Harborfront with small sandy entries and docks; tours to nearby cays depart here. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1ccd1e8b-fb77-4a4b-b68c-5fe287e4efdc",
+    "slug": "cayo-matas-salinas-salinas-17912-66303",
+    "name": "Cayo Matías (Salinas)",
+    "municipality": "Salinas",
+    "coords": {
+      "lat": 17.9119,
+      "lng": -66.303
+    },
+    "tags": [
+      "secluded",
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "picnic-areas"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Matías Cay"
+    ],
+    "accessLabel": "boat access",
+    "notes": "Popular cay with picnic shelters and shallow waters; boat/water taxi only. (OSM; Google; tour ops)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "6a765d06-d508-4747-bd67-a49b13dc080a",
+    "slug": "playa-salinas-campamento-sector-salinas-17939-66289",
+    "name": "Playa Salinas – Campamento sector",
+    "municipality": "Salinas",
+    "coords": {
+      "lat": 17.9389,
+      "lng": -66.2886
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Campamento Viejo"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Shoreline near old camp areas; shallow flats; not a guarded beach. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "80ec2818-c4c1-4814-ae23-9afc8eda98a4",
+    "slug": "playa-jauca-santa-isabel-17962-66416",
+    "name": "Playa Jauca",
+    "municipality": "Santa Isabel",
+    "coords": {
+      "lat": 17.9615,
+      "lng": -66.4165
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Jauca Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Sheltered south‑coast bay with shallow entry; low surf; simple facilities nearby. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "01a976b0-cd1e-4b7d-b094-98b97a94629e",
+    "slug": "el-tuque-beach-ponce-17987-66695",
+    "name": "El Tuque Beach",
+    "municipality": "Ponce",
+    "coords": {
+      "lat": 17.9865,
+      "lng": -66.6952
+    },
+    "tags": [
+      "family-friendly",
+      "swimming"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa El Tuque"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Longstanding Ponce beach with easy access; exposure varies; calmer on light winds. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "7c8d661e-090c-46f8-9612-f8cd5d00b543",
+    "slug": "la-guancha-waterfront-ponce-17968-66613",
+    "name": "La Guancha Waterfront",
+    "municipality": "Ponce",
+    "coords": {
+      "lat": 17.9679,
+      "lng": -66.6132
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Paseo Tablado La Guancha"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Harborfront boardwalk with small sandy entries and marina views; best for strolling/eats. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "7ae17aac-8906-46a8-af20-5edc9b715b73",
+    "slug": "playa-pelcano-caja-de-muertos-ponce-17893-66533",
+    "name": "Playa Pelícano (Caja de Muertos)",
+    "municipality": "Ponce",
+    "coords": {
+      "lat": 17.8932,
+      "lng": -66.5332
+    },
+    "tags": [
+      "secluded",
+      "scenic",
+      "snorkeling"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Pelícano Beach",
+      "Caja de Muertos Beach"
+    ],
+    "accessLabel": "boat access",
+    "notes": "White‑sand beach on the nature reserve island; boat only; no shade or services—pack in/out. (DRNA; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "6c19f6dc-88e3-476e-86a0-3e60ca624885",
+    "slug": "tallaboa-shore-peuelas-peuelas-17988-66727",
+    "name": "Tallaboa Shore (Peñuelas)",
+    "municipality": "Peñuelas",
+    "coords": {
+      "lat": 17.9881,
+      "lng": -66.727
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Tallaboa"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Neighborhood shoreline along Bahía de Tallaboa; shallow flats; limited services. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "ceeb0e12-3c96-4ae7-8d55-462393c58770",
+    "slug": "playa-tamarindo-guayanilla-guayanilla-17975-66781",
+    "name": "Playa Tamarindo (Guayanilla)",
+    "municipality": "Guayanilla",
+    "coords": {
+      "lat": 17.9749,
+      "lng": -66.7815
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Tamarindo Beach"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Open‑coast strand west of the bay; scenic headlands nearby; services limited. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c9c149a3-63b7-422b-b6a9-48429941e23a",
+    "slug": "balneario-caa-gorda-gunica-17958-66889",
+    "name": "Balneario Caña Gorda",
+    "municipality": "Guánica",
+    "coords": {
+      "lat": 17.9579,
+      "lng": -66.889
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Caña Gorda Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Shallow turquoise bay inside the biosphere reserve; calm waters; basic facilities. (DRNA; OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "36d46978-6ed2-4552-a84b-c863f2fea690",
+    "slug": "playa-santa-gunica-gunica-1797-66942",
+    "name": "Playa Santa (Guánica)",
+    "municipality": "Guánica",
+    "coords": {
+      "lat": 17.9699,
+      "lng": -66.942
+    },
+    "tags": [
+      "family-friendly",
+      "swimming",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Santa Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Popular crescent beach in Ensenada sector; calm, clear shallows; eateries close by. (OSM; Google)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "d5d51681-f744-4054-b76a-2f9b98a7b2f6",
+    "slug": "flamenco-beach-culebra-18329-65318",
+    "name": "Flamenco Beach",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3293,
+      "lng": -65.3179
+    },
+    "tags": [
+      "family-friendly",
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/flamenco-beach-culebra.jpeg",
+    "gallery": [],
+    "aliases": [
+      "Playa Flamenco"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "World‑renowned crescent; lifeguards in season; camp area nearby. (DiscoverPR; latlong)",
+    "updatedAt": "2025-09-23T21:58:07.494Z"
+  },
+  {
+    "id": "ff9ff813-df32-4760-86f4-e3efaa908abb",
+    "slug": "zoni-beach-zon-culebra-18321-65254",
+    "name": "Zoni Beach (Zoní)",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3214,
+      "lng": -65.254
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Zoní",
+      "Zoni"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Long, quiet strand with views to Culebrita/Cayo Norte; no services. (DiscoverPR; Mapcarta/Wikimapia)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "c33422dd-9473-4dd3-94aa-bc4c39010eef",
+    "slug": "tamarindo-beach-culebra-culebra-18326-65313",
+    "name": "Tamarindo Beach (Culebra)",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.326,
+      "lng": -65.313
+    },
+    "tags": [
+      "snorkeling",
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Tamarindo"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Calm bay with sea turtle snorkeling; adjacent to Luis Peña channel reserve. (Mapcarta; TripAdvisor)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "30958a5b-c2c6-4678-9312-1c0e84e71e88",
+    "slug": "carlos-rosario-beach-culebra-18327-65308",
+    "name": "Carlos Rosario Beach",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3272,
+      "lng": -65.3082
+    },
+    "tags": [
+      "snorkeling",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Carlos Rosario"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Top snorkel reef; short hike from Flamenco lot over low ridge. (DiscoverPR; PRDayTrips)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "22eb04c2-773e-41d0-8929-11ebd4e324cb",
+    "slug": "punta-soldado-culebra-18294-65279",
+    "name": "Punta Soldado",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.2935,
+      "lng": -65.279
+    },
+    "tags": [
+      "snorkeling",
+      "secluded",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Punta Soldado"
+    ],
+    "accessLabel": "rough road & short walk",
+    "notes": "Quiet south‑coast cove; clear water; rough road; no services. (CulebraPR.com; LonelyPlanet)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a8d8e1ca-0be1-4863-b7a1-7c098343a871",
+    "slug": "playa-resaca-culebra-18339-65273",
+    "name": "Playa Resaca",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3385,
+      "lng": -65.2735
+    },
+    "tags": [
+      "secluded",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Resaca Beach"
+    ],
+    "accessLabel": "steep hike-in",
+    "notes": "Steep trail down to wild beach on north side; strong currents. (DiscoverPR)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "37248dac-ab6a-48bf-bcea-458ead631b52",
+    "slug": "playa-brava-culebra-culebra-18346-65275",
+    "name": "Playa Brava (Culebra)",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3458,
+      "lng": -65.2748
+    },
+    "tags": [
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Brava Beach"
+    ],
+    "accessLabel": "hike via trail",
+    "notes": "Remote, wave‑exposed beach; long walk; no facilities. (DiscoverPR)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "d90a9446-4d46-43f5-9dbf-5bc82c71dad5",
+    "slug": "melones-beach-culebra-18303-65308",
+    "name": "Melones Beach",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.303,
+      "lng": -65.3076
+    },
+    "tags": [
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Melones"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Rocky entry with reef; sunset views; near town. (Local guides/OSM)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "a1a6a23d-f426-46eb-8c8b-247e862a03bf",
+    "slug": "sardinas-ii-town-beach-culebra-183-65298",
+    "name": "Sardinas II (town beach)",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3002,
+      "lng": -65.2979
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Sardinas II",
+      "Town Beach"
+    ],
+    "accessLabel": "street parking & short walk",
+    "notes": "Townside shoreline with sandy pockets; boat traffic; no lifeguard. (OSM; tourism)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "cc867644-ea79-4dc4-99d3-4bfd9809eebd",
+    "slug": "isla-culebrita-tortuga-beach-culebra-18316-65215",
+    "name": "Isla Culebrita – Tortuga Beach",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3156,
+      "lng": -65.2148
+    },
+    "tags": [
+      "secluded",
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Tortuga (Culebrita)"
+    ],
+    "accessLabel": "boat access",
+    "notes": "Boat‑only cay beach with turtles and clear water; no services. (DiscoverPR)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "49a1e3d5-c088-4d23-b438-d3314c33fabd",
+    "slug": "playa-datiles-dtiles-culebra-18307-6529",
+    "name": "Playa Datiles (Dátiles)",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.3065,
+      "lng": -65.2895
+    },
+    "tags": [
+      "scenic",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Dátiles"
+    ],
+    "accessLabel": "short walk",
+    "notes": "Protected bay on south side; seagrass & turtle habitat; low services. (Local/VamosPaCulebra)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "0a0507a5-f8cb-42e0-b865-062e847858aa",
+    "slug": "playa-soldado-overlook-reef-flats-culebra-1829-65277",
+    "name": "Playa Soldado Overlook (reef flats)",
+    "municipality": "Culebra",
+    "coords": {
+      "lat": 18.2898,
+      "lng": -65.277
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Soldado Flats"
+    ],
+    "accessLabel": "short path",
+    "notes": "Reefy flats just east of the main cove; clear on calm days; no services. (OSM)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "289968b0-2402-4780-b293-5aab4437cdba",
+    "slug": "sun-bay-vieques-18097-65457",
+    "name": "Sun Bay",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0967,
+      "lng": -65.4572
+    },
+    "tags": [
+      "family-friendly",
+      "scenic",
+      "camping"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Balneario Sun Bay"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Wide bay with facilities near Esperanza; gentle entry; popular. (ViequesBeachMap; DiscoverPR)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "6de1cf9b-2996-4394-a2ea-52a49c193d0f",
+    "slug": "media-luna-vieques-vieques-18089-65446",
+    "name": "Media Luna (Vieques)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0891,
+      "lng": -65.4458
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Media Luna"
+    ],
+    "accessLabel": "short walk",
+    "notes": "Shallow horseshoe cove east of Sun Bay; kid‑friendly when calm. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "6cc2ad3b-fd91-489f-a03e-8fd55016b252",
+    "slug": "navio-beach-vieques-18085-6544",
+    "name": "Navio Beach",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0853,
+      "lng": -65.4403
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Navío"
+    ],
+    "accessLabel": "dirt road & short walk",
+    "notes": "Cove with small sea caves; shorebreak increases with trades; unguarded. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "55ee2125-b27e-45b0-a83f-f9ab53421d49",
+    "slug": "la-chiva-blue-beach-vieques-18092-65428",
+    "name": "La Chiva (Blue Beach)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0915,
+      "lng": -65.428
+    },
+    "tags": [
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Blue Beach"
+    ],
+    "accessLabel": "dirt pullouts & short paths",
+    "notes": "Series of numbered pullouts along reserve bay; clear water, reefs. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e2e9ede2-8558-4330-9b7a-66eed013cc2b",
+    "slug": "caracas-red-beach-vieques-18117-6544",
+    "name": "Caracas (Red Beach)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1166,
+      "lng": -65.4404
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "shade-structures"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Caracas",
+      "Red Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Postcard cove with pavilions; clear water; within refuge. (DiscoverPR; ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "85ec3650-ba5c-4e60-8858-41cdb6ecb3f1",
+    "slug": "pata-prieta-secret-beach-vieques-18098-65412",
+    "name": "Pata Prieta (Secret Beach)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0977,
+      "lng": -65.4122
+    },
+    "tags": [
+      "secluded",
+      "snorkeling"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Secret Beach"
+    ],
+    "accessLabel": "short path from pullout",
+    "notes": "Small turquoise cove accessed via refuge road; no services. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e2500dce-317d-4a7e-a709-8ee78a99e4f4",
+    "slug": "playa-negra-black-sand-beach-vieques-18119-65507",
+    "name": "Playa Negra (Black Sand Beach)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1192,
+      "lng": -65.5068
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Black Sand Beach"
+    ],
+    "accessLabel": "short hike via streambed",
+    "notes": "Dark‑sand pocket reached by Quebrada Negra; not a guarded swim area. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e7e66c37-694b-4664-91aa-99c6609a118c",
+    "slug": "punta-arenas-green-beach-vieques-18155-6551",
+    "name": "Punta Arenas (Green Beach)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1545,
+      "lng": -65.5099
+    },
+    "tags": [
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Green Beach"
+    ],
+    "accessLabel": "dirt road & short walk",
+    "notes": "West‑end cove with reef; sunsets; rougher road. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b57451b0-f28c-41a7-9e16-7de254c9d24a",
+    "slug": "mosquito-pier-rompeolas-vieques-18158-6547",
+    "name": "Mosquito Pier (Rompeolas)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1577,
+      "lng": -65.4704
+    },
+    "tags": [
+      "snorkeling",
+      "fishing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Rompeolas"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Long breakwater with snorkel entries on calm days; no lifeguards. (DiscoverPR)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "36dd3e62-b179-4b3d-95a4-e4baf0f98863",
+    "slug": "esperanza-beach-malecn-vieques-18087-65487",
+    "name": "Esperanza Beach (Malecón)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0865,
+      "lng": -65.4867
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Esperanza"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Townfront strand along malecón; launch for tours; small sandy entries. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "6cbd76e8-271f-4112-947a-e666c84a9796",
+    "slug": "sea-glass-beach-vieques-vieques-18152-6544",
+    "name": "Sea Glass Beach (Vieques)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1516,
+      "lng": -65.4396
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Glass Beach"
+    ],
+    "accessLabel": "street parking & short walk",
+    "notes": "Small urban strand known for sea glass; swim quality varies. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "59a0f75d-9b91-4ef7-9290-0e0b369122c0",
+    "slug": "starfish-beach-vieques-vieques-18157-65513",
+    "name": "Starfish Beach (Vieques)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1569,
+      "lng": -65.5134
+    },
+    "tags": [
+      "snorkeling",
+      "family-friendly"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Estrella de Mar (sector Punta Arenas)"
+    ],
+    "accessLabel": "short path",
+    "notes": "Shallow sandy pocket near Punta Arenas with starfish habitat; look, don’t touch. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "43d5a40b-43f6-4617-8c0b-87232fbdd726",
+    "slug": "airport-beach-vieques-vieques-18134-65478",
+    "name": "Airport Beach (Vieques)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1339,
+      "lng": -65.4784
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Aeropuerto"
+    ],
+    "accessLabel": "roadside access",
+    "notes": "Townside stretch near aerodrome; small sandy entries; not guarded. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "18d6eb00-0f09-43b2-9191-03f9c9a799f1",
+    "slug": "la-plata-platita-vieques-18096-65405",
+    "name": "La Plata / Platita",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0958,
+      "lng": -65.4046
+    },
+    "tags": [
+      "snorkeling",
+      "secluded"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa La Plata",
+      "Platita"
+    ],
+    "accessLabel": "short path",
+    "notes": "Clear cove(s) east of Pata Prieta; reefy; unguarded. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "3c1c8d0f-eb75-44b4-ac85-aebd7ccb45a0",
+    "slug": "la-chata-vieques-vieques-18151-65439",
+    "name": "La Chata (Vieques)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1508,
+      "lng": -65.4392
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa La Chata"
+    ],
+    "accessLabel": "street parking & short walk",
+    "notes": "Small town pocket near Isabel II; shore fishing/sea glass. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "bcde7a09-303e-4e06-b80d-e88535da81d8",
+    "slug": "playa-grande-vieques-vieques-18098-65508",
+    "name": "Playa Grande (Vieques)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0977,
+      "lng": -65.508
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "calm",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Grande"
+    ],
+    "accessLabel": "short path",
+    "notes": "Long open‑coast strand on south‑west; exposed; turtle nesting area. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "3e28808f-6efb-4bb9-8710-f79041c3486e",
+    "slug": "punta-galndez-townfront-vieques-1815-65443",
+    "name": "Punta Galíndez (townfront)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1499,
+      "lng": -65.4427
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Punta Galindez"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Point by Isabel II with small sandy/bathy entries; views to mainland. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "2a24efae-eadc-4b32-a092-d527d8324345",
+    "slug": "playa-vieja-vieques-vieques-18104-65468",
+    "name": "Playa Vieja (Vieques)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.1042,
+      "lng": -65.4684
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Vieja"
+    ],
+    "accessLabel": "short path",
+    "notes": "Sector beach west of Isabel II; calm on small days; few services. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e69ce8d5-c197-45b6-b8f0-4a2d2b129e5a",
+    "slug": "boca-quebrada-vieques-vieques-18089-6547",
+    "name": "Boca Quebrada (Vieques)",
+    "municipality": "Vieques",
+    "coords": {
+      "lat": 18.0885,
+      "lng": -65.4703
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Boca Quebrada"
+    ],
+    "accessLabel": "short path",
+    "notes": "Small sector near Sun Bay; sandy pockets; unguarded. (ViequesBeachMap)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "679d37a5-61a3-4000-9478-06398470f60a",
+    "slug": "cayo-aurora-gilligans-island-gunica-17955-66885",
+    "name": "Cayo Aurora (Gilligan’s Island)",
+    "municipality": "Guánica",
+    "coords": {
+      "lat": 17.9554,
+      "lng": -66.8846
+    },
+    "tags": [
+      "secluded",
+      "snorkeling",
+      "family-friendly"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Gilligan’s Island",
+      "Cayo Aurora"
+    ],
+    "accessLabel": "boat access",
+    "notes": "Mangrove cay with shallow channels; kayak/boat shuttle only. (DiscoverPR; PRDayTrips)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "5d689927-ac2f-488a-b4cd-b4993fd996eb",
+    "slug": "playa-ballena-gunica-gunica-17952-66855",
+    "name": "Playa Ballena (Guánica)",
+    "municipality": "Guánica",
+    "coords": {
+      "lat": 17.9518,
+      "lng": -66.8547
+    },
+    "tags": [
+      "secluded",
+      "scenic"
+    ],
+    "amenities": [],
+    "sargassum": "light",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Ballena"
+    ],
+    "accessLabel": "hike via reserve trail",
+    "notes": "Inside Dry Forest reserve at end of PR‑333; ~30‑min walk; pristine. (DiscoverPR; PRDayTrips)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "b65781a3-1fbc-4dc2-aa7f-e5641c4852be",
+    "slug": "playa-manglillo-gunica-gunica-17968-66843",
+    "name": "Playa Manglillo (Guánica)",
+    "municipality": "Guánica",
+    "coords": {
+      "lat": 17.9683,
+      "lng": -66.8435
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Manglillo Beach"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Shallow bay with mangrove trails and secluded spots. (DiscoverPR)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1a6bb2ea-e804-47be-901b-3f98af0dc2f6",
+    "slug": "playa-jaboncillo-gunica-gunica-17969-66901",
+    "name": "Playa Jaboncillo (Guánica)",
+    "municipality": "Guánica",
+    "coords": {
+      "lat": 17.9688,
+      "lng": -66.9008
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "calm",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Jaboncillo"
+    ],
+    "accessLabel": "short path",
+    "notes": "Small bay near Guánica Harbor entrance; calm on most days. (TripAdvisor)",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "05e5ad02-6346-4ae2-af26-3c8e522e3890",
+    "slug": "domes-beach-rincn-18361-67261",
+    "name": "Domes Beach",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3606,
+      "lng": -67.2612
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "large",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Domes"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Point break by the old nuclear dome; strong winter swell; not ideal for beginners.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "06d0bfb4-3ba9-46dc-97a3-b8113259665d",
+    "slug": "maras-beach-rincn-18354-67267",
+    "name": "María’s Beach",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3538,
+      "lng": -67.2673
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "food"
+    ],
+    "sargassum": "none",
+    "surf": "large",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Maria's",
+      "Marias"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Classic surf spot with reef bottom; active scene; strong rip currents when pumping.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1efad281-5772-49ab-8465-766cad8cd9ee",
+    "slug": "sandy-beach-rincn-18362-67249",
+    "name": "Sandy Beach",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3619,
+      "lng": -67.2487
+    },
+    "tags": [
+      "swimming",
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "medium",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & parking",
+    "notes": "Long sandy stretch with hotels/bars; shorebreak can be heavy at times.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "8717062a-1a21-4dcb-8999-e95723a7a7f3",
+    "slug": "steps-beach-tres-palmas-rincn-18352-67268",
+    "name": "Steps Beach (Tres Palmas)",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3522,
+      "lng": -67.2679
+    },
+    "tags": [
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "large",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Tres Palmas Marine Reserve",
+      "Steps"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Protected reef; crystal visibility on calm days; advanced surf on big swells.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "f58b95d5-1514-44bb-873a-4146c58043d0",
+    "slug": "pools-beach-rincn-18369-67249",
+    "name": "Pools Beach",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.369,
+      "lng": -67.2489
+    },
+    "tags": [
+      "family-friendly",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "road & short walk",
+    "notes": "Small natural pools at lower tide; watch for rocks and sea urchins.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "aea136d0-9e2e-4e53-9890-b0bf0a8de010",
+    "slug": "little-malibu-rincn-18342-67255",
+    "name": "Little Malibu",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3418,
+      "lng": -67.2547
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Malibu"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Inside the town plaza coastline; mellow rights on smaller swells.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "034e28ac-b62f-493c-beb4-dd6574ec4949",
+    "slug": "dogmans-beach-rincn-18358-67264",
+    "name": "Dogman’s Beach",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3579,
+      "lng": -67.2637
+    },
+    "tags": [
+      "surfing",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "none",
+    "surf": "large",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Dogmans"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Reefy lineup between María’s and Domes; powerful on winter swells.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "e5a05711-f15c-476d-853f-73f906255678",
+    "slug": "spanish-wall-beach-rincn-18366-6726",
+    "name": "Spanish Wall Beach",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3663,
+      "lng": -67.2598
+    },
+    "tags": [
+      "scenic",
+      "secluded"
+    ],
+    "amenities": [],
+    "sargassum": "none",
+    "surf": "medium",
+    "wind": "moderate",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [],
+    "accessLabel": "trail access",
+    "notes": "Reach by trail from Domes/Railway path; dramatic cliff backdrop; no services.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "5976826c-f29c-448d-ab8e-3bf57582c4e2",
+    "slug": "corcega-beach-rincn-18329-67254",
+    "name": "Corcega Beach",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3288,
+      "lng": -67.2541
+    },
+    "tags": [
+      "family-friendly",
+      "calm-waters",
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Corcega"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Smoother water on many days; popular for families and paddle craft.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "74cc1914-ba18-4f76-b8a5-fc02f5deaed8",
+    "slug": "barrerolos-almendros-rincn-18335-67246",
+    "name": "Barrero/Los Almendros",
+    "municipality": "Rincón",
+    "coords": {
+      "lat": 18.3345,
+      "lng": -67.246
+    },
+    "tags": [
+      "scenic",
+      "swimming"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Los Almendros"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Shady almond trees; generally smaller surf; watch for rocky patches.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "1ebbf02d-4ea2-499b-ab67-8444f2623f50",
+    "slug": "pico-de-piedra-aguada-18383-67188",
+    "name": "Pico de Piedra",
+    "municipality": "Aguada",
+    "coords": {
+      "lat": 18.3826,
+      "lng": -67.1877
+    },
+    "tags": [
+      "family-friendly",
+      "scenic",
+      "swimming"
+    ],
+    "amenities": [
+      "parking",
+      "restrooms",
+      "showers"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Balneario Pico de Piedra"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Town balneario with facilities and summer festivals; gentler water most days.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "3a5f2682-8e82-4106-b6e7-b4cc96a2421e",
+    "slug": "espinar-beach-aguada-18386-67206",
+    "name": "Espinar Beach",
+    "municipality": "Aguada",
+    "coords": {
+      "lat": 18.3864,
+      "lng": -67.2064
+    },
+    "tags": [
+      "scenic"
+    ],
+    "amenities": [
+      "parking"
+    ],
+    "sargassum": "light",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Espinar"
+    ],
+    "accessLabel": "road & short walk",
+    "notes": "Relaxed local stretch; intermittent rocks; low-key vibe.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  },
+  {
+    "id": "18ca775f-4e0c-4f92-b913-8a73e1b3fede",
+    "slug": "crash-boat-beach-aguadilla-18458-67164",
+    "name": "Crash Boat Beach",
+    "municipality": "Aguadilla",
+    "coords": {
+      "lat": 18.4579,
+      "lng": -67.1641
+    },
+    "tags": [
+      "swimming",
+      "snorkeling",
+      "scenic"
+    ],
+    "amenities": [
+      "parking",
+      "food",
+      "restrooms"
+    ],
+    "sargassum": "none",
+    "surf": "small",
+    "wind": "light",
+    "coverImage": "/images/beaches/placeholder-beach.jpg",
+    "gallery": [],
+    "aliases": [
+      "Playa Crash Boat"
+    ],
+    "accessLabel": "road & parking",
+    "notes": "Famous pier and turquoise water; lively on weekends; jumps are popular.",
+    "updatedAt": "2025-09-23T20:58:33.949Z"
+  }
+]

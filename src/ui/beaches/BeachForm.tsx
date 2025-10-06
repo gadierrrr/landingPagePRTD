@@ -430,9 +430,9 @@ export const BeachForm: React.FC<BeachFormProps> = ({
           
           {formData.coverImage && (
             <div className="mb-4">
-              <div className="aspect-[16/9] max-w-md overflow-hidden rounded-lg bg-brand-sand">
-                <Image 
-                  src={formData.coverImage} 
+              <div className="relative aspect-[16/9] max-w-md overflow-hidden rounded-lg bg-brand-sand">
+                <Image
+                  src={formData.coverImage}
                   alt="Cover preview"
                   fill
                   className="object-cover"
