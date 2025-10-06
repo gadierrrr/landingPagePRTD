@@ -108,6 +108,55 @@ function mapBeachRow(row: typeof schema.beaches.$inferSelect): Beach {
   return beach;
 }
 
+/**
+ * Get all beaches with lightweight data (no rich content fields)
+ * Used for list views and filtering where full content is not needed
+ * Returns: id, slug, name, municipality, coords, sargassum, surf, wind,
+ *          coverImage, accessLabel, notes, tags, amenities
+ * Excludes: description, parkingDetails, safetyInfo, localTips, bestTime,
+ *           features, tips, gallery, aliases
+ */
+export async function getAllBeachesLight(): Promise<Beach[]> {
+  const beachRows = await db.select().from(schema.beaches);
+  if (beachRows.length === 0) {
+    return [];
+  }
+
+  const ids = beachRows.map(b => b.id);
+
+  // Only fetch tags and amenities (needed for filtering)
+  const [tagRows, amenityRows] = await Promise.all([
+    db.select().from(schema.beachTags).where(inArray(schema.beachTags.beachId, ids)),
+    db.select().from(schema.beachAmenities).where(inArray(schema.beachAmenities.beachId, ids))
+  ]);
+
+  const tagsById = new Map<string, string[]>();
+  for (const tag of tagRows) {
+    const arr = tagsById.get(tag.beachId) ?? [];
+    arr.push(tag.tag);
+    tagsById.set(tag.beachId, arr);
+  }
+
+  const amenitiesById = new Map<string, string[]>();
+  for (const amenity of amenityRows) {
+    const arr = amenitiesById.get(amenity.beachId) ?? [];
+    arr.push(amenity.amenity);
+    amenitiesById.set(amenity.beachId, arr);
+  }
+
+  return beachRows.map(row => {
+    const beach = mapBeachRow(row);
+    beach.tags = (tagsById.get(row.id) ?? []) as Beach['tags'];
+    beach.amenities = (amenitiesById.get(row.id) ?? []) as Beach['amenities'];
+    // Set empty arrays for excluded fields
+    beach.gallery = [];
+    beach.aliases = [];
+    beach.features = [];
+    beach.tips = [];
+    return beach;
+  });
+}
+
 export async function getAllBeaches(): Promise<Beach[]> {
   const beachRows = await db.select().from(schema.beaches);
   if (beachRows.length === 0) {
